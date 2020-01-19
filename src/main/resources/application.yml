@@ -57,8 +57,6 @@ org:
             userFullname: ${BLOODMONEY_USER_FULLNAME}
             devTesting: ${BLOODMONEY_DEV_TESTING}
 logging:
-    config: classpath:logback.xml
-    file: logging-test.log
     level:
         org:
             woehlke:
