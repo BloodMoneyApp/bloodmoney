@@ -3,7 +3,6 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id "com.gorylenko.gradle-git-properties" version "1.5.1"
     id 'org.asciidoctor.convert' version '1.5.8'
-    //id "com.jfrog.artifactory" version "4.9.10"
     id 'java'
 }
 
@@ -23,14 +22,6 @@ configurations {
 
 repositories {
     mavenCentral()
-    jcenter()
-//    maven {
-//       url 'http://localhost:8081/artifactory/gradle-release'
-//       credentials {
-//            username = "${artifactory_user}"
-//            password = "${artifactory_password}"
-//        }
-//    }
 }
 
 ext {
