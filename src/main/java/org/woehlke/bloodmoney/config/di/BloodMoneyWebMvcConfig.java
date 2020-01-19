@@ -2,11 +2,9 @@ package org.woehlke.bloodmoney.config.di;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.LocaleResolver;
@@ -15,19 +13,14 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.dialect.springdata.SpringDataDialect;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
-import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 import java.util.Locale;
 
-@Profile({"default","developing","heroku"})
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport
-@EnableConfigurationProperties({
-    BloodMoneyProperties.class
-})
 @Import({
-    BloodMoneyApplicationDevelopingConfig.class
+    BloodMoneyConfig.class
 })
 public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implements WebMvcConfigurer {
 
@@ -67,21 +60,25 @@ public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implem
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        for(String key: bloodMoneyProperties.getWebConfig().getWebAddResourceHandlers()){
+        for(String key: config().properties().getWebConfig().getWebAddResourceHandlers()){
             registry.addResourceHandler("/"+key+"*").addResourceLocations("/"+key);
             registry.addResourceHandler("/"+key+"**").addResourceLocations("/"+key);
         }
-        for(String key: bloodMoneyProperties.getWebConfig().getWebAddResourceHandlersStatic()){
+        for(String key: config().properties().getWebConfig().getWebAddResourceHandlersStatic()){
             registry.addResourceHandler("/"+key+"*").addResourceLocations("classpath:/static/"+key);
             registry.addResourceHandler("/"+key+"**").addResourceLocations("classpath:/static/"+key);
         }
     }
 
-    private final BloodMoneyProperties bloodMoneyProperties;
-
-    @Autowired
-    public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
-        this.bloodMoneyProperties = bloodMoneyProperties;
+    @Bean
+    public BloodMoneyConfig config(){
+        return this.bloodMoneyConfig;
     }
 
+    private final BloodMoneyConfig bloodMoneyConfig;
+
+    @Autowired
+    public BloodMoneyWebMvcConfig(BloodMoneyConfig bloodMoneyConfig) {
+        this.bloodMoneyConfig = bloodMoneyConfig;
+    }
 }

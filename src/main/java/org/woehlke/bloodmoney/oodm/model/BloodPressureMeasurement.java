@@ -4,12 +4,13 @@ import com.opencsv.bean.CsvBindByName;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 
 @Getter
 @Setter
@@ -19,7 +20,10 @@ import java.time.ZoneId;
 @Table(
     name = "measurement",
     indexes = {
-        @Index(name = "idx_measurement_date", columnList = "measurement_date")
+        @Index(
+            name = "idx_measurement_date",
+            columnList = "measurement_date"
+        )
     }
 )
 public class BloodPressureMeasurement implements Serializable {
@@ -35,37 +39,42 @@ public class BloodPressureMeasurement implements Serializable {
     )
     private Long id;
 
+    @NotNull
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "measurement_date", columnDefinition = "DATE")
     private LocalDate date;
 
+    @NotNull
     @CsvBindByName
     @DateTimeFormat(pattern = "HH:mm")
-    @Column(name = "measurement_time", columnDefinition = "TIME WITH TIME ZONE")
+    @Column(name = "measurement_time", columnDefinition = "TIME")
     private LocalTime time;
 
+    @NotNull
     @CsvBindByName
     @Column
     private Integer systolicTopNumber;
 
+    @NotNull
     @CsvBindByName
     @Column
     private Integer diastolicBottomNumber;
 
+    @NotNull
     @CsvBindByName
     @Column
     private Integer pulse;
 
+    @Nullable
     @CsvBindByName
     @Length(max=65535)
-    @Column(name = "situation", nullable = true, length = 65535, columnDefinition="text")
+    @Column(name = "situation", nullable = true, length = 65535, columnDefinition="CLOB")
     private String situation;
 
     public static BloodPressureMeasurement getInstance(){
-        ZoneId zone = ZoneId.of("Europe/Paris");
-        LocalDate today =  LocalDate.now(zone);
-        LocalTime now = LocalTime.now(zone);
+        LocalDate today = LocalDate.now();
+        LocalTime now = LocalTime.now();
         BloodPressureMeasurement o = new BloodPressureMeasurement();
         o.setDate(today);
         o.setTime(now);
@@ -76,8 +85,4 @@ public class BloodPressureMeasurement implements Serializable {
         return o;
     }
 
-    //@Override
-    public boolean isNew() {
-        return id==null;
-    }
 }
