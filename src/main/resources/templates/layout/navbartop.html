@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:sd="http://www.thymeleaf.org/spring-data">
+
+<div th:fragment="navbartop">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}" href="#">
+				<i class="fas fa-hand-holding-heart"></i> 
+				<span th:text="#{org.woehlke.mybp.navigation.topbar.brand}"></span>
+			</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/home}" href="#">
+							<i class="fas fa-home"></i> 
+							<span th:text="#{org.woehlke.mybp.navigation.topbar.home}"></span>
+						</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/measurement/add/}"  href="#">
+							<i class="far fa-folder-open"></i> 
+							<span th:text="#{org.woehlke.mybp.measurement.add.title.short}"></span>
+						</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()" th:if="${userSession.devTesting}">
+                        <a class="nav-link" th:href="@{/test/createTestData/}" href="#">
+							<i class="far fa-file"></i> 
+							<span th:text="#{org.woehlke.mybp.navigation.topbar.createtestdata}"></span>
+						</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+						<a class="nav-link" th:href="@{/measurement/export/all}" href="#">
+							<i class="fas fa-download"></i>
+							<span th:text="#{org.woehlke.mybp.navigation.topbar.export}">Export List</span>
+						</a>
+                    </li>
+                    <li class="nav-item dropdown" sec:authorize="isAuthenticated()" th:if="${userSession.devTesting}">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="far fa-file-code"></i> 
+							<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.tests}"></span>
+						</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" th:href="@{/test/greeting}" href="#">
+								<i class="far fa-file-code"></i> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.greeting}"></span>
+							</a>
+                            <a class="dropdown-item" th:href="@{/test/dashboard}" href="#">
+								<i class="far fa-file-code"></i> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.dashboard}"></span>
+							</a>
+                            <a class="dropdown-item" th:href="@{/test/grid}" href="#">
+								<i class="far fa-file-code"></i> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.grid}"></span>
+							</a>
+                            <a class="dropdown-item" th:href="@{/test/jumbotron}" href="#">
+								<i class="far fa-file-code"></i> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.jumbotron}"></span>
+							</a>
+                            <a class="dropdown-item" th:href="@{/test/navbar-fixed}" href="#">
+								<i class="far fa-file-code"></i> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.navbarfixed}"></span>
+							</a>
+                            <a class="dropdown-item" th:href="@{/test/sticky-footer-navbar}" href="#">
+								<i class="far fa-file-code"></i> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.stickyfooternavbar}"></span>
+							</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/logout}" href="#">
+							<i class="fas fa-sign-out-alt"></i> 
+							<span th:text="#{org.woehlke.mybp.navigation.topbar.logout}"></span>
+						</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav my-2 my-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-globe"></i><b class="caret"></b>
+						</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="#" th:href="@{{url}(lang='de',url=${#request.getRequestURL()})}">
+								<img class="lang-switcher-img" th:src="@{/img/de.png}"/> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.lang.de}"></span>
+							</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" th:href="@{{url}(lang='en',url=${#request.getRequestURL()})}">
+								<img class="lang-switcher-img" th:src="@{/img/gb.png}"/> 
+								<span th:text="#{org.woehlke.mybp.navigation.topbar.lang.en}"></span>
+							</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</html>

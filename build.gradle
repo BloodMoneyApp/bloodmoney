@@ -1,0 +1,68 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    //id "com.jfrog.artifactory" version "4.9.10"
+    id 'java'
+}
+
+group = 'org.woehlke.bloodmoney'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '12'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    jcenter()
+//    maven {
+//       url 'http://localhost:8081/artifactory/gradle-release'
+//       credentials {
+//            username = "${artifactory_user}"
+//            password = "${artifactory_password}"
+//        }
+//    }
+}
+
+dependencies {
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.webjars:jquery:3.3.1-2'
+    implementation 'org.webjars:popper.js:1.14.7'
+    implementation 'org.webjars:bootstrap:4.3.1'
+    implementation 'org.webjars:font-awesome:5.8.1'
+    implementation 'io.github.jpenren:thymeleaf-spring-data-dialect:3.4.0'
+    implementation 'org.jsoup:jsoup:1.8.3'
+    implementation 'com.opencsv:opencsv:4.5'
+    implementation 'org.springframework.security:spring-security-core'
+    implementation 'io.github.jpenren:thymeleaf-spring-data-dialect:3.4.0'
+    implementation 'org.jsoup:jsoup:1.8.3'
+    implementation 'com.opencsv:opencsv:4.5'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time'
+    implementation 'org.thymeleaf:thymeleaf-spring5'
+    implementation 'com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute'
+    implementation 'org.springframework.session:spring-session-jdbc'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.batch:spring-batch-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}

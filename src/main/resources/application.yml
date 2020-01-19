@@ -1,0 +1,235 @@
+endpoints:
+    endpoints:
+        shutdown:
+            enabled: false
+server:
+    port: ${PORT}
+    error:
+        path: /fehler
+    compression:
+        enabled: true
+        min-response-size: 2048
+spring:
+    devtools:
+        livereload:
+            enabled: true
+    application:
+        admin:
+            enabled: true
+    datasource:
+        url:  jdbc:postgresql://localhost:5432/bloodmoney
+        username:  java4postgres
+        password:  java4postgrespwd
+        driver-class-name:  org.postgresql.Driver
+        platform: POSTGRESQL
+    jpa:
+        show-sql: true
+        open-in-view: true
+        generate-ddl: true
+        hibernate:
+            ddl-auto:  create-drop
+            #ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQL95Dialect
+                temp:
+                    use_jdbc_metadata_defaults: false
+            #generate_statistics: true
+    thymeleaf:
+        cache: false
+    session:
+        store-type: jdbc
+        jdbc:
+            initialize-schema: ALWAYS
+            cleanup-cron: 0 * * * *simpleworklist *
+            schema: classpath:/org/springframework/session/jdbc/schema-postgresql.sql
+            table-name: SPRING_SESSION
+    main:
+        allow-bean-definition-overriding: true
+org:
+    woehlke:
+        bloodmoney:
+            iterations: ${BLOODMONEY_USER_INTERATIONS}
+            hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+            secret: ${BLOODMONEY_USER_SECRET}
+            userEmail: ${BLOODMONEY_USER_EMAIL}
+            userPassword: ${BLOODMONEY_USER_PASSWORD}
+            userFullname: ${BLOODMONEY_USER_FULLNAME}
+            devTesting: ${BLOODMONEY_DEV_TESTING}
+logging:
+    config: classpath:logback.xml
+    file: logging-test.log
+    level:
+        org:
+            woehlke:
+                bloodmoney:
+                    config: DEBUG
+                    frontend:
+                        api: DEBUG
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                    oodm:
+                        entities: DEBUG
+                        repositories: DEBUG
+                        services:
+                            impl: DEBUG
+                    user:
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                        services:
+                            impl: DEBUG
+
+---
+
+spring:
+    profiles: default
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bloodmoney
+---
+spring:
+    profiles: developing
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bloodmoney_developing
+    jpa:
+        hibernate:
+            ddl-auto: update
+            #ddl-auto: create-drop
+
+---
+spring:
+    profiles: doc
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bloodmoney_doc
+    jpa:
+        hibernate:
+            ddl-auto: update
+            #ddl-auto: create-drop
+---
+spring:
+    profiles: travis
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bloodmoney_travis
+        continue-on-error: true
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: update
+            #ddl-auto: create-drop
+server:
+    compression:
+        enabled: false
+---
+spring:
+    profiles: testing
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bloodmoney_testing
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: update
+            #ddl-auto: create-drop
+server:
+    compression:
+        enabled: false
+logging:
+    config: classpath:logback.xml
+    file: logging-test.log
+    level:
+        org:
+            woehlke:
+                bloodmoney:
+                    config: DEBUG
+                    frontend:
+                        api: DEBUG
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                    oodm:
+                        entities: DEBUG
+                        repositories: DEBUG
+                        services:
+                            impl: DEBUG
+                    user:
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                        services:
+                            impl: DEBUG
+---
+spring:
+    profiles: qa
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bloodmoney_qa
+        continue-on-error: true
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: update
+            #ddl-auto: create-drop
+server:
+    compression:
+        enabled: false
+logging:
+    config: classpath:logback.xml
+    file: logging-qa.log
+    level:
+        org:
+            woehlke:
+                bloodmoney:
+                    config: DEBUG
+                    frontend:
+                        api: DEBUG
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                    oodm:
+                        entities: DEBUG
+                        repositories: DEBUG
+                        services:
+                            impl: DEBUG
+                    user:
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                        services:
+                            impl: DEBUG
+---
+spring:
+    profiles: heroku
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bloodmoney
+        continue-on-error: true
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: update
+            #ddl-auto: create-drop
+    thymeleaf:
+        cache: true
+    devtools:
+        livereload:
+            enabled: false
+        add-properties: false
+    application:
+        admin:
+            enabled: false
+server:
+    compression:
+        enabled: true
+logging:
+    config: classpath:logback.xml
+    level:
+        org:
+            woehlke:
+                bloodmoney: WARN
+            apache: WARN
+            springframework: WARN
+            thymeleaf: WARN
+            hibernate: WARN
+            hibernate.SQL: WARN
+        ch:
+            qos: WARN
+
+

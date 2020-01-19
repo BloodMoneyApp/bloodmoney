@@ -1,0 +1,5 @@
+{
+  "name": "bloodmoney",
+  "description": "Manual Data Input Web based.",
+  "addons": [ "heroku-postgresql" ]
+}
