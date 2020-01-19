@@ -1,6 +1,7 @@
 package org.woehlke.bloodmoney.config;
 
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -18,7 +19,10 @@ import java.util.Locale;
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport
-@Import(BloodMoneyApplicationConfig.class)
+@Import({BloodMoneyApplicationConfig.class})
+@EnableConfigurationProperties({
+    BloodMoneyProperties.class
+})
 public class BloodMoneyWebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
 
     @Bean

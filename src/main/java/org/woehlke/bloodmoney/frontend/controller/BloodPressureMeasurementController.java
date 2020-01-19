@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.frontend.controller;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,8 @@ import org.woehlke.bloodmoney.oodm.services.BloodPressureMeasurementService;
 
 import javax.validation.Valid;
 
+
+@Log
 @Controller
 @RequestMapping("/measurement")
 @SessionAttributes("userSession")

@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.user.controller;
 
+import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+@Log
 @Controller
 public class UserLoginController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserLoginController.class);
 
     private final UserAccountLoginSuccessService userAccountLoginSuccessService;
 
     private final UserAccountAccessService userAccountAccessService;
 
     @Autowired
-    public UserLoginController(UserAccountLoginSuccessService userAccountLoginSuccessService, UserAccountAccessService userAccountAccessService) {
+    public UserLoginController(
+        UserAccountLoginSuccessService userAccountLoginSuccessService,
+        UserAccountAccessService userAccountAccessService
+    ) {
         this.userAccountLoginSuccessService = userAccountLoginSuccessService;
         this.userAccountAccessService = userAccountAccessService;
     }
@@ -41,22 +44,23 @@ public class UserLoginController {
      * Login Formular. If User is not logged in, this page will be displayed for
      * all page-URLs which need login.
      *
-     * @param model
+     * @param model Model
      * @return Login Screen.
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public final String loginForm(Model model) {
         LoginForm loginForm = new LoginForm();
         model.addAttribute("loginForm", loginForm);
+        log.info("show loginForm");
         return "user/loginForm";
     }
 
     /**
      * Perform login.
      *
-     * @param loginForm
-     * @param result
-     * @param model
+     * @param loginForm LoginForm
+     * @param result BindingResult
+     * @param model Model
      * @return Shows Root Project after successful login or login form with error messages.
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -66,7 +70,7 @@ public class UserLoginController {
         if (!result.hasErrors() && authorized) {
             UserAccount user = userAccountLoginSuccessService.retrieveCurrentUser();
             userAccountLoginSuccessService.updateLastLoginTimestamp(user);
-            LOGGER.info("logged in");
+            log.info("logged in");
             return "redirect:/";
         } else {
             String objectName = "loginForm";
@@ -74,7 +78,7 @@ public class UserLoginController {
             String defaultMessage = "Email or Password wrong.";
             FieldError e = new FieldError(objectName, field, defaultMessage);
             result.addError(e);
-            LOGGER.info("not logged in");
+            log.info("not logged in : "+e.toString());
             return "user/loginForm";
         }
     }
@@ -86,6 +90,7 @@ public class UserLoginController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         status.setComplete();
+        log.info("logged out");
         return "redirect:/";
     }
 }

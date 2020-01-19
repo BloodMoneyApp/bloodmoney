@@ -1,13 +1,21 @@
 package org.woehlke.bloodmoney.user.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Locale;
-import java.util.Objects;
 
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+//@AllArgsConstructor
 public class UserAccount implements Serializable {
 
     private static final long serialVersionUID = 4168992193351369032L;
@@ -21,6 +29,7 @@ public class UserAccount implements Serializable {
     @SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
     private String userFullname;
 
+    @NotNull
     private Locale defaultLanguage=Locale.GERMAN;
 
     @NotNull
@@ -35,7 +44,11 @@ public class UserAccount implements Serializable {
     @NotNull
     private Boolean enabled=true;
 
-    public UserAccount(@Email String userEmail, @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE) String userPassword, @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE) String userFullname) {
+    public UserAccount(
+        @Email String userEmail,
+        @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE) String userPassword,
+        @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE) String userFullname
+    ) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userFullname = userFullname;
@@ -103,26 +116,6 @@ public class UserAccount implements Serializable {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof UserAccount)) return false;
-        UserAccount that = (UserAccount) o;
-        return getUserEmail().equals(that.getUserEmail()) &&
-            getUserPassword().equals(that.getUserPassword()) &&
-            getUserFullname().equals(that.getUserFullname()) &&
-            getDefaultLanguage().equals(that.getDefaultLanguage()) &&
-            getAccountNonExpired().equals(that.getAccountNonExpired()) &&
-            getAccountNonLocked().equals(that.getAccountNonLocked()) &&
-            getCredentialsNonExpired().equals(that.getCredentialsNonExpired()) &&
-            getEnabled().equals(that.getEnabled());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getUserEmail(), getUserPassword(), getUserFullname(), getDefaultLanguage(), getAccountNonExpired(), getAccountNonLocked(), getCredentialsNonExpired(), getEnabled());
     }
 
     @Override

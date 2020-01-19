@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.frontend.controller;
 
+import lombok.extern.java.Log;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+@Log
 @Controller
 public class MyErrorController implements ErrorController {
 

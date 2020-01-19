@@ -1,7 +1,6 @@
 package org.woehlke.bloodmoney.user.services.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,11 +10,10 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.model.LoginForm;
 import org.woehlke.bloodmoney.user.services.UserAccountAccessService;
 
+@Log
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class UserAccountAccessServiceImpl implements UserAccountAccessService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserAccountAccessServiceImpl.class);
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;
@@ -32,13 +30,15 @@ public class UserAccountAccessServiceImpl implements UserAccountAccessService {
     @Override
     public boolean authorize(LoginForm loginForm) {
         String encodedPassword = bloodMoneyProperties.getUserPassword();
-        LOGGER.warn("encodedPassword:  ###"+encodedPassword+"###");
+        log.info("encodedPassword:  ###"+encodedPassword+"###");
         CharSequence rawPassword = loginForm.getUserPassword();
-        LOGGER.warn("rawPassword:      ###"+rawPassword+"###  --- ###"+encoder.encode(rawPassword)+"###");
+        log.info("rawPassword:      ###"+rawPassword+"###  --- ###"+encoder.encode(rawPassword)+"###");
         boolean emailMatched = (loginForm.getUserEmail().compareTo(bloodMoneyProperties.getUserEmail())==0);
-        LOGGER.warn("emailMatched:  "+emailMatched);
+        log.info("emailMatched:  "+emailMatched);
         boolean pwMatched = (encoder.matches(rawPassword,encodedPassword));
-        LOGGER.warn("pwMatched:  "+pwMatched);
-        return (emailMatched&&pwMatched);
+        log.info("pwMatched:  "+pwMatched);
+        boolean authorized = (emailMatched&&pwMatched);
+        log.info("authorized:  "+authorized);
+        return authorized;
     }
 }

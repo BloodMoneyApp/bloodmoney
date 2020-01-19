@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.frontend.controller;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.oodm.services.TestService;
 
+@Log
 @Controller
 @RequestMapping("/test")
 @SessionAttributes("userSession")

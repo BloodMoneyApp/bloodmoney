@@ -1,8 +1,10 @@
-package org.woehlke.bloodmoney.user.config;
+package org.woehlke.bloodmoney.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,7 +21,14 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 @Configuration
 @EnableWebSecurity
 @EnableSpringDataWebSupport
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableConfigurationProperties({
+    BloodMoneyProperties.class
+})
+@Import({
+    BloodMoneyApplicationConfig.class,
+    BloodMoneyWebMvcConfig.class
+})
+public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -81,7 +90,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
-    public WebSecurityConfig(
+    public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder auth,
         AuthenticationSuccessHandler loginSuccessHandler,
         UserDetailsService userAccountSecurityService,

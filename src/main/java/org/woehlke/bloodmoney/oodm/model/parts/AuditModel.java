@@ -1,6 +1,10 @@
 package org.woehlke.bloodmoney.oodm.model.parts;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -9,6 +13,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(
@@ -28,29 +36,5 @@ public abstract class AuditModel implements Serializable {
     @Column(name = "row_updated_at", nullable = false)
     @LastModifiedDate
     private Date rowUpdatedAt;
-
-    public Date getRowCreatedAt() {
-        return rowCreatedAt;
-    }
-
-    public void setRowCreatedAt(Date rowCreatedAt) {
-        this.rowCreatedAt = rowCreatedAt;
-    }
-
-    public Date getRowUpdatedAt() {
-        return rowUpdatedAt;
-    }
-
-    public void setRowUpdatedAt(Date rowUpdatedAt) {
-        this.rowUpdatedAt = rowUpdatedAt;
-    }
-
-    @Override
-    public String toString() {
-        return "AuditModel{" +
-                "rowCreatedAt=" + rowCreatedAt +
-                ", rowUpdatedAt=" + rowUpdatedAt +
-                '}';
-    }
 
 }

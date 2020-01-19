@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.user.services.impl;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.model.UserAccount;
 import org.woehlke.bloodmoney.user.services.UserAccountLoginSuccessService;
 
+@Log
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSuccessService {

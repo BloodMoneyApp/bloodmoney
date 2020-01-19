@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.user.services.impl;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,6 +11,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.model.UserDetailsBean;
 import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
 
+@Log
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class UserAccountSecurityServiceImpl implements UserAccountSecurityService {

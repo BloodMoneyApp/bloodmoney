@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.oodm.services.impl;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,8 +13,9 @@ import org.woehlke.bloodmoney.oodm.services.BloodPressureMeasurementService;
 
 import java.util.List;
 
+@Log
 @Service
-@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasurementService {
 
     private final BloodPressureMeasurementRepository bloodPressureMeasurementRepository;
@@ -24,29 +26,28 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public Page<BloodPressureMeasurement> getAll(Pageable pageable) {
         return this.bloodPressureMeasurementRepository.findAll(pageable);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public BloodPressureMeasurement add(BloodPressureMeasurement one) {
         return this.bloodPressureMeasurementRepository.save(one);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public BloodPressureMeasurement update(BloodPressureMeasurement one) {
         return this.bloodPressureMeasurementRepository.save(one);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void delete(BloodPressureMeasurement one) {
         this.bloodPressureMeasurementRepository.delete(one);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<BloodPressureMeasurement> getAll() {
         return this.bloodPressureMeasurementRepository.findAll();
     }

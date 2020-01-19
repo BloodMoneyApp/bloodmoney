@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
     "org.woehlke.bloodmoney.oodm.repositories"
 })
 @EnableConfigurationProperties({
-        BloodMoneyProperties.class,
+        BloodMoneyProperties.class
 })
 public class BloodMoneyApplicationConfig {
 }

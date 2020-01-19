@@ -1,6 +1,7 @@
 package org.woehlke.bloodmoney.oodm.model;
 
 import com.opencsv.bean.CsvBindByName;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.woehlke.bloodmoney.oodm.model.parts.AuditModel;
@@ -10,8 +11,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.util.Objects;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "measurement",
         indexes = {
@@ -129,35 +135,4 @@ public class BloodPressureMeasurement extends AuditModel implements Serializable
         this.pulse = pulse;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BloodPressureMeasurement)) return false;
-        BloodPressureMeasurement that = (BloodPressureMeasurement) o;
-        return Objects.equals(getId(), that.getId()) &&
-                getDate().equals(that.getDate()) &&
-                getTime().equals(that.getTime()) &&
-                getSystolicTopNumber().equals(that.getSystolicTopNumber()) &&
-                getDiastolicBottomNumber().equals(that.getDiastolicBottomNumber()) &&
-                getPulse().equals(that.getPulse()) &&
-                Objects.equals(getSituation(), that.getSituation());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getDate(), getTime(), getSystolicTopNumber(), getDiastolicBottomNumber(), getPulse(), getSituation());
-    }
-
-    @Override
-    public String toString() {
-        return "BloodPressureMeasurement{" +
-                "id=" + id +
-                ", date=" + date +
-                ", time=" + time +
-                ", systolicTopNumber=" + systolicTopNumber +
-                ", diastolicBottomNumber=" + diastolicBottomNumber +
-                ", pulse=" + pulse +
-                ", situation='" + situation + '\'' +
-                '}';
-    }
 }

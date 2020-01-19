@@ -1,5 +1,6 @@
-package org.woehlke.bloodmoney.user.config;
+package org.woehlke.bloodmoney.user.controller;
 
+import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Locale;
 
+@Log
 @Component
 public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginSuccessHandler.class);
 
     private final UserAccountLoginSuccessService userAccountLoginSuccessService;
 
@@ -43,7 +43,7 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
         userAccountLoginSuccessService.updateLastLoginTimestamp(user);
         Locale locale = user.getDefaultLanguage();
         localeResolver.setLocale(request,response,locale);
-        LOGGER.info("successful logged in "+user.getUserEmail());
+        log.info("successful logged in "+user.getUserEmail());
     }
 
 }

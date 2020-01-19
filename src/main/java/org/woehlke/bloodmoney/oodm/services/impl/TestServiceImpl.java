@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.oodm.services.impl;
 
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -12,8 +13,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 
+@Log
 @Service
-@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class TestServiceImpl implements TestService {
 
     private final BloodPressureMeasurementRepository bloodPressureMeasurementRepository;

@@ -3,6 +3,7 @@ package org.woehlke.bloodmoney.frontend.api;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.woehlke.bloodmoney.oodm.services.BloodPressureMeasurementService;
 
 import javax.servlet.http.HttpServletResponse;
 
+@Log
 @RestController
 @RequestMapping("/measurement/export")
 @SessionAttributes("userSession")

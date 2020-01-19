@@ -13,6 +13,7 @@ public class BloodMoneyApplication extends SpringBootServletInitializer implemen
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(BloodMoneyApplication.class);
     }
+
 	public static void main(String[] args) {
 		SpringApplication.run(BloodMoneyApplication.class, args);
 	}
