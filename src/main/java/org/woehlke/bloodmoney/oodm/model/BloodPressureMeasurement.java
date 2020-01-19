@@ -16,26 +16,16 @@ import java.time.ZoneId;
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper=true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "measurement",
-        indexes = {
-                @Index(name = "idx_measurement_date", columnList = "measurement_date")
-        }
+@Table(
+    name = "measurement",
+    indexes = {
+        @Index(name = "idx_measurement_date", columnList = "measurement_date")
+    }
 )
 public class BloodPressureMeasurement extends AuditModel implements Serializable {
 
     private static final long serialVersionUID = 2676529613061169122L;
-
-    @Id
-    @GeneratedValue(generator = "measurement_generator")
-    @SequenceGenerator(
-            name = "measurement_generator",
-            sequenceName = "measurement_sequence",
-            initialValue = 1000
-    )
-    private Long id;
 
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -76,63 +66,6 @@ public class BloodPressureMeasurement extends AuditModel implements Serializable
         o.setPulse(68);
         o.setSituation("New Measurement");
         return o;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-
-    public Integer getSystolicTopNumber() {
-        return systolicTopNumber;
-    }
-
-    public void setSystolicTopNumber(Integer systolicTopNumber) {
-        this.systolicTopNumber = systolicTopNumber;
-    }
-
-    public Integer getDiastolicBottomNumber() {
-        return diastolicBottomNumber;
-    }
-
-    public void setDiastolicBottomNumber(Integer diastolicBottomNumber) {
-        this.diastolicBottomNumber = diastolicBottomNumber;
-    }
-
-    public String getSituation() {
-        return situation;
-    }
-
-    public void setSituation(String situation) {
-        this.situation = situation;
-    }
-
-    public Integer getPulse() {
-        return pulse;
-    }
-
-    public void setPulse(Integer pulse) {
-        this.pulse = pulse;
     }
 
 }

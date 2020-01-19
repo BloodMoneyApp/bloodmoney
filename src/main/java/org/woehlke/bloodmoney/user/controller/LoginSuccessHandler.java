@@ -1,15 +1,13 @@
 package org.woehlke.bloodmoney.user.controller;
 
 import lombok.extern.java.Log;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.LocaleResolver;
-import org.woehlke.bloodmoney.user.model.UserAccount;
+import org.woehlke.bloodmoney.oodm.model.UserAccount;
 import org.woehlke.bloodmoney.user.services.UserAccountLoginSuccessService;
 
 import javax.servlet.ServletException;

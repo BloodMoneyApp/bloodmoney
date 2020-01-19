@@ -19,8 +19,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-@Component
 @Validated
+@Component
 @ConfigurationProperties(prefix="org.woehlke.bloodmoney")
 public class BloodMoneyProperties implements Serializable {
 
@@ -68,7 +68,7 @@ public class BloodMoneyProperties implements Serializable {
         private String exportFilename;
 
         @NotBlank
-        private Character exportFilenameSeparator;
+        private String exportFilenameSeparator;
 
         @NotNull
         private String[] webAddResourceHandlers;

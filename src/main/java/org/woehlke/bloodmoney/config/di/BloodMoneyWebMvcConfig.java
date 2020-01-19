@@ -65,11 +65,11 @@ public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implem
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        for(String key: bloodMoneyProperties.getWebAddResourceHandlers()){
+        for(String key: bloodMoneyProperties.getWebConfig().getWebAddResourceHandlers()){
             registry.addResourceHandler("/"+key+"*").addResourceLocations("/"+key);
             registry.addResourceHandler("/"+key+"**").addResourceLocations("/"+key);
         }
-        for(String key: bloodMoneyProperties.getWebAddResourceHandlersStatic()){
+        for(String key: bloodMoneyProperties.getWebConfig().getWebAddResourceHandlersStatic()){
             registry.addResourceHandler("/"+key+"*").addResourceLocations("classpath:/static/"+key);
             registry.addResourceHandler("/"+key+"**").addResourceLocations("classpath:/static/"+key);
         }

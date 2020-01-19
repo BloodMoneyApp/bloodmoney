@@ -21,8 +21,8 @@ public class UserAccountSecurityServiceImpl implements UserAccountSecurityServic
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if(username.compareTo(bloodMoneyProperties.getUserEmail())==0){
-            return new UserDetailsBean(bloodMoneyProperties.getUserEmail(), bloodMoneyProperties.getUserPassword());
+        if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
+            return new UserDetailsBean(bloodMoneyProperties.getUserConfig().getUserEmail(), bloodMoneyProperties.getUserConfig().getUserPassword());
         } else {
             throw new UsernameNotFoundException("Usernam unknown: "+username);
         }

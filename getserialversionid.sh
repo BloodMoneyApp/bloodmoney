@@ -28,7 +28,7 @@ serialver org.woehlke.bloodmoney.frontend.model.FlashMessage >> $TARGET_FILE
 serialver org.woehlke.bloodmoney.frontend.model.UserSession >> $TARGET_FILE
 serialver org.woehlke.bloodmoney.config.ApplicationProperties >> $TARGET_FILE
 serialver org.woehlke.bloodmoney.user.model.LoginForm >> $TARGET_FILE
-serialver org.woehlke.bloodmoney.user.model.UserAccount >> $TARGET_FILE
+serialver org.woehlke.bloodmoney.oodm.model.UserAccount >> $TARGET_FILE
 #serialver org.woehlke.bloodmoney.user.model.UserDetailsBean >> $TARGET_FILE
 cat $TARGET_FILE
 echo "FINISHED"

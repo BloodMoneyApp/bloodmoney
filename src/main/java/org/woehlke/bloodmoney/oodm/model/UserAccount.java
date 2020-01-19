@@ -1,9 +1,6 @@
-package org.woehlke.bloodmoney.user.model;
+package org.woehlke.bloodmoney.oodm.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.validation.constraints.Email;
@@ -52,70 +49,6 @@ public class UserAccount implements Serializable {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userFullname = userFullname;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public String getUserFullname() {
-        return userFullname;
-    }
-
-    public void setUserFullname(String userFullname) {
-        this.userFullname = userFullname;
-    }
-
-    public Locale getDefaultLanguage() {
-        return defaultLanguage;
-    }
-
-    public void setDefaultLanguage(Locale defaultLanguage) {
-        this.defaultLanguage = defaultLanguage;
-    }
-
-    public Boolean getAccountNonExpired() {
-        return accountNonExpired;
-    }
-
-    public void setAccountNonExpired(Boolean accountNonExpired) {
-        this.accountNonExpired = accountNonExpired;
-    }
-
-    public Boolean getAccountNonLocked() {
-        return accountNonLocked;
-    }
-
-    public void setAccountNonLocked(Boolean accountNonLocked) {
-        this.accountNonLocked = accountNonLocked;
-    }
-
-    public Boolean getCredentialsNonExpired() {
-        return credentialsNonExpired;
-    }
-
-    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
-        this.credentialsNonExpired = credentialsNonExpired;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     }
 
     @Override

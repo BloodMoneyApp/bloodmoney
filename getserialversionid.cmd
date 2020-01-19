@@ -23,6 +23,6 @@ serialver org.woehlke.bloodmoney.frontend.model.FlashMessage >> ..\..\etc\serial
 serialver org.woehlke.bloodmoney.frontend.model.UserSession >> ..\..\etc\serialversions.txt
 serialver org.woehlke.bloodmoney.config.ApplicationProperties >> ..\..\etc\serialversions.txt
 serialver org.woehlke.bloodmoney.user.model.LoginForm >> ..\..\etc\serialversions.txt
-serialver org.woehlke.bloodmoney.user.model.UserAccount >> ..\..\etc\serialversions.txt
+serialver org.woehlke.bloodmoney.oodm.model.UserAccount >> ..\..\etc\serialversions.txt
 serialver org.woehlke.bloodmoney.user.model.UserDetailsBean >> ..\..\etc\serialversions.txt
 echo FINISHED

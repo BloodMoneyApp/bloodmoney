@@ -24,16 +24,19 @@ public class UserAccountAccessServiceImpl implements UserAccountAccessService {
 
     @Override
     public boolean confirmUserByLoginAndPassword(String userEmail, String userPassword) {
-        return ((userEmail.compareTo(bloodMoneyProperties.getUserEmail())==0)&&(userPassword.compareTo(bloodMoneyProperties.getUserPassword())==0));
+        return (
+            (userEmail.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0)
+            &&(userPassword.compareTo(bloodMoneyProperties.getUserConfig().getUserPassword())==0)
+        );
     }
 
     @Override
     public boolean authorize(LoginForm loginForm) {
-        String encodedPassword = bloodMoneyProperties.getUserPassword();
+        String encodedPassword = bloodMoneyProperties.getUserConfig().getUserPassword();
         log.info("encodedPassword:  ###"+encodedPassword+"###");
         CharSequence rawPassword = loginForm.getUserPassword();
         log.info("rawPassword:      ###"+rawPassword+"###  --- ###"+encoder.encode(rawPassword)+"###");
-        boolean emailMatched = (loginForm.getUserEmail().compareTo(bloodMoneyProperties.getUserEmail())==0);
+        boolean emailMatched = (loginForm.getUserEmail().compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0);
         log.info("emailMatched:  "+emailMatched);
         boolean pwMatched = (encoder.matches(rawPassword,encodedPassword));
         log.info("pwMatched:  "+pwMatched);

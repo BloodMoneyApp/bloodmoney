@@ -12,7 +12,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-import org.woehlke.bloodmoney.user.model.UserAccount;
+import org.woehlke.bloodmoney.oodm.model.UserAccount;
 import org.woehlke.bloodmoney.user.model.LoginForm;
 import org.woehlke.bloodmoney.user.services.UserAccountAccessService;
 import org.woehlke.bloodmoney.user.services.UserAccountLoginSuccessService;

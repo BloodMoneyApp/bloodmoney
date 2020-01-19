@@ -25,11 +25,11 @@ public class ExportRestController {
         //set file name and content type
         response.setContentType("text/csv");
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-            "attachment; filename=\"" + this.properties.getWebConfig().getExportFilename() + "\"");
+            "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
         //create a csv writer
         StatefulBeanToCsv<BloodPressureMeasurement> writer = new StatefulBeanToCsvBuilder<BloodPressureMeasurement>(response.getWriter())
             .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-            .withSeparator(this.properties.getWebConfig().getExportFilenameSeparator())
+            .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
             .withOrderedResults(false)
             .build();
         //write all Measurements to csv file
@@ -37,14 +37,14 @@ public class ExportRestController {
     }
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;
-    private final BloodMoneyProperties properties;
+    private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
     public ExportRestController(
         BloodPressureMeasurementService bloodPressureMeasurementService,
-        BloodMoneyProperties properties
+        BloodMoneyProperties bloodMoneyProperties
     ) {
         this.bloodPressureMeasurementService = bloodPressureMeasurementService;
-        this.properties = properties;
+        this.bloodMoneyProperties = bloodMoneyProperties;
     }
 }
