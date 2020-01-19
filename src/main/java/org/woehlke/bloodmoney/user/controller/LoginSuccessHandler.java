@@ -37,7 +37,8 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
     public void onAuthenticationSuccess(
         HttpServletRequest request,
         HttpServletResponse response,
-        Authentication authentication) throws ServletException, IOException {
+        Authentication authentication
+    ) throws ServletException, IOException {
         super.onAuthenticationSuccess(request, response, authentication);
         UserAccount user = userAccountLoginSuccessService.retrieveCurrentUser();
         userAccountLoginSuccessService.updateLastLoginTimestamp(user);
