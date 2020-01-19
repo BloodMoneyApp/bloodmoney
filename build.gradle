@@ -4,6 +4,8 @@ plugins {
     id "com.gorylenko.gradle-git-properties" version "1.5.1"
     id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
+    id 'idea'
+    id 'eclipse-wtp'
 }
 
 group = 'org.woehlke.bloodmoney'
