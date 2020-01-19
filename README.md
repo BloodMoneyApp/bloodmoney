@@ -6,6 +6,10 @@ The Name bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 [The Sisters Of Mercy: No Time To Cry](https://www.discogs.com/The-Sisters-Of-Mercy-No-Time-To-Cry/release/6717124) 
 UK & Europe, Feb 1985).
 
+## Spring-Boot
+* https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/
+* 
+
 ## README
 
 This README would normally document whatever steps are necessary to get your application up and running.
