@@ -1,5 +1,5 @@
 set PORT=5000
-set JAVA_OPTS="-Xmx300m -XX:CICompilerCount=2"
+set JAVA_OPTS="-XX:CICompilerCount=2"
 rem set JAVA_OPTS="-Xmx256m -Xss512k -XX:CICompilerCount=2"
 set BLOODMONEY_DEV_TESTING=false
 set BLOODMONEY_USER_EMAIL=thomas.woehlke@gmail.com
