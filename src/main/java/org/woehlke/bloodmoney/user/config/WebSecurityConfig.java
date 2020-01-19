@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.woehlke.bloodmoney.config.ApplicationProperties;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 @Configuration
 @EnableWebSecurity
@@ -53,9 +53,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder encoder(){
         // https://asecuritysite.com/encryption/PBKDF2z
-        CharSequence secret=this.applicationProperties.getSecret();
-        int iterations=this.applicationProperties.getIterations();
-        int hashWidth=this.applicationProperties.getHashWidth();
+        CharSequence secret=this.bloodMoneyProperties.getSecret();
+        int iterations=this.bloodMoneyProperties.getIterations();
+        int hashWidth=this.bloodMoneyProperties.getHashWidth();
         Pbkdf2PasswordEncoder encoder = (new Pbkdf2PasswordEncoder(secret,iterations,hashWidth));
         encoder.setEncodeHashAsBase64(true);
         return encoder;
@@ -78,18 +78,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final AuthenticationManagerBuilder auth;
     private final AuthenticationSuccessHandler loginSuccessHandler;
     private final UserDetailsService userAccountSecurityService;
-    private final ApplicationProperties applicationProperties;
+    private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
     public WebSecurityConfig(
         AuthenticationManagerBuilder auth,
         AuthenticationSuccessHandler loginSuccessHandler,
         UserDetailsService userAccountSecurityService,
-        ApplicationProperties applicationProperties
+        BloodMoneyProperties bloodMoneyProperties
     ) {
         this.auth = auth;
         this.loginSuccessHandler = loginSuccessHandler;
         this.userAccountSecurityService = userAccountSecurityService;
-        this.applicationProperties = applicationProperties;
+        this.bloodMoneyProperties = bloodMoneyProperties;
     }
 }

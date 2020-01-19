@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.woehlke.bloodmoney.config.ApplicationProperties;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.oodm.services.TestService;
 
 @Controller
@@ -17,7 +17,7 @@ public class TestController {
 
     @GetMapping("/createTestData")
     public String createTestData() {
-        if(applicationProperties.getDevTesting()) {
+        if(bloodMoneyProperties.getDevTesting()) {
             testService.createTestData();
         }
         return "redirect:/measurement/all";
@@ -60,11 +60,11 @@ public class TestController {
     }
 
     @Autowired
-    public TestController(TestService testService, ApplicationProperties applicationProperties) {
+    public TestController(TestService testService, BloodMoneyProperties bloodMoneyProperties) {
         this.testService = testService;
-        this.applicationProperties = applicationProperties;
+        this.bloodMoneyProperties = bloodMoneyProperties;
     }
 
     private final TestService testService;
-    private final ApplicationProperties applicationProperties;
+    private final BloodMoneyProperties bloodMoneyProperties;
 }

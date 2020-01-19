@@ -1,8 +1,9 @@
-package org.woehlke.bloodmoney.frontend.config;
+package org.woehlke.bloodmoney.config;
 
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.LocaleResolver;
@@ -17,7 +18,8 @@ import java.util.Locale;
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport
-public class WebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
+@Import(BloodMoneyApplicationConfig.class)
+public class BloodMoneyWebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
 
     @Bean
     public Java8TimeDialect java8TimeDialect() {

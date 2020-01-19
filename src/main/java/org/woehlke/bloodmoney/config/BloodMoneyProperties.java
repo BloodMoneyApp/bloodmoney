@@ -5,23 +5,26 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Component
 @Validated
 @ConfigurationProperties(prefix="org.woehlke.bloodmoney")
-public class ApplicationProperties implements Serializable {
+public class BloodMoneyProperties implements Serializable {
 
     private static final long serialVersionUID = 4480323170764476017L;
 
-    @NotNull
+    @Email
+    @NotBlank
     private String userEmail;
 
-    @NotNull
+    @NotBlank
     private String userPassword;
 
-    @NotNull
+    @NotBlank
     private String userFullname;
 
     @NotNull
@@ -33,8 +36,14 @@ public class ApplicationProperties implements Serializable {
     @NotNull
     private Integer hashWidth;
 
-    @NotNull
+    @NotBlank
     private String secret;
+
+    @NotBlank
+    private String exportFilename;
+
+    @NotBlank
+    private String exportFilenameSeparator;
 
     public String getUserEmail() {
         return userEmail;
@@ -92,16 +101,11 @@ public class ApplicationProperties implements Serializable {
         this.secret = secret;
     }
 
-    @Override
-    public String toString() {
-        return "ApplicationProperties{" +
-            "userEmail='" + userEmail + '\'' +
-            ", userPassword='" + userPassword + '\'' +
-            ", userFullname='" + userFullname + '\'' +
-            ", devTesting=" + devTesting +
-            ", iterations=" + iterations +
-            ", hashWidth=" + hashWidth +
-            ", secret='" + secret + '\'' +
-            '}';
+    public String getExportFilename() {
+        return exportFilename;
+    }
+
+    public void setExportFilename(String exportFilename) {
+        this.exportFilename = exportFilename;
     }
 }

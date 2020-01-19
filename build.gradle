@@ -1,6 +1,8 @@
 plugins {
     id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id "com.gorylenko.gradle-git-properties" version "1.5.1"
+    id 'org.asciidoctor.convert' version '1.5.8'
     //id "com.jfrog.artifactory" version "4.9.10"
     id 'java'
 }
@@ -20,6 +22,7 @@ configurations {
 }
 
 repositories {
+    mavenCentral()
     jcenter()
 //    maven {
 //       url 'http://localhost:8081/artifactory/gradle-release'
@@ -30,9 +33,13 @@ repositories {
 //    }
 }
 
+ext {
+    set('snippetsDir', file("build/generated-snippets"))
+}
+
 dependencies {
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
@@ -41,11 +48,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-json'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-configuration-metadata'
     implementation 'org.webjars:jquery:3.3.1-2'
     implementation 'org.webjars:popper.js:1.14.7'
     implementation 'org.webjars:bootstrap:4.3.1'
@@ -62,7 +74,25 @@ dependencies {
     implementation 'org.thymeleaf:thymeleaf-spring5'
     implementation 'com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute'
     implementation 'org.springframework.session:spring-session-jdbc'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.batch:spring-batch-test'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.batch:spring-batch-test'
+    testImplementation 'org.springframework.integration:spring-integration-test'
 }
+
+test {
+    outputs.dir snippetsDir
+    useJUnitPlatform()
+}
+
+asciidoctor {
+    inputs.dir snippetsDir
+    dependsOn test
+}
+
+springBoot {
+    buildInfo()
+}
+

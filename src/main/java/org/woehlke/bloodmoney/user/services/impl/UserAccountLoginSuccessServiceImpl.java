@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.bloodmoney.config.ApplicationProperties;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.model.UserAccount;
 import org.woehlke.bloodmoney.user.services.UserAccountLoginSuccessService;
 
@@ -17,7 +17,7 @@ import org.woehlke.bloodmoney.user.services.UserAccountLoginSuccessService;
 public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSuccessService {
 
     @Autowired
-    private ApplicationProperties applicationProperties;
+    private BloodMoneyProperties bloodMoneyProperties;
 
     @Override
     public String retrieveUsername() {
@@ -34,11 +34,11 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     @Override
     public UserAccount retrieveCurrentUser() throws UsernameNotFoundException {
         String username = this.retrieveUsername();
-        if(username.compareTo(applicationProperties.getUserEmail())==0){
+        if(username.compareTo(bloodMoneyProperties.getUserEmail())==0){
             return new UserAccount(
-                applicationProperties.getUserEmail(),
-                applicationProperties.getUserPassword(),
-                applicationProperties.getUserFullname()
+                bloodMoneyProperties.getUserEmail(),
+                bloodMoneyProperties.getUserPassword(),
+                bloodMoneyProperties.getUserFullname()
             );
         } else {
             throw new UsernameNotFoundException("Usernam unknown: "+username);

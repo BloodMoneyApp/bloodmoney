@@ -1,6 +1,10 @@
 # bloodmoney
 
-Manual Data Input Web based
+Webapp for storing Blood Pressure Mearuments for one Person.
+
+The Name bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP 
+[The Sisters Of Mercy: No Time To Cry](https://www.discogs.com/The-Sisters-Of-Mercy-No-Time-To-Cry/release/6717124) 
+UK & Europe, Feb 1985).
 
 ## README
 

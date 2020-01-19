@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.bloodmoney.config.ApplicationProperties;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.model.UserDetailsBean;
 import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
 
@@ -15,12 +15,12 @@ import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
 public class UserAccountSecurityServiceImpl implements UserAccountSecurityService {
 
     @Autowired
-    private ApplicationProperties applicationProperties;
+    private BloodMoneyProperties bloodMoneyProperties;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if(username.compareTo(applicationProperties.getUserEmail())==0){
-            return new UserDetailsBean(applicationProperties.getUserEmail(),applicationProperties.getUserPassword());
+        if(username.compareTo(bloodMoneyProperties.getUserEmail())==0){
+            return new UserDetailsBean(bloodMoneyProperties.getUserEmail(), bloodMoneyProperties.getUserPassword());
         } else {
             throw new UsernameNotFoundException("Usernam unknown: "+username);
         }
