@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
 
+@Profile({"default","developing"})
 @Configuration
 @EnableWebSecurity
 @EnableSpringDataWebSupport
@@ -26,7 +28,7 @@ import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
     BloodMoneyProperties.class
 })
 @Import({
-    BloodMoneyApplicationConfig.class,
+    BloodMoneyApplicationDevelopingConfig.class,
     BloodMoneyWebMvcConfig.class
 })
 public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {

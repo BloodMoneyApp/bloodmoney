@@ -11,7 +11,7 @@ import java.util.Locale;
 @Getter
 @Setter
 @EqualsAndHashCode
-@NoArgsConstructor
+//@NoArgsConstructor
 //@AllArgsConstructor
 public class UserAccount implements Serializable {
 
@@ -53,15 +53,6 @@ public class UserAccount implements Serializable {
 
     @Override
     public String toString() {
-        return "UserAccount{" +
-            "userEmail='" + userEmail + '\'' +
-            ", userPassword='***********" + '\'' +
-            ", userFullname='" + userFullname + '\'' +
-            ", defaultLanguage=" + defaultLanguage +
-            ", accountNonExpired=" + accountNonExpired +
-            ", accountNonLocked=" + accountNonLocked +
-            ", credentialsNonExpired=" + credentialsNonExpired +
-            ", enabled=" + enabled +
-            '}';
+        return userEmail;
     }
 }

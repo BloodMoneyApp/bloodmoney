@@ -27,6 +27,15 @@ public class BloodPressureMeasurement extends AuditModel implements Serializable
 
     private static final long serialVersionUID = 2676529613061169122L;
 
+    @Id
+    @GeneratedValue(generator = "measurement_generator")
+    @SequenceGenerator(
+        name = "measurement_generator",
+        sequenceName = "measurement_sequence",
+        initialValue = 1000
+    )
+    private Long id;
+
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "measurement_date", columnDefinition = "DATE")
@@ -55,7 +64,7 @@ public class BloodPressureMeasurement extends AuditModel implements Serializable
     private String situation;
 
     public static BloodPressureMeasurement getInstance(){
-        ZoneId zone =ZoneId.of("Europe/Paris");
+        ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today =  LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
         BloodPressureMeasurement o = new BloodPressureMeasurement();
@@ -68,4 +77,8 @@ public class BloodPressureMeasurement extends AuditModel implements Serializable
         return o;
     }
 
+    //@Override
+    public boolean isNew() {
+        return id==null;
+    }
 }

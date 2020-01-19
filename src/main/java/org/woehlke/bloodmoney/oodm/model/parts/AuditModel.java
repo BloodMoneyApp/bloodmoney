@@ -5,16 +5,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.domain.Auditable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.woehlke.bloodmoney.oodm.model.UserAccount;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalTime;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Getter
 @Setter
@@ -23,82 +27,35 @@ import java.util.Optional;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(
-        value = {"rowCreatedAt", "rowUpdatedAt"},
+        value = {"lastModifiedDate", "creationDate"},
         allowGetters = true
 )
-public class AuditModel implements Auditable<UserAccount, Long, LocalTime>, Serializable {
+public abstract class AuditModel implements Serializable {
 
     private static final long serialVersionUID = -3868580213496794922L;
 
-    @Id
-    @GeneratedValue(generator = "measurement_generator")
-    @SequenceGenerator(
-        name = "measurement_generator",
-        sequenceName = "measurement_sequence",
-        initialValue = 1000
-    )
-    private Long id;
-
+    @CreatedBy
     private UserAccount createdBy;
 
+    @LastModifiedBy
     private UserAccount lastModifiedBy;
 
+    @UpdateTimestamp
+    @NotNull
     @LastModifiedDate
-    @Column(name = "row_last_Modified_at", columnDefinition = "TIME WITH TIME ZONE", nullable = false)
-    private LocalTime lastModifiedDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "row_last_Modified_at", columnDefinition = "TIMESTAMP WITH TIME ZONE", nullable = false)
+    private LocalDateTime lastModifiedDate;
 
+    @NotNull
     @CreatedDate
-    @Column(name = "row_created_at", columnDefinition = "TIME WITH TIME ZONE", nullable = false, updatable = false)
-    private LocalTime creationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "row_created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE",  nullable = false, updatable = false)
+    private LocalDateTime creationDate;
 
-
-    @Override
-    public Optional<UserAccount> getCreatedBy() {
-        return Optional.ofNullable(createdBy);
-    }
-
-    @Override
-    public void setCreatedBy(UserAccount createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    @Override
-    public Optional<LocalTime> getCreatedDate() {
-        return Optional.ofNullable(creationDate);
-    }
-
-    @Override
-    public void setCreatedDate(LocalTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    @Override
-    public Optional<UserAccount> getLastModifiedBy() {
-        return Optional.ofNullable(this.lastModifiedBy);
-    }
-
-    @Override
-    public void setLastModifiedBy(UserAccount lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    @Override
-    public Optional<LocalTime> getLastModifiedDate() {
-        return Optional.ofNullable(lastModifiedDate);
-    }
-
-    @Override
-    public void setLastModifiedDate(LocalTime lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public boolean isNew() {
-        return id==null;
+    public AuditModel() {
+        ZoneId zone = ZoneId.of("Europe/Paris");
+        creationDate = LocalDateTime.now(zone);
+        lastModifiedDate = LocalDateTime.now(zone);
     }
 }

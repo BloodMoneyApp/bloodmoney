@@ -30,8 +30,8 @@ spring:
         jdbc:
             initialize-schema: ALWAYS
             cleanup-cron: 0 * * * *simpleworklist *
-            schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
-            table-name: SPRING_SESSION
+            #schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
+            #table-name: SPRING_SESSION
     main:
         allow-bean-definition-overriding: true
 org:
@@ -52,6 +52,7 @@ org:
                     - "favicon.ico"
                 web-add-resource-handlers:
                     - "webjars/"
+                    - "h2/"
             web-security:
                 iterations: ${BLOODMONEY_USER_INTERATIONS}
                 hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
@@ -79,7 +80,8 @@ org:
                     - "/resetPassword*"
                     - "/passwordResetConfirm*/**"
                     - "/error*"
-                    - "/h2*"
+                    - "/fehler*"
+                    - "/h2*/**"
 logging:
     file:
         name: bloodmoney.log
@@ -115,15 +117,22 @@ spring:
         username: sa
         password:
         url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        initialization-mode: embedded
         #temporary data storage
         #url: jdbc:h2:file:/data/sample
         #url: jdbc:h2:file:C:/data/sample (Windows only)
+    jta:
+        atomikos:
+            connectionfactory:
+                xa-connection-factory-class-name: org.h2.Driver
     jpa:
         show-sql: true
         database-platform: H2
         hibernate:
-            ddl-auto: update
-            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+            ddl-auto: create-drop
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.H2Dialect
@@ -131,33 +140,26 @@ spring:
                     use_jdbc_metadata_defaults: false
                 naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
             #generate_statistics: true
+    session:
+        store-type: jdbc
+        jdbc:
+            initialize-schema: embedded
     h2:
         console:
             enabled: true
-            path: /h2
             settings:
                 trace: true
                 web-allow-others: true
-                tcp-allow-others: true
-                tcp-server: true
 ---
 spring:
     profiles: developing
-    datasource:
-        url: jdbc:postgresql://localhost:5432/bloodmoney_developing
-    jpa:
-        hibernate:
-            ddl-auto: update
-            #ddl-auto: create-drop
----
-spring:
-    profiles: default2
     datasource:
         url:  jdbc:postgresql://localhost:5432/bloodmoney
         username:  java4postgres
         password:  java4postgrespwd
         driver-class-name:  org.postgresql.Driver
         platform: POSTGRESQL
+        initialization-mode: always
     jpa:
         hibernate:
             ddl-auto: update

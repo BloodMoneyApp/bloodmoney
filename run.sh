@@ -4,6 +4,6 @@ source setenv.sh
 
 #./gradlew assemble
 
-./gradlew clean bootRun
+./gradlew clean bootRun -Pdeveloping
 
 

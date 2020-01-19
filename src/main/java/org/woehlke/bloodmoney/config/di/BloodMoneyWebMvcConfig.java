@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.LocaleResolver;
@@ -18,6 +19,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 import java.util.Locale;
 
+@Profile({"default","developing"})
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport
@@ -25,7 +27,7 @@ import java.util.Locale;
     BloodMoneyProperties.class
 })
 @Import({
-    BloodMoneyApplicationConfig.class
+    BloodMoneyApplicationDevelopingConfig.class
 })
 public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implements WebMvcConfigurer {
 
