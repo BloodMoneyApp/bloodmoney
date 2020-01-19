@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.config;
+package org.woehlke.bloodmoney.config.di;
 
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -13,15 +13,18 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.dialect.springdata.SpringDataDialect;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport
-@Import({BloodMoneyApplicationConfig.class})
 @EnableConfigurationProperties({
     BloodMoneyProperties.class
+})
+@Import({
+    BloodMoneyApplicationConfig.class
 })
 public class BloodMoneyWebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
 

@@ -16,12 +16,6 @@ spring:
     application:
         admin:
             enabled: true
-    datasource:
-        url:  jdbc:postgresql://localhost:5432/bloodmoney
-        username:  java4postgres
-        password:  java4postgrespwd
-        driver-class-name:  org.postgresql.Driver
-        platform: POSTGRESQL
     jpa:
         show-sql: true
         open-in-view: true
@@ -29,12 +23,6 @@ spring:
         hibernate:
             ddl-auto:  create-drop
             #ddl-auto: update
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQL95Dialect
-                temp:
-                    use_jdbc_metadata_defaults: false
-            #generate_statistics: true
     thymeleaf:
         cache: false
     session:
@@ -56,6 +44,8 @@ org:
             userPassword: ${BLOODMONEY_USER_PASSWORD}
             userFullname: ${BLOODMONEY_USER_FULLNAME}
             devTesting: ${BLOODMONEY_DEV_TESTING}
+            exportFilename: "measurements.csv"
+            exportFilenameSeparator: ";"
 logging:
     level:
         org:
@@ -80,11 +70,39 @@ logging:
                             impl: DEBUG
 
 ---
-
 spring:
     profiles: default
     datasource:
-        url: jdbc:postgresql://localhost:5432/bloodmoney
+        platform: H2
+        driver-class-name: org.h2.Driver
+        username: sa
+        password:
+        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        #temporary data storage
+        #url: jdbc:h2:file:/data/sample
+        #url: jdbc:h2:file:C:/data/sample (Windows only)
+    jpa:
+        show-sql: true
+        database-platform: H2
+        hibernate:
+            ddl-auto: update
+            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.H2Dialect
+                temp:
+                    use_jdbc_metadata_defaults: false
+                naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+            #generate_statistics: true
+    h2:
+        console:
+            enabled: true
+            path: /h2
+            settings:
+                trace: true
+                web-allow-others: true
+                tcp-allow-others: true
+                tcp-server: true
 ---
 spring:
     profiles: developing
@@ -94,27 +112,25 @@ spring:
         hibernate:
             ddl-auto: update
             #ddl-auto: create-drop
-
 ---
 spring:
-    profiles: doc
+    profiles: default2
     datasource:
-        url: jdbc:postgresql://localhost:5432/bloodmoney_doc
+        url:  jdbc:postgresql://localhost:5432/bloodmoney
+        username:  java4postgres
+        password:  java4postgrespwd
+        driver-class-name:  org.postgresql.Driver
+        platform: POSTGRESQL
     jpa:
         hibernate:
             ddl-auto: update
             #ddl-auto: create-drop
----
-spring:
-    profiles: travis
-    datasource:
-        url: jdbc:postgresql://localhost:5432/bloodmoney_travis
-        continue-on-error: true
-    jpa:
-        show-sql: false
-        hibernate:
-            ddl-auto: update
-            #ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQL95Dialect
+                temp:
+                    use_jdbc_metadata_defaults: false
+            #generate_statistics: true
 server:
     compression:
         enabled: false
@@ -132,8 +148,6 @@ server:
     compression:
         enabled: false
 logging:
-    config: classpath:logback.xml
-    file: logging-test.log
     level:
         org:
             woehlke:
@@ -170,8 +184,6 @@ server:
     compression:
         enabled: false
 logging:
-    config: classpath:logback.xml
-    file: logging-qa.log
     level:
         org:
             woehlke:
@@ -197,7 +209,11 @@ logging:
 spring:
     profiles: heroku
     datasource:
-        url: jdbc:postgresql://localhost:5432/bloodmoney
+        url:  jdbc:postgresql://localhost:5432/bloodmoney
+        username:  java4postgres
+        password:  java4postgrespwd
+        driver-class-name:  org.postgresql.Driver
+        platform: POSTGRESQL
         continue-on-error: true
     jpa:
         show-sql: false
@@ -217,7 +233,6 @@ server:
     compression:
         enabled: true
 logging:
-    config: classpath:logback.xml
     level:
         org:
             woehlke:

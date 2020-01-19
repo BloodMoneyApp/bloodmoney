@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.config;
+package org.woehlke.bloodmoney.config.di;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
 
 @Configuration
 @EnableWebSecurity
@@ -93,7 +94,7 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder auth,
         AuthenticationSuccessHandler loginSuccessHandler,
-        UserDetailsService userAccountSecurityService,
+        UserAccountSecurityService userAccountSecurityService,
         BloodMoneyProperties bloodMoneyProperties
     ) {
         this.auth = auth;
