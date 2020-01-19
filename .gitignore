@@ -34,3 +34,4 @@ out/
 bloodmoney.iml
 *.log
 /transaction-logs/
+.env

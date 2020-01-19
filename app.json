@@ -1,5 +1,6 @@
 {
   "name": "bloodmoney",
   "description": "Manual Data Input Web based.",
+  "image": "heroku/gradle",
   "addons": [ "heroku-postgresql" ]
 }

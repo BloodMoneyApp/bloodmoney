@@ -3,7 +3,7 @@ version: '3.3'
 
 services:
 
-    db:
+    bloodmoney_db:
         image: postgres:11.5
         restart: always
         ports:
@@ -13,7 +13,7 @@ services:
             POSTGRES_USER: java4postgres
             POSTGRES_DB: bloodmoney
 
-    adminer:
+    bloodmoney_adminer:
         image: adminer:4.7.4
         restart: always
         ports:
