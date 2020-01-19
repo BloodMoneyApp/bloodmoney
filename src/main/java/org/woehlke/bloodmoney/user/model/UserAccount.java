@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.oodm.model;
+package org.woehlke.bloodmoney.user.model;
 
 import lombok.*;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -11,8 +11,6 @@ import java.util.Locale;
 @Getter
 @Setter
 @EqualsAndHashCode
-//@NoArgsConstructor
-//@AllArgsConstructor
 public class UserAccount implements Serializable {
 
     private static final long serialVersionUID = 4168992193351369032L;

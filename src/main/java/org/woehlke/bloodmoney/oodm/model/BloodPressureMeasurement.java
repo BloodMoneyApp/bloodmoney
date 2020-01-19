@@ -4,7 +4,6 @@ import com.opencsv.bean.CsvBindByName;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.woehlke.bloodmoney.oodm.model.parts.AuditModel;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +14,7 @@ import java.time.ZoneId;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "measurement",
@@ -23,7 +22,7 @@ import java.time.ZoneId;
         @Index(name = "idx_measurement_date", columnList = "measurement_date")
     }
 )
-public class BloodPressureMeasurement extends AuditModel implements Serializable {
+public class BloodPressureMeasurement implements Serializable {
 
     private static final long serialVersionUID = 2676529613061169122L;
 
