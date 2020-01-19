@@ -152,7 +152,7 @@ spring:
                 web-allow-others: true
 ---
 spring:
-    profiles: developing
+    profiles: heroku
     datasource:
         url:  jdbc:postgresql://localhost:5432/bloodmoney
         username:  java4postgres
@@ -170,19 +170,6 @@ spring:
                 temp:
                     use_jdbc_metadata_defaults: false
             #generate_statistics: true
-server:
-    compression:
-        enabled: false
----
-spring:
-    profiles: testing
-    datasource:
-        url: jdbc:postgresql://localhost:5432/bloodmoney_testing
-    jpa:
-        show-sql: false
-        hibernate:
-            ddl-auto: update
-            #ddl-auto: create-drop
 server:
     compression:
         enabled: false
@@ -246,7 +233,7 @@ logging:
                             impl: DEBUG
 ---
 spring:
-    profiles: heroku
+    profiles: heroku2
     datasource:
         url:  jdbc:postgresql://localhost:5432/bloodmoney
         username:  java4postgres
