@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.frontend.model.UserSession;
 import org.woehlke.bloodmoney.oodm.model.BloodPressureMeasurement;
 import org.woehlke.bloodmoney.oodm.services.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.user.services.UserSessionService;
 
 import javax.validation.Valid;
 
@@ -21,18 +22,18 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/measurement")
 @SessionAttributes("userSession")
-public class BloodPressureMeasurementController {
+public class MeasurementController {
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;
-    private final UserSessionControllerPart userSessionControllerPart;
+    private final UserSessionService userSessionService;
 
     @Autowired
-    public BloodPressureMeasurementController(
+    public MeasurementController(
         BloodPressureMeasurementService bloodPressureMeasurementService,
-        UserSessionControllerPart userSessionControllerPart
+        UserSessionService userSessionService
     ) {
         this.bloodPressureMeasurementService = bloodPressureMeasurementService;
-        this.userSessionControllerPart = userSessionControllerPart;
+        this.userSessionService = userSessionService;
     }
 
     @GetMapping("/all")
@@ -41,7 +42,7 @@ public class BloodPressureMeasurementController {
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
         Model model
     ) {
-        model = userSessionControllerPart.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSession, model);
         Page<BloodPressureMeasurement> all = bloodPressureMeasurementService.getAll(pageable);
         model.addAttribute("all", all);
         return "measurement/all";
@@ -53,7 +54,7 @@ public class BloodPressureMeasurementController {
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
         Model model
     ) {
-        model = userSessionControllerPart.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSession, model);
         model.addAttribute("one", one);
         return "measurement/one";
     }
@@ -64,7 +65,7 @@ public class BloodPressureMeasurementController {
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
         Model model
     ) {
-        model = userSessionControllerPart.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSession, model);
         model.addAttribute("one", one);
         return "measurement/edit";
     }
@@ -99,7 +100,7 @@ public class BloodPressureMeasurementController {
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
         Model model
     ) {
-        model = userSessionControllerPart.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSession, model);
         BloodPressureMeasurement one = BloodPressureMeasurement.getInstance();
         model.addAttribute("one", one);
         return "measurement/add";

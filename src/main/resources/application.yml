@@ -37,17 +37,52 @@ spring:
 org:
     woehlke:
         bloodmoney:
-            iterations: ${BLOODMONEY_USER_INTERATIONS}
-            hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
-            secret: ${BLOODMONEY_USER_SECRET}
             userEmail: ${BLOODMONEY_USER_EMAIL}
             userPassword: ${BLOODMONEY_USER_PASSWORD}
             userFullname: ${BLOODMONEY_USER_FULLNAME}
             devTesting: ${BLOODMONEY_DEV_TESTING}
             exportFilename: "measurements.csv"
-            exportFilenameSeparator: ";"
+            exportFilenameSeparator: ';'
+            web-security:
+                iterations: ${BLOODMONEY_USER_INTERATIONS}
+                hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+                secret: ${BLOODMONEY_USER_SECRET}
+                login-processing-url: "/j_spring_security_check"
+                failure-forward-url: "/login?login_error=1"
+                default-success-url: "/"
+                login-page: "/login"
+                logout-url: "/logout"
+                username-parameter: "userEmail"
+                password-parameter: "userPassword"
+                delete-cookies: "JSESSIONID"
+                invalidate-http-session: true
+                ant-matchers-fully-authenticated: "/**"
+                ant-matchers-permit-all:
+                    - "/webjars/**"
+                    - "/css/**"
+                    - "/img/**"
+                    - "/js/**"
+                    - "/favicon.ico"
+                    - "/test*/**"
+                    - "/login*"
+                    - "/register*"
+                    - "/confirm*/**"
+                    - "/resetPassword*"
+                    - "/passwordResetConfirm*/**"
+                    - "/error*"
+                    - "/h2*"
+            web-add-resource-handlers-static:
+                - "css/"
+                - "img/"
+                - "js/"
+                - "favicon.ico"
+            web-add-resource-handlers:
+                - "webjars/"
 logging:
+    file:
+        name: bloodmoney.log
     level:
+        root: INFO
         org:
             woehlke:
                 bloodmoney:
@@ -68,7 +103,7 @@ logging:
                         model: DEBUG
                         services:
                             impl: DEBUG
-
+debug: true
 ---
 spring:
     profiles: default

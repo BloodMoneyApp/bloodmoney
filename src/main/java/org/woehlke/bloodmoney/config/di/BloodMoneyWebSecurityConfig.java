@@ -34,38 +34,39 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .headers().disable()
+            .headers()
+            .disable()
             .authorizeRequests()
             .antMatchers(
-                "/webjars/**", "/css/**", "/img/**", "/js/**", "/favicon.ico",
-                "/test*/**", "/login*", "/register*", "/confirm*/**",
-                "/resetPassword*", "/passwordResetConfirm*/**", "/error*"
+                this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
             )
             .permitAll()
-            .antMatchers("/**").fullyAuthenticated().anyRequest().authenticated()
+            .antMatchers(    this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated())
+            .fullyAuthenticated().anyRequest().authenticated()
             .and()
             .formLogin()
-            .loginPage("/login")
-            .usernameParameter("userEmail").passwordParameter("userPassword")
-            .loginProcessingUrl("/j_spring_security_check")
-            .failureForwardUrl("/login?login_error=1")
-            .defaultSuccessUrl("/")
+            .loginPage(this.bloodMoneyProperties.getWebSecurity().getLoginPage())
+            .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
+            .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
+            .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
+            .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
+            .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
             .successHandler(loginSuccessHandler)
             .permitAll()
             .and()
             .logout()
-            .logoutUrl("/logout")
-            .deleteCookies("JSESSIONID")
-            .invalidateHttpSession(true)
+            .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
+            .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
+            .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
             .permitAll();
     }
 
     @Bean
     public PasswordEncoder encoder(){
         // https://asecuritysite.com/encryption/PBKDF2z
-        CharSequence secret=this.bloodMoneyProperties.getSecret();
-        int iterations=this.bloodMoneyProperties.getIterations();
-        int hashWidth=this.bloodMoneyProperties.getHashWidth();
+        CharSequence secret=this.bloodMoneyProperties.getWebSecurity().getSecret();
+        int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
+        int hashWidth=this.bloodMoneyProperties.getWebSecurity().getHashWidth();
         Pbkdf2PasswordEncoder encoder = (new Pbkdf2PasswordEncoder(secret,iterations,hashWidth));
         encoder.setEncodeHashAsBase64(true);
         return encoder;
@@ -73,7 +74,6 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
-
         return auth.userDetailsService(userAccountSecurityService).passwordEncoder(encoder()).and().build();
     }
 
@@ -81,7 +81,7 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UsernamePasswordAuthenticationFilter authenticationFilter() throws Exception {
         UsernamePasswordAuthenticationFilter filter = new UsernamePasswordAuthenticationFilter();
         filter.setAuthenticationManager(authenticationManager());
-        filter.setFilterProcessesUrl("/j_spring_security_check");
+        filter.setFilterProcessesUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl());
         return filter;
     }
 

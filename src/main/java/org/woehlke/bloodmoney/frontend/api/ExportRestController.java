@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.oodm.model.BloodPressureMeasurement;
 import org.woehlke.bloodmoney.oodm.services.BloodPressureMeasurementService;
 
@@ -18,33 +19,32 @@ import javax.servlet.http.HttpServletResponse;
 @SessionAttributes("userSession")
 public class ExportRestController {
 
-    private final BloodPressureMeasurementService bloodPressureMeasurementService;
-
-    @Autowired
-    public ExportRestController(BloodPressureMeasurementService bloodPressureMeasurementService) {
-        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
-    }
-
-    private final static char SEPARATOR = ';';
-    private final static String FILENAME = "measurements.csv";
-
     @GetMapping("/all")
     @ResponseBody
     public void exportCSV(HttpServletResponse response) throws Exception  {
         //set file name and content type
-
         response.setContentType("text/csv");
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-            "attachment; filename=\"" + FILENAME + "\"");
-
+            "attachment; filename=\"" + this.properties.getWebConfig().getExportFilename() + "\"");
         //create a csv writer
         StatefulBeanToCsv<BloodPressureMeasurement> writer = new StatefulBeanToCsvBuilder<BloodPressureMeasurement>(response.getWriter())
             .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-            .withSeparator(SEPARATOR)
+            .withSeparator(this.properties.getWebConfig().getExportFilenameSeparator())
             .withOrderedResults(false)
             .build();
-
-        //write all users to csv file
+        //write all Measurements to csv file
         writer.write(bloodPressureMeasurementService.getAll());
+    }
+
+    private final BloodPressureMeasurementService bloodPressureMeasurementService;
+    private final BloodMoneyProperties properties;
+
+    @Autowired
+    public ExportRestController(
+        BloodPressureMeasurementService bloodPressureMeasurementService,
+        BloodMoneyProperties properties
+    ) {
+        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+        this.properties = properties;
     }
 }

@@ -1,22 +1,22 @@
-package org.woehlke.bloodmoney.frontend.controller.impl;
+package org.woehlke.bloodmoney.user.services.impl;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.frontend.controller.UserSessionControllerPart;
+import org.woehlke.bloodmoney.user.services.UserSessionService;
 import org.woehlke.bloodmoney.frontend.model.UserSession;
 
 
 @Log
 @Service
-public class UserSessionControllerPartImpl implements UserSessionControllerPart {
+public class UserSessionServiceImpl implements UserSessionService {
 
     private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
-    public UserSessionControllerPartImpl(BloodMoneyProperties bloodMoneyProperties) {
+    public UserSessionServiceImpl(BloodMoneyProperties bloodMoneyProperties) {
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
 

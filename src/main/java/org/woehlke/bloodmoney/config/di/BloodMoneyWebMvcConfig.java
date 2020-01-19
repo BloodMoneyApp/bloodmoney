@@ -1,6 +1,7 @@
 package org.woehlke.bloodmoney.config.di;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,7 @@ import java.util.Locale;
 @Import({
     BloodMoneyApplicationConfig.class
 })
-public class BloodMoneyWebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer {
+public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implements WebMvcConfigurer {
 
     @Bean
     public Java8TimeDialect java8TimeDialect() {
@@ -47,11 +48,6 @@ public class BloodMoneyWebMvcConfig extends WebMvcConfigurerAdapter implements W
         return lci;
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
-    }
-
     @Bean
     public SpringDataDialect springDataDialect() {
         return new SpringDataDialect();
@@ -62,15 +58,28 @@ public class BloodMoneyWebMvcConfig extends WebMvcConfigurerAdapter implements W
         return new MethodValidationPostProcessor();
     }
 
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/*").addResourceLocations("classpath:/static/css/");
-        registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
-        registry.addResourceHandler("/img/*").addResourceLocations("classpath:/static/img/");
-        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/img/");
-        registry.addResourceHandler("/js/*").addResourceLocations("classpath:/static/js/");
-        registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
-        registry.addResourceHandler("/webjars/*").addResourceLocations("/webjars/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
-		registry.addResourceHandler("/favicon.ico").addResourceLocations("classpath:/static/favicon.ico");
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
     }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        for(String key: bloodMoneyProperties.getWebAddResourceHandlers()){
+            registry.addResourceHandler("/"+key+"*").addResourceLocations("/"+key);
+            registry.addResourceHandler("/"+key+"**").addResourceLocations("/"+key);
+        }
+        for(String key: bloodMoneyProperties.getWebAddResourceHandlersStatic()){
+            registry.addResourceHandler("/"+key+"*").addResourceLocations("classpath:/static/"+key);
+            registry.addResourceHandler("/"+key+"**").addResourceLocations("classpath:/static/"+key);
+        }
+    }
+
+    private final BloodMoneyProperties bloodMoneyProperties;
+
+    @Autowired
+    public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
+        this.bloodMoneyProperties = bloodMoneyProperties;
+    }
+
 }

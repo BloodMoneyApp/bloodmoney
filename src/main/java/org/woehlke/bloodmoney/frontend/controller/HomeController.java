@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.bloodmoney.frontend.model.UserSession;
+import org.woehlke.bloodmoney.user.services.UserSessionService;
 
 
 @Log
@@ -15,22 +16,28 @@ import org.woehlke.bloodmoney.frontend.model.UserSession;
 @SessionAttributes("userSession")
 public class HomeController {
 
-    @Autowired
-    public HomeController(UserSessionControllerPart userSessionControllerPart) {
-        this.userSessionControllerPart = userSessionControllerPart;
-    }
-
     @GetMapping("/")
-    public String root(@SessionAttribute(name="userSession", required=false) UserSession userSession, Model model){
-        model = userSessionControllerPart.handleUserSession(userSession, model);
+    public String root(
+        @SessionAttribute(name="userSession", required=false) UserSession userSession,
+        Model model
+    ){
+        model = userSessionService.handleUserSession(userSession, model);
         return "redirect:/measurement/all";
     }
 
     @GetMapping("/home")
-    public String home(@SessionAttribute(name="userSession", required=false) UserSession userSession, Model model){
-        model = userSessionControllerPart.handleUserSession(userSession, model);
+    public String home(
+        @SessionAttribute(name="userSession", required=false) UserSession userSession,
+        Model model
+    ){
+        model = userSessionService.handleUserSession(userSession, model);
         return "redirect:/measurement/all";
     }
 
-    private final UserSessionControllerPart userSessionControllerPart;
+    private final UserSessionService userSessionService;
+
+    @Autowired
+    public HomeController(UserSessionService userSessionService) {
+        this.userSessionService = userSessionService;
+    }
 }

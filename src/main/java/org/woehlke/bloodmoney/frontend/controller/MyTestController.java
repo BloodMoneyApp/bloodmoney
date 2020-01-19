@@ -15,7 +15,7 @@ import org.woehlke.bloodmoney.oodm.services.TestService;
 @Controller
 @RequestMapping("/test")
 @SessionAttributes("userSession")
-public class TestController {
+public class MyTestController {
 
     @GetMapping("/createTestData")
     public String createTestData() {
@@ -62,7 +62,7 @@ public class TestController {
     }
 
     @Autowired
-    public TestController(TestService testService, BloodMoneyProperties bloodMoneyProperties) {
+    public MyTestController(TestService testService, BloodMoneyProperties bloodMoneyProperties) {
         this.testService = testService;
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
