@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
 
-@Profile({"default","developing"})
+@Profile({"default","developing","heroku"})
 @Configuration
 @EnableWebSecurity
 @EnableSpringDataWebSupport

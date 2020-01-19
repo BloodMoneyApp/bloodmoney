@@ -19,7 +19,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 import java.util.Locale;
 
-@Profile({"default","developing"})
+@Profile({"default","developing","heroku"})
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport

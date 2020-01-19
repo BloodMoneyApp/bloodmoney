@@ -1,5 +1,8 @@
 call setenv.cmd
 
 gradlew clean bootJar
-heroku login
-heroku local web
+
+java -jar build/libs/bloodmoney-1.0-SNAPSHOT.jar org.woehlke.bloodmoney.BloodMoneyApplication -Dspring.profiles.active=heroku
+
+rem heroku login
+rem heroku local web

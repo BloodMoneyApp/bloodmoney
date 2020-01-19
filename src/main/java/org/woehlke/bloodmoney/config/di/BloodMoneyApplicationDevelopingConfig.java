@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
-@Profile("developing")
+@Profile({"developing"})
 @Configuration
 @EnableAsync
 @EnableJpaAuditing
