@@ -81,7 +81,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final ApplicationProperties applicationProperties;
 
     @Autowired
-    public WebSecurityConfig(AuthenticationManagerBuilder auth, AuthenticationSuccessHandler loginSuccessHandler, UserDetailsService userAccountSecurityService, ApplicationProperties applicationProperties) {
+    public WebSecurityConfig(
+        AuthenticationManagerBuilder auth,
+        AuthenticationSuccessHandler loginSuccessHandler,
+        UserDetailsService userAccountSecurityService,
+        ApplicationProperties applicationProperties
+    ) {
         this.auth = auth;
         this.loginSuccessHandler = loginSuccessHandler;
         this.userAccountSecurityService = userAccountSecurityService;

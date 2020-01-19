@@ -31,7 +31,6 @@ public class ExportRestController {
     public void exportCSV(HttpServletResponse response) throws Exception  {
         //set file name and content type
 
-
         response.setContentType("text/csv");
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
             "attachment; filename=\"" + FILENAME + "\"");

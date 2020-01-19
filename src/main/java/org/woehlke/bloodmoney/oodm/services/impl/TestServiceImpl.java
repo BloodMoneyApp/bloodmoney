@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.oodm.model.BloodPressureMeasurement;
-import org.woehlke.bloodmoney.oodm.repositories.BloodPressureMeasurementRepositories;
+import org.woehlke.bloodmoney.oodm.repositories.BloodPressureMeasurementRepository;
 import org.woehlke.bloodmoney.oodm.services.TestService;
 
 import java.time.LocalDate;
@@ -16,11 +16,11 @@ import java.time.ZoneId;
 @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 public class TestServiceImpl implements TestService {
 
-    private final BloodPressureMeasurementRepositories bloodPressureMeasurementRepositories;
+    private final BloodPressureMeasurementRepository bloodPressureMeasurementRepository;
 
     @Autowired
-    public TestServiceImpl(BloodPressureMeasurementRepositories bloodPressureMeasurementRepositories) {
-        this.bloodPressureMeasurementRepositories = bloodPressureMeasurementRepositories;
+    public TestServiceImpl(BloodPressureMeasurementRepository bloodPressureMeasurementRepository) {
+        this.bloodPressureMeasurementRepository = bloodPressureMeasurementRepository;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class TestServiceImpl implements TestService {
             o.setSituation("situation "+i);
             o.setDate(day);
             o.setTime(now);
-            this.bloodPressureMeasurementRepositories.save(o);
+            this.bloodPressureMeasurementRepository.save(o);
         }
     }
 }
