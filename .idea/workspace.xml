@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf/storage_v2/_src_/database/bloodmoney.BgdLvA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf/storage_v2/_src_/database/bloodmoney.BgdLvA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/bloodmoney.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/bloodmoney.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
@@ -94,7 +94,7 @@
       <recent name="C:\Users\tw\IdeaProjects\bloodmoney" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.bloodmoney [clean bootRun]">
+  <component name="RunManager" selected="Gradle.bloodmoney [dockerRun]">
     <configuration name="bloodmoney [clean bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="env">
@@ -157,6 +157,25 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="bloodmoney [dockerRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dockerRun" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="BloodMoneyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bloodmoney.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.woehlke.bloodmoney.BloodMoneyApplication" />
@@ -177,9 +196,11 @@
       <item itemvalue="Gradle.bloodmoney [clean bootRun]" />
       <item itemvalue="Gradle.bloodmoney [dockerComposeUp]" />
       <item itemvalue="Spring Boot.BloodMoneyApplication" />
+      <item itemvalue="Gradle.bloodmoney [dockerRun]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.bloodmoney [dockerRun]" />
         <item itemvalue="Gradle.bloodmoney [dockerComposeUp]" />
       </list>
     </recent_temporary>
@@ -215,7 +236,7 @@
       <workItem from="1579463613280" duration="71000" />
       <workItem from="1579463764655" duration="1189000" />
       <workItem from="1579465552580" duration="11286000" />
-      <workItem from="1579478542518" duration="13526000" />
+      <workItem from="1579478542518" duration="14310000" />
     </task>
     <task id="LOCAL-00001" summary="heroku">
       <created>1579464440412</created>
@@ -497,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579509276755</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="heroku">
+      <created>1579510748172</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1579510748172</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,10 +583,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="414" y="183" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.760@0.0.1280.760" timestamp="1579463482914" />
-    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579509275475">
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579510745487">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579509275475" />
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579510745487" />
     <state x="92" y="92" width="1096" height="576" key="DiffContextDialog" timestamp="1579504570861">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
@@ -575,22 +603,22 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="490" y="122" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579494792689" />
-    <state width="1237" height="427" key="GridCell.Tab.0.bottom" timestamp="1579510672992">
+    <state width="1237" height="427" key="GridCell.Tab.0.bottom" timestamp="1579511432093">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="427" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579510672992" />
-    <state width="1237" height="427" key="GridCell.Tab.0.center" timestamp="1579510672991">
+    <state width="1237" height="427" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
+    <state width="1237" height="427" key="GridCell.Tab.0.center" timestamp="1579511432093">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="427" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579510672991" />
-    <state width="1237" height="427" key="GridCell.Tab.0.left" timestamp="1579510672991">
+    <state width="1237" height="427" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
+    <state width="1237" height="427" key="GridCell.Tab.0.left" timestamp="1579511432093">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="427" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579510672991" />
-    <state width="1237" height="427" key="GridCell.Tab.0.right" timestamp="1579510672991">
+    <state width="1237" height="427" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
+    <state width="1237" height="427" key="GridCell.Tab.0.right" timestamp="1579511432093">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="427" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579510672991" />
+    <state width="1237" height="427" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
     <state x="425" y="102" key="RollbackChangesDialog" timestamp="1579504542461">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
@@ -599,10 +627,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="141" y="23" width="1139" height="714" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1579476072435" />
-    <state x="232" y="113" key="Vcs.Push.Dialog.v2" timestamp="1579509861118">
+    <state x="232" y="113" key="Vcs.Push.Dialog.v2" timestamp="1579510750264">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="232" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579509861118" />
+    <state x="232" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579510750264" />
     <state x="336" y="204" key="com.intellij.ide.util.TipDialog" timestamp="1579465552599">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
