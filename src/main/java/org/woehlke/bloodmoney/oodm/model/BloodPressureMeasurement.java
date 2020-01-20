@@ -53,12 +53,12 @@ public class BloodPressureMeasurement implements Serializable {
 
     @NotNull
     @CsvBindByName
-    @Column
+    @Column(name = "systolic_top_number")
     private Integer systolicTopNumber;
 
     @NotNull
     @CsvBindByName
-    @Column
+    @Column(name = "diastolic_bottom_number")
     private Integer diastolicBottomNumber;
 
     @NotNull
