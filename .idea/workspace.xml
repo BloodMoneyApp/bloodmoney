@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/bloodmoney.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/bloodmoney.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_de.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_de.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/navbartop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/navbartop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +217,7 @@
       <workItem from="1579463613280" duration="71000" />
       <workItem from="1579463764655" duration="1189000" />
       <workItem from="1579465552580" duration="11286000" />
-      <workItem from="1579478542518" duration="8260000" />
+      <workItem from="1579478542518" duration="9282000" />
     </task>
     <task id="LOCAL-00001" summary="heroku">
       <created>1579464440412</created>
@@ -434,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579504831335</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="heroku">
+      <created>1579505958738</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1579505958739</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,10 +499,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="414" y="183" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.760@0.0.1280.760" timestamp="1579463482914" />
-    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579504828262">
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579506380549">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579504828262" />
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579506380549" />
     <state x="92" y="92" width="1096" height="576" key="DiffContextDialog" timestamp="1579504570861">
       <screen x="0" y="0" width="1280" height="760" />
     </state>

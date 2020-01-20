@@ -93,14 +93,7 @@ dockerCompose {
     dockerComposeFile 'src/test/docker/stack.yml'
 }
 
-/*
-dockerRun {
-    name 'my-container'
-    image 'busybox'
-    volumes 'hostvolume': '/containervolume'
-    ports '7080:5000'
-    daemonize true
-    env 'MYVAR1': 'MYVALUE1', 'MYVAR2': 'MYVALUE2'
-    command 'sleep', '100'
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
 }
-*/
+
