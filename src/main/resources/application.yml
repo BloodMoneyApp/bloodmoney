@@ -160,10 +160,14 @@ spring:
         driver-class-name:  org.postgresql.Driver
         platform: POSTGRESQL
         initialization-mode: always
+    session:
+        store-type: jdbc
+        jdbc:
+            initialize-schema: always
     jpa:
         hibernate:
-            ddl-auto: update
-            #ddl-auto: create-drop
+            #ddl-auto: update
+            ddl-auto: create-drop
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQL95Dialect
