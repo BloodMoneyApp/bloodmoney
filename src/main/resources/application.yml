@@ -175,8 +175,8 @@ spring:
         show-sql: true
         database-platform: POSTGRESQL
         hibernate:
-            ddl-auto: create-drop
-            #ddl-auto: update
+            #ddl-auto: create-drop
+            ddl-auto: update
             naming:
                 implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
