@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="heroku">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloodmoney.log" beforeDir="false" afterPath="$PROJECT_DIR$/bloodmoney.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-logs/tmlog19.log" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-logs/tmlog19.log" afterDir="false" />
+    <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloodmoney.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bloodmoney.log.2020-01-19.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run-docker.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run-docker.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-logs/tmlog.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-logs/tmlog19.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +253,7 @@
       <workItem from="1579463613280" duration="71000" />
       <workItem from="1579463764655" duration="1189000" />
       <workItem from="1579465552580" duration="11286000" />
-      <workItem from="1579478542518" duration="5448000" />
+      <workItem from="1579478542518" duration="5613000" />
     </task>
     <task id="LOCAL-00001" summary="heroku">
       <created>1579464440412</created>
@@ -425,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579496023726</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="heroku">
+      <created>1579502523320</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1579502523320</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,10 +507,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="414" y="183" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.760@0.0.1280.760" timestamp="1579463482914" />
-    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579502459045">
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579502520226">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579502459045" />
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579502520226" />
     <state x="478" y="269" key="DockerComposeFileDialog" timestamp="1579494794864">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
@@ -497,22 +523,22 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="490" y="122" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579494792689" />
-    <state width="1237" height="433" key="GridCell.Tab.0.bottom" timestamp="1579495830305">
+    <state width="845" height="277" key="GridCell.Tab.0.bottom" timestamp="1579502786474">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="433" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579495830305" />
-    <state width="1237" height="433" key="GridCell.Tab.0.center" timestamp="1579495830304">
+    <state width="845" height="277" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579502786474" />
+    <state width="845" height="277" key="GridCell.Tab.0.center" timestamp="1579502786474">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="433" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579495830304" />
-    <state width="1237" height="433" key="GridCell.Tab.0.left" timestamp="1579495830304">
+    <state width="845" height="277" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579502786474" />
+    <state width="845" height="277" key="GridCell.Tab.0.left" timestamp="1579502786474">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="433" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579495830304" />
-    <state width="1237" height="433" key="GridCell.Tab.0.right" timestamp="1579495830304">
+    <state width="845" height="277" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579502786474" />
+    <state width="845" height="277" key="GridCell.Tab.0.right" timestamp="1579502786474">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state width="1237" height="433" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579495830304" />
+    <state width="845" height="277" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579502786474" />
     <state x="141" y="23" width="1139" height="714" key="SettingsEditor" timestamp="1579476072435">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
