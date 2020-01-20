@@ -170,7 +170,7 @@ spring:
     jta:
         atomikos:
             connectionfactory:
-                xa-connection-factory-class-name: org.postgresql.Driver
+                xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
     jpa:
         show-sql: true
         database-platform: POSTGRESQL
@@ -186,6 +186,9 @@ spring:
                 temp:
                     use_jdbc_metadata_defaults: false
             #generate_statistics: true
+    h2:
+        console:
+            enabled: false
     thymeleaf:
         cache: true
     devtools:
@@ -200,7 +203,12 @@ server:
         enabled: true
 logging:
     level:
+        root: INFO
         org:
+            hibernate.SQL: INFO
+            ch:
+                qos: INFO
+            postgresql: DEBUG
             woehlke:
                 bloodmoney:
                     config: DEBUG
