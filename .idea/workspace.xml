@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/run.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setenv.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/setenv.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/docker/stack.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/docker/stack.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +87,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/bloodmoney.log" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/docker/stack.yml" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3616352" />
     <property name="settings.editor.selected.configurable" value="reference.settingsDialog.application.dockerMachine" />
@@ -92,7 +98,7 @@
       <recent name="C:\Users\tw\IdeaProjects\bloodmoney" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.bloodmoney [dockerRun]">
+  <component name="RunManager" selected="Gradle.bloodmoney [clean bootRun]">
     <configuration name="bloodmoney [clean bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="env">
@@ -136,7 +142,7 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="bloodmoney [dockerComposeUp]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="bloodmoney [dockerComposeUp]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -193,13 +199,12 @@
       <item itemvalue="Docker.Docker" />
       <item itemvalue="Gradle.bloodmoney [clean bootRun]" />
       <item itemvalue="Gradle.bloodmoney [dockerComposeUp]" />
-      <item itemvalue="Spring Boot.BloodMoneyApplication" />
       <item itemvalue="Gradle.bloodmoney [dockerRun]" />
+      <item itemvalue="Spring Boot.BloodMoneyApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.bloodmoney [dockerRun]" />
-        <item itemvalue="Gradle.bloodmoney [dockerComposeUp]" />
       </list>
     </recent_temporary>
   </component>
@@ -235,6 +240,8 @@
       <workItem from="1579463764655" duration="1189000" />
       <workItem from="1579465552580" duration="11286000" />
       <workItem from="1579478542518" duration="14977000" />
+      <workItem from="1579519585160" duration="733000" />
+      <workItem from="1579521961808" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="heroku">
       <created>1579464440412</created>
@@ -588,6 +595,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="414" y="183" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.760@0.0.1280.760" timestamp="1579463482914" />
+    <state x="531" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1579520271657">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="531" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1579520271657" />
     <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579511577835">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
@@ -604,50 +615,58 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="374" y="142" key="EnvironmentVariablesDialog/0.0.1280.760@0.0.1280.760" timestamp="1579495762983" />
-    <state x="490" y="122" key="FileChooserDialogImpl" timestamp="1579494792689">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="523" y="117" width="698" height="493" key="FileChooserDialogImpl" timestamp="1579519716792">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="490" y="122" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579494792689" />
-    <state width="1237" height="427" key="GridCell.Tab.0.bottom" timestamp="1579511432093">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="523" y="117" width="698" height="493" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1579519716792" />
+    <state width="1323" height="270" key="GridCell.Tab.0.bottom" timestamp="1579520364194">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
-    <state width="1237" height="427" key="GridCell.Tab.0.center" timestamp="1579511432093">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1323" height="270" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
+    <state width="1323" height="270" key="GridCell.Tab.0.center" timestamp="1579520364194">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
-    <state width="1237" height="427" key="GridCell.Tab.0.left" timestamp="1579511432093">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1323" height="270" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
+    <state width="1323" height="270" key="GridCell.Tab.0.left" timestamp="1579520364194">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
-    <state width="1237" height="427" key="GridCell.Tab.0.right" timestamp="1579511432093">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state width="1323" height="270" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
+    <state width="1323" height="270" key="GridCell.Tab.0.right" timestamp="1579520364194">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
+    <state width="1323" height="270" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
     <state x="425" y="102" key="RollbackChangesDialog" timestamp="1579504542461">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="425" y="102" key="RollbackChangesDialog/0.0.1280.760@0.0.1280.760" timestamp="1579504542461" />
-    <state x="141" y="23" width="1139" height="714" key="SettingsEditor" timestamp="1579476072435">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="150" y="0" width="1139" height="714" key="SettingsEditor" timestamp="1579520294084">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="141" y="23" width="1139" height="714" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1579476072435" />
+    <state x="150" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1579520294084" />
     <state x="232" y="113" key="Vcs.Push.Dialog.v2" timestamp="1579510750264">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="232" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579510750264" />
-    <state x="336" y="204" key="com.intellij.ide.util.TipDialog" timestamp="1579465552599">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="359" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1579521995624">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="336" y="204" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1579465552599" />
+    <state x="359" y="195" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1579521995624" />
     <state x="445" y="245" key="git4idea.rebase.GitRebaseDialog" timestamp="1579509850812">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="445" y="245" key="git4idea.rebase.GitRebaseDialog/0.0.1280.760@0.0.1280.760" timestamp="1579509850812" />
-    <state x="296" y="170" key="run.anything.popup" timestamp="1579508840948">
-      <screen x="0" y="0" width="1280" height="760" />
+    <state x="316" y="163" key="run.anything.popup" timestamp="1579519651432">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="296" y="170" key="run.anything.popup/0.0.1280.760@0.0.1280.760" timestamp="1579508840948" />
+    <state x="316" y="163" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1579519651432" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

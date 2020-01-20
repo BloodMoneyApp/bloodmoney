@@ -9,8 +9,8 @@ services:
         ports:
             - 5432:5432
         environment:
-            POSTGRES_PASSWORD: java4postgrespwd
-            POSTGRES_USER: java4postgres
+            POSTGRES_PASSWORD: bloodmoneypwd
+            POSTGRES_USER: bloodmoney
             POSTGRES_DB: bloodmoney
 
     bloodmoney_adminer:

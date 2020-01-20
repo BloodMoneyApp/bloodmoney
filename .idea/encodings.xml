@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/gradle.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/messages.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/messages_de.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/resources/application.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/system.properties" charset="UTF-8" />
   </component>
 </project>
