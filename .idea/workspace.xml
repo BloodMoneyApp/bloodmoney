@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="bloodmoney" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="bloodmoney" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1Wcog8LWGdo4qLWWpGEfyuuu4Eq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="LombokPluginEnabledInProject" value="true" />
+    <property name="LombokPluginIS_ANNOTATION_PROCESSING_CHECK_Enabled" value="true" />
+    <property name="LombokPluginIS_BUILDER_Enabled" value="true" />
+    <property name="LombokPluginIS_CONSTRUCTOR_Enabled" value="true" />
+    <property name="LombokPluginIS_DELEGATE_Enabled" value="true" />
+    <property name="LombokPluginIS_LOG_Enabled" value="true" />
+    <property name="LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled" value="true" />
+    <property name="LombokPluginIS_MISSING_LOMBOK_CHECK_Enabled" value="true" />
+    <property name="LombokPluginIS_VAL_Enabled" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/bloodmoney.log" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/docker/stack.yml" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.3616352" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsDialog.application.dockerMachine" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tw\IdeaProjects\bloodmoney" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.bloodmoney [clean bootRun]">
+    <configuration name="bloodmoney [clean bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="BLOODMONEY_DEV_TESTING" value="false" />
+            <entry key="BLOODMONEY_USER_EMAIL" value="thomas.woehlke@gmail.com" />
+            <entry key="BLOODMONEY_USER_FULLNAME" value="Thomas Woehlke" />
+            <entry key="BLOODMONEY_USER_HASH_WIDTH" value="256" />
+            <entry key="BLOODMONEY_USER_INTERATIONS" value="4096" />
+            <entry key="BLOODMONEY_USER_PASSWORD" value="gdEB4vO/E8ArK1X1Cj2bnKGDPiJPUusEJfxxzpgUsf4G2fIrz+bHoQ==" />
+            <entry key="BLOODMONEY_USER_SECRET" value="25D8484AB208F08C59FFAFE57DB9FF87" />
+            <entry key="JAVA_OPTS" value="-XX:CICompilerCount=2 -Dspring.profiles.active=heroku" />
+            <entry key="PORT" value="5000" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </extension>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="bloodmoney [dockerComposeUp]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dockerComposeUp" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="BloodMoneyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="bloodmoney.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.woehlke.bloodmoney.BloodMoneyApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Docker" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="src/test/docker/stack.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.Docker" />
+      <item itemvalue="Gradle.bloodmoney [clean bootRun]" />
+      <item itemvalue="Gradle.bloodmoney [dockerComposeUp]" />
+      <item itemvalue="Spring Boot.BloodMoneyApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.bloodmoney [dockerComposeUp]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:PostgreSQL - bloodmoney@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Docker" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpringGeneralSettings">
+    <option name="allowAutoConfigurationMode" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="" />
+      <created>1579458353013</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579458353013</updated>
+      <workItem from="1579458444346" duration="741000" />
+      <workItem from="1579459448347" duration="1302000" />
+      <workItem from="1579462764164" duration="794000" />
+      <workItem from="1579463613280" duration="71000" />
+      <workItem from="1579463764655" duration="1189000" />
+      <workItem from="1579465552580" duration="11286000" />
+      <workItem from="1579478542518" duration="4932000" />
+    </task>
+    <task id="LOCAL-00001" summary="heroku">
+      <created>1579464440412</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579464440412</updated>
+    </task>
+    <task id="LOCAL-00002" summary="heroku">
+      <created>1579466066236</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579466066236</updated>
+    </task>
+    <task id="LOCAL-00003" summary="heroku">
+      <created>1579466275224</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579466275224</updated>
+    </task>
+    <task id="LOCAL-00004" summary="heroku">
+      <created>1579466349564</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579466349564</updated>
+    </task>
+    <task id="LOCAL-00005" summary="heroku">
+      <created>1579466391698</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579466391698</updated>
+    </task>
+    <task id="LOCAL-00006" summary="heroku">
+      <created>1579466538632</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1579466538632</updated>
+    </task>
+    <task id="LOCAL-00007" summary="heroku">
+      <created>1579467533298</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1579467533298</updated>
+    </task>
+    <task id="LOCAL-00008" summary="heroku">
+      <created>1579468065531</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1579468065531</updated>
+    </task>
+    <task id="LOCAL-00009" summary="heroku">
+      <created>1579468139560</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1579468139560</updated>
+    </task>
+    <task id="LOCAL-00010" summary="heroku">
+      <created>1579468850659</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1579468850659</updated>
+    </task>
+    <task id="LOCAL-00011" summary="heroku">
+      <created>1579469670021</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1579469670021</updated>
+    </task>
+    <task id="LOCAL-00012" summary="heroku">
+      <created>1579469983684</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1579469983684</updated>
+    </task>
+    <task id="LOCAL-00013" summary="heroku">
+      <created>1579470432394</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1579470432394</updated>
+    </task>
+    <task id="LOCAL-00014" summary="heroku">
+      <created>1579470920308</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1579470920308</updated>
+    </task>
+    <task id="LOCAL-00015" summary="heroku">
+      <created>1579472979569</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1579472979569</updated>
+    </task>
+    <task id="LOCAL-00016" summary="heroku">
+      <created>1579473383716</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1579473383716</updated>
+    </task>
+    <task id="LOCAL-00017" summary="heroku">
+      <created>1579473450384</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1579473450384</updated>
+    </task>
+    <task id="LOCAL-00018" summary="heroku">
+      <created>1579473520479</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1579473520479</updated>
+    </task>
+    <task id="LOCAL-00019" summary="heroku">
+      <created>1579474462330</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1579474462330</updated>
+    </task>
+    <task id="LOCAL-00020" summary="heroku">
+      <created>1579474819349</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1579474819349</updated>
+    </task>
+    <task id="LOCAL-00021" summary="heroku">
+      <created>1579478670373</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1579478670373</updated>
+    </task>
+    <task id="LOCAL-00022" summary="heroku">
+      <created>1579479701815</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1579479701815</updated>
+    </task>
+    <task id="LOCAL-00023" summary="heroku">
+      <created>1579479764636</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1579479764636</updated>
+    </task>
+    <task id="LOCAL-00024" summary="heroku">
+      <created>1579493308648</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1579493308648</updated>
+    </task>
+    <task id="LOCAL-00025" summary="heroku">
+      <created>1579493814505</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1579493814505</updated>
+    </task>
+    <task id="LOCAL-00026" summary="heroku">
+      <created>1579494716917</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1579494716917</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.cmd" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="VaadinDesigner.SizePresetsSettingsComponent">
+    <option name="sizePresets">
+      <list>
+        <SizePreset>
+          <option name="caption" value="Phone" />
+          <option name="height" value="568" />
+          <option name="width" value="320" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Tablet" />
+          <option name="height" value="1024" />
+          <option name="width" value="768" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Desktop" />
+          <option name="height" value="900" />
+          <option name="width" value="1440" />
+        </SizePreset>
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="heroku" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="359" y="78" key="#Docker" timestamp="1579494616253">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="359" y="78" key="#Docker/0.0.1280.760@0.0.1280.760" timestamp="1579494616253" />
+    <state x="232" y="39" key="#New_Docker_Connection" timestamp="1579476111155">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="232" y="39" key="#New_Docker_Connection/0.0.1280.760@0.0.1280.760" timestamp="1579476111155" />
+    <state x="359" y="78" key="#Path_mapping" timestamp="1579494603811">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="359" y="78" key="#Path_mapping/0.0.1280.760@0.0.1280.760" timestamp="1579494603811" />
+    <state x="94" y="35" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579495780975">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="94" y="35" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.760@0.0.1280.760" timestamp="1579495780975" />
+    <state x="414" y="183" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579463482914">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="414" y="183" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.760@0.0.1280.760" timestamp="1579463482914" />
+    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1579495995043">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579495995043" />
+    <state x="478" y="269" key="DockerComposeFileDialog" timestamp="1579494794864">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="478" y="269" key="DockerComposeFileDialog/0.0.1280.760@0.0.1280.760" timestamp="1579494794864" />
+    <state x="374" y="142" key="EnvironmentVariablesDialog" timestamp="1579495762983">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="374" y="142" key="EnvironmentVariablesDialog/0.0.1280.760@0.0.1280.760" timestamp="1579495762983" />
+    <state x="490" y="122" key="FileChooserDialogImpl" timestamp="1579494792689">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="490" y="122" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579494792689" />
+    <state width="1237" height="433" key="GridCell.Tab.0.bottom" timestamp="1579495830305">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1237" height="433" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579495830305" />
+    <state width="1237" height="433" key="GridCell.Tab.0.center" timestamp="1579495830304">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1237" height="433" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579495830304" />
+    <state width="1237" height="433" key="GridCell.Tab.0.left" timestamp="1579495830304">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1237" height="433" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579495830304" />
+    <state width="1237" height="433" key="GridCell.Tab.0.right" timestamp="1579495830304">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state width="1237" height="433" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579495830304" />
+    <state x="141" y="23" width="1139" height="714" key="SettingsEditor" timestamp="1579476072435">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="141" y="23" width="1139" height="714" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1579476072435" />
+    <state x="232" y="113" key="Vcs.Push.Dialog.v2" timestamp="1579494725613">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="232" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579494725613" />
+    <state x="336" y="204" key="com.intellij.ide.util.TipDialog" timestamp="1579465552599">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="336" y="204" key="com.intellij.ide.util.TipDialog/0.0.1280.760@0.0.1280.760" timestamp="1579465552599" />
+    <state x="296" y="170" key="run.anything.popup" timestamp="1579474832542">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="296" y="170" key="run.anything.popup/0.0.1280.760@0.0.1280.760" timestamp="1579474832542" />
+  </component>
+  <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
+    <option name="sizePresets">
+      <list>
+        <SizePreset>
+          <option name="caption" value="Phone" />
+          <option name="height" value="568" />
+          <option name="width" value="320" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Tablet" />
+          <option name="height" value="1024" />
+          <option name="width" value="768" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Desktop" />
+          <option name="height" value="900" />
+          <option name="width" value="1440" />
+        </SizePreset>
+      </list>
+    </option>
+  </component>
+  <component name="designer.settings">
+    <option name="autodetectServerAddress" value="true" />
+    <option name="serverIp" value="localhost" />
+  </component>
+</project>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:sd="http://www.thymeleaf.org/spring-data">
+<head th:replace="layout/page :: tw-head(twtitle=~{::title},links=~{},refreshMessages=false)">
+    <title th:text="#{org.woehlke.mybp.measurement.all.title.short}">Blood Pressure Measurements</title>
+</head>
+<body th:replace="layout/page :: tw-page-body(twcontent=~{::mytwcontent},twtitle=~{::h1},description=~{::p.tw-content-subtitle})">
+<div id="page">
+    <header id="tw-content-title">
+        <h1>
+            <i class="fas fa-hand-holding-heart"></i>
+            <span th:utext="#{org.woehlke.mybp.measurement.all.title}">All Measurements</span>
+        </h1>
+        <p class="tw-content-subtitle">
+            <span th:text="#{org.woehlke.mybp.measurement.all.subtitle.long}"></span>
+        </p>
+        <p class="tw-content-subtitle">
+            <a href="#" th:href="@{/measurement/add}" class="btn btn-primary btn-block" role="button">
+                <i class="fas fa-stethoscope"></i>
+                <span th:text="#{org.woehlke.mybp.measurement.all.button.add}">Add New Measurement</span>
+            </a>
+            <a href="#" th:href="@{/measurement/all}" class="btn btn-secondary btn-block" role="button">
+                <i class="fas fa-redo"></i>
+                <span th:text="#{org.woehlke.mybp.measurement.all.button.reload}">Reload List of All Measurements</span>
+            </a>
+            <a href="#" th:href="@{/measurement/export/all}" class="btn btn-dark btn-block" role="button">
+                <i class="fas fa-download"></i>
+                <span th:text="#{org.woehlke.mybp.measurement.all.button.export}">Export List of All Measurements</span>
+            </a>
+        </p>
+    </header>
+    <!-- Main Document Window -->
+    <main id="tw-main-section">
+        <div class="container" sec:authorize="isAuthenticated()">
+            <div th:fragment="mytwcontent">
+                <div th:replace="/layout/pagination :: tw-pagination(page=${all})"></div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-sm table-striped table-hover tw-measurements-all-page">
+                            <thead>
+                            <tr>
+                                <!--
+                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.id}">id</th>
+                                -->
+                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.date}">date</th>
+                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.time}">time</th>
+                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.systolicTopNumber}">systolicTopNumber</th>
+                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.diastolicBottomNumber}">diastolicBottomNumber</th>
+                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.pulse}">pulse</th>
+                                <!--
+                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.situation}">situation</th>
+                                -->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="measurement : ${all}">
+                                <!--
+                                <td class="tw-debug measurement-id">
+                                    <a href="" th:href="@{|/measurement/${measurement.id}/|}">
+                                        <span th:text="${measurement.id}">measurement.id</span>
+                                    </a>
+                                </td>
+                                -->
+                                <td class="tw-debug measurement-date">
+                                    <span th:text="${#temporals.format(measurement.date, 'dd.MM.yyyy')}">measurement.date</span>
+                                </td>
+                                <td class="tw-debug measurement-time">
+                                    <a href="" th:href="@{|/measurement/${measurement.id}/|}">
+                                        <span th:text="${#temporals.format(measurement.time, 'HH:mm')}">measurement.time</span>
+                                    </a>
+                                </td>
+                                <td class="tw-debug measurement-systolic-top-number">
+                                    <span th:text="${measurement.systolicTopNumber}">measurement.systolicTopNumber</span>
+                                </td>
+                                <td class="tw-debug measurement-diastolic-bottom-number">
+                                    <span th:text="${measurement.diastolicBottomNumber}">measurement.diastolicBottomNumber</span>
+                                </td>
+                                <td class="tw-debug measurement-pulse">
+                                    <span th:text="${measurement.pulse}">measurement.pulse</span>
+                                </td>
+                                <!--
+                                <td class="tw-debug measurement-situation">
+                                    <span th:text="${measurement.situation}">measurement.situation</span>
+                                </td>
+                                -->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div th:replace="/layout/pagination :: tw-pagination(page=${all})"></div>
+            </div>
+        </div> <!-- /container -->
+    </main>
+</div>
+<div th:replace="/layout/page :: tw-footer"></div>
+</body>
+</html>

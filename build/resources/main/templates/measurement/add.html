@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:sd="http://www.thymeleaf.org/spring-data">
+<head th:replace="layout/page :: tw-head(twtitle=~{::title},links=~{},refreshMessages=false)">
+    <title th:text="#{org.woehlke.mybp.measurement.add.title.short}">All Jobs</title>
+</head>
+<body th:replace="layout/page :: tw-page-body(twcontent=~{::mytwcontent},twtitle=~{::h1},description=~{::p.tw-content-subtitle})">
+<div id="page">
+    <header id="tw-content-title">
+        <h1>
+            <i class="fas fa-stethoscope"></i>
+            <span th:utext="#{org.woehlke.mybp.measurement.add.title}">Add New Measurement</span>
+        </h1>
+        <p class="tw-content-subtitle">
+            <span th:text="#{org.woehlke.mybp.measurement.add.subtitle.long}"></span>
+        </p>
+    </header>
+    <main role="main" sec:authorize="isAuthenticated()">
+        <div class="container">
+            <div th:fragment="mytwcontent">
+                <form id="formId" th:action="@{/measurement/add}" th:object="${one}" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="oneDate" class="control-label">
+                                    <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.date}">Date</span>
+                                </label>
+                                <input id="oneDate" type="date" th:field="*{{date}}" class="form-control" />
+                                <div>
+                                    <div th:each="err : ${#fields.errors('date')}" th:text="${err}" class="alert alert-danger">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="oneTime" class="control-label">
+                                    <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.date}">Date</span>
+                                </label>
+                                <input id="oneTime" type="time" th:field="*{{time}}" class="form-control" />
+                                <div>
+                                    <div th:each="err : ${#fields.errors('time')}" th:text="${err}" class="alert alert-danger">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label th:for="oneSystolicTopNumber" class="control-label">
+                                    <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.systolicTopNumber}">systolicTopNumber</span>
+                                </label>
+                                <input id="oneSystolicTopNumber" type="number" th:field="*{systolicTopNumber}" class="form-control" />
+                                <div>
+                                    <div th:each="err : ${#fields.errors('systolicTopNumber')}" th:text="${err}" class="alert alert-danger">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label th:for="oneDiastolicBottomNumber" class="control-label">
+                                    <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.diastolicBottomNumber}">diastolicBottomNumber</span>
+                                </label>
+                                <input id="oneDiastolicBottomNumber" type="number" th:field="*{diastolicBottomNumber}" class="form-control" />
+                                <div>
+                                    <div th:each="err : ${#fields.errors('diastolicBottomNumber')}" th:text="${err}" class="alert alert-danger">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label th:for="onePulse" class="control-label">
+                                    <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.pulse}">pulse</span>
+                                </label>
+                                <input id="onePulse" type="number" th:field="*{pulse}" class="form-control" />
+                                <div>
+                                    <div th:each="err : ${#fields.errors('pulse')}" th:text="${err}" class="alert alert-danger">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label th:for="oneSituation" class="control-label">
+                                    <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.situation}">situation</span>
+                                </label>
+                                <textarea id="oneSituation" type="number" th:field="*{situation}" class="form-control tinymceFormTextfield" rows="5" cols="80">
+                                </textarea>
+                                <div>
+                                    <div th:each="err : ${#fields.errors('situation')}" th:text="${err}" class="alert alert-danger">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button id="persistMeasurement" type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                <span th:utext="#{org.woehlke.mybp.measurement.add.button.persist}">Add Measurement</span>
+                            </button>
+                            <a href="#" th:href="@{/}" class="btn btn-secondary" role="button" id="cancel">
+                                <i class="fas fa-angle-double-left"></i>
+                                <span th:utext="#{org.woehlke.mybp.measurement.add.button.cancel}">Cancel</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+<div th:replace="layout/page :: tw-footer"></div>
+</body>
+</html>

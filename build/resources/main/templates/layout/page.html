@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:sd="http://www.thymeleaf.org/spring-data">
+<head th:fragment="tw-head(twtitle,links,refreshMessages)">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="refresh" content="25" th:if="${refreshMessages}">
+	<meta name="author" content="Thomas Woehlke">
+	<meta name="generator" content="Spring Boot and Java">
+	<title th:replace="${twtitle}">Blood Pressure Measurement</title>
+	<link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link th:href="@{/webjars/font-awesome/5.8.1/css/all.min.css}" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+	<script>
+		window.addEventListener("load", function(){
+			window.cookieconsent.initialise({
+				"palette": {
+					"popup": {
+						"background": "#000000"
+					},
+					"button": {
+						"background": "transparent",
+						"border": "#ffffff",
+						"text": "#ffffff"
+					}
+				},
+				"content": {
+					"link": "Read the Privacy Policy",
+					"href": "/privacy"
+				}
+			})});
+	</script>
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato|Varela+Round" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link th:href="@{/css/main.css}" rel="stylesheet">
+	<!--/* Per-page placeholder for additional links */-->
+	<th:block th:replace="${links}" />
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" th:href="@{/img/icon/apple-icon-57x57.png}">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" th:href="@{/img/icon/apple-icon-60x60.png}">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" th:href="@{/img/icon/apple-icon-72x72.png}">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" th:href="@{/img/icon/apple-icon-76x76.png}">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" th:href="@{/img/icon/apple-icon-114x114.png}">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" th:href="@{/img/icon/apple-icon-120x120.png}">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" th:href="@{/img/icon/apple-icon-144x144.png}">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" th:href="@{/img/icon/apple-icon-152x152.png}">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" th:href="@{/img/icon/apple-icon-180x180.png}">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png" th:href="@{/img/icon/android-icon-192x192.png}">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" th:href="@{/img/icon/favicon-32x32.png}">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/img/icon/favicon-96x96.png}">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" th:href="@{/img/icon/favicon-16x16.png}">
+	<link rel="manifest" href="/manifest.json" th:href="@{/img/icon/manifest.json}">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" th:href="@{/img/icon/ms-icon-144x144.png}">
+	<meta name="theme-color" content="#ffffff">
+</head>
+<body th:fragment="tw-page-body(twcontent,twtitle,description)">
+
+	<header>
+		<!-- Navbar Top -->
+		<div th:replace="layout/navbartop :: navbartop" >
+		</div>
+		<!-- Main jumbotron -->
+		<div class="jumbotron">
+			<div class="container">
+				<h1 th:replace="${twtitle}">Hello, world!</h1>
+				<p class="tw-content-subtitle lead" th:replace="${description}">
+                    This is a template for a simple marketing or informational website.
+                    It includes a large callout called a jumbotron and three supporting pieces of content.
+                    Use it as a starting point to create something more unique.
+                </p>
+			</div>
+		</div>
+	</header>
+
+	<!-- Main Document Window -->
+	<main id="tw-main-section">
+		<div class="container">
+			<th:block th:replace="${twcontent}" />
+		</div>
+	</main>
+
+	<div th:fragment="tw-footer">
+		<!-- Footer -->
+		<footer class="footer">
+			<nav class="navbar fixed-bottom navbar-dark bg-dark">
+				<div class="container">
+					<span class="navbar-text">© 2019 Thomas Wöhlke</span>
+				</div>
+			</nav>
+		</footer>
+		<script th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+		<script th:src="@{/webjars/popper.js/1.14.7/umd/popper.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/webjars/font-awesome/5.8.1/js/all.min.js}"></script>
+		<!-- my own JavaScript -->
+		<script th:src="@{/js/my.js}"></script>
+	</div>
+
+</body>
+</html>
