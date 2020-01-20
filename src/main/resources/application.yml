@@ -88,6 +88,9 @@ logging:
     level:
         root: INFO
         org:
+            hibernate.SQL: INFO
+            ch:
+                qos: INFO
             woehlke:
                 bloodmoney:
                     config: DEBUG
@@ -164,19 +167,37 @@ spring:
         store-type: jdbc
         jdbc:
             initialize-schema: always
+    jta:
+        atomikos:
+            connectionfactory:
+                xa-connection-factory-class-name: org.postgresql.Driver
     jpa:
+        show-sql: true
+        database-platform: POSTGRESQL
         hibernate:
-            #ddl-auto: update
             ddl-auto: create-drop
+            #ddl-auto: update
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQL95Dialect
                 temp:
                     use_jdbc_metadata_defaults: false
             #generate_statistics: true
+    thymeleaf:
+        cache: true
+    devtools:
+        livereload:
+            enabled: false
+        add-properties: false
+    application:
+        admin:
+            enabled: false
 server:
     compression:
-        enabled: false
+        enabled: true
 logging:
     level:
         org:
