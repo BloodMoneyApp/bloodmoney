@@ -35,4 +35,5 @@ bloodmoney.iml
 *.log
 /transaction-logs/
 .env
-bloodmoney.log*
+/bloodmoney.log
+/bloodmoney.log*

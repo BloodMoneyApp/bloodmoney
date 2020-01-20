@@ -9551,3 +9551,17 @@ Caused by: com.atomikos.recovery.LogException: Log already in use? tmlog in C:\U
 2020-01-20 05:52:00.011 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
 2020-01-20 05:53:00.002 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
 2020-01-20 05:53:00.002 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
+2020-01-20 05:54:00.014 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2020-01-20 05:54:00.016 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
+2020-01-20 05:55:00.000 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2020-01-20 05:55:00.001 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
+2020-01-20 07:38:47.912 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2020-01-20 07:38:47.913 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
+2020-01-20 07:39:00.003 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2020-01-20 07:39:00.003 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
+2020-01-20 07:40:00.008 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2020-01-20 07:40:00.010 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
+2020-01-20 07:41:00.006 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2020-01-20 07:41:00.007 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
+2020-01-20 07:42:00.008 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2020-01-20 07:42:00.008 DEBUG 10512 --- [pool-6-thread-1] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [DELETE FROM SPRING_SESSION WHERE EXPIRY_TIME < ?]
