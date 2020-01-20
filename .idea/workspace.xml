@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +213,7 @@
       <workItem from="1579463613280" duration="71000" />
       <workItem from="1579463764655" duration="1189000" />
       <workItem from="1579465552580" duration="11286000" />
-      <workItem from="1579478542518" duration="9361000" />
+      <workItem from="1579478542518" duration="9890000" />
     </task>
     <task id="LOCAL-00001" summary="heroku">
       <created>1579464440412</created>
@@ -445,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579506385211</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="heroku">
+      <created>1579506460954</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1579506460954</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,10 +553,10 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="141" y="23" width="1139" height="714" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1579476072435" />
-    <state x="232" y="113" key="Vcs.Push.Dialog.v2" timestamp="1579506419914">
+    <state x="232" y="113" key="Vcs.Push.Dialog.v2" timestamp="1579506862113">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
-    <state x="232" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579506419914" />
+    <state x="232" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579506862113" />
     <state x="336" y="204" key="com.intellij.ide.util.TipDialog" timestamp="1579465552599">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
