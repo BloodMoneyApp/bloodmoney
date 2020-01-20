@@ -90,7 +90,7 @@ springBoot {
 }
 
 dockerCompose {
-    dockerComposeFile 'src/tst/docker/stack.yml'
+    dockerComposeFile 'src/test/docker/stack.yml'
 }
 
 /*
