@@ -3,12 +3,12 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.17">
     <root id="1">
       <ServerVersion>11.5</ServerVersion>
-      <StartupTime>1580334620</StartupTime>
+      <StartupTime>1580335238</StartupTime>
     </root>
     <database id="2" parent="1" name="bloodmoney">
       <ObjectId>16384</ObjectId>
       <Owner>bloodmoney</Owner>
-      <IntrospectionStateNumber>597</IntrospectionStateNumber>
+      <IntrospectionStateNumber>596</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -65,7 +65,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>bloodmoney</Owner>
-      <IntrospectionStateNumber>598</IntrospectionStateNumber>
+      <IntrospectionStateNumber>597</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="btree">
@@ -132,116 +132,188 @@
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="24" parent="15" name="spring_session">
+    <table id="24" parent="15" name="measurement">
+      <ObjectId>16408</ObjectId>
+      <Owner>bloodmoney</Owner>
+      <StateNumber>576</StateNumber>
+    </table>
+    <table id="25" parent="15" name="spring_session">
       <ObjectId>16387</ObjectId>
       <Owner>bloodmoney</Owner>
       <StateNumber>575</StateNumber>
     </table>
-    <table id="25" parent="15" name="spring_session_attributes">
+    <table id="26" parent="15" name="spring_session_attributes">
       <ObjectId>16395</ObjectId>
       <Owner>bloodmoney</Owner>
       <StateNumber>575</StateNumber>
     </table>
-    <column id="26" parent="24" name="primary_id">
+    <column id="27" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="28" parent="24" name="measurement_date">
+      <Position>2</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="29" parent="24" name="diastolic_bottom_number">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="30" parent="24" name="pulse">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="31" parent="24" name="situation">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>576</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="32" parent="24" name="systolic_top_number">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="33" parent="24" name="measurement_time">
+      <Position>7</Position>
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>576</StateNumber>
+      <TypeId>1083</TypeId>
+    </column>
+    <index id="34" parent="24" name="measurement_pkey">
+      <ObjectId>16414</ObjectId>
+      <StateNumber>576</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <index id="35" parent="24" name="idx_measurement_date">
+      <ObjectId>16416</ObjectId>
+      <StateNumber>577</StateNumber>
+      <ColNames>measurement_date</ColNames>
+    </index>
+    <key id="36" parent="24" name="measurement_pkey">
+      <ObjectId>16415</ObjectId>
+      <StateNumber>576</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>measurement_pkey</UnderlyingIndexName>
+    </key>
+    <column id="37" parent="25" name="primary_id">
       <Position>1</Position>
       <DataType>char(36)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>571</StateNumber>
       <TypeId>1042</TypeId>
     </column>
-    <column id="27" parent="24" name="session_id">
+    <column id="38" parent="25" name="session_id">
       <Position>2</Position>
       <DataType>char(36)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>571</StateNumber>
       <TypeId>1042</TypeId>
     </column>
-    <column id="28" parent="24" name="creation_time">
+    <column id="39" parent="25" name="creation_time">
       <Position>3</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>571</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="29" parent="24" name="last_access_time">
+    <column id="40" parent="25" name="last_access_time">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>571</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="30" parent="24" name="max_inactive_interval">
+    <column id="41" parent="25" name="max_inactive_interval">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>571</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="31" parent="24" name="expiry_time">
+    <column id="42" parent="25" name="expiry_time">
       <Position>6</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>571</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="32" parent="24" name="principal_name">
+    <column id="43" parent="25" name="principal_name">
       <Position>7</Position>
       <DataType>varchar(100)|0s</DataType>
       <StateNumber>571</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="33" parent="24" name="spring_session_pk">
+    <index id="44" parent="25" name="spring_session_pk">
       <ObjectId>16390</ObjectId>
       <StateNumber>571</StateNumber>
       <ColNames>primary_id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="34" parent="24" name="spring_session_ix1">
+    <index id="45" parent="25" name="spring_session_ix1">
       <ObjectId>16392</ObjectId>
       <StateNumber>572</StateNumber>
       <ColNames>session_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="35" parent="24" name="spring_session_ix2">
+    <index id="46" parent="25" name="spring_session_ix2">
       <ObjectId>16393</ObjectId>
       <StateNumber>573</StateNumber>
       <ColNames>expiry_time</ColNames>
     </index>
-    <index id="36" parent="24" name="spring_session_ix3">
+    <index id="47" parent="25" name="spring_session_ix3">
       <ObjectId>16394</ObjectId>
       <StateNumber>574</StateNumber>
       <ColNames>principal_name</ColNames>
     </index>
-    <key id="37" parent="24" name="spring_session_pk">
+    <key id="48" parent="25" name="spring_session_pk">
       <ObjectId>16391</ObjectId>
       <StateNumber>571</StateNumber>
       <ColNames>primary_id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>spring_session_pk</UnderlyingIndexName>
     </key>
-    <column id="38" parent="25" name="session_primary_id">
+    <column id="49" parent="26" name="session_primary_id">
       <Position>1</Position>
       <DataType>char(36)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
       <TypeId>1042</TypeId>
     </column>
-    <column id="39" parent="25" name="attribute_name">
+    <column id="50" parent="26" name="attribute_name">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="40" parent="25" name="attribute_bytes">
+    <column id="51" parent="26" name="attribute_bytes">
       <Position>3</Position>
       <DataType>bytea|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>575</StateNumber>
       <TypeId>17</TypeId>
     </column>
-    <index id="41" parent="25" name="spring_session_attributes_pk">
+    <index id="52" parent="26" name="spring_session_attributes_pk">
       <ObjectId>16401</ObjectId>
       <StateNumber>575</StateNumber>
       <ColNames>session_primary_id
@@ -249,7 +321,7 @@ attribute_name</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="42" parent="25" name="spring_session_attributes_pk">
+    <key id="53" parent="26" name="spring_session_attributes_pk">
       <ObjectId>16402</ObjectId>
       <StateNumber>575</StateNumber>
       <ColNames>session_primary_id
@@ -257,7 +329,7 @@ attribute_name</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>spring_session_attributes_pk</UnderlyingIndexName>
     </key>
-    <foreign-key id="43" parent="25" name="spring_session_attributes_fk">
+    <foreign-key id="54" parent="26" name="spring_session_attributes_fk">
       <ObjectId>16403</ObjectId>
       <StateNumber>575</StateNumber>
       <ColNames>session_primary_id</ColNames>
