@@ -34,7 +34,22 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="bloodmoney" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="bloodmoney" type="f1a62948:ProjectNode" />
+                <item name="Source Sets" type="e897c970:GradleViewContributor$SourceSetsNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="bloodmoney" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -47,6 +62,11 @@
         <option name="argument" value="--tags" />
         <option name="title" value="All" />
       </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="profile-heroku-docker" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -89,7 +109,7 @@
       <recent name="C:\Users\tw\IdeaProjects\bloodmoney" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.bloodmoney [clean bootRun]">
+  <component name="RunManager" selected="Gradle.bloodmoney2 [dockerPrepare]">
     <configuration name="bloodmoney [clean bootRun]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="env">
@@ -171,6 +191,44 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="bloodmoney2 [dockerPrepare]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dockerPrepare" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="bloodmoney2 [dockerRemoveContainer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dockerRemoveContainer" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="BloodMoneyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bloodmoney.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.woehlke.bloodmoney.BloodMoneyApplication" />
@@ -192,9 +250,14 @@
       <item itemvalue="Gradle.bloodmoney [dockerComposeUp]" />
       <item itemvalue="Gradle.bloodmoney [dockerRun]" />
       <item itemvalue="Spring Boot.BloodMoneyApplication" />
+      <item itemvalue="Gradle.bloodmoney2 [dockerRemoveContainer]" />
+      <item itemvalue="Gradle.bloodmoney2 [dockerPrepare]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.bloodmoney2 [dockerPrepare]" />
+        <item itemvalue="Gradle.bloodmoney2 [dockerRemoveContainer]" />
+        <item itemvalue="Gradle.bloodmoney [dockerRun]" />
         <item itemvalue="Gradle.bloodmoney [dockerRun]" />
       </list>
     </recent_temporary>
@@ -626,26 +689,30 @@
     </state>
     <state x="490" y="122" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1579494792689" />
     <state x="523" y="117" width="698" height="493" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1579519716792" />
-    <state width="1323" height="270" key="GridCell.Tab.0.bottom" timestamp="1579520364194">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1324" height="386" key="GridCell.Tab.0.bottom" timestamp="1580330316656">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.bottom/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
     <state width="1323" height="270" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
-    <state width="1323" height="270" key="GridCell.Tab.0.center" timestamp="1579520364194">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1324" height="386" key="GridCell.Tab.0.bottom/0.0.1366.741@0.0.1366.741" timestamp="1580330316656" />
+    <state width="1324" height="386" key="GridCell.Tab.0.center" timestamp="1580330316656">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.center/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
     <state width="1323" height="270" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
-    <state width="1323" height="270" key="GridCell.Tab.0.left" timestamp="1579520364194">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1324" height="386" key="GridCell.Tab.0.center/0.0.1366.741@0.0.1366.741" timestamp="1580330316656" />
+    <state width="1324" height="386" key="GridCell.Tab.0.left" timestamp="1580330316655">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.left/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
     <state width="1323" height="270" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
-    <state width="1323" height="270" key="GridCell.Tab.0.right" timestamp="1579520364194">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1324" height="386" key="GridCell.Tab.0.left/0.0.1366.741@0.0.1366.741" timestamp="1580330316655" />
+    <state width="1324" height="386" key="GridCell.Tab.0.right" timestamp="1580330316656">
+      <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state width="1237" height="427" key="GridCell.Tab.0.right/0.0.1280.760@0.0.1280.760" timestamp="1579511432093" />
     <state width="1323" height="270" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579520364194" />
+    <state width="1324" height="386" key="GridCell.Tab.0.right/0.0.1366.741@0.0.1366.741" timestamp="1580330316656" />
     <state x="425" y="102" key="RollbackChangesDialog" timestamp="1579504542461">
       <screen x="0" y="0" width="1280" height="760" />
     </state>
