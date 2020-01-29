@@ -6,8 +6,15 @@ source setenv.sh
 
 #SPRING_PROFILES_ACTIVE=heroku
 
-./gradlew composeUp
-./gradlew clean bootRunHeroku
-./gradlew composeDown
+function bootRunHeroku() {
+    ./gradlew composeUp
+    ./gradlew clean bootRunHeroku
+    ./gradlew composeDown
+}
 
+function bootRunDefault() {
+    ./gradlew clean bootRunDefault
+}
 
+#bootRunHeroku
+bootRunDefault
