@@ -158,8 +158,8 @@ spring:
     profiles: heroku
     datasource:
         url:  jdbc:postgresql://localhost:5432/bloodmoney
-        username:  java4postgres
-        password:  java4postgrespwd
+        username:  bloodmoney
+        password:  bloodmoneypwd
         driver-class-name:  org.postgresql.Driver
         platform: POSTGRESQL
         initialization-mode: always
