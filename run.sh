@@ -4,10 +4,10 @@ source setenv.sh
 
 #./gradlew assemble
 
-SPRING_PROFILES_ACTIVE=heroku
+#SPRING_PROFILES_ACTIVE=heroku
 
 ./gradlew composeUp
-./gradlew clean bootRun -Pdeveloping
+./gradlew clean bootRunHeroku
 ./gradlew composeDown
 
 
