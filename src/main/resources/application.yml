@@ -86,8 +86,10 @@ logging:
     file:
         name: bloodmoney.log
     level:
-        root: INFO
+        root: WARN
         org:
+            springframework:
+                boot: WARN
             hibernate.SQL: INFO
             ch:
                 qos: INFO
@@ -205,6 +207,7 @@ logging:
     level:
         root: WARN
         org:
+            springframework: WARN
             hibernate.SQL: INFO
             ch:
                 qos: WARN
