@@ -1,5 +1,5 @@
 set PORT=5000
-rem set JAVA_OPTS=-XX:CICompilerCount=2 -Dspring.profiles.active=heroku
+set JAVA_OPTS=-XX:CICompilerCount=2 -Dspring.profiles.active=default
 set BLOODMONEY_DEV_TESTING=false
 set BLOODMONEY_USER_EMAIL=thomas.woehlke@gmail.com
 set BLOODMONEY_USER_FULLNAME=Thomas Woehlke
