@@ -7,7 +7,7 @@
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <user-name>java4postgres</user-name>
+      <user-name>bloodmoney</user-name>
       <schema-mapping>
         <introspection-scope>
           <node negative="1">

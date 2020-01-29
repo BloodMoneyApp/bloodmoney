@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e8f5bb6-0095-4589-b2c5-6096c63993b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf/storage_v2/_src_/database/bloodmoney.BgdLvA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/339f84a4-9aa2-4bcd-8d05-9defd8e08adf/storage_v2/_src_/database/bloodmoney.BgdLvA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +53,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="bloodmoney" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="bloodmoney" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -105,7 +113,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3616352" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsDialog.application.dockerMachine" />
+    <property name="settings.editor.selected.configurable" value="spring" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
@@ -300,13 +308,6 @@
       <workItem from="1579478542518" duration="14977000" />
       <workItem from="1579519585160" duration="733000" />
       <workItem from="1579521961808" duration="311000" />
-    </task>
-    <task id="LOCAL-00001" summary="heroku">
-      <created>1579464440412</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1579464440412</updated>
     </task>
     <task id="LOCAL-00002" summary="heroku">
       <created>1579466066236</created>
@@ -644,7 +645,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580334241369</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="heroku">
+      <created>1580334530966</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1580334530967</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,12 +714,12 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="531" y="253" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1579520271657" />
-    <state x="273" y="0" width="790" height="736" key="CommitChangelistDialog2" timestamp="1580334241238">
+    <state x="273" y="0" width="790" height="736" key="CommitChangelistDialog2" timestamp="1580334530750">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="256" y="0" key="CommitChangelistDialog2/0.0.1280.760@0.0.1280.760" timestamp="1579511577835" />
     <state x="273" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1579523111261" />
-    <state x="273" y="0" width="790" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580334241238" />
+    <state x="273" y="0" width="790" height="736" key="CommitChangelistDialog2/0.0.1366.741@0.0.1366.741" timestamp="1580334530750" />
     <state x="98" y="90" width="1170" height="562" key="DiffContextDialog" timestamp="1580333476044">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
@@ -763,18 +771,18 @@
       <screen x="0" y="0" width="1280" height="760" />
     </state>
     <state x="425" y="102" key="RollbackChangesDialog/0.0.1280.760@0.0.1280.760" timestamp="1579504542461" />
-    <state x="150" y="0" width="1139" height="714" key="SettingsEditor" timestamp="1580334115559">
+    <state x="150" y="0" width="1139" height="714" key="SettingsEditor" timestamp="1580335055329">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="141" y="23" width="1139" height="714" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1579476072435" />
     <state x="150" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1579520294084" />
-    <state x="150" y="0" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1580334115559" />
-    <state x="248" y="110" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1580334242405">
+    <state x="150" y="0" key="SettingsEditor/0.0.1366.741@0.0.1366.741" timestamp="1580335055329" />
+    <state x="248" y="110" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1580334532484">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
     <state x="232" y="113" key="Vcs.Push.Dialog.v2/0.0.1280.760@0.0.1280.760" timestamp="1579510750264" />
     <state x="248" y="108" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1579523115965" />
-    <state x="248" y="110" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580334242405" />
+    <state x="248" y="110" width="800" height="523" key="Vcs.Push.Dialog.v2/0.0.1366.741@0.0.1366.741" timestamp="1580334532484" />
     <state x="496" y="107" width="363" height="521" key="VcsDiffUtil.ChangesDialog" timestamp="1580333477910">
       <screen x="0" y="0" width="1366" height="741" />
     </state>
