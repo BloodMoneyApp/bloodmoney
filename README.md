@@ -12,5 +12,7 @@ UK & Europe, Feb 1985).
 * [Spring dependency-management-plugin](https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/)
 * [heroku and Gradle](https://github.com/heroku/gradle-getting-started/blob/master/build.gradle)
 * [Using lombok](https://projectlombok.org/setup/overview)
+* [Gradle Docker Plugin](https://bmuschko.github.io/gradle-docker-plugin/)
+* [Gradle Docker Compose](https://bmuschko.com/blog/gradle-docker-compose/)
 
 
