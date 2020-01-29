@@ -91,9 +91,24 @@ springBoot {
     buildInfo()
 }
 
+
+task bootRunDefault {
+    bootRun.configure {
+        systemProperty "spring.profiles.active", 'default'
+    }
+}
+
+task bootRunHeroku {
+    bootRun.configure {
+        systemProperty "spring.profiles.active", 'heroku'
+    }
+}
+
+bootRunDefault.finalizedBy bootRun
+bootRunHeroku.finalizedBy bootRun
+
 dockerCompose {
     useComposeFiles = ['src/test/docker/stack.yml']
-    dockerComposeFile 'src/test/docker/stack.yml'
 }
 
 wrapper {
