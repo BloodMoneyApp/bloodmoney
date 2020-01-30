@@ -10,9 +10,17 @@ function bootRunHeroku() {
     ./gradlew composeDown
 }
 
+function bootRunHerokuLocal() {
+    ./gradlew composeUp
+    ./gradlew clean assemble
+    heroku local web
+    ./gradlew composeDown
+}
+
 function bootRunDefault() {
     ./gradlew clean bootRun --args='--spring.profiles.active=default'
 }
 
-bootRunHeroku
+bootRunHerokuLocal
+#bootRunHeroku
 #bootRunDefault
