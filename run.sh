@@ -14,5 +14,5 @@ function bootRunDefault() {
     ./gradlew clean bootRun --args='--spring.profiles.active=default'
 }
 
-#bootRunHeroku
-bootRunDefault
+bootRunHeroku
+#bootRunDefault
