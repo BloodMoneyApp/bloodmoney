@@ -4,16 +4,16 @@ source setenv.sh
 
 #./gradlew assemble
 
-#SPRING_PROFILES_ACTIVE=heroku
-
 function bootRunHeroku() {
+    #export SPRING_PROFILES_ACTIVE=heroku
     ./gradlew composeUp
     ./gradlew clean bootRunHeroku
     ./gradlew composeDown
 }
 
 function bootRunDefault() {
-    ./gradlew clean bootRunDefault
+    #export SPRING_PROFILES_ACTIVE=default
+    ./gradlew clean bootRun
 }
 
 #bootRunHeroku

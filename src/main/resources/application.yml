@@ -82,37 +82,6 @@ org:
                     - "/error*"
                     - "/fehler*"
                     - "/h2*/**"
-logging:
-    file:
-        name: bloodmoney.log
-    level:
-        root: WARN
-        org:
-            springframework:
-                boot: WARN
-            hibernate.SQL: INFO
-            ch:
-                qos: INFO
-            woehlke:
-                bloodmoney:
-                    config: DEBUG
-                    frontend:
-                        api: DEBUG
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                    oodm:
-                        entities: DEBUG
-                        repositories: DEBUG
-                        services:
-                            impl: DEBUG
-                    user:
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                        services:
-                            impl: DEBUG
-debug: true
 ---
 spring:
     profiles: default
@@ -155,6 +124,37 @@ spring:
             settings:
                 trace: true
                 web-allow-others: true
+logging:
+    file:
+        name: bloodmoney.log
+    level:
+        root: WARN
+        org:
+            springframework:
+                boot: WARN
+            hibernate.SQL: INFO
+            ch:
+                qos: INFO
+            woehlke:
+                bloodmoney:
+                    config: DEBUG
+                    frontend:
+                        api: DEBUG
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                    oodm:
+                        entities: DEBUG
+                        repositories: DEBUG
+                        services:
+                            impl: DEBUG
+                    user:
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                        services:
+                            impl: DEBUG
+debug: true
 ---
 spring:
     profiles: heroku
@@ -231,3 +231,4 @@ logging:
                         model: DEBUG
                         services:
                             impl: DEBUG
+debug: false
