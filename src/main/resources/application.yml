@@ -82,35 +82,6 @@ org:
                     - "/error*"
                     - "/fehler*"
                     - "/h2*/**"
-logging:
-    file:
-        name: bloodmoney.log
-    level:
-        root: INFO
-        org:
-            hibernate.SQL: INFO
-            ch:
-                qos: INFO
-            woehlke:
-                bloodmoney:
-                    config: DEBUG
-                    frontend:
-                        api: DEBUG
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                    oodm:
-                        entities: DEBUG
-                        repositories: DEBUG
-                        services:
-                            impl: DEBUG
-                    user:
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                        services:
-                            impl: DEBUG
-debug: true
 ---
 spring:
     profiles: default
@@ -153,13 +124,44 @@ spring:
             settings:
                 trace: true
                 web-allow-others: true
+logging:
+    file:
+        name: bloodmoney.log
+    level:
+        root: WARN
+        org:
+            springframework:
+                boot: WARN
+            hibernate.SQL: INFO
+            ch:
+                qos: INFO
+            woehlke:
+                bloodmoney:
+                    config: DEBUG
+                    frontend:
+                        api: DEBUG
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                    oodm:
+                        entities: DEBUG
+                        repositories: DEBUG
+                        services:
+                            impl: DEBUG
+                    user:
+                        config: DEBUG
+                        controller: DEBUG
+                        model: DEBUG
+                        services:
+                            impl: DEBUG
+debug: true
 ---
 spring:
     profiles: heroku
     datasource:
         url:  jdbc:postgresql://localhost:5432/bloodmoney
-        username:  java4postgres
-        password:  java4postgrespwd
+        username:  bloodmoney
+        password:  bloodmoneypwd
         driver-class-name:  org.postgresql.Driver
         platform: POSTGRESQL
         initialization-mode: always
@@ -203,11 +205,12 @@ server:
         enabled: true
 logging:
     level:
-        root: INFO
+        root: WARN
         org:
+            springframework: WARN
             hibernate.SQL: INFO
             ch:
-                qos: INFO
+                qos: WARN
             postgresql: DEBUG
             woehlke:
                 bloodmoney:
@@ -228,3 +231,4 @@ logging:
                         model: DEBUG
                         services:
                             impl: DEBUG
+debug: false

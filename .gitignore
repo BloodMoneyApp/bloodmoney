@@ -38,3 +38,4 @@ bloodmoney.iml
 /bloodmoney.log
 /bloodmoney.log*
 build
+/.idea/**

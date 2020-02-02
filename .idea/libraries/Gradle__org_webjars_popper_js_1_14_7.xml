@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: org.webjars:popper.js:1.14.7">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../tools/.gradle/caches/modules-2/files-2.1/org.webjars/popper.js/1.14.7/d86fed2cdec7657200207514262f1b564f8b7d5d/popper.js-1.14.7.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

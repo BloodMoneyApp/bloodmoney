@@ -35,7 +35,7 @@
     <main id="tw-main-section">
         <div class="container" sec:authorize="isAuthenticated()">
             <div th:fragment="mytwcontent">
-                <div th:replace="/layout/pagination :: tw-pagination(page=${all})"></div>
+                <div th:replace="layout/pagination :: tw-pagination(page=${all})"></div>
                 <div class="row">
                     <div class="col">
                         <table class="table table-sm table-striped table-hover tw-measurements-all-page">
@@ -90,7 +90,7 @@
                         </table>
                     </div>
                 </div>
-                <div th:replace="/layout/pagination :: tw-pagination(page=${all})"></div>
+                <div th:replace="layout/pagination :: tw-pagination(page=${all})"></div>
             </div>
         </div> <!-- /container -->
     </main>
