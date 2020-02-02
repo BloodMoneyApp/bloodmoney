@@ -129,10 +129,52 @@ logging:
         name: bloodmoney.log
     level:
         root: WARN
+        javax: INFO
+        com:
+            atomikos: WARN
         org:
+            thymeleaf:
+                dialect:
+                    springdata: WARN
+            apache:
+                commons:
+                    logging: WARN
+            h2: DEBUG
             springframework:
+                data:
+                    jdbc: INFO
+                    jpa: INFO
+                    relational: INFO
+                security:
+                    web: INFO
+                    context: INFO
                 boot: WARN
-            hibernate.SQL: INFO
+                beans: WARN
+                jdbc: WARN
+                orm: WARN
+                session: WARN
+                test: WARN
+                mock: WARN
+                transaction: WARN
+                jca: WARN
+                web: WARN
+                remoting: WARN
+                http: WARN
+                expression: WARN
+                util: WARN
+                lang: WARN
+                core: WARN
+                cglib: WARN
+            hibernate:
+                sql: INFO
+                query: INFO
+                mapping: INFO
+                jpa: INFO
+                id: INFO
+                graph: INFO
+                cfg: INFO
+                service: INFO
+                result: INFO
             ch:
                 qos: INFO
             woehlke:
