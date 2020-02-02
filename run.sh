@@ -4,10 +4,23 @@ source setenv.sh
 
 #./gradlew assemble
 
-SPRING_PROFILES_ACTIVE=heroku
+function bootRunHeroku() {
+    ./gradlew composeUp
+    ./gradlew clean bootRun --args='--spring.profiles.active=heroku'
+    ./gradlew composeDown
+}
 
-./gradlew composeUp
-./gradlew clean bootRun -Pdeveloping
-./gradlew composeDown
+function bootRunHerokuLocal() {
+    ./gradlew composeUp
+    ./gradlew clean assemble
+    heroku local web
+    ./gradlew composeDown
+}
 
+function bootRunDefault() {
+    ./gradlew clean bootRun --args='--spring.profiles.active=default'
+}
 
+#bootRunHerokuLocal
+#bootRunHeroku
+bootRunDefault
