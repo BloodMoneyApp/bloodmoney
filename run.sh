@@ -23,4 +23,5 @@ function bootRunDefault() {
 
 #bootRunHerokuLocal
 #bootRunHeroku
-bootRunDefault
+#bootRunDefault
+bootRunHerokuLocal
