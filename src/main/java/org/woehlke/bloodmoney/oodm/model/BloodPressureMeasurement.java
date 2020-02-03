@@ -68,7 +68,7 @@ public class BloodPressureMeasurement implements Serializable {
 
     @Nullable
     @CsvBindByName
-    //@Length(max=65535)
+    @Length(max=255)
     @Column(name = "situation", nullable = true)
     private String situation;
 
