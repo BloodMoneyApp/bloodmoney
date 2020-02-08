@@ -12,7 +12,7 @@ plugins {
 
 group = 'org.woehlke.bloodmoney'
 version = '1.2-SNAPSHOT'
-sourceCompatibility = '12'
+sourceCompatibility = '13'
 
 configurations {
     developmentOnly
