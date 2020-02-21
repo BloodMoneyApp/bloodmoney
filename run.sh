@@ -17,7 +17,7 @@ function bootRunPostgresSQl() {
 }
 
 function testH2() {
-    ./gradlew clean build bootRun --args='--spring.profiles.active=dev'
+    ./gradlew clean build bootJar --args='--spring.profiles.active=dev'
 }
 
 function bootRunH2() {
