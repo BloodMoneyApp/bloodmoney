@@ -85,7 +85,7 @@ org:
                     - "/h2*/**"
 ---
 spring:
-    profiles: default
+    profiles: dev
     datasource:
         platform: H2
         driver-class-name: org.h2.Driver
@@ -200,7 +200,7 @@ logging:
 debug: true
 ---
 spring:
-    profiles: heroku
+    profiles: default
     datasource:
         url:  jdbc:postgresql://localhost:5432/bloodmoney
         username:  bloodmoney
