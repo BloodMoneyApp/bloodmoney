@@ -18,13 +18,13 @@
         </p>
         <p class="tw-content-subtitle">
             <span class="row">
-                <span class="col-4">
+                <span class="col">
                     <a href="#" th:href="@{/}" class="btn btn-secondary btn-block" role="button" id="cancel">
                         <i class="fas fa-angle-double-left"></i>
                         <span th:utext="#{org.woehlke.mybp.measurement.add.button.cancel}">Cancel</span>
                     </a>
                 </span>
-                <span class="col-8">&nbsp;</span>
+                <span class="col">&nbsp;</span>
             </span>
         </p>
     </header>
@@ -98,17 +98,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <span class="col-4">
-                            <a href="#" th:href="@{/}" class="btn btn-secondary btn-block" role="button" id="cancelFooter">
-                                <i class="fas fa-angle-double-left"></i>
-                                <span th:utext="#{org.woehlke.mybp.measurement.add.button.cancel}">Cancel</span>
-                            </a>
-                        </span>
-                        <span class="col-8">
+                        <span class="col">
                             <button id="persistMeasurementFooter" type="submit" class="btn btn-primary btn-block">
                                 <i class="fas fa-save"></i>
                                 <span th:utext="#{org.woehlke.mybp.measurement.add.button.persist}">Add Measurement</span>
                             </button>
+                        </span>
+                        <span class="col">
+                            <a href="#" th:href="@{/}" class="btn btn-secondary btn-block" role="button" id="cancelFooter">
+                                <i class="fas fa-angle-double-left"></i>
+                                <span th:utext="#{org.woehlke.mybp.measurement.add.button.cancel}">Cancel</span>
+                            </a>
                         </span>
                     </div>
                 </form>
