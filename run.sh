@@ -20,8 +20,8 @@ function bootRunH2() {
     ./gradlew clean bootRun --args='--spring.profiles.active=dev'
 }
 
-bootRunHerokuLocal
+#bootRunHerokuLocal
 
 #bootRunPostgresSQl
 
-#bootRunH2
+bootRunH2
