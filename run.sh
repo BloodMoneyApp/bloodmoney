@@ -4,7 +4,7 @@ source setenv.sh
 
 function bootRunPostgresSQl() {
     ./gradlew composeUp
-    ./gradlew clean bootRun --args='--spring.profiles.active=heroku'
+    ./gradlew clean bootRun --args='--spring.profiles.active=default'
     ./gradlew composeDown
 }
 
@@ -16,7 +16,7 @@ function bootRunHerokuLocal() {
 }
 
 function bootRunH2() {
-    ./gradlew clean bootRun --args='--spring.profiles.active=default'
+    ./gradlew clean bootRun --args='--spring.profiles.active=dev'
 }
 
 #bootRunHerokuLocal
