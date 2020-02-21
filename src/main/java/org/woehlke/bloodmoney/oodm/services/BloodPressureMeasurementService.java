@@ -18,4 +18,5 @@ public interface BloodPressureMeasurementService {
 
     List<BloodPressureMeasurement> getAll();
 
+    BloodPressureMeasurement getOne(long id);
 }

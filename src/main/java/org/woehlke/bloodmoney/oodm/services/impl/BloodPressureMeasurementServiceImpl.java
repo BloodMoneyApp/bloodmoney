@@ -51,4 +51,9 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     public List<BloodPressureMeasurement> getAll() {
         return this.bloodPressureMeasurementRepository.findAll();
     }
+
+    @Override
+    public BloodPressureMeasurement getOne(long id) {
+        return this.bloodPressureMeasurementRepository.getOne(id);
+    }
 }
