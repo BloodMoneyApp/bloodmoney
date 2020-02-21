@@ -1,15 +1,37 @@
 call setenv.cmd
 
-rem ----------------------------------------------------------------------------
-rem cmd /c gradlew -i composeUp
-rem cmd /c gradlew -i clean bootRun --args='--spring.profiles.active=heroku'
-rem cmd /c gradlew -i composeDown
+goto:MAIN
 
-rem ----------------------------------------------------------------------------
+:bootRunHerokuLocal
+echo -------------------------------- bootRunHerokuLocal --------------------------------------------
+cmd /c gradlew -i composeUp
+cmd /c gradlew -i clean assemble
+cmd /c heroku local web
+cmd /c gradlew -i composeDown
+goto:END
+
+
+:bootRunPostgresSQL
+echo ---------------------------- bootRunPostgresSQL ------------------------------------------------
+cmd /c gradlew -i composeUp
 cmd /c gradlew -i clean bootRun --args='--spring.profiles.active=default'
-rem ----------------------------------------------------------------------------
+cmd /c gradlew -i composeDown
+goto:END
 
-rem gradlew clean bootRun
-rem gradlew clean bootJar
-rem java -jar build/libs/bloodmoney-1.0-SNAPSHOT.jar org.woehlke.bloodmoney.BloodMoneyApplication -Dspring.profiles.active=default
+:testH2
+echo ---------------------------- testH2 ------------------------------------------------
+cmd /c gradlew -i clean build bootRun --args='--spring.profiles.active=dev'
+goto:END
 
+
+:bootRunH2
+echo ---------------------------- bootRunH2 ------------------------------------------------
+cmd /c gradlew -i clean bootRun --args='--spring.profiles.active=dev'
+goto:END
+
+
+:MAIN
+goto:bootRunH2
+
+:END
+echo "DONE"
