@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Data
@@ -34,6 +35,12 @@ public class BloodPressureMeasurement implements Serializable {
         initialValue = 1000
     )
     private Long id;
+
+    @Nullable
+    @CsvBindByName
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @Column(name = "measurement_timestamp", columnDefinition = "DATETIME")
+    private LocalDateTime dateTime;
 
     @NotNull
     @CsvBindByName

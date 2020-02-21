@@ -59,3 +59,16 @@ tt,code,kbd,samp,pre{
 #newUser2UserMessageForm {
     margin-bottom: 1rem;
 }
+
+table.table thead .sorted:after{
+    display: inline-block;
+    font-family: 'Font Awesome 5 Free';
+    opacity: 0.8;
+    margin-left: 1em;
+}
+table.table thead .sorted.sorted-desc:after{
+    content: "\f107";
+}
+table.table thead .sorted.sorted-asc:after{
+    content: "\f106";
+}

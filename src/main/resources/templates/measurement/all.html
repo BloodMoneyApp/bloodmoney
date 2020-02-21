@@ -9,35 +9,35 @@
 <body th:replace="layout/page :: tw-page-body(twcontent=~{::mytwcontent},twtitle=~{::h1},description=~{::p.tw-content-subtitle})">
 <div id="page">
     <header id="tw-content-title">
-                    <h1>
-                        <i class="fas fa-heart"></i>
-                        <span th:utext="#{org.woehlke.mybp.measurement.all.title}">All Measurements</span>
-                    </h1>
-                    <p class="tw-content-subtitle">
-                        <span th:text="#{org.woehlke.mybp.measurement.all.subtitle.long}"></span>
-                    </p>
-            <p class="tw-content-subtitle">
-                <span class="row">
-                    <span class="col">
-                        <a href="#" th:href="@{/measurement/add}" class="btn btn-primary btn-block" role="button">
-                            <i class="fas fa-stethoscope"></i>
-                            <span th:text="#{org.woehlke.mybp.measurement.all.button.add}">Add New Measurement</span>
-                        </a>
-                    </span>
-                    <span class="col">
-                        <a href="#" th:href="@{/measurement/all}" class="btn btn-secondary btn-block" role="button">
-                            <i class="fas fa-sync"></i>
-                            <span th:text="#{org.woehlke.mybp.measurement.all.button.reload}">Reload List of All Measurements</span>
-                        </a>
-                    </span>
-                    <span class="col">
-                        <a href="#" th:href="@{/measurement/export/all}" class="btn btn-dark btn-block" role="button">
-                            <i class="fas fa-download"></i>
-                            <span th:text="#{org.woehlke.mybp.measurement.all.button.export}">Export List of All Measurements</span>
-                        </a>
-                    </span>
+        <h1>
+            <i class="fas fa-heart"></i>
+            <span th:utext="#{org.woehlke.mybp.measurement.all.title}">All Measurements</span>
+        </h1>
+        <p class="tw-content-subtitle">
+            <span th:text="#{org.woehlke.mybp.measurement.all.subtitle.long}"></span>
+        </p>
+        <p class="tw-content-subtitle">
+            <span class="row">
+                <span class="col">
+                    <a href="#" th:href="@{/measurement/add}" class="btn btn-primary btn-block" role="button">
+                        <i class="fas fa-stethoscope"></i>
+                        <span th:text="#{org.woehlke.mybp.measurement.all.button.add}">Add New Measurement</span>
+                    </a>
                 </span>
-            </p>
+                <span class="col">
+                    <a href="#" th:href="@{/measurement/all}" class="btn btn-secondary btn-block" role="button">
+                        <i class="fas fa-sync"></i>
+                        <span th:text="#{org.woehlke.mybp.measurement.all.button.reload}">Reload List of All Measurements</span>
+                    </a>
+                </span>
+                <span class="col">
+                    <a href="#" th:href="@{/measurement/export/all}" class="btn btn-dark btn-block" role="button">
+                        <i class="fas fa-download"></i>
+                        <span th:text="#{org.woehlke.mybp.measurement.all.button.export}">Export List of All Measurements</span>
+                    </a>
+                </span>
+            </span>
+        </p>
     </header>
     <!-- Main Document Window -->
     <main id="tw-main-section">
@@ -52,11 +52,11 @@
                                 <!--
                                 <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.id}">id</th>
                                 -->
-                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.date}">date</th>
-                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.time}">time</th>
-                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.systolicTopNumber}">systolicTopNumber</th>
-                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.diastolicBottomNumber}">diastolicBottomNumber</th>
-                                <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.pulse}">pulse</th>
+                                <th><a class="sorted" sd:pagination-sort="dateTime" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.date}">date</a></th>
+                                <th><a class="sorted" sd:pagination-sort="dateTime" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.time}">time</a></th>
+                                <th><a class="sorted" sd:pagination-sort="systolicTopNumber" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.systolicTopNumber}">systolicTopNumber</a></th>
+                                <th><a class="sorted" sd:pagination-sort="diastolicBottomNumber" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.diastolicBottomNumber}">diastolicBottomNumber</a></th>
+                                <th><a class="sorted" sd:pagination-sort="pulse" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.pulse}">pulse</a></th>
                                 <!--
                                 <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.situation}">situation</th>
                                 -->

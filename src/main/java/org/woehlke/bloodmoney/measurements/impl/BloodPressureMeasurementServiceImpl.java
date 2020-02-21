@@ -11,6 +11,9 @@ import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
 import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementRepository;
 import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Slf4j
@@ -33,6 +36,10 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
 
     @Override
     public BloodPressureMeasurement add(BloodPressureMeasurement one) {
+        LocalDate date = one.getDate();
+        LocalTime time = one.getTime();
+        LocalDateTime lft = LocalDateTime.of(date,time);
+        one.setDateTime(lft);
         return this.bloodPressureMeasurementRepository.save(one);
     }
 
