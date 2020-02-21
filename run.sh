@@ -2,8 +2,6 @@
 
 source setenv.sh
 
-#./gradlew assemble
-
 function bootRunPostgresSQl() {
     ./gradlew composeUp
     ./gradlew clean bootRun --args='--spring.profiles.active=heroku'
@@ -22,5 +20,5 @@ function bootRunH2() {
 }
 
 #bootRunHerokuLocals
-#bootRunPostgresSQl
+bootRunPostgresSQl
 bootRunH2
