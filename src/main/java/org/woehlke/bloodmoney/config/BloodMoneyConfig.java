@@ -12,7 +12,7 @@ import org.woehlke.bloodmoney.application.BloodMoneyProperties;
 @Configuration
 @EnableAsync
 @EnableJpaRepositories({
-    "org.woehlke.bloodmoney.oodm.repositories"
+    "org.woehlke.bloodmoney.measurements"
 })
 @EnableConfigurationProperties({
     BloodMoneyProperties.class
