@@ -4,24 +4,25 @@ source setenv.sh
 
 
 function bootRunHerokuLocal() {
-    ./gradlew composeUp
-    ./gradlew clean assemble
+    ./gradlew -i composeUp
+    ./gradlew -i clean assemble
     heroku local web
-    ./gradlew composeDown
+    ./gradlew -i composeDown
 }
 
 function bootRunPostgresSQl() {
-    ./gradlew composeUp
-    ./gradlew clean bootRun --args='--spring.profiles.active=default'
-    ./gradlew composeDown
+    ./gradlew -i composeUp
+    ./gradlew -i clean bootRun --args='--spring.profiles.active=default'
+    ./gradlew -i composeDown
 }
 
 function testH2() {
-    ./gradlew clean build bootJar --args='--spring.profiles.active=dev'
+    ./gradlew -i clean build test check bootJar
+    #--args='--spring.profiles.active=dev'
 }
 
 function bootRunH2() {
-    ./gradlew clean bootRun --args='--spring.profiles.active=dev'
+    ./gradlew -i clean bootRun --args='--spring.profiles.active=dev'
 }
 
 #bootRunHerokuLocal
