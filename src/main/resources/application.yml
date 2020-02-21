@@ -85,7 +85,7 @@ org:
                     - "/h2*/**"
 ---
 spring:
-    profiles: dev
+    profiles: default
     datasource:
         platform: H2
         driver-class-name: org.h2.Driver
@@ -200,7 +200,7 @@ logging:
 debug: true
 ---
 spring:
-    profiles: default
+    profiles: heroku
     datasource:
         url:  jdbc:postgresql://localhost:5432/bloodmoney
         username:  bloodmoney
@@ -220,9 +220,8 @@ spring:
         show-sql: true
         database-platform: POSTGRESQL
         hibernate:
-            #ddl-auto: update
             #ddl-auto: create-drop
-            ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
+            ddl-auto: update
             naming:
                 implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
                 physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
