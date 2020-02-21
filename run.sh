@@ -19,6 +19,8 @@ function bootRunH2() {
     ./gradlew clean bootRun --args='--spring.profiles.active=default'
 }
 
-#bootRunHerokuLocals
-bootRunPostgresSQl
+#bootRunHerokuLocal
+
+#bootRunPostgresSQl
+
 bootRunH2
