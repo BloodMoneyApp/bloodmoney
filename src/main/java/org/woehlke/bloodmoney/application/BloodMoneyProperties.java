@@ -1,6 +1,7 @@
-package org.woehlke.bloodmoney.config;
+package org.woehlke.bloodmoney.application;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,9 +17,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Log
-@Getter
-@Setter
-@ToString
+@Data
 @Validated
 @Component
 @ConfigurationProperties(prefix="org.woehlke.bloodmoney")

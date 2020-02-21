@@ -12,10 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 @Entity
 @Table(
     name = "measurement",

@@ -24,18 +24,6 @@ import javax.validation.Valid;
 @SessionAttributes("userSession")
 public class MeasurementController {
 
-    private final BloodPressureMeasurementService bloodPressureMeasurementService;
-    private final UserSessionService userSessionService;
-
-    @Autowired
-    public MeasurementController(
-        BloodPressureMeasurementService bloodPressureMeasurementService,
-        UserSessionService userSessionService
-    ) {
-        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
-        this.userSessionService = userSessionService;
-    }
-
     @GetMapping("/all")
     public String getAll(
         @PageableDefault(sort={"date","time"},direction=Sort.Direction.DESC) Pageable pageable,
@@ -120,4 +108,15 @@ public class MeasurementController {
         }
     }
 
+    private final BloodPressureMeasurementService bloodPressureMeasurementService;
+    private final UserSessionService userSessionService;
+
+    @Autowired
+    public MeasurementController(
+        BloodPressureMeasurementService bloodPressureMeasurementService,
+        UserSessionService userSessionService
+    ) {
+        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+        this.userSessionService = userSessionService;
+    }
 }

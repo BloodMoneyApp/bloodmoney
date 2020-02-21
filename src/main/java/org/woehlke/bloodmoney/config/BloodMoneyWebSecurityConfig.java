@@ -1,6 +1,7 @@
-package org.woehlke.bloodmoney.config.di;
+package org.woehlke.bloodmoney.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -23,6 +24,7 @@ import org.woehlke.bloodmoney.user.services.UserAccountSecurityService;
 @Import({
     BloodMoneyWebMvcConfig.class
 })
+@EnableAutoConfiguration
 public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override

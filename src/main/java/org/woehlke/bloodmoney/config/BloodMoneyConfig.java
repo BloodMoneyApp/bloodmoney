@@ -1,12 +1,13 @@
-package org.woehlke.bloodmoney.config.di;
+package org.woehlke.bloodmoney.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.application.BloodMoneyProperties;
 
 @Configuration
 @EnableAsync
@@ -16,6 +17,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 @EnableConfigurationProperties({
     BloodMoneyProperties.class
 })
+@EnableAutoConfiguration
 public class BloodMoneyConfig {
 
     @Bean

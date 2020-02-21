@@ -1,7 +1,8 @@
-package org.woehlke.bloodmoney.config.di;
+package org.woehlke.bloodmoney.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -22,6 +23,7 @@ import java.util.Locale;
 @Import({
     BloodMoneyConfig.class
 })
+@EnableAutoConfiguration
 public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implements WebMvcConfigurer {
 
     @Bean

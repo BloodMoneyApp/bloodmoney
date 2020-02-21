@@ -1,13 +1,14 @@
-package org.woehlke.bloodmoney.frontend.api;
+package org.woehlke.bloodmoney.frontend.controller;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.application.BloodMoneyProperties;
 import org.woehlke.bloodmoney.oodm.model.BloodPressureMeasurement;
 import org.woehlke.bloodmoney.oodm.services.BloodPressureMeasurementService;
 

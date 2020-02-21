@@ -51,6 +51,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-configuration-metadata'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+    //implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.springframework.boot:spring-boot-starter-jersey'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework:spring-aspects'
     implementation 'org.springframework.session:spring-session-jdbc'
     implementation 'org.springframework.security:spring-security-core'
@@ -74,11 +80,6 @@ dependencies {
 test {
     outputs.dir snippetsDir
     useJUnitPlatform()
-}
-
-asciidoctor {
-    inputs.dir snippetsDir
-    dependsOn test
 }
 
 springBoot {

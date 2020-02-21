@@ -6,10 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Stack;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserSession implements Serializable {

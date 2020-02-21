@@ -9,11 +9,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.application.BloodMoneyProperties;
 import org.woehlke.bloodmoney.frontend.model.UserSession;
 import org.woehlke.bloodmoney.oodm.model.BloodPressureMeasurement;
 import org.woehlke.bloodmoney.oodm.services.BloodPressureMeasurementService;
 import org.woehlke.bloodmoney.user.services.UserSessionService;
+
+
 
 @Log
 @RestController
@@ -21,15 +23,16 @@ import org.woehlke.bloodmoney.user.services.UserSessionService;
 @SessionAttributes("userSession")
 public class BloodPressureMeasurementResource {
 
-     @GetMapping("/{id}")
-     public BloodPressureMeasurement getOne(
-         long id,
-         @SessionAttribute(name="userSession", required=false) UserSession userSession,
-         Model model
-     ){
-         model = userSessionService.handleUserSession(userSession, model);
-         return bloodPressureMeasurementService.getOne(id);
-     }
+    @GetMapping("/{id}")
+    public BloodPressureMeasurement getOne(
+        @PathVariable("id") BloodPressureMeasurement one,
+        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        Model model
+    ) {
+        model = userSessionService.handleUserSession(userSession, model);
+        model.addAttribute("one", one);
+        return one;
+    }
 
     @GetMapping("/all")
     public Page<BloodPressureMeasurement> getAll(

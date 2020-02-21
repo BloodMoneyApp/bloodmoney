@@ -5,10 +5,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class FlashMessage implements Serializable {

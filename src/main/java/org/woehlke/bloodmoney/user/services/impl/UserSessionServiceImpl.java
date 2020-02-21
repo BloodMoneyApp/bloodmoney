@@ -4,7 +4,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.application.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.services.UserSessionService;
 import org.woehlke.bloodmoney.frontend.model.UserSession;
 
