@@ -1,7 +1,3 @@
-endpoints:
-    endpoints:
-        shutdown:
-            enabled: false
 server:
     port: ${PORT}
     error:
@@ -9,15 +5,19 @@ server:
     compression:
         enabled: true
         min-response-size: 2048
+endpoints:
+    endpoints:
+        shutdown:
+            enabled: ${BLOODMONEY_DEV_TESTING}
 spring:
     devtools:
         livereload:
-            enabled: true
+            enabled: ${BLOODMONEY_DEV_TESTING}
     application:
         admin:
-            enabled: true
+            enabled: ${BLOODMONEY_DEV_TESTING}
     jpa:
-        show-sql: true
+        show-sql: ${BLOODMONEY_DEV_TESTING}
         open-in-view: true
         generate-ddl: true
         hibernate:
@@ -84,8 +84,18 @@ org:
                     - "/fehler*"
                     - "/h2*/**"
 ---
+endpoints:
+    endpoints:
+        shutdown:
+            enabled: true
 spring:
     profiles: dev
+    devtools:
+        livereload:
+            enabled: true
+    application:
+        admin:
+            enabled: true
     datasource:
         platform: H2
         driver-class-name: org.h2.Driver
