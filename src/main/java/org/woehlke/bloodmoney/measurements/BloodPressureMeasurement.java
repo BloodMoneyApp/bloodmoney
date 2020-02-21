@@ -1,8 +1,7 @@
 package org.woehlke.bloodmoney.measurements;
 
 import com.opencsv.bean.CsvBindByName;
-import lombok.*;
-import org.hibernate.validator.constraints.Length;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
@@ -65,7 +64,7 @@ public class BloodPressureMeasurement implements Serializable {
 
     @Nullable
     @CsvBindByName
-    @Length(max=255)
+    //@Length(max=65535)
     @Column(name = "situation", nullable = true)
     private String situation;
 
