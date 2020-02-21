@@ -10,7 +10,7 @@ function bootRunHerokuLocal() {
     ./gradlew -i composeDown
 }
 
-function bootRunPostgresSQl() {
+function bootRunPostgresSQL() {
     ./gradlew -i composeUp
     ./gradlew -i clean bootRun --args='--spring.profiles.active=default'
     ./gradlew -i composeDown
@@ -25,10 +25,11 @@ function bootRunH2() {
     ./gradlew -i clean bootRun --args='--spring.profiles.active=dev'
 }
 
-#bootRunHerokuLocal
+function main() {
+    bootRunHerokuLocal
+    # bootRunPostgresSQL
+    # testH2
+    # bootRunH2
+}
 
-#bootRunPostgresSQl
-
-testH2
-
-#bootRunH2
+main

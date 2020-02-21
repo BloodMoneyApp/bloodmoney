@@ -44,7 +44,7 @@ public class BloodPressureMeasurement implements Serializable {
     @Nullable
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    @Column(name = "measurement_timestamp", columnDefinition = "DATETIME")
+    @Column(name = "measurement_timestamp", columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
     @NotNull
