@@ -1,5 +1,9 @@
 set PORT=5000
 set JAVA_OPTS=-XX:CICompilerCount=2 -Dspring.profiles.active=default
+set BLOODMONEY_DS_DB=bloodmoney
+set BLOODMONEY_DS_USR=bloodmoney
+set BLOODMONEY_DS_PWD=bloodmoneypwd
+set BLOODMONEY_DS_HOST=localhost
 set BLOODMONEY_HIBERNATE_DDL_AUTO=create-drop
 set BLOODMONEY_DEV_TESTING=false
 set BLOODMONEY_USER_EMAIL=thomas.woehlke@gmail.com

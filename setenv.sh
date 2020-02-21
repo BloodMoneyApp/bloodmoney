@@ -2,6 +2,10 @@
 
 export PORT=5000
 export JAVA_OPTS='-Xmx300m -Xss512k -XX:CICompilerCount=2'
+export BLOODMONEY_DS_DB='bloodmoney'
+export BLOODMONEY_DS_USR='bloodmoney'
+export BLOODMONEY_DS_PWD='bloodmoneypwd'
+export BLOODMONEY_DS_HOST='localhost'
 export BLOODMONEY_HIBERNATE_DDL_AUTO='create-drop'
 export BLOODMONEY_DEV_TESTING=false
 export BLOODMONEY_USER_EMAIL='thomas.woehlke@gmail.com'
