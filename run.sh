@@ -16,12 +16,18 @@ function bootRunPostgresSQl() {
     ./gradlew composeDown
 }
 
+function testH2() {
+    ./gradlew clean build bootRun --args='--spring.profiles.active=dev'
+}
+
 function bootRunH2() {
     ./gradlew clean bootRun --args='--spring.profiles.active=dev'
 }
 
-bootRunHerokuLocal
+#bootRunHerokuLocal
 
 #bootRunPostgresSQl
 
-#bootRunH2
+#testH2
+
+bootRunH2
