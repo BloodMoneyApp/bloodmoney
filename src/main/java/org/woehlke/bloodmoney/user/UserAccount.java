@@ -8,7 +8,10 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Locale;
 
-@Data
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 public class UserAccount implements Serializable {
 
     private static final long serialVersionUID = 4168992193351369032L;
