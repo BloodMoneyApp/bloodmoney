@@ -1,8 +1,13 @@
 call setenv.cmd
 
-cmd /c gradlew -i composeUp
-cmd /c gradlew -i clean bootRun --args='--spring.profiles.active=heroku'
-cmd /c gradlew -i composeDown
+rem ----------------------------------------------------------------------------
+rem cmd /c gradlew -i composeUp
+rem cmd /c gradlew -i clean bootRun --args='--spring.profiles.active=heroku'
+rem cmd /c gradlew -i composeDown
+
+rem ----------------------------------------------------------------------------
+cmd /c gradlew -i clean bootRun --args='--spring.profiles.active=default'
+rem ----------------------------------------------------------------------------
 
 rem gradlew clean bootRun
 rem gradlew clean bootJar
