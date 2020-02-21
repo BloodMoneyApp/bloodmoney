@@ -34,7 +34,7 @@ out/
 bloodmoney.iml
 *.log
 /transaction-logs/
-.env
+.en
 /bloodmoney.log
 /bloodmoney.log*
 build
