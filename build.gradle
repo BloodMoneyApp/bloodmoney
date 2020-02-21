@@ -35,10 +35,10 @@ ext {
 }
 
 dependencies {
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
@@ -81,9 +81,14 @@ dependencies {
     }
     testImplementation 'org.springframework.security:spring-security-test'
     testAnnotationProcessor 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.projectlombok:lombok'
     testImplementation "junit:junit:4.13"
     testImplementation 'org.junit.jupiter:junit-jupiter:'+junitVersion
     testRuntimeOnly "org.junit.vintage:junit-vintage-engine:"+junitVersion
+    testRuntimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
+    testRuntimeOnly 'com.h2database:h2'
+    testRuntimeOnly 'org.postgresql:postgresql'
 }
 
 test {

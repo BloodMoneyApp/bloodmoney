@@ -28,6 +28,6 @@ function bootRunH2() {
 
 #bootRunPostgresSQl
 
-#testH2
+testH2
 
-bootRunH2
+#bootRunH2
