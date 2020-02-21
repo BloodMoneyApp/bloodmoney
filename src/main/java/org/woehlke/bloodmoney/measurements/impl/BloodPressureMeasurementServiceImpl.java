@@ -1,6 +1,5 @@
 package org.woehlke.bloodmoney.measurements.impl;
 
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
