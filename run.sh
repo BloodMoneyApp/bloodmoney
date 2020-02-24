@@ -26,10 +26,10 @@ function bootRunH2() {
 }
 
 function main() {
-    bootRunHerokuLocal
+    # bootRunHerokuLocal
     # bootRunPostgresSQL
     # testH2
-    # bootRunH2
+    bootRunH2
 }
 
 main
