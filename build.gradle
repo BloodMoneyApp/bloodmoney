@@ -43,6 +43,7 @@ ext {
     set('springCloudVersion', "Hoxton.SR1")
     set('vaadinVersion', "14.1.17")
     set('failOnNoContracts','false')
+    set('bootswatchVersion','4.2.1')
 }
 
 dependencies {
@@ -76,6 +77,15 @@ dependencies {
     implementation 'org.webjars:bootstrap:4.4.1'
     implementation 'org.webjars:font-awesome:5.12.0'
     implementation 'org.webjars.bower:github-com-silktide-cookieconsent2:1.0.9'
+    implementation "org.webjars:bootswatch-sandstone:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-cyborg:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-cerulean:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-slate:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-cosmo:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-cosmo:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-darkly:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-flatly:${bootswatchVersion}"
+    implementation "org.webjars:bootswatch-spacelab:${bootswatchVersion}"
     implementation 'org.jsoup:jsoup:1.12.1'
     implementation 'com.opencsv:opencsv:5.0'
     //implementation 'org.liquibase:liquibase-core'
