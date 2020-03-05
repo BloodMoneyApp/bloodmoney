@@ -27,8 +27,8 @@ function bootRunH2() {
 
 function main() {
     # bootRunHerokuLocal
-    # bootRunPostgresSQL
-    testH2
+    bootRunPostgresSQL
+    # testH2
     # bootRunH2
 }
 
