@@ -2,19 +2,26 @@
 
 source setenv.sh
 
-function bootRunHerokuLocal() {
+function composeUp() {
     ./gradlew -i composeUp
+}
+
+function composeDown() {
+    ./gradlew -i composeDown
+}
+
+function bootRunHerokuLocal() {
+    composeUp
     ./gradlew -i clean assemble
     heroku local web
-    ./gradlew -i composeDown
+    composeDown
 }
 
 function bootRunPostgresSQL() {
     ./gradlew -i clean assemble bootJar
-    ./gradlew -i composeUp
+    composeUp
     ./gradlew -i bootRun --args='--spring.profiles.active=default'
-    ./gradlew -i composeDown
-
+    #composeDown
 }
 
 function testH2() {
@@ -28,7 +35,9 @@ function bootRunH2() {
 
 function main() {
     # bootRunHerokuLocal
-    bootRunPostgresSQL
+    # composeDown
+    composeUp
+    # bootRunPostgresSQL
     # testH2
     # bootRunH2
 }
