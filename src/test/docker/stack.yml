@@ -7,21 +7,23 @@ services:
         image: postgres:11.6
         restart: always
         ports:
-            - 5432:15432
+            - 15432:15432
         environment:
             POSTGRES_PASSWORD: bloodmoneypwd
             POSTGRES_USER: bloodmoney
             POSTGRES_DB: bloodmoney
+            POSTGRES_PORT: 15432
 
     bloodmoney_dbref:
         image: postgres:11.6
         restart: always
         ports:
-            - 5432:25432
+            - 25432:25432
         environment:
             POSTGRES_PASSWORD: bloodmoneyrefpwd
             POSTGRES_USER: bloodmoneyref
             POSTGRES_DB: bloodmoneyref
+            POSTGRES_PORT: 25432
 
     bloodmoney_adminer:
         image: adminer:4.7.4
