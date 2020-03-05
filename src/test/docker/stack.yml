@@ -13,15 +13,15 @@ services:
             POSTGRES_USER: bloodmoney
             POSTGRES_DB: bloodmoney
 
-    bloodmoney_db_ref:
+    bloodmoney_dbref:
         image: postgres:11.6
         restart: always
         ports:
-            - 5431:5431
+            - 15432:15432
         environment:
-            POSTGRES_PASSWORD: bloodmoneypwd
-            POSTGRES_USER: bloodmoney
-            POSTGRES_DB: bloodmoney
+            POSTGRES_PASSWORD: bloodmoneyrefpwd
+            POSTGRES_USER: bloodmoneyref
+            POSTGRES_DB: bloodmoneyref
 
     bloodmoney_adminer:
         image: adminer:4.7.4
