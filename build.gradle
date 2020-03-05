@@ -2,7 +2,6 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id "org.springframework.cloud.contract" version  '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'io.spring.javadoc' version '0.0.1.BUILD-SNAPSHOT'
     id 'java'
     id 'idea'
     id 'eclipse-wtp'
@@ -43,6 +42,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 ext {
