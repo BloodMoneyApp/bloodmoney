@@ -31,6 +31,15 @@ import java.util.UUID;
         @Index(
             name = "idx_measurement_date",
             columnList = "measurement_date"
+        ),
+        @Index(
+            name = "idx_measurement_timestamp",
+            columnList = "measurement_timestamp"
+        ),
+        @Index(
+            name = "idx_measurement_uuid",
+            columnList = "uuid",
+            unique = true
         )
     }
 )
@@ -49,7 +58,7 @@ public class BloodPressureMeasurement implements Serializable {
 
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "uuid")
+    @Column(name = "uuid", columnDefinition = "uuid", unique = true)
     private UUID uuid;
 
     @Version

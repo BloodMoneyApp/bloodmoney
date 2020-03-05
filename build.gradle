@@ -44,6 +44,14 @@ ext {
     set('vaadinVersion', "14.1.17")
     set('failOnNoContracts','false')
     set('bootswatchVersion','4.2.1')
+    set('thymeleafSpringDataDialectversion','3.4.1')
+    set('jsoupVersion','1.13.1')
+    set('opencsvVersion','5.1')
+    set('webjarsJqueryVersion','3.4.1')
+    set('webjarsPopperJsVersion','1.16.0')
+    set('webjarsBootstrap','4.4.1')
+    set('webjarsFontAwesomeVersion','5.12.0')
+    set('githubComSilktideCookieconsent2Version','3.1.0')
 }
 
 dependencies {
@@ -72,11 +80,13 @@ dependencies {
     implementation 'de.codecentric:spring-boot-admin-starter-client'
     implementation 'de.codecentric:spring-boot-admin-starter-server'
     implementation 'org.flywaydb:flyway-core'
-    implementation 'org.webjars:jquery:3.4.1'
-    implementation 'org.webjars:popper.js:1.16.0'
-    implementation 'org.webjars:bootstrap:4.4.1'
-    implementation 'org.webjars:font-awesome:5.12.0'
-    implementation 'org.webjars.bower:github-com-silktide-cookieconsent2:1.0.9'
+    implementation "org.jsoup:jsoup:${jsoupVersion}"
+    implementation "com.opencsv:opencsv:${opencsvVersion}"
+    implementation "org.webjars:jquery:${webjarsJqueryVersion}"
+    implementation "org.webjars:popper.js:${webjarsPopperJsVersion}"
+    implementation "org.webjars:bootstrap:${webjarsBootstrap}"
+    implementation "org.webjars:font-awesome:${webjarsFontAwesomeVersion}"
+    implementation "org.webjars.bower:github-com-silktide-cookieconsent2:${githubComSilktideCookieconsent2Version}"
     implementation "org.webjars:bootswatch-sandstone:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-cyborg:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-cerulean:${bootswatchVersion}"
@@ -86,8 +96,6 @@ dependencies {
     implementation "org.webjars:bootswatch-darkly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-flatly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-spacelab:${bootswatchVersion}"
-    implementation 'org.jsoup:jsoup:1.12.1'
-    implementation 'com.opencsv:opencsv:5.0'
     //implementation 'org.liquibase:liquibase-core'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.session:spring-session-jdbc'
@@ -95,7 +103,7 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time'
     implementation 'com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute'
-    implementation 'io.github.jpenren:thymeleaf-spring-data-dialect:3.4.0'
+    implementation "io.github.jpenren:thymeleaf-spring-data-dialect:${thymeleafSpringDataDialectversion}"
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.postgresql:postgresql'
@@ -162,6 +170,8 @@ bootRunDefault.finalizedBy bootRun
 bootRunHeroku.finalizedBy bootRun
 
 dockerCompose {
+    isRequiredBy(project.tasks.test)
+    exposeAsSystemProperties(project.tasks.test)
     useComposeFiles = ['src/test/docker/stack.yml']
 }
 
