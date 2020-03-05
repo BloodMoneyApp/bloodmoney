@@ -10,8 +10,6 @@ services:
             - net
         ports:
             - 5432:5432
-        volumes:
-            - "./db_bloodmoney_dbmaster:/var/lib/postgresql/data/pgdata"
         environment:
             POSTGRES_PASSWORD: bloodmoneypwd
             POSTGRES_USER: bloodmoney
@@ -23,8 +21,6 @@ services:
             - net
         ports:
             - 25432:5432
-        volumes:
-            - "./db_bloodmoney_dbref:/var/lib/postgresql/data/pgdata"
         environment:
             POSTGRES_PASSWORD: bloodmoneyrefpwd
             POSTGRES_USER: bloodmoneyref
@@ -34,15 +30,9 @@ services:
         restart: always
         networks:
             - net
-        depends_on:
-            - bloodmoney_dbmaster
-            - bloodmoney_dbref
         ports:
             - 8080:8080
 networks:
     net:
-volumes:
-    db_bloodmoney_dbmaster:
-    db_bloodmoney_dbref:
 
 
