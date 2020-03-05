@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 /**
@@ -71,6 +72,12 @@ public class BloodPressureMeasurement implements Serializable {
     @Column(name = "measurement_timestamp", columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
+    @Nullable
+    @CsvBindByName
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @Column(name = "measurement_timestamp_updated", columnDefinition = "TIMESTAMP")
+    private LocalDateTime dateTimeUpdated;
+
     @NotNull
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -105,13 +112,14 @@ public class BloodPressureMeasurement implements Serializable {
     private String situation;
 
     public static BloodPressureMeasurement getInstance(){
-        LocalDate today = LocalDate.now();
-        LocalTime now = LocalTime.now();
-        UUID uuid = UUID.randomUUID();
+        ZoneId zone = ZoneId.of("Europe/Paris");
+        LocalDate today = LocalDate.now(zone);
+        LocalTime now = LocalTime.now(zone);
+        LocalDateTime dateTimeNow = LocalDateTime.now(zone);
         BloodPressureMeasurement o = new BloodPressureMeasurement();
-        o.setUuid(uuid);
         o.setDate(today);
         o.setTime(now);
+        o.setDateTime(dateTimeNow);
         o.setSystolicTopNumber(120);
         o.setDiastolicBottomNumber(80);
         o.setPulse(68);

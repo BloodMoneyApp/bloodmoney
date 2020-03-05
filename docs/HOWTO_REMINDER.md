@@ -8,10 +8,16 @@
 * [Howto: Gradle Docker Compose](https://bmuschko.com/blog/gradle-docker-compose/)
 
 ### Documentation
-* http://projects.spring.io/spring-boot/
+* spring-boot https://spring.io/projects/spring-boot
+* spring-data-jpa https://spring.io/projects/spring-data-jpa
+* spring-framework https://spring.io/projects/spring-framework
+* spring-framework Data Access https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/data-access.html
+* spring-framework WebMVC https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
+* https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/html/
+* https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/html/appendix-application-properties.html#common-application-properties
+* https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/api/
+* https://docs.spring.io/spring-data/jpa/docs/2.2.5.RELEASE/reference/html/#reference
 
-### Github Repos
-* [gradle-docker-compose-plugin](https://github.com/avast/gradle-docker-compose-plugin)
 
 ### Gradle Plugins
 * https://plugins.gradle.org/plugin/org.springframework.boot
@@ -20,6 +26,12 @@
 * https://plugins.gradle.org/plugin/org.asciidoctor.jvm.convert
 * https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
 
+### Github Repos
+* 
+* https://github.com/spring-cloud/spring-cloud-contract
+* https://github.com/spring-gradle-plugins/dependency-management-plugin
+* https://github.com/asciidoctor/asciidoctor-gradle-plugin
+* [gradle-docker-compose-plugin](https://github.com/avast/gradle-docker-compose-plugin)
 
 ## Database and JPA
 ### DB Datatypes

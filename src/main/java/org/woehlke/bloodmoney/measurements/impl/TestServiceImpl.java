@@ -27,7 +27,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public void createTestData() {
-        ZoneId zone =ZoneId.of("Europe/Paris");
+        ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today =  LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
         for(long i=0;i<1000;i++){
