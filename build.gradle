@@ -1,24 +1,11 @@
-def springBootAdminVersion = '2.2.1'
-def springCloudVersion =  'Hoxton.SR1'
-def vaadinVersion = '14.1.17'
-def failOnNoContractsSetting = 'false'
-def githubComSilktideCookieconsent2Version = '1.0.9'
-def bootswatchVersion = '4.2.1'
-def thymeleafSpringDataDialectversion = '3.4.1'
-def jsoupVersion = '1.13.1'
-def opencsvVersion = '5.1'
-def webjarsJqueryVersion = '3.4.1'
-def webjarsPopperJsVersion = '1.16.0'
-def webjarsBootstrap = '4.4.1'
-def webjarsFontAwesomeVersion = '5.12.0'
-def dockerComposePluginVersion = '0.10.9'
-def asciidoctorConvertPluginVersion = '3.1.0'
-def springBootVersion = '2.2.5.RELEASE'
-def springCloudContractVersion = '2.2.2.RELEASE'
-def springDependencyManagementPluginVersion = '1.0.9.RELEASE'
-def springJavadocPluginVersion = '0.0.1.BUILD-SNAPSHOT'
-
 plugins {
+    def dockerComposePluginVersion = '0.10.9'
+    def asciidoctorConvertPluginVersion = '3.1.0'
+    def springBootVersion = '2.2.5.RELEASE'
+    def springCloudContractVersion = '2.2.2.RELEASE'
+    def springDependencyManagementPluginVersion = '1.0.9.RELEASE'
+    def springJavadocPluginVersion = '0.0.1.BUILD-SNAPSHOT'
+
     id 'org.springframework.boot' version "${springBootVersion}"
     id "org.springframework.cloud.contract" version "${springCloudContractVersion}"
     id 'io.spring.dependency-management' version "${springDependencyManagementPluginVersion}"
@@ -51,6 +38,11 @@ repositories {
 }
 
 ext {
+    def springBootAdminVersion = '2.2.1'
+    def springCloudVersion = 'Hoxton.SR1'
+    def vaadinVersion = '14.1.17'
+    def failOnNoContractsSetting = 'false'
+
     set('snippetsDir', file("build/generated-snippets"))
     set('springBootAdminVersion', "${springBootAdminVersion}")
     set('springCloudVersion', "${springCloudVersion}")
@@ -59,8 +51,19 @@ ext {
 }
 
 dependencies {
+    def githubComSilktideCookieconsent2Version = '1.0.9'
+    def bootswatchVersion = '4.2.1'
+    def thymeleafSpringDataDialectversion = '3.4.1'
+    def jsoupVersion = '1.13.1'
+    def opencsvVersion = '5.1'
+    def webjarsJqueryVersion = '3.4.1'
+    def webjarsPopperJsVersion = '1.16.0'
+    def webjarsBootstrap = '4.4.1'
+    def webjarsFontAwesomeVersion = '5.12.0'
+    def camelSpringBootStarterVersion = '3.0.1'
+
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    //implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.0.1'
+    //implementation "org.apache.camel.springboot:camel-spring-boot-starter:${camelSpringBootStarterVersion}"
     //implementation 'org.springframework.boot:spring-boot-starter-integration'
     //implementation 'org.springframework.boot:spring-boot-starter-amqp'
     //implementation 'org.springframework.boot:spring-boot-starter-artemis'
