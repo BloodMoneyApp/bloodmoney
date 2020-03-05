@@ -1,17 +1,25 @@
 # Howto Reminder
 
 ## 3rd Party Software 
-### sHowto
+### Howto
 * [Spring dependency-management-plugin](https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/)
 * [Example on github: heroku and Gradle](https://github.com/heroku/gradle-getting-started/blob/master/build.gradle)
 * [Howto: Using lombok](https://projectlombok.org/setup/overview)
 * [Howto: Gradle Docker Compose](https://bmuschko.com/blog/gradle-docker-compose/)
 
+### Documentation
+* http://projects.spring.io/spring-boot/
+
 ### Github Repos
 * [gradle-docker-compose-plugin](https://github.com/avast/gradle-docker-compose-plugin)
 
-### For Future
-* [Gradle Docker Plugin](https://bmuschko.github.io/gradle-docker-plugin/)
+### Gradle Plugins
+* https://plugins.gradle.org/plugin/org.springframework.boot
+* https://plugins.gradle.org/plugin/org.springframework.cloud.contract
+* https://plugins.gradle.org/plugin/io.spring.dependency-management
+* https://plugins.gradle.org/plugin/org.asciidoctor.jvm.convert
+* https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
+
 
 ## Database and JPA
 ### DB Datatypes

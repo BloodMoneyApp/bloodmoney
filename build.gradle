@@ -2,8 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id "org.springframework.cloud.contract" version "2.2.2.RELEASE"
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'org.asciidoctor.convert' version '2.4.0'
-    id 'com.avast.gradle.docker-compose' version '0.10.9'
+    id "org.asciidoctor.jvm.convert" version "3.1.0"
+    id "com.avast.gradle.docker-compose" version "0.10.9"
     id 'java'
     id 'idea'
     id 'eclipse-wtp'
