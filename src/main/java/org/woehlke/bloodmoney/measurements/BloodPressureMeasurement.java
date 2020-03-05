@@ -2,6 +2,7 @@ package org.woehlke.bloodmoney.measurements;
 
 import com.opencsv.bean.CsvBindByName;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
@@ -11,7 +12,12 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.UUID;
 
+/**
+ * H2 Datatypes: http://www.h2database.com/html/datatypes.html
+ * PostgreSQL Datatypes: https://www.postgresql.org/docs/11/datatype.html
+ */
 @Getter
 @Setter
 @ToString
@@ -40,6 +46,15 @@ public class BloodPressureMeasurement implements Serializable {
         initialValue = 1000
     )
     private Long id;
+
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "uuid")
+    private UUID uuid;
+
+    @Version
+    @Column
+    private Long version;
 
     @Nullable
     @CsvBindByName
@@ -83,7 +98,9 @@ public class BloodPressureMeasurement implements Serializable {
     public static BloodPressureMeasurement getInstance(){
         LocalDate today = LocalDate.now();
         LocalTime now = LocalTime.now();
+        UUID uuid = UUID.randomUUID();
         BloodPressureMeasurement o = new BloodPressureMeasurement();
+        o.setUuid(uuid);
         o.setDate(today);
         o.setTime(now);
         o.setSystolicTopNumber(120);
