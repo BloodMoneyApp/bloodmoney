@@ -17,7 +17,7 @@ services:
         image: postgres:11.6
         restart: always
         ports:
-            - 5432:5431
+            - 5431:5431
         environment:
             POSTGRES_PASSWORD: bloodmoneypwd
             POSTGRES_USER: bloodmoney

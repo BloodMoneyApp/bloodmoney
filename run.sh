@@ -2,7 +2,6 @@
 
 source setenv.sh
 
-
 function bootRunHerokuLocal() {
     ./gradlew -i composeUp
     ./gradlew -i clean assemble
