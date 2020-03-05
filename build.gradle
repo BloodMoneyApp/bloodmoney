@@ -3,15 +3,15 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.2.1.RELEASE'
+        classpath 'org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.2.2.RELEASE'
     }
 }
 
 plugins {
-    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'org.asciidoctor.convert' version '1.5.8'
-    id 'com.avast.gradle.docker-compose' version '0.10.7'
+    id 'org.asciidoctor.convert' version '2.4.0'
+    id 'com.avast.gradle.docker-compose' version '0.10.9'
     id 'java'
     id 'idea'
     id 'eclipse-wtp'
