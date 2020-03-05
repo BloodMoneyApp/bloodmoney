@@ -32,8 +32,8 @@ goto:END
 
 :MAIN
 rem goto:bootRunHerokuLocal
-goto:bootRunPostgresSQL
-rem goto:bootRunH2
+rem goto:bootRunPostgresSQL
+goto:bootRunH2
 
 
 
