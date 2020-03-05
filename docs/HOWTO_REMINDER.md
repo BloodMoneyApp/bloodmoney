@@ -18,13 +18,13 @@
 * https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/api/
 * https://docs.spring.io/spring-data/jpa/docs/2.2.5.RELEASE/reference/html/#reference
 
-
 ### Gradle Plugins
 * https://plugins.gradle.org/plugin/org.springframework.boot
 * https://plugins.gradle.org/plugin/org.springframework.cloud.contract
 * https://plugins.gradle.org/plugin/io.spring.dependency-management
 * https://plugins.gradle.org/plugin/org.asciidoctor.jvm.convert
 * https://plugins.gradle.org/plugin/com.avast.gradle.docker-compose
+* https://plugins.gradle.org/plugin/org.liquibase.gradle
 
 ### Github Repos
 * 
@@ -32,6 +32,7 @@
 * https://github.com/spring-gradle-plugins/dependency-management-plugin
 * https://github.com/asciidoctor/asciidoctor-gradle-plugin
 * [gradle-docker-compose-plugin](https://github.com/avast/gradle-docker-compose-plugin)
+* https://github.com/liquibase/liquibase-gradle-plugin
 
 ## Database and JPA
 ### DB Datatypes
@@ -45,7 +46,7 @@
 ### Database Schema Evolution with Spring Boot JPA
 * TODO
 * org.flywaydb:flyway
-* org.liquibase:liquibase
+* org.liquibase:liquibase https://www.liquibase.org/documentation/maven/index.html
  
 
 ## Frontend with webjars

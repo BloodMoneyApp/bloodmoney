@@ -8,7 +8,7 @@ plugins {
     id 'java-library'
     id "org.asciidoctor.jvm.convert" version '3.1.0'
     id "com.avast.gradle.docker-compose" version '0.10.9'
-
+    id "org.liquibase.gradle" version "2.0.2"
 }
 
 group = 'org.woehlke.bloodmoney'
@@ -29,6 +29,8 @@ def webjarsPopperJsVersion = '1.16.0'
 def webjarsBootstrap = '4.4.1'
 def webjarsFontAwesomeVersion = '5.12.0'
 def camelSpringBootStarterVersion = '3.0.1'
+def liquibaseCoreVersion = '3.8.1'
+def liquibaseGroovyDslVersion = '2.0.1'
 
 configurations {
     developmentOnly
@@ -95,7 +97,7 @@ dependencies {
     implementation "org.webjars:bootswatch-darkly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-flatly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-spacelab:${bootswatchVersion}"
-    //implementation 'org.liquibase:liquibase-core'
+    //developmentOnly 'org.liquibase:liquibase-core'
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
     implementation 'org.springframework.session:spring-session-jdbc'
     implementation 'org.thymeleaf:thymeleaf-spring5'
@@ -120,6 +122,10 @@ dependencies {
     testImplementation 'org.springframework.integration:spring-integration-test'
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    liquibaseRuntime "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
+    liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:${liquibaseGroovyDslVersion}"
+    liquibaseRuntime 'org.postgresql:postgresql'
 }
 
 dependencyManagement {
