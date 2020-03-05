@@ -1,14 +1,35 @@
+def springBootAdminVersion = '2.2.1'
+def springCloudVersion =  'Hoxton.SR1'
+def vaadinVersion = '14.1.17'
+def failOnNoContractsSetting = 'false'
+def githubComSilktideCookieconsent2Version = '1.0.9'
+def bootswatchVersion = '4.2.1'
+def thymeleafSpringDataDialectversion = '3.4.1'
+def jsoupVersion = '1.13.1'
+def opencsvVersion = '5.1'
+def webjarsJqueryVersion = '3.4.1'
+def webjarsPopperJsVersion = '1.16.0'
+def webjarsBootstrap = '4.4.1'
+def webjarsFontAwesomeVersion = '5.12.0'
+def dockerComposePluginVersion = '0.10.9'
+def asciidoctorConvertPluginVersion = '3.1.0'
+def springBootVersion = '2.2.5.RELEASE'
+def springCloudContractVersion = '2.2.2.RELEASE'
+def springDependencyManagementPluginVersion = '1.0.9.RELEASE'
+def springJavadocPluginVersion = '0.0.1.BUILD-SNAPSHOT'
+
 plugins {
-    id 'org.springframework.boot' version '2.2.5.RELEASE'
-    id "org.springframework.cloud.contract" version "2.2.2.RELEASE"
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id "org.asciidoctor.jvm.convert" version "3.1.0"
-    id "com.avast.gradle.docker-compose" version "0.10.9"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id "org.springframework.cloud.contract" version "${springCloudContractVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementPluginVersion}"
+    id 'io.spring.javadoc' version "${springJavadocPluginVersion}"
     id 'java'
     id 'idea'
     id 'eclipse-wtp'
     id 'java-library'
-    id 'io.spring.javadoc' version '0.0.1.BUILD-SNAPSHOT'
+    id "org.asciidoctor.jvm.convert" version "${asciidoctorConvertPluginVersion}"
+    id "com.avast.gradle.docker-compose" version "${dockerComposePluginVersion}"
+
 }
 
 group = 'org.woehlke.bloodmoney'
@@ -31,19 +52,10 @@ repositories {
 
 ext {
     set('snippetsDir', file("build/generated-snippets"))
-    set('springBootAdminVersion', "2.2.1")
-    set('springCloudVersion', "Hoxton.SR1")
-    set('vaadinVersion', "14.1.17")
-    set('failOnNoContracts','false')
-    set('bootswatchVersion','4.2.1')
-    set('thymeleafSpringDataDialectversion','3.4.1')
-    set('jsoupVersion','1.13.1')
-    set('opencsvVersion','5.1')
-    set('webjarsJqueryVersion','3.4.1')
-    set('webjarsPopperJsVersion','1.16.0')
-    set('webjarsBootstrap','4.4.1')
-    set('webjarsFontAwesomeVersion','5.12.0')
-    set('githubComSilktideCookieconsent2Version','3.1.0')
+    set('springBootAdminVersion', "${springBootAdminVersion}")
+    set('springCloudVersion', "${springCloudVersion}")
+    set('vaadinVersion', "${vaadinVersion}")
+    set('failOnNoContracts',"${failOnNoContractsSetting}")
 }
 
 dependencies {
