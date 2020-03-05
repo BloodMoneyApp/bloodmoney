@@ -13,7 +13,7 @@ goto:END
 
 :bootRunPostgresSQL
 echo ---------------------------- bootRunPostgresSQL ------------------------------------------------
-cmd /c gradlew -i clean assemble bootJar
+cmd /c gradlew -i clean bootJar
 cmd /c gradlew -i composeUp
 cmd /c gradlew -i bootRun --args='--spring.profiles.active=default'
 cmd /c gradlew -i composeDown
