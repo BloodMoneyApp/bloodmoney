@@ -3,30 +3,41 @@ version: '3.3'
 
 services:
 
-    bloodmoney_db:
+    bloodmoney_dbmaster:
         image: postgres:11.6
         restart: always
+        networks:
+            - net
         ports:
             - 15432:15432
         environment:
             POSTGRES_PASSWORD: bloodmoneypwd
             POSTGRES_USER: bloodmoney
             POSTGRES_DB: bloodmoney
+            POSTGRES_HOST: localhost
             POSTGRES_PORT: 15432
-
     bloodmoney_dbref:
         image: postgres:11.6
         restart: always
+        networks:
+            - net
         ports:
             - 25432:25432
         environment:
             POSTGRES_PASSWORD: bloodmoneyrefpwd
             POSTGRES_USER: bloodmoneyref
             POSTGRES_DB: bloodmoneyref
+            POSTGRES_HOST: localhost
             POSTGRES_PORT: 25432
-
     bloodmoney_adminer:
         image: adminer:4.7.4
         restart: always
+        networks:
+            - net
+        depends_on:
+            - bloodmoney_dbmaster
+            - bloodmoney_dbref
         ports:
             - 8080:8080
+networks:
+    net:

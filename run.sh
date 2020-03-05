@@ -35,7 +35,7 @@ function bootRunH2() {
 
 function main() {
     # bootRunHerokuLocal
-    composeDown
+    # composeDown
     composeUp
     # bootRunPostgresSQL
     # testH2
