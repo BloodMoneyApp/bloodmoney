@@ -212,7 +212,7 @@ debug: true
 spring:
     profiles: default
     datasource:
-        url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:${BLOODMONEY_DS_PORT}/${BLOODMONEY_DS_DB}
+        url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
         username:  ${BLOODMONEY_DS_USR}
         password:  ${BLOODMONEY_DS_PWD}
         driver-class-name:  org.postgresql.Driver
