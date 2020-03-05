@@ -31,7 +31,11 @@ goto:END
 
 
 :MAIN
-goto:bootRunH2
+rem goto:bootRunHerokuLocal
+goto:bootRunPostgresSQL
+rem goto:bootRunH2
+
+
 
 :END
 echo "DONE"
