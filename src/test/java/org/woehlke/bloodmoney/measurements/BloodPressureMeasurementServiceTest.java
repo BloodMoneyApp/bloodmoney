@@ -141,10 +141,7 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    @Test
-    public void getOneTest(){
-        log.info("TEST: getOneTest");
-        resetTestData();
+    private Long getRandomElement(){
         List<BloodPressureMeasurement> resultList = bloodPressureMeasurementService.getAll();
         int size = resultList.size();
         Random random = new Random();
@@ -153,6 +150,14 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertNotNull(randomEntity);
         Long idSrc = randomEntity.getId();
         Assertions.assertNotNull(idSrc);
+        return idSrc;
+    }
+
+    @Test
+    public void getOneTest(){
+        log.info("TEST: getOneTest");
+        resetTestData();
+        Long idSrc = getRandomElement();
         BloodPressureMeasurement found = bloodPressureMeasurementService.getOne(idSrc);
         Assertions.assertNotNull(found);
         Long idTarget = found.getId();
@@ -189,7 +194,16 @@ public class BloodPressureMeasurementServiceTest {
     @Test
     public void updateTest(){
         log.info("TEST: getAllPageTest");
-        //TODO: updateTest
+        resetTestData();
+        Long idSrc = getRandomElement();
+        BloodPressureMeasurement src = bloodPressureMeasurementService.getOne(idSrc);
+        Assertions.assertNotNull(src);
+        String situation = "X";
+        src.setSituation(situation);
+        BloodPressureMeasurement target = bloodPressureMeasurementService.update(src);
+        BloodPressureMeasurementTest.assertEquals(src,target);
+        BloodPressureMeasurementTest.assertEqualsUuid(src,target);
+        BloodPressureMeasurementTest.assertEqualsCreated(src,target);
         Assertions.assertTrue(true);
     }
 

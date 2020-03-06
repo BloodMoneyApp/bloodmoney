@@ -37,14 +37,14 @@ public class BloodPressureMeasurementTest {
         BloodPressureMeasurementTest.assertEquals(src, target);
     }
 
-    public static void assertEqualsBothPersistent(
+    public static void assertEqualsUuid(
         BloodPressureMeasurement src ,
         BloodPressureMeasurement target
     ){
-        int assertEqualsTrueExpected = 0;
-        int assertEqualsTrueActual;
         Assertions.assertNotNull(src,"src");
         Assertions.assertNotNull(target,"target");
+        int assertEqualsTrueExpected = 0;
+        int assertEqualsTrueActual;
         Assertions.assertNotNull(src.getUuid(),"src.getUuid()");
         Assertions.assertNotNull(target.getUuid(),"target.getUuid()");
         assertEqualsTrueActual = src.getUuid().toString().compareTo(target.getUuid().toString());
@@ -56,10 +56,10 @@ public class BloodPressureMeasurementTest {
         BloodPressureMeasurement src ,
         BloodPressureMeasurement target
     ){
-        int assertEqualsTrueExpected = 0;
-        int assertEqualsTrueActual;
         Assertions.assertNotNull(src,"src");
         Assertions.assertNotNull(target,"target");
+        int assertEqualsTrueExpected = 0;
+        int assertEqualsTrueActual;
         assertEqualsTrueActual = src.getDiastolicBottomNumber().toString().compareTo(target.getDiastolicBottomNumber().toString());
         Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDiastolicBottomNumber");
         assertEqualsTrueActual = src.getSystolicTopNumber().toString().compareTo(target.getSystolicTopNumber().toString());
@@ -70,10 +70,14 @@ public class BloodPressureMeasurementTest {
         Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getSituation");
         assertEqualsTrueActual = src.getDate().compareTo(target.getDate());
         Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDate");
-        int srcTime = src.getTime().toSecondOfDay();
-        int targetTime = target.getTime().toSecondOfDay();
-        Assertions.assertEquals(srcTime,targetTime,"getTime");
-        assertEqualsTrueActual = src.getCreated().compareTo(target.getCreated());
+    }
+
+    public static void assertEqualsUpdated(
+        BloodPressureMeasurement src ,
+        BloodPressureMeasurement target
+    ){
+        Assertions.assertNotNull(src,"src");
+        Assertions.assertNotNull(target,"target");
         LocalDateTime updatedSrc = src.getUpdated();
         LocalDateTime updatedTarget = target.getUpdated();
         boolean bothNull = (updatedSrc==null) && (updatedTarget==null);
@@ -102,8 +106,19 @@ public class BloodPressureMeasurementTest {
                 Assertions.assertNotNull(updatedTarget,"LocalDateTime target.getUpdated()");
             }
         }
-        Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDateTime");
+        //Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDateTime");
         Assertions.assertNotNull(target.getId(),"target.getId()");
         Assertions.assertNotNull(target.getVersion(),"target.getVersion()");
+    }
+
+    public static void assertEqualsCreated(
+        BloodPressureMeasurement src ,
+        BloodPressureMeasurement target
+    ){
+        Assertions.assertNotNull(src,"src");
+        Assertions.assertNotNull(target,"target");
+        int srcTime = src.getTime().toSecondOfDay();
+        int targetTime = target.getTime().toSecondOfDay();
+        Assertions.assertEquals(srcTime,targetTime,"getTime");
     }
 }
