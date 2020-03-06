@@ -86,8 +86,12 @@ org:
                     - "/h2*/**"
 ---
 #Profile dev: With H2 Database in Memory
+
+
 spring:
     profiles: dev
+    jmx:
+        enabled: true
     thymeleaf:
         cache: false
     devtools:
