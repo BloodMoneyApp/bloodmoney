@@ -100,13 +100,17 @@ task bootRunDefault {
 task bootRunDev {
     bootRun.configure {
         String activeProfile = 'dev'
+        String jmxEnabled ='true'
         systemProperty "spring.profiles.active", activeProfile
+        systemProperty "spring.jmx.enabled", jmxEnabled
     }
 }
 
 bootRun {
     String activeProfile = System.properties['spring.profiles.active']
     systemProperty "spring.profiles.active", activeProfile
+    String jmxEnabled = System.properties['spring.jmx.enabled']
+    systemProperty "spring.jmx.enabled", jmxEnabled
     //String confLoc = System.properties['spring.config.location']
     //systemProperty "spring.config.location", "file:$confLoc"
 }

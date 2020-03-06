@@ -12,6 +12,7 @@ function composeDown() {
 
 function bootRunHerokuLocal() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
     composeUp
     ./gradlew -i clean assemble
     heroku local web
@@ -20,6 +21,7 @@ function bootRunHerokuLocal() {
 
 function bootRunPostgresSQL() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
     composeUp
     ./gradlew -i clean assemble bootJar bootRun
     composeDown
@@ -27,11 +29,13 @@ function bootRunPostgresSQL() {
 
 function bootRunH2() {
      export JAVA_OPTS=$JAVA_OPTS_RUN_DEV
+     showSettings
     ./gradlew -i clean assemble bootJar bootRun
 }
 
 function testH2() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEV
+    showSettings
     ./gradlew -i clean assemble bootJar build test check
     #./gradlew -i bootRun
 }

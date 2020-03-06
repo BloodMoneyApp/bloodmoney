@@ -16,14 +16,15 @@ import java.util.List;
 
 @Slf4j
 @Service
-@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasurementService {
 
     private final BloodPressureMeasurementRepository bloodPressureMeasurementRepository;
+    private final ZoneId zone;
 
     @Autowired
     public BloodPressureMeasurementServiceImpl(BloodPressureMeasurementRepository bloodPressureMeasurementRepository) {
         this.bloodPressureMeasurementRepository = bloodPressureMeasurementRepository;
+        this.zone = ZoneId.of(BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS);
     }
 
     @Override
@@ -33,36 +34,46 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     }
 
     @Override
-    public BloodPressureMeasurement add(BloodPressureMeasurement o) {
-        return this.bloodPressureMeasurementRepository.save(o);
-    }
-
-    @Override
-    public BloodPressureMeasurement update(BloodPressureMeasurement one) {
-        ZoneId zone = ZoneId.of(BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS);
-        LocalDateTime dateTimeNow = LocalDateTime.now(zone);
-        one.setUpdated(dateTimeNow);
-        return this.bloodPressureMeasurementRepository.save(one);
-    }
-
-    @Override
-    public void delete(BloodPressureMeasurement one) {
-        this.bloodPressureMeasurementRepository.delete(one);
-    }
-
-    @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<BloodPressureMeasurement> getAll() {
         return this.bloodPressureMeasurementRepository.findAll();
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public BloodPressureMeasurement getOne(long id) {
         return this.bloodPressureMeasurementRepository.getOne(id);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public long count() {
+        return this.bloodPressureMeasurementRepository.count();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public BloodPressureMeasurement add(BloodPressureMeasurement o) {
+        return this.bloodPressureMeasurementRepository.save(o);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public BloodPressureMeasurement update(BloodPressureMeasurement one) {
+        one.setUpdated(LocalDateTime.now(zone));
+        return this.bloodPressureMeasurementRepository.save(one);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteAll() {
         this.bloodPressureMeasurementRepository.deleteAll();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void delete(BloodPressureMeasurement one) {
+        this.bloodPressureMeasurementRepository.delete(one);
+    }
+
 }

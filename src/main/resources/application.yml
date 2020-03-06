@@ -90,8 +90,6 @@ org:
 
 spring:
     profiles: dev
-    jmx:
-        enabled: true
     thymeleaf:
         cache: false
     devtools:

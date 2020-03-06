@@ -33,7 +33,7 @@ export BLOODMONEY_DEV_TESTING=false
 export SPRING_PROFILES_ACTIVE=dev
 export JAVA_OPTS_GRADLE='-Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8'
 export JAVA_OPTS_RUNTIME='-Xmx300m -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2'
-export JAVA_OPTS_RUN_DEV="-Dspring.profiles.active=dev $JAVA_OPTS_RUNTIME"
+export JAVA_OPTS_RUN_DEV="-Dspring.profiles.active=dev -Dspring.jmx.enabled=true $JAVA_OPTS_RUNTIME"
 export JAVA_OPTS_RUN_DEFAULT="-Dspring.profiles.active=default $JAVA_OPTS_RUNTIME"
 #echo ""
 #echo "SETUP Environment DONE"

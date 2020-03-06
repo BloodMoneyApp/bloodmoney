@@ -19,6 +19,8 @@ public interface BloodPressureMeasurementService {
 
     BloodPressureMeasurement getOne(long id);
 
+    long count();
+
     void deleteAll();
 
 }
