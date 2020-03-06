@@ -16,20 +16,43 @@ import org.woehlke.bloodmoney.user.session.UserSession;
 import org.woehlke.bloodmoney.user.session.UserSessionService;
 
 import javax.validation.Valid;
-import javax.ws.rs.Produces;
+
+import static javax.ws.rs.core.MediaType.APPLICATION_XML;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.http.MediaType.ALL_VALUE;
 
 /**
  * http://localhost:5000/
- * http://localhost:5000/api/measurement/all
+ * http://localhost:5000/api/rs/1/measurement/all
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/measurement")
+@RequestMapping(
+    path="/api/rs/1/measurement",
+    produces={APPLICATION_XML, APPLICATION_JSON_VALUE},
+    consumes={ALL_VALUE}
+)
 @SessionAttributes("userSession")
 public class BloodPressureMeasurementResource {
 
+    @GetMapping("/all")
+    public Page<BloodPressureMeasurement> getAll(
+        @PageableDefault(
+            sort={"date","time"},
+            direction= Sort.Direction.DESC
+        ) Pageable pageable,
+        @SessionAttribute(
+            name="userSession",
+            required=false
+        ) UserSession userSession,
+        Model model
+    ) {
+        model = userSessionService.handleUserSession(userSession, model);
+        Page<BloodPressureMeasurement> all = bloodPressureMeasurementService.getAll(pageable);
+        return all;
+    }
+
     @GetMapping("/{id}")
-    @Produces({"application/xml","application/json"})
     public BloodPressureMeasurement getOne(
         @PathVariable("id") BloodPressureMeasurement one,
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
@@ -41,7 +64,6 @@ public class BloodPressureMeasurementResource {
     }
 
     @PutMapping("/{id}")
-    @Produces({"application/xml","application/json"})
     public BloodPressureMeasurement updateOne(
         @PathVariable("id") BloodPressureMeasurement one,
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
@@ -53,7 +75,6 @@ public class BloodPressureMeasurementResource {
     }
 
     @PostMapping("/add")
-    @Produces({"application/xml","application/json"})
     public final BloodPressureMeasurement addPost(
         @Valid BloodPressureMeasurement one,
         @SessionAttribute(name="userSession", required=false) UserSession userSession,
@@ -63,18 +84,6 @@ public class BloodPressureMeasurementResource {
             one = bloodPressureMeasurementService.add(one);
         }
         return one;
-    }
-
-    @GetMapping("/all")
-    @Produces({"application/xml","application/json"})
-    public Page<BloodPressureMeasurement> getAll(
-        @PageableDefault(sort={"date","time"},direction= Sort.Direction.DESC) Pageable pageable,
-        @SessionAttribute(name="userSession", required=false) UserSession userSession,
-        Model model
-    ) {
-        model = userSessionService.handleUserSession(userSession, model);
-        Page<BloodPressureMeasurement> all = bloodPressureMeasurementService.getAll(pageable);
-        return all;
     }
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;

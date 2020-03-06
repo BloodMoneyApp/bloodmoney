@@ -41,7 +41,7 @@ function main() {
     # composeUp
     # bootRunPostgresSQL
     # testH2
-    # bootRunH2
+    bootRunH2
 }
 
 main
