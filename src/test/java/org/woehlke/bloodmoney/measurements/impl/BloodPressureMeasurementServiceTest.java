@@ -55,10 +55,10 @@ public class BloodPressureMeasurementServiceTest {
         for(int i = 0; i < testDataHowMany; i++){
             BloodPressureMeasurement src = srcListe.get(i);
             BloodPressureMeasurement target = resultList.get(i);
-            Assertions.assertNotNull(src.getUuid(),"src.getUuid()");
+            Assertions.assertNull(src.getUuid(),"src.getUuid()");
             Assertions.assertNotNull(target.getUuid(),"target.getUuid()");
             assertEqualsTrueActual = src.getUuid().toString().compareTo(target.getUuid().toString());
-            Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
+            Assertions.assertNotEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
             assertEqualsTrueActual = src.getDiastolicBottomNumber().toString().compareTo(target.getDiastolicBottomNumber().toString());
             Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDiastolicBottomNumber");
             assertEqualsTrueActual = src.getSystolicTopNumber().toString().compareTo(target.getSystolicTopNumber().toString());
