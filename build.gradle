@@ -96,6 +96,13 @@ task bootRunDefault {
     }
 }
 
+task testDefault {
+    test.configure {
+        String activeProfile = 'default'
+        systemProperty "spring.profiles.active", activeProfile
+    }
+}
+
 //Testing
 task bootRunDev {
     bootRun.configure {
@@ -120,8 +127,9 @@ bootRunDev.finalizedBy bootRun
 
 //DevOps
 dockerCompose {
-    //isRequiredBy(project.tasks.test)
-    //exposeAsSystemProperties(project.tasks.test)
+    isRequiredBy(project.tasks.bootRunDefault)
+    isRequiredBy(project.tasks.testDefault)
+    //exposeAsSystemProperties(project.tasks.bootRunDefault)
     useComposeFiles = ['docker-compose.yml']
 }
 
