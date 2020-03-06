@@ -1,11 +1,12 @@
-package org.woehlke.bloodmoney.user;
+package org.woehlke.bloodmoney.user.account;
 
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.measurements.impl.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.user.session.UserSessionService;
 
 @Slf4j
 @RestController

@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.user;
+package org.woehlke.bloodmoney.user.session;
 
 import lombok.*;
 import org.woehlke.bloodmoney.application.FlashMessage;

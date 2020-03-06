@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.woehlke.bloodmoney.user.UserAccountSecurityService;
+import org.woehlke.bloodmoney.user.account.UserAccountSecurityService;
 
 @Configuration
 @EnableWebSecurity

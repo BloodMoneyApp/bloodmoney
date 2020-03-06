@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.user.impl;
+package org.woehlke.bloodmoney.user.login.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.user.UserAccount;
-import org.woehlke.bloodmoney.user.UserAccountLoginSuccessService;
+import org.woehlke.bloodmoney.user.account.UserAccount;
+import org.woehlke.bloodmoney.user.login.UserAccountLoginSuccessService;
 
 @Slf4j
 @Service

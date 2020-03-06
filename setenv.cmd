@@ -27,8 +27,9 @@ set BLOODMONEY_USER_PASSWORD=gdEB4vO/E8ArK1X1Cj2bnKGDPiJPUusEJfxxzpgUsf4G2fIrz+b
 echo ""
 echo "Runtime and Application Service Settings"
 set PORT=5000
-set JAVA_OPTS= -Dspring.profiles.active=dev -Djava.runtime.version=13 -Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2
 set BLOODMONEY_DEV_TESTING=true
+set SPRING_PROFILES_ACTIVE=dev
+set JAVA_OPTS= -Dspring.profiles.active=dev -Djava.runtime.version=13 -Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2
 echo ""
 echo "SETUP Environment DONE"
 echo ""

@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.measurements.impl;
+package org.woehlke.bloodmoney.test.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementRepository;
-import org.woehlke.bloodmoney.measurements.TestService;
+import org.woehlke.bloodmoney.measurements.impl.BloodPressureMeasurementRepository;
+import org.woehlke.bloodmoney.test.TestService;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

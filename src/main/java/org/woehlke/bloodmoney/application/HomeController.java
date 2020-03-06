@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.woehlke.bloodmoney.user.UserSession;
-import org.woehlke.bloodmoney.user.UserSessionService;
+import org.woehlke.bloodmoney.user.session.UserSession;
+import org.woehlke.bloodmoney.user.session.UserSessionService;
 
 
 @Slf4j

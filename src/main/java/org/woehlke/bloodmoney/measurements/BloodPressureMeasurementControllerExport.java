@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.measurements.impl.BloodPressureMeasurementService;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/measurement/export")
 @SessionAttributes("userSession")
-public class BloodPressureMeasurementExportController {
+public class BloodPressureMeasurementControllerExport {
 
     @GetMapping("/all")
     @ResponseBody
@@ -38,7 +39,7 @@ public class BloodPressureMeasurementExportController {
     private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
-    public BloodPressureMeasurementExportController(
+    public BloodPressureMeasurementControllerExport(
         BloodPressureMeasurementService bloodPressureMeasurementService,
         BloodMoneyProperties bloodMoneyProperties
     ) {

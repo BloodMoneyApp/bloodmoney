@@ -11,6 +11,7 @@ function composeDown() {
 }
 
 function bootRunHerokuLocal() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     composeUp
     ./gradlew -i clean assemble
     heroku local web
@@ -18,26 +19,27 @@ function bootRunHerokuLocal() {
 }
 
 function bootRunPostgresSQL() {
-    ./gradlew -i clean assemble bootJar
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     composeUp
-    ./gradlew -i bootRun --args='--spring.profiles.active=default'
+    ./gradlew -i clean assemble bootJar bootRun
     composeDown
 }
 
-function testH2() {
-    ./gradlew -i clean build test check bootJar
-    ./gradlew -i bootRun --args='--spring.profiles.active=dev'
+function bootRunH2() {
+     export JAVA_OPTS=$JAVA_OPTS_RUN_DEV
+    ./gradlew -i clean assemble bootJar bootRun
 }
 
-function bootRunH2() {
-    ./gradlew -i clean bootRun --args='--spring.profiles.active=dev'
+function testH2() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEV
+    ./gradlew -i clean assemble bootJar build test check bootRun
 }
 
 function main() {
     # bootRunHerokuLocal
-    #composeDown
-    #composeUp
-    bootRunPostgresSQL
+    # composeDown
+    # composeUp
+    # bootRunPostgresSQL
     # testH2
     # bootRunH2
 }

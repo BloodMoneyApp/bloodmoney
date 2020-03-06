@@ -1,6 +1,6 @@
-package org.woehlke.bloodmoney.user;
+package org.woehlke.bloodmoney.user.account;
 
-import org.woehlke.bloodmoney.user.LoginForm;
+import org.woehlke.bloodmoney.user.login.LoginForm;
 
 public interface UserAccountAccessService {
 

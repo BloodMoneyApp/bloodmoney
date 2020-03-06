@@ -1,7 +1,8 @@
-package org.woehlke.bloodmoney.measurements;
+package org.woehlke.bloodmoney.measurements.impl;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
 
 import java.util.List;
 

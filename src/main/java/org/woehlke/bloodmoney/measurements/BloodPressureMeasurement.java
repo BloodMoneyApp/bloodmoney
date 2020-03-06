@@ -8,6 +8,10 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,6 +22,7 @@ import java.util.UUID;
 /**
  * H2 Datatypes: http://www.h2database.com/html/datatypes.html
  * PostgreSQL Datatypes: https://www.postgresql.org/docs/11/datatype.html
+ * Using JAX-RS with JAXB: https://docs.oracle.com/javaee/7/tutorial/jaxrs-advanced007.htm
  */
 @Getter
 @Setter
@@ -44,6 +49,15 @@ import java.util.UUID;
         )
     }
 )
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "transientBloodPressureMeasurement", propOrder = {
+    "id",
+    "uuid",
+    "version",
+    "systolicTopNumber",
+    "diastolicBottomNumber",
+    "pulse"
+})
 public class BloodPressureMeasurement implements Serializable {
 
     private static final long serialVersionUID = 2676529613061169122L;
@@ -55,13 +69,16 @@ public class BloodPressureMeasurement implements Serializable {
         sequenceName = "measurement_sequence",
         initialValue = 1000
     )
+    @XmlElement
     private Long id;
 
+    @XmlElement(required = true)
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "uuid", columnDefinition = "uuid", unique = true)
     private UUID uuid;
 
+    @XmlElement(required = true)
     @Version
     @Column
     private Long version;
@@ -90,21 +107,25 @@ public class BloodPressureMeasurement implements Serializable {
     @Column(name = "measurement_time", columnDefinition = "TIME")
     private LocalTime time;
 
+    @XmlElement(required = true)
     @NotNull
     @CsvBindByName
     @Column(name = "systolic_top_number")
     private Integer systolicTopNumber;
 
+    @XmlElement(required = true)
     @NotNull
     @CsvBindByName
     @Column(name = "diastolic_bottom_number")
     private Integer diastolicBottomNumber;
 
+    @XmlElement(required = true)
     @NotNull
     @CsvBindByName
     @Column
     private Integer pulse;
 
+    @XmlElement(required = true)
     @Nullable
     @CsvBindByName
     //@Length(max=65535)

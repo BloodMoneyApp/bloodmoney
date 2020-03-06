@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.user;
+package org.woehlke.bloodmoney.user.login;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
+import org.woehlke.bloodmoney.user.account.UserAccount;
+import org.woehlke.bloodmoney.user.account.UserAccountAccessService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.measurements.TestService;
+import org.woehlke.bloodmoney.test.TestService;
 
 @Slf4j
 @Controller

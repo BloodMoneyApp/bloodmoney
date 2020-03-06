@@ -49,6 +49,7 @@ configurations {
     testImplementation {
         extendsFrom implementation
     }
+    //jaxb
 }
 
 repositories {
@@ -60,6 +61,63 @@ ext {
     set('snippetsDir', file("build/generated-snippets"))
     set('springBootAdminVersion', "${springBootAdminVersion}")
 }
+
+asciidoctor {
+    inputs.dir snippetsDir
+    dependsOn test
+}
+
+//Testing
+test {
+    String activeProfile =  System.properties['spring.profiles.active']
+    systemProperty "spring.profiles.active", activeProfile
+    outputs.dir snippetsDir
+    useJUnitPlatform()
+}
+
+springBoot {
+    buildInfo()
+}
+
+
+//Testing
+task bootRunDefault {
+    bootRun.configure {
+        String activeProfile = 'default'
+        systemProperty "spring.profiles.active", activeProfile
+    }
+}
+
+//Testing
+task bootRunDev {
+    bootRun.configure {
+        String activeProfile = 'dev'
+        systemProperty "spring.profiles.active", activeProfile
+    }
+}
+
+bootRun {
+    String activeProfile = System.properties['spring.profiles.active']
+    systemProperty "spring.profiles.active", activeProfile
+    //String confLoc = System.properties['spring.config.location']
+    //systemProperty "spring.config.location", "file:$confLoc"
+}
+
+bootRunDefault.finalizedBy bootRun
+bootRunDev.finalizedBy bootRun
+
+//DevOps
+dockerCompose {
+    //isRequiredBy(project.tasks.test)
+    //exposeAsSystemProperties(project.tasks.test)
+    useComposeFiles = ['docker-compose.yml']
+}
+
+//DevOps
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
+
 
 dependencyManagement {
     imports {
@@ -127,6 +185,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
     implementation "com.opencsv:opencsv:${opencsvVersion}"
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+    implementation 'wsdl4j:wsdl4j:1.6.1'
 
     //DatabaseSchemaEvolution
     implementation "org.jsoup:jsoup:${jsoupVersion}"
@@ -163,63 +222,7 @@ dependencies {
     }
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     testImplementation 'org.springframework.security:spring-security-test'
-}
 
-contracts {
-    testFramework = org.springframework.cloud.contract.verifier.config.TestFramework.JUNIT5
-}
-
-asciidoctor {
-    inputs.dir snippetsDir
-    dependsOn test
-}
-
-//Testing
-test {
-    String activeProfile =  System.properties['spring.profiles.active']
-    systemProperty "spring.profiles.active", activeProfile
-    outputs.dir snippetsDir
-    useJUnitPlatform()
-}
-
-springBoot {
-    buildInfo()
-}
-
-//Testing
-task bootRunDefault {
-    bootRun.configure {
-        String activeProfile = 'default'
-        systemProperty "spring.profiles.active", activeProfile
-    }
-}
-
-//Testing
-task bootRunDev {
-    bootRun.configure {
-        String activeProfile = 'dev'
-        systemProperty "spring.profiles.active", activeProfile
-    }
-}
-
-bootRun {
-    String activeProfile = System.properties['spring.profiles.active']
-    systemProperty "spring.profiles.active", activeProfile
-    //String confLoc = System.properties['spring.config.location']
-    //systemProperty "spring.config.location", "file:$confLoc"
-}
-
-bootRunDefault.finalizedBy bootRun
-bootRunDev.finalizedBy bootRun
-
-//DevOps
-dockerCompose {
-    //isRequiredBy(project.tasks.test)
-    //exposeAsSystemProperties(project.tasks.test)
-    useComposeFiles = ['src/test/docker/stack.yml']
-}
-
-//DevOps
-wrapper {
-    distributionType = Wrapper.DistributionType.ALL
+    //jaxb "org.glassfish.jaxb:jaxb-xjc:2.2.11"
+    //compile(files(genJaxb.classesDir).builtBy(genJaxb))
 }

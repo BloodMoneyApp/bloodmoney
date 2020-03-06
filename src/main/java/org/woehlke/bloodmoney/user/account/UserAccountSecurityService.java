@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.user;
+package org.woehlke.bloodmoney.user.account;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

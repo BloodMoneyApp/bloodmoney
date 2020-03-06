@@ -85,12 +85,10 @@ org:
                     - "/h2*/**"
 ---
 #Profile dev: With H2 Database in Memory
-endpoints:
-    endpoints:
-        shutdown:
-            enabled: true
 spring:
     profiles: dev
+    thymeleaf:
+        cache: false
     devtools:
         livereload:
             enabled: true
@@ -136,6 +134,14 @@ spring:
             settings:
                 trace: true
                 web-allow-others: true
+endpoints:
+    endpoints:
+        shutdown:
+            enabled: true
+server:
+    compression:
+        enabled: false
+
 logging:
     file:
         name: bloodmoney.log
@@ -191,23 +197,10 @@ logging:
                 qos: INFO
             woehlke:
                 bloodmoney:
+                    application: DEBUG
                     config: DEBUG
-                    frontend:
-                        api: DEBUG
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                    oodm:
-                        entities: DEBUG
-                        repositories: DEBUG
-                        services:
-                            impl: DEBUG
-                    user:
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                        services:
-                            impl: DEBUG
+                    measurements: DEBUG
+                    user: DEBUG
 debug: true
 ---
 #Profile default: Production ready. Heroku with PostgreSQL

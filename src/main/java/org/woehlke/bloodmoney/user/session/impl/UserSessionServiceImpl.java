@@ -1,11 +1,11 @@
-package org.woehlke.bloodmoney.user.impl;
+package org.woehlke.bloodmoney.user.session.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.user.UserSessionService;
-import org.woehlke.bloodmoney.user.UserSession;
+import org.woehlke.bloodmoney.user.session.UserSessionService;
+import org.woehlke.bloodmoney.user.session.UserSession;
 
 
 @Slf4j

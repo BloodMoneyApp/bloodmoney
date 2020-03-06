@@ -11,10 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.user.UserSession;
-import org.woehlke.bloodmoney.user.UserSessionService;
+import org.woehlke.bloodmoney.measurements.impl.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.user.session.UserSession;
+import org.woehlke.bloodmoney.user.session.UserSessionService;
 
 import javax.validation.Valid;
+import javax.ws.rs.Produces;
 
 /**
  * http://localhost:5000/
@@ -27,6 +29,7 @@ import javax.validation.Valid;
 public class BloodPressureMeasurementResource {
 
     @GetMapping("/{id}")
+    @Produces({"application/xml","application/json"})
     public BloodPressureMeasurement getOne(
         @PathVariable("id") BloodPressureMeasurement one,
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
@@ -38,6 +41,7 @@ public class BloodPressureMeasurementResource {
     }
 
     @PutMapping("/{id}")
+    @Produces({"application/xml","application/json"})
     public BloodPressureMeasurement updateOne(
         @PathVariable("id") BloodPressureMeasurement one,
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
@@ -49,6 +53,7 @@ public class BloodPressureMeasurementResource {
     }
 
     @PostMapping("/add")
+    @Produces({"application/xml","application/json"})
     public final BloodPressureMeasurement addPost(
         @Valid BloodPressureMeasurement one,
         @SessionAttribute(name="userSession", required=false) UserSession userSession,
@@ -61,6 +66,7 @@ public class BloodPressureMeasurementResource {
     }
 
     @GetMapping("/all")
+    @Produces({"application/xml","application/json"})
     public Page<BloodPressureMeasurement> getAll(
         @PageableDefault(sort={"date","time"},direction= Sort.Direction.DESC) Pageable pageable,
         @SessionAttribute(name="userSession", required=false) UserSession userSession,

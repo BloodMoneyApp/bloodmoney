@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.user;
+package org.woehlke.bloodmoney.user.login;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +7,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.LocaleResolver;
+import org.woehlke.bloodmoney.user.account.UserAccount;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
