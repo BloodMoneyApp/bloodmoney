@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
@@ -65,6 +69,26 @@ public class BloodPressureMeasurementServiceTest {
         List<BloodPressureMeasurement> srcListe = this.getTestData();
         Assertions.assertNotNull(srcListe);
         for(BloodPressureMeasurement m:srcListe){
+            bloodPressureMeasurementService.add(m);
+        }
+    }
+
+    private void persistMuchTestData(){
+        List<BloodPressureMeasurement> moreTestData = this.getTestData();
+        String situation;
+        int i;
+        for(i = 0; i < testDataHowManyTestData*20; i++){
+            situation = "LfdNr "+i+" New Measurement";
+            BloodPressureMeasurement m = BloodPressureMeasurement.getInstance(situation);
+            moreTestData.add(m);
+        }
+        i++;
+        situation = "LfdNr "+i+" New Measurement - added more Testdata";
+        BloodPressureMeasurement m1 = BloodPressureMeasurement.getInstance();
+        BloodPressureMeasurement m2 = BloodPressureMeasurement.getInstance(situation);
+        moreTestData.add(m1);
+        moreTestData.add(m2);
+        for(BloodPressureMeasurement m : moreTestData){
             bloodPressureMeasurementService.add(m);
         }
     }
@@ -165,18 +189,39 @@ public class BloodPressureMeasurementServiceTest {
     @Test
     public void updateTest(){
         log.info("TEST: getAllPageTest");
+        //TODO: updateTest
         Assertions.assertTrue(true);
     }
 
     @Test
     public void deleteTest(){
         log.info("TEST: getAllPageTest");
+        //TODO: deleteTest
         Assertions.assertTrue(true);
     }
 
     @Test
-    public void getAllPageTest(){
-        log.info("TEST: getAllPageTest");
+    public void getAllPagedTest(){
+        log.info("TEST: getAllPagedTest");
+        deletePersistentTestData();
+        persistMuchTestData();
+        int page = 1;
+        int size = 10;
+        String[] fields ={"updated","created"};
+        Sort sort = Sort.by(Sort.Direction.DESC, fields);
+        Pageable pageable = PageRequest.of(page,size,sort);
+        //TODO: getAllPagedTest
+        int getTotalPagesExpected = 22;
+        long getTotalElementsExpected = 212L;
+        int getNumberExpected = 1;
+        int getNumberOfElementsExpected = 10;
+        int getSizeExpected = 10;
+        Page<BloodPressureMeasurement> resultPage = bloodPressureMeasurementService.getAll(pageable);
+        Assertions.assertEquals(getTotalPagesExpected, resultPage.getTotalPages()," resultPage.getTotalPages()");
+        Assertions.assertEquals(getTotalElementsExpected, resultPage.getTotalElements(),"resultPage.getTotalElements()");
+        Assertions.assertEquals(getNumberExpected, resultPage.getNumber(),"resultPage.getNumber()");
+        Assertions.assertEquals(getNumberOfElementsExpected, resultPage.getNumberOfElements(),"resultPage.getNumberOfElements()");
+        Assertions.assertEquals(getSizeExpected, resultPage.getSize(),"resultPage.getSize()");
         Assertions.assertTrue(true);
     }
 
