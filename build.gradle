@@ -23,7 +23,7 @@ plugins {
 }
 
 group = 'org.woehlke.bloodmoney'
-version = '1.4'
+version = '1.5-SNAPSHOT'
 sourceCompatibility = '13'
 
 //SpringBootAdmin
