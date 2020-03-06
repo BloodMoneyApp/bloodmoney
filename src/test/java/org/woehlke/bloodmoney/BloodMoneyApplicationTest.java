@@ -18,9 +18,22 @@ public class BloodMoneyApplicationTest {
     @Test
     public void contextLoads() {
         System.out.println("TEST: contextLoads");
-        System.out.println("TEST: contextLoads" + this.getTest());
-        log.info("TEST: contextLoads");
         Assertions.assertTrue(true);
     }
 
+    @Test
+    public void testDocker() {
+        System.out.println("TEST: testDocker");
+        System.out.println("TEST: testDocker" + this.getTest());
+        Assertions.assertTrue(true);
+    }
+
+    @Test
+    public void testLoggingWithDocker() {
+        System.out.println("TEST: testLoggingWithDocker");
+        System.out.println("TEST: testLoggingWithDocker" + this.getTest());
+        log.info("TEST: testLoggingWithDocker");
+        log.info("TEST: testLoggingWithDocker" + this.getTest());
+        Assertions.assertTrue(true);
+    }
 }

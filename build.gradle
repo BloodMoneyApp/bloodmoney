@@ -1,13 +1,21 @@
+buildscript {
+    dependencies {
+        classpath 'com.h2database:h2:1.4.197'
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id "org.springframework.cloud.contract" version  '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id "org.asciidoctor.jvm.convert" version '3.1.0'
+    //Lombok
+    id "io.franzbecker.gradle-lombok" version "3.3.0"
+    //DatabaseSchemaEvolution
+    id "org.flywaydb.flyway" version "6.3.0"
+    id "org.liquibase.gradle" version "2.0.2"
     //DevOps
     id "com.avast.gradle.docker-compose" version '0.10.9'
-    //DatabaseSchemaEvolution
-    id "org.liquibase.gradle" version "2.0.2"
-    id "io.franzbecker.gradle-lombok" version "3.3.0"
     id 'java'
     id 'java-library'
     id 'idea'
@@ -118,6 +126,10 @@ wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
 
+flywayMigrate {
+    url = 'jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE'
+    user = 'sa'
+}
 
 dependencyManagement {
     imports {
@@ -187,7 +199,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.h2database:h2:1.4.197'
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.postgresql:postgresql'
     implementation 'org.flywaydb:flyway-core'
@@ -203,7 +215,7 @@ dependencies {
     //Testing
     testCompile 'org.junit.jupiter:junit-jupiter-engine'
     testCompile 'org.mockito:mockito-junit-jupiter'
-    testImplementation 'com.h2database:h2'
+    testImplementation 'com.h2database:h2:1.4.197'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine'
     testImplementation 'org.mockito:mockito-junit-jupiter'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

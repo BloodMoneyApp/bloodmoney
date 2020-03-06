@@ -7,6 +7,13 @@
 * Test a Rest Controller
 
 ## DatabaseSchemaEvolution
+* Flyway: https://flywaydb.org/
+* Flyway upgrade or H2 Downgrade
+* Flyway upgrade Version from to 
+* H2 Downgrade Version from 1.4.200 to 1.4.199.
+2020-03-06 16:50:27.034  WARN 2897 --- [    Test worker] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 1.4.200 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 1.4.199.
+
+
 * TODO
 
 ## spring.config.location

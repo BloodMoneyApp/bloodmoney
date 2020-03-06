@@ -132,8 +132,11 @@ public class BloodPressureMeasurement implements Serializable {
     @Column(name = "situation", nullable = true)
     private String situation;
 
-    public static BloodPressureMeasurement getInstance(){
-        ZoneId zone = ZoneId.of("Europe/Paris");
+    @Transient
+    public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
+
+    public static BloodPressureMeasurement getInstance(String situation){
+        ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
         LocalDate today = LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
@@ -144,8 +147,13 @@ public class BloodPressureMeasurement implements Serializable {
         o.setSystolicTopNumber(120);
         o.setDiastolicBottomNumber(80);
         o.setPulse(68);
-        o.setSituation("New Measurement");
+        o.setSituation(situation);
         return o;
+    }
+
+    public static BloodPressureMeasurement getInstance(){
+        String situation = "New Measurement";
+        return BloodPressureMeasurement.getInstance(situation);
     }
 
 }
