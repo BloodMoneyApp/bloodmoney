@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
+import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

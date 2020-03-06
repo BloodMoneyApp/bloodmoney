@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.measurements.impl.BloodPressureMeasurementService;
 import org.woehlke.bloodmoney.user.session.UserSession;
 import org.woehlke.bloodmoney.user.session.UserSessionService;
 

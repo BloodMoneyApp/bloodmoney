@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.measurements.impl;
+package org.woehlke.bloodmoney.measurements;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.measurements.impl;
+package org.woehlke.bloodmoney.measurements;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
