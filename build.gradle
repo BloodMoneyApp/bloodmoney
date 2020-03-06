@@ -56,6 +56,8 @@ ext {
 }
 
 dependencies {
+
+    //Disabled Fetures
     //implementation "org.apache.camel.springboot:camel-spring-boot-starter:${camelSpringBootStarterVersion}"
     //implementation 'org.springframework.boot:spring-boot-starter-integration'
     //testImplementation 'org.springframework.integration:spring-integration-test'
@@ -67,6 +69,8 @@ dependencies {
     //implementation 'org.springframework.boot:spring-boot-starter-quartz'
     //implementation 'org.springframework.boot:spring-boot-starter-cache'
     //implementation 'com.vaadin:vaadin-spring-boot-starter'
+
+    //Spring-Boot Starters
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -81,8 +85,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
+
+    //Spring Boot Admin
     implementation 'de.codecentric:spring-boot-admin-starter-client'
     implementation 'de.codecentric:spring-boot-admin-starter-server'
+
+    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
+    implementation 'org.springframework.session:spring-session-jdbc'
+
+    //Frontend
     implementation "org.jsoup:jsoup:${jsoupVersion}"
     implementation "com.opencsv:opencsv:${opencsvVersion}"
     implementation "org.webjars:jquery:${webjarsJqueryVersion}"
@@ -99,30 +110,33 @@ dependencies {
     implementation "org.webjars:bootswatch-darkly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-flatly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-spacelab:${bootswatchVersion}"
-    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
-    implementation 'org.springframework.session:spring-session-jdbc'
     implementation 'org.thymeleaf:thymeleaf-spring5'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time'
     implementation 'com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute'
     implementation "io.github.jpenren:thymeleaf-spring-data-dialect:${thymeleafSpringDataDialectversion}"
+
     compileOnly 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     testImplementation 'org.springframework.security:spring-security-test'
+
     //Cloud Contract
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+
     // DB Schema Evolution
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.postgresql:postgresql'
     implementation 'org.flywaydb:flyway-core'
+
     //developmentOnly 'org.liquibase:liquibase-core'
     liquibaseRuntime "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
     liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:${liquibaseGroovyDslVersion}"
