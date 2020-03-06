@@ -21,7 +21,8 @@ goto:END
 
 :testH2
 echo ---------------------------- testH2 ------------------------------------------------
-cmd /c gradlew -i clean build bootRun --args='--spring.profiles.active=dev'
+cmd /c gradlew -i clean build
+rem cmd /c gradlew -i clean build --args='--spring.profiles.active=dev'
 goto:END
 
 
@@ -33,7 +34,8 @@ goto:END
 
 :MAIN
 rem goto:bootRunHerokuLocal
-goto:bootRunPostgresSQL
+rem goto:bootRunPostgresSQL
+goto:testH2
 rem goto:bootRunH2
 
 
