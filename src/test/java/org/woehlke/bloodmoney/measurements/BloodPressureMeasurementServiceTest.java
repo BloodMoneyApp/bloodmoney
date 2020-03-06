@@ -7,10 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
-import java.net.UnknownHostException;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.TimeZone;
 
 @Slf4j
 @Getter
@@ -20,21 +23,23 @@ public class BloodPressureMeasurementServiceTest {
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;
 
+    private final BloodMoneyProperties bloodMoneyProperties;
+
     private final List<BloodPressureMeasurement> testData;
 
     private final List<BloodPressureMeasurement> testDataToAdd;
 
-    private final int testDataHowManyTestData = 10;
-
     private final int testDataHowManyPlustestDataToAdd;
 
-    private final boolean featureUuid_isSettedByOurselves = true;
+    private final int testDataHowManyTestData;
 
     @Autowired
     public BloodPressureMeasurementServiceTest(
-        BloodPressureMeasurementService bloodPressureMeasurementService
-    ) throws UnknownHostException {
+        BloodPressureMeasurementService bloodPressureMeasurementService,
+        BloodMoneyProperties bloodMoneyProperties) {
         this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+        this.bloodMoneyProperties = bloodMoneyProperties;
+        this.testDataHowManyTestData = this.bloodMoneyProperties.getTestDataHowManyTestData();
         this.testData = new ArrayList<>();
         this.testDataToAdd = new ArrayList<>();
         for(int i = 0; i < testDataHowManyTestData; i++){
@@ -47,10 +52,12 @@ public class BloodPressureMeasurementServiceTest {
         BloodPressureMeasurement m2 = BloodPressureMeasurement.getInstance(situation);
         testDataToAdd.add(m1);
         testDataToAdd.add(m2);
-        testDataHowManyPlustestDataToAdd = testDataHowManyTestData + 2;
+        testDataHowManyPlustestDataToAdd = testDataHowManyTestData + testDataToAdd.size();
+        ZoneId zoneId = ZoneId.of(BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS);
+        TimeZone.setDefault(TimeZone.getTimeZone(zoneId.getId()));
     }
 
-    private void deletePersitentTestData(){
+    private void deletePersistentTestData(){
         bloodPressureMeasurementService.deleteAll();
     }
 
@@ -62,45 +69,50 @@ public class BloodPressureMeasurementServiceTest {
         }
     }
 
+    private void resetTestData(){
+        deletePersistentTestData();
+        persistTestData();
+    }
+
     @Test
     public void deletePersitentTestDataTest(){
         log.info("TEST: deletePersitentTestDataTest");
-        deletePersitentTestData();
+        deletePersistentTestData();
         List<BloodPressureMeasurement> resultList = bloodPressureMeasurementService.getAll();
         int assertCountExpected = 0;
         int resultSize = resultList.size();
         Assertions.assertTrue(resultList.isEmpty(),"getAll: resultList is Empty");
         Assertions.assertEquals(assertCountExpected,resultSize,"getAll: resultList.size()");
+        Assertions.assertTrue(true);
     }
 
     @Test
     public void persistTestDataTest(){
-        log.info("TEST: persistTestData");
-        deletePersitentTestData();
+        log.info("TEST: persistTestDataTest");
+        deletePersistentTestData();
         persistTestData();
         List<BloodPressureMeasurement> resultList = bloodPressureMeasurementService.getAll();
-        int assertCountExpected = 0;
+        int assertCountExpected = testDataHowManyTestData;
         int resultSize = resultList.size();
-        Assertions.assertTrue(resultList.isEmpty(),"getAll: resultList is Empty");
+        Assertions.assertFalse(resultList.isEmpty(),"getAll: resultList is Empty");
         Assertions.assertEquals(assertCountExpected,resultSize,"getAll: resultList.size()");
+        Assertions.assertTrue(true);
     }
 
     @Test
     public void getAllListTest(){
         log.info("TEST: getAllPageTest");
-        deletePersitentTestData();
-        persistTestData();
+        resetTestData();
         List<BloodPressureMeasurement> srcListe = this.getTestData();
         List<BloodPressureMeasurement> resultList = bloodPressureMeasurementService.getAll();
         Assertions.assertNotNull(resultList);
         Assertions.assertEquals(srcListe.size(),resultList.size(),"srcListe.size()==resultList.size()");
         Assertions.assertEquals(testDataHowManyTestData,srcListe.size(),"srcListe.size()=="+testDataHowManyTestData);
         Assertions.assertEquals(testDataHowManyTestData,resultList.size(),"resultList.size()==,"+testDataHowManyTestData);
-        Assertions.assertTrue(true);
         for(int i = 0; i < testDataHowManyTestData; i++){
             BloodPressureMeasurement src = srcListe.get(i);
             BloodPressureMeasurement target = resultList.get(i);
-            this.assertEquals(src,target);
+            BloodPressureMeasurementTest.assertTransientEqualsPersistent(src,target);
         }
         Assertions.assertTrue(true);
     }
@@ -108,30 +120,44 @@ public class BloodPressureMeasurementServiceTest {
     @Test
     public void getOneTest(){
         log.info("TEST: getOneTest");
-
+        resetTestData();
+        List<BloodPressureMeasurement> resultList = bloodPressureMeasurementService.getAll();
+        int size = resultList.size();
+        Random random = new Random();
+        int randomIndex = random.nextInt(size);
+        BloodPressureMeasurement randomEntity = resultList.get(randomIndex);
+        Assertions.assertNotNull(randomEntity);
+        Long idSrc = randomEntity.getId();
+        Assertions.assertNotNull(idSrc);
+        BloodPressureMeasurement found = bloodPressureMeasurementService.getOne(idSrc);
+        Assertions.assertNotNull(found);
+        Long idTarget = found.getId();
+        Assertions.assertNotNull(idTarget);
+        Assertions.assertEquals(idSrc.longValue(), idTarget.longValue());
         Assertions.assertTrue(true);
     }
 
     @Test
     public void addTest(){
         log.info("TEST: addTest");
-        persistTestData();
+        resetTestData();
         List<BloodPressureMeasurement> srcListe = this.getTestData();
         List<BloodPressureMeasurement> moreTestDataToAdd = this.getTestDataToAdd();
         for(BloodPressureMeasurement m : moreTestDataToAdd){
             bloodPressureMeasurementService.add(m);
         }
+        Assertions.assertEquals(testDataHowManyTestData,srcListe.size(),"srcListe.size()=="+testDataHowManyTestData);
         moreTestDataToAdd = this.getTestDataToAdd();
         srcListe.addAll(moreTestDataToAdd);
         List<BloodPressureMeasurement> resultList = bloodPressureMeasurementService.getAll();
         Assertions.assertNotNull(resultList,"resultList != null");
         Assertions.assertEquals(srcListe.size(),resultList.size(),"srcListe.size()==resultList.size()");
-        Assertions.assertEquals(testDataHowManyTestData,srcListe.size(),"srcListe.size()=="+testDataHowManyTestData);
+        Assertions.assertEquals(testDataHowManyPlustestDataToAdd,srcListe.size(),"srcListe.size()=="+testDataHowManyPlustestDataToAdd);
         Assertions.assertEquals(testDataHowManyPlustestDataToAdd,resultList.size(),"resultList.size()==,"+testDataHowManyPlustestDataToAdd);
         for(int i = 0; i < testDataHowManyPlustestDataToAdd; i++){
             BloodPressureMeasurement src = srcListe.get(i);
             BloodPressureMeasurement target = resultList.get(i);
-            this.assertEquals(src,target);
+            BloodPressureMeasurementTest.assertTransientEqualsPersistent(src,target);
         }
         Assertions.assertTrue(true);
     }
@@ -154,42 +180,4 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    private void assertEquals(
-        BloodPressureMeasurement src ,
-        BloodPressureMeasurement target
-    ){
-        int assertEqualsTrueExpected = 0;
-        int assertEqualsTrueActual;
-        Assertions.assertNotNull(src,"src");
-        Assertions.assertNotNull(target,"target");
-        if(featureUuid_isSettedByOurselves){
-            Assertions.assertNotNull(src.getUuid(),"src.getUuid()");
-        } else {
-            Assertions.assertNull(src.getUuid(),"src.getUuid()");
-        }
-        Assertions.assertNotNull(target.getUuid(),"target.getUuid()");
-        assertEqualsTrueActual = src.getUuid().toString().compareTo(target.getUuid().toString());
-        if(featureUuid_isSettedByOurselves){
-            Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
-        } else {
-            Assertions.assertNotEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
-        }
-        assertEqualsTrueActual = src.getDiastolicBottomNumber().toString().compareTo(target.getDiastolicBottomNumber().toString());
-        Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDiastolicBottomNumber");
-        assertEqualsTrueActual = src.getSystolicTopNumber().toString().compareTo(target.getSystolicTopNumber().toString());
-        Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getSystolicTopNumber");
-        assertEqualsTrueActual = src.getPulse().toString().compareTo(target.getPulse().toString());
-        Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getPulse");
-        assertEqualsTrueActual = src.getSituation().compareTo(target.getSituation());
-        Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getSituation");
-        assertEqualsTrueActual = src.getDate().compareTo(target.getDate());
-        Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDate");
-        int srcTime = src.getTime().toSecondOfDay();
-        int targetTime = target.getTime().toSecondOfDay();
-        Assertions.assertEquals(srcTime,targetTime,"getTime");
-        assertEqualsTrueActual = src.getDateTime().compareTo(target.getDateTime());
-        Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDateTime");
-        Assertions.assertNotNull(target.getId(),"target.getId()");
-        Assertions.assertNotNull(target.getVersion(),"target.getVersion()");
-    }
 }

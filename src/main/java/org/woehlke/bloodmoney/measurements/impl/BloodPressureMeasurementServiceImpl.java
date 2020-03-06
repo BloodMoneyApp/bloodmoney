@@ -41,7 +41,7 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     public BloodPressureMeasurement update(BloodPressureMeasurement one) {
         ZoneId zone = ZoneId.of(BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
-        one.setDateTimeUpdated(dateTimeNow);
+        one.setUpdated(dateTimeNow);
         return this.bloodPressureMeasurementRepository.save(one);
     }
 

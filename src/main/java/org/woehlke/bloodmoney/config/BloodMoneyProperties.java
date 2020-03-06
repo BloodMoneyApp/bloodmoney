@@ -28,6 +28,9 @@ public class BloodMoneyProperties implements Serializable {
     @NotNull
     private Boolean devTesting;
 
+    @NotNull
+    private Integer testDataHowManyTestData;
+
     @Valid
     @NotNull
     public UserConfig userConfig;

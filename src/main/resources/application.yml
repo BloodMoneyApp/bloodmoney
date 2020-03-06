@@ -38,6 +38,7 @@ spring:
 org:
     woehlke:
         bloodmoney:
+            testDataHowManyTestData: 10
             dev-testing: ${BLOODMONEY_DEV_TESTING}
             user-config:
                 userEmail: ${BLOODMONEY_USER_EMAIL}

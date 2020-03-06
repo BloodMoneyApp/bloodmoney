@@ -41,8 +41,12 @@ import java.util.UUID;
             columnList = "measurement_date"
         ),
         @Index(
-            name = "idx_measurement_timestamp",
-            columnList = "measurement_timestamp"
+            name = "idx_created_timestamp",
+            columnList = "created_timestamp"
+        ),
+        @Index(
+            name = "idx_created_timestamp_updated",
+            columnList = "created_timestamp_updated"
         ),
         @Index(
             name = "idx_measurement_uuid",
@@ -85,18 +89,6 @@ public class BloodPressureMeasurement implements Serializable {
     @Column
     private Long version;
 
-    @Nullable
-    @CsvBindByName
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    @Column(name = "measurement_timestamp", columnDefinition = "TIMESTAMP")
-    private LocalDateTime dateTime;
-
-    @Nullable
-    @CsvBindByName
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    @Column(name = "measurement_timestamp_updated", columnDefinition = "TIMESTAMP")
-    private LocalDateTime dateTimeUpdated;
-
     @NotNull
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -130,19 +122,57 @@ public class BloodPressureMeasurement implements Serializable {
     @XmlElement(required = true)
     @Nullable
     @CsvBindByName
-    //@Length(max=65535)
-    @Column(name = "situation", nullable = true)
+    @Column(name = "situation", nullable = false)
     private String situation;
+
+    @XmlElement
+    @Nullable
+    @CsvBindByName
+    @Column(name = "created_by_device_with_ip")
+    private String ip;
+
+    @XmlElement
+    @Nullable
+    @CsvBindByName
+    @Column(name = "created_by_device_with_hostname")
+    private String hostname;
+
+    @XmlElement
+    @Nullable
+    @CsvBindByName
+    @Column(name = "created_by_device_with_hostname_canonical")
+    private String hostnameCanonical;
+
+
+    @Nullable
+    @CsvBindByName
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @Column(name = "created_timestamp", columnDefinition = "TIMESTAMP")
+    private LocalDateTime created;
+
+    @Nullable
+    @CsvBindByName
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @Column(name = "created_timestamp_updated", columnDefinition = "TIMESTAMP")
+    private LocalDateTime updated;
+
 
     @Transient
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
 
-    public static BloodPressureMeasurement getInstance(String situation) throws UnknownHostException {
+    public static BloodPressureMeasurement getInstance(String situation) {
         Integer systolicTopNumber = 120;
         Integer diastolicBottomNumber = 80;
         Integer pulse = 68;
-        InetAddress localHost = InetAddress.getLocalHost();
-        situation += localHost.getHostAddress() + " " +localHost.getHostName() + " " + localHost.getCanonicalHostName();
+        String ip = "undefined";
+        String hostname =  "undefined";
+        String hostnameCanonical = "undefined";
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            ip = localHost.getHostAddress();
+            hostname = localHost.getHostName();
+            hostnameCanonical = localHost.getCanonicalHostName();
+        } catch (UnknownHostException e){}
         ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
         LocalDate today = LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
@@ -151,17 +181,20 @@ public class BloodPressureMeasurement implements Serializable {
         BloodPressureMeasurement o = new BloodPressureMeasurement();
         o.setDate(today);
         o.setTime(now);
-        o.setDateTime(dateTimeNow);
         o.setSystolicTopNumber(systolicTopNumber);
         o.setDiastolicBottomNumber(diastolicBottomNumber);
         o.setPulse(pulse);
         o.setSituation(situation);
         o.setUuid(uuid);
-        o.setDateTimeUpdated(dateTimeNow);
+        o.setCreated(dateTimeNow);
+        o.setUpdated(dateTimeNow);
+        o.setIp(ip);
+        o.setHostname(hostname);
+        o.setHostnameCanonical(hostnameCanonical);
         return o;
     }
 
-    public static BloodPressureMeasurement getInstance() throws UnknownHostException {
+    public static BloodPressureMeasurement getInstance() {
         String situation = "New Measurement";
         return BloodPressureMeasurement.getInstance(situation);
     }
