@@ -13,6 +13,7 @@ import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -68,6 +69,11 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteAll() {
         this.bloodPressureMeasurementRepository.deleteAll();
+    }
+
+    @Override
+    public Optional<BloodPressureMeasurement> findById(Long id) {
+        return this.bloodPressureMeasurementRepository.findById(id);
     }
 
     @Override

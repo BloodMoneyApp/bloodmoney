@@ -14,10 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.TimeZone;
+import java.util.*;
 
 @Slf4j
 @Getter
@@ -220,6 +217,8 @@ public class BloodPressureMeasurementServiceTest {
         bloodPressureMeasurementService.delete(src);
         long countAfter = bloodPressureMeasurementService.count();
         Assertions.assertEquals(countBefore-1,countAfter,"count after deöete");
+        Optional<BloodPressureMeasurement> target = bloodPressureMeasurementService.findById(id);
+        Assertions.assertTrue(target.isEmpty());
         Assertions.assertTrue(true);
     }
 
