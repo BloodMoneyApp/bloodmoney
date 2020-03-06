@@ -168,15 +168,9 @@ dependencies {
     implementation 'com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute'
     implementation "io.github.jpenren:thymeleaf-spring-data-dialect:${thymeleafSpringDataDialectversion}"
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation ('org.springframework.boot:spring-boot-starter-web') {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    }
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    compileOnly 'org.apache.logging.log4j:log4j-slf4j-impl'
-    compileOnly 'org.apache.logging.log4j:log4j-core'
-    compileOnly 'org.apache.logging.log4j:log4j-jul'
-    compileOnly 'org.slf4j:jul-to-slf4j'
-    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
 
     //Webservices
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
@@ -207,10 +201,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     //Testing
-    testCompile 'org.apache.logging.log4j:log4j-slf4j-impl'
-    testCompile 'org.apache.logging.log4j:log4j-core'
-    testCompile 'org.apache.logging.log4j:log4j-jul'
-    testCompile 'org.slf4j:jul-to-slf4j'
     testCompile 'org.junit.jupiter:junit-jupiter-engine'
     testCompile 'org.mockito:mockito-junit-jupiter'
     testImplementation 'com.h2database:h2'
@@ -218,7 +208,6 @@ dependencies {
     testImplementation 'org.mockito:mockito-junit-jupiter'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     testImplementation 'org.springframework.security:spring-security-test'

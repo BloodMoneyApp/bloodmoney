@@ -1,5 +1,11 @@
 #TODO:
 
+## IntegrationTests
+* use Lombok in Test Classes
+* Logging
+* Test a SpringMVC Controller
+* Test a Rest Controller
+
 ## DatabaseSchemaEvolution
 * TODO
 
