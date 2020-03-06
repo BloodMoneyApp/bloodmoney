@@ -3,7 +3,9 @@ call setenv.cmd
 goto:MAIN
 
 :bootRunHerokuLocal
-echo -------------------------------- bootRunHerokuLocal --------------------------------------------
+echo -------------------------------- bootRun Heroku Local --------------------------------------------
+set JAVA_OPTS= -Dspring.profiles.active=default -Djava.runtime.version=13 -Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2
+set BLOODMONEY_DEV_TESTING=false
 cmd /c gradlew -i composeUp
 cmd /c gradlew -i clean assemble
 cmd /c heroku local web
@@ -12,33 +14,34 @@ goto:END
 
 
 :bootRunPostgresSQL
-echo ---------------------------- bootRunPostgresSQL ------------------------------------------------
+echo ---------------------------- bootRun PostgresSQL ------------------------------------------------
+set JAVA_OPTS= -Dspring.profiles.active=default -Djava.runtime.version=13 -Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2
+set BLOODMONEY_DEV_TESTING=false
 cmd /c gradlew -i clean bootJar
 cmd /c gradlew -i composeUp
-cmd /c gradlew -i bootRun --args='--spring.profiles.active=default'
+cmd /c gradlew -i bootRun
 cmd /c gradlew -i composeDown
 goto:END
 
 :testH2
-echo ---------------------------- testH2 ------------------------------------------------
+echo ---------------------------- test H2 ------------------------------------------------
+set BLOODMONEY_DEV_TESTING=false
 cmd /c gradlew -i clean build
-rem cmd /c gradlew -i clean build --args='--spring.profiles.active=dev'
+rem cmd /c gradlew -i clean build
 goto:END
 
 
 :bootRunH2
-echo ---------------------------- bootRunH2 ------------------------------------------------
-cmd /c gradlew -i clean bootRun --args='--spring.profiles.active=dev'
+echo ---------------------------- bootRun H2 ------------------------------------------------
+set BLOODMONEY_DEV_TESTING=false
+cmd /c gradlew -i clean bootRun
 goto:END
-
 
 :MAIN
 rem goto:bootRunHerokuLocal
 rem goto:bootRunPostgresSQL
-goto:testH2
 rem goto:bootRunH2
-
-
+goto:testH2
 
 :END
 echo "DONE"
