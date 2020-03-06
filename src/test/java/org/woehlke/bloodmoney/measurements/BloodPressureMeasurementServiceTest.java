@@ -210,18 +210,27 @@ public class BloodPressureMeasurementServiceTest {
         String[] fields ={"updated","created"};
         Sort sort = Sort.by(Sort.Direction.DESC, fields);
         Pageable pageable = PageRequest.of(page,size,sort);
-        //TODO: getAllPagedTest
         int getTotalPagesExpected = 22;
         long getTotalElementsExpected = 212L;
-        int getNumberExpected = 1;
-        int getNumberOfElementsExpected = 10;
         int getSizeExpected = 10;
-        Page<BloodPressureMeasurement> resultPage = bloodPressureMeasurementService.getAll(pageable);
-        Assertions.assertEquals(getTotalPagesExpected, resultPage.getTotalPages()," resultPage.getTotalPages()");
-        Assertions.assertEquals(getTotalElementsExpected, resultPage.getTotalElements(),"resultPage.getTotalElements()");
-        Assertions.assertEquals(getNumberExpected, resultPage.getNumber(),"resultPage.getNumber()");
-        Assertions.assertEquals(getNumberOfElementsExpected, resultPage.getNumberOfElements(),"resultPage.getNumberOfElements()");
-        Assertions.assertEquals(getSizeExpected, resultPage.getSize(),"resultPage.getSize()");
+        int getNumberOfElementsExpected = 10;
+        int getNumberOfElementsExpectedLastPage = 2;
+        int getNumberExpected = 1;
+        Page<BloodPressureMeasurement> resultPage;
+        do {
+            resultPage = bloodPressureMeasurementService.getAll(pageable);
+            Assertions.assertEquals(getTotalPagesExpected, resultPage.getTotalPages(), " resultPage.getTotalPages()");
+            Assertions.assertEquals(getTotalElementsExpected, resultPage.getTotalElements(), "resultPage.getTotalElements()");
+            Assertions.assertEquals(getNumberExpected, resultPage.getNumber(), "resultPage.getNumber()");
+            Assertions.assertEquals(getSizeExpected, resultPage.getSize(), "resultPage.getSize()");
+            if(resultPage.isLast()){
+                Assertions.assertEquals(getNumberOfElementsExpectedLastPage, resultPage.getNumberOfElements(), "resultPage.getNumberOfElements()");
+            } else {
+                Assertions.assertEquals(getNumberOfElementsExpected, resultPage.getNumberOfElements(), "resultPage.getNumberOfElements()");
+            }
+            pageable = resultPage.nextPageable();
+            getNumberExpected++;
+        } while (resultPage.hasNext());
         Assertions.assertTrue(true);
     }
 
