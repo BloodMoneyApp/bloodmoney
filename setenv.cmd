@@ -28,8 +28,10 @@ echo ""
 echo "Runtime and Application Service Settings"
 set PORT=5000
 set BLOODMONEY_DEV_TESTING=true
-set SPRING_PROFILES_ACTIVE=dev
-set JAVA_OPTS= -Dspring.profiles.active=dev -Djava.runtime.version=13 -Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2
+set SPRING_PROFILES_ACTIVE_DEV=dev
+set SPRING_PROFILES_ACTIVE_DEFAULT=default
+set JAVA_OPTS_DEV= -Dspring.profiles.active=dev -Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2
+set JAVA_OPTS_DEFAULT= -Dspring.profiles.active=default -Xmx2g -XX:MaxMetaspaceSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:CICompilerCount=2
 echo ""
 echo "SETUP Environment DONE"
 echo ""
