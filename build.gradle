@@ -3,7 +3,9 @@ plugins {
     id "org.springframework.cloud.contract" version  '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id "org.asciidoctor.jvm.convert" version '3.1.0'
+    //DevOps
     id "com.avast.gradle.docker-compose" version '0.10.9'
+    //DatabaseSchemaEvolution
     id "org.liquibase.gradle" version "2.0.2"
     id 'java'
     id 'java-library'
@@ -15,11 +17,10 @@ group = 'org.woehlke.bloodmoney'
 version = '1.3-SNAPSHOT'
 sourceCompatibility = '13'
 
+//SpringBootAdmin
 def springBootAdminVersion = '2.2.1'
-def springCloudVersion = 'Hoxton.SR1'
-//def vaadinVersion = '14.1.17'
-def failOnNoContractsSetting = 'false'
-def githubComSilktideCookieconsent2Version = '1.0.9'
+
+//FrontendHtml5
 def bootswatchVersion = '4.2.1'
 def thymeleafSpringDataDialectversion = '3.4.1'
 def jsoupVersion = '1.13.1'
@@ -28,7 +29,8 @@ def webjarsJqueryVersion = '3.4.1'
 def webjarsPopperJsVersion = '1.16.0'
 def webjarsBootstrap = '4.4.1'
 def webjarsFontAwesomeVersion = '5.12.0'
-//def camelSpringBootStarterVersion = '3.0.1'
+
+//DatabaseSchemaEvolution
 def liquibaseCoreVersion = '3.8.1'
 def liquibaseGroovyDslVersion = '2.0.1'
 
@@ -40,6 +42,12 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    testCompile {
+        extendsFrom compileOnly
+    }
+    testImplementation {
+        extendsFrom implementation
+    }
 }
 
 repositories {
@@ -49,58 +57,41 @@ repositories {
 
 ext {
     set('snippetsDir', file("build/generated-snippets"))
-    set('springCloudVersion', "${springCloudVersion}")
     set('springBootAdminVersion', "${springBootAdminVersion}")
-    //set('vaadinVersion', "${vaadinVersion}")
-    set('failOnNoContracts',"${failOnNoContractsSetting}")
+}
+
+dependencyManagement {
+    imports {
+        //SpringBootAdmin
+        mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+    }
 }
 
 dependencies {
 
-    //Disabled Fetures
-    //implementation "org.apache.camel.springboot:camel-spring-boot-starter:${camelSpringBootStarterVersion}"
-    //implementation 'org.springframework.boot:spring-boot-starter-integration'
-    //testImplementation 'org.springframework.integration:spring-integration-test'
-    //implementation 'org.springframework.boot:spring-boot-starter-amqp'
-    //testImplementation 'org.springframework.amqp:spring-rabbit-test'
-    //implementation 'org.springframework.boot:spring-boot-starter-artemis'
+    //Disabled Features
     //implementation 'org.springframework.boot:spring-boot-starter-batch'
     //testImplementation 'org.springframework.batch:spring-batch-test'
     //implementation 'org.springframework.boot:spring-boot-starter-quartz'
+    //implementation 'org.springframework.boot:spring-boot-starter-mail'
     //implementation 'org.springframework.boot:spring-boot-starter-cache'
-    //implementation 'com.vaadin:vaadin-spring-boot-starter'
 
-    //Spring-Boot Starters
+    //SpringBoot
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
-    implementation 'org.springframework.boot:spring-boot-starter-jersey'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    //compileOnly 'org.projectlombok:lombok'
 
-    //Spring Boot Admin
+    //SpringBootAdmin
     implementation 'de.codecentric:spring-boot-admin-starter-client'
     implementation 'de.codecentric:spring-boot-admin-starter-server'
 
-    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
-    implementation 'org.springframework.session:spring-session-jdbc'
-
-    //Frontend
-    implementation "org.jsoup:jsoup:${jsoupVersion}"
-    implementation "com.opencsv:opencsv:${opencsvVersion}"
+    //FrontendHtml5
     implementation "org.webjars:jquery:${webjarsJqueryVersion}"
     implementation "org.webjars:popper.js:${webjarsPopperJsVersion}"
     implementation "org.webjars:bootstrap:${webjarsBootstrap}"
     implementation "org.webjars:font-awesome:${webjarsFontAwesomeVersion}"
-    implementation "org.webjars.bower:github-com-silktide-cookieconsent2:${githubComSilktideCookieconsent2Version}"
     implementation "org.webjars:bootswatch-sandstone:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-cyborg:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-cerulean:${bootswatchVersion}"
@@ -110,54 +101,61 @@ dependencies {
     implementation "org.webjars:bootswatch-darkly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-flatly:${bootswatchVersion}"
     implementation "org.webjars:bootswatch-spacelab:${bootswatchVersion}"
+
+    //SpringMVC
     implementation 'org.thymeleaf:thymeleaf-spring5'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time'
     implementation 'com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute'
     implementation "io.github.jpenren:thymeleaf-spring-data-dialect:${thymeleafSpringDataDialectversion}"
-
-    compileOnly 'org.projectlombok:lombok'
-    testImplementation 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation ('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
-    //Cloud Contract
-    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
-    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+    //Webservices
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation 'org.springframework.boot:spring-boot-starter-jersey'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation "com.opencsv:opencsv:${opencsvVersion}"
+    implementation 'org.springframework.data:spring-data-rest-hal-explorer'
 
-    // DB Schema Evolution
+    //DatabaseSchemaEvolution
+    implementation "org.jsoup:jsoup:${jsoupVersion}"
+    implementation 'org.springframework.session:spring-session-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.postgresql:postgresql'
     implementation 'org.flywaydb:flyway-core'
-
-    //developmentOnly 'org.liquibase:liquibase-core'
     liquibaseRuntime "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
     liquibaseRuntime "org.liquibase:liquibase-groovy-dsl:${liquibaseGroovyDslVersion}"
     liquibaseRuntime 'org.postgresql:postgresql'
-}
 
-dependencyManagement {
-    imports {
-        //mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
-        mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    //Security
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    //Testing
+    testCompile 'org.junit.jupiter:junit-jupiter-engine'
+    testCompile 'org.mockito:mockito-junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.mockito:mockito-junit-jupiter'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 contracts {
     testFramework = org.springframework.cloud.contract.verifier.config.TestFramework.JUNIT5
-}
-
-test {
-    outputs.dir snippetsDir
-    useJUnitPlatform()
 }
 
 asciidoctor {
@@ -165,7 +163,10 @@ asciidoctor {
     dependsOn test
 }
 
+//Testing
 test {
+    String activeProfile =  System.properties['spring.profiles.active']
+    systemProperty "spring.profiles.active", activeProfile
     outputs.dir snippetsDir
     useJUnitPlatform()
 }
@@ -174,25 +175,25 @@ springBoot {
     buildInfo()
 }
 
-//Production Read. Heroku with PostgreSQL
+//Testing
 task bootRunDefault {
     bootRun.configure {
-        systemProperty "spring.profiles.active", 'default'
+        String activeProfile = 'default'
+        systemProperty "spring.profiles.active", activeProfile
     }
 }
 
-//For Dev. With H2 Database
+//Testing
 task bootRunDev {
     bootRun.configure {
-        systemProperty "spring.profiles.active", 'dev'
+        String activeProfile = 'dev'
+        systemProperty "spring.profiles.active", activeProfile
     }
 }
 
 bootRun {
-    String activeProfile =  System.properties['spring.profiles.active']
+    String activeProfile = System.properties['spring.profiles.active']
     systemProperty "spring.profiles.active", activeProfile
-    String javaRuntimeVersion =  System.properties['java.runtime.version']
-    systemProperty "java.runtime.version", javaRuntimeVersion
     //String confLoc = System.properties['spring.config.location']
     //systemProperty "spring.config.location", "file:$confLoc"
 }
@@ -200,12 +201,14 @@ bootRun {
 bootRunDefault.finalizedBy bootRun
 bootRunDev.finalizedBy bootRun
 
+//DevOps
 dockerCompose {
     //isRequiredBy(project.tasks.test)
     //exposeAsSystemProperties(project.tasks.test)
     useComposeFiles = ['src/test/docker/stack.yml']
 }
 
+//DevOps
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
