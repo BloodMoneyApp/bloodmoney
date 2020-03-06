@@ -1,6 +1,5 @@
-package org.woehlke.bloodmoney.frontend;
+package org.woehlke.bloodmoney.application;
 
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;

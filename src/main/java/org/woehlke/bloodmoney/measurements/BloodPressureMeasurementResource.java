@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.frontend;
+package org.woehlke.bloodmoney.measurements;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -10,10 +10,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.application.BloodMoneyProperties;
-import org.woehlke.bloodmoney.frontend.model.UserSession;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.user.UserSession;
 import org.woehlke.bloodmoney.user.UserSessionService;
 
 import javax.validation.Valid;

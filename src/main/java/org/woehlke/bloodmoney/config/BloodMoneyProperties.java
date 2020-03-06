@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.application;
+package org.woehlke.bloodmoney.config;
 
 
 import lombok.*;

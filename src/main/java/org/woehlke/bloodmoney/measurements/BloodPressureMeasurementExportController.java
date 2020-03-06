@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.frontend;
+package org.woehlke.bloodmoney.measurements;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
@@ -7,9 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.application.BloodMoneyProperties;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 import javax.servlet.http.HttpServletResponse;
 

@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.frontend;
+package org.woehlke.bloodmoney.application;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.woehlke.bloodmoney.application.BloodMoneyProperties;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.measurements.TestService;
 
 @Slf4j

@@ -1,6 +1,7 @@
-package org.woehlke.bloodmoney.frontend.model;
+package org.woehlke.bloodmoney.user;
 
 import lombok.*;
+import org.woehlke.bloodmoney.application.FlashMessage;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
