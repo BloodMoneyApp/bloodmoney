@@ -103,6 +103,15 @@ task testDefault {
     }
 }
 
+task testDev {
+    test.configure {
+        String activeProfile = 'dev'
+        String jmxEnabled ='true'
+        systemProperty "spring.profiles.active", activeProfile
+        systemProperty "spring.jmx.enabled", jmxEnabled
+    }
+}
+
 //Testing
 task bootRunDev {
     bootRun.configure {
