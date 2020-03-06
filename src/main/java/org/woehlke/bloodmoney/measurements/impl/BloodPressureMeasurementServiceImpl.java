@@ -10,9 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
 import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -36,19 +34,12 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
 
     @Override
     public BloodPressureMeasurement add(BloodPressureMeasurement o) {
-        ZoneId zone = ZoneId.of("Europe/Paris");
-        LocalDate today = LocalDate.now(zone);
-        LocalTime now = LocalTime.now(zone);
-        LocalDateTime dateTimeNow = LocalDateTime.now(zone);
-        o.setDateTime(dateTimeNow);
-        o.setDate(today);
-        o.setTime(now);
         return this.bloodPressureMeasurementRepository.save(o);
     }
 
     @Override
     public BloodPressureMeasurement update(BloodPressureMeasurement one) {
-        ZoneId zone = ZoneId.of("Europe/Paris");
+        ZoneId zone = ZoneId.of(BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
         one.setDateTimeUpdated(dateTimeNow);
         return this.bloodPressureMeasurementRepository.save(one);
@@ -68,5 +59,10 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     @Override
     public BloodPressureMeasurement getOne(long id) {
         return this.bloodPressureMeasurementRepository.getOne(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        this.bloodPressureMeasurementRepository.deleteAll();
     }
 }

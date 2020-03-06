@@ -2,7 +2,6 @@ package org.woehlke.bloodmoney.measurements;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
 
 import java.util.List;
 
@@ -19,4 +18,7 @@ public interface BloodPressureMeasurementService {
     List<BloodPressureMeasurement> getAll();
 
     BloodPressureMeasurement getOne(long id);
+
+    void deleteAll();
+
 }

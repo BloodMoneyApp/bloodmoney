@@ -138,21 +138,26 @@ public class BloodPressureMeasurement implements Serializable {
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
 
     public static BloodPressureMeasurement getInstance(String situation) throws UnknownHostException {
+        Integer systolicTopNumber = 120;
+        Integer diastolicBottomNumber = 80;
+        Integer pulse = 68;
         InetAddress localHost = InetAddress.getLocalHost();
         situation += localHost.getHostAddress() + " " +localHost.getHostName() + " " + localHost.getCanonicalHostName();
         ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
         LocalDate today = LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
+        UUID uuid = UUID.randomUUID();
         BloodPressureMeasurement o = new BloodPressureMeasurement();
         o.setDate(today);
         o.setTime(now);
         o.setDateTime(dateTimeNow);
-        o.setSystolicTopNumber(120);
-        o.setDiastolicBottomNumber(80);
-        o.setPulse(68);
+        o.setSystolicTopNumber(systolicTopNumber);
+        o.setDiastolicBottomNumber(diastolicBottomNumber);
+        o.setPulse(pulse);
         o.setSituation(situation);
-        o.setUuid(UUID.randomUUID());
+        o.setUuid(uuid);
+        o.setDateTimeUpdated(dateTimeNow);
         return o;
     }
 
