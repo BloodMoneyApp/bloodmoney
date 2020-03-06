@@ -32,7 +32,8 @@ function bootRunH2() {
 
 function testH2() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEV
-    ./gradlew -i clean assemble bootJar build test check bootRun
+    ./gradlew -i clean assemble bootJar build test check
+    #./gradlew -i bootRun
 }
 
 function main() {
@@ -40,8 +41,8 @@ function main() {
     # composeDown
     # composeUp
     # bootRunPostgresSQL
-    # testH2
-    bootRunH2
+    testH2
+    # bootRunH2
 }
 
 main

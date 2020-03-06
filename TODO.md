@@ -13,9 +13,11 @@
 * TODO
 
 ## REST JAX-RS
+* Add a JAX-RS Resource
 * TODO
 
 ## SOAP JAX-WS
+* Add a JAX-WS Endpoint
 * [Spring.io Refence-Doc: spring-ws supports_ws_security](https://docs.spring.io/spring-ws/docs/3.0.8.RELEASE/reference/#_supports_ws_security)
 * [Spring.io Guide: producing-web-service](https://spring.io/guides/gs/producing-web-service/)
 * build.gradle
