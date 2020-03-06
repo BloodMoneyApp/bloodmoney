@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class BloodPressureMeasurementServiceTest {
     @Autowired
     public BloodPressureMeasurementServiceTest(
         BloodPressureMeasurementService bloodPressureMeasurementService
-    ) {
+    ) throws UnknownHostException {
         this.bloodPressureMeasurementService = bloodPressureMeasurementService;
         this.testData = new ArrayList<>();
         for(int i = 0; i < testDataHowMany; i++){
@@ -54,10 +55,12 @@ public class BloodPressureMeasurementServiceTest {
         for(int i = 0; i < testDataHowMany; i++){
             BloodPressureMeasurement src = srcListe.get(i);
             BloodPressureMeasurement target = resultList.get(i);
-            Assertions.assertNull(src.getUuid(),"src.getUuid()");
+            //Assertions.assertNull(src.getUuid(),"src.getUuid()");
+            Assertions.assertNotNull(src.getUuid(),"src.getUuid()");
             Assertions.assertNotNull(target.getUuid(),"target.getUuid()");
             assertEqualsTrueActual = src.getUuid().toString().compareTo(target.getUuid().toString());
-            Assertions.assertNotEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
+            Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
+            //Assertions.assertNotEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
             assertEqualsTrueActual = src.getDiastolicBottomNumber().toString().compareTo(target.getDiastolicBottomNumber().toString());
             Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getDiastolicBottomNumber");
             assertEqualsTrueActual = src.getSystolicTopNumber().toString().compareTo(target.getSystolicTopNumber().toString());

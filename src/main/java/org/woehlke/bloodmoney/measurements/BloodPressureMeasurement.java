@@ -13,6 +13,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -135,7 +137,9 @@ public class BloodPressureMeasurement implements Serializable {
     @Transient
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
 
-    public static BloodPressureMeasurement getInstance(String situation){
+    public static BloodPressureMeasurement getInstance(String situation) throws UnknownHostException {
+        InetAddress localHost = InetAddress.getLocalHost();
+        situation += localHost.getHostAddress() + " " +localHost.getHostName() + " " + localHost.getCanonicalHostName();
         ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
         LocalDate today = LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
@@ -148,10 +152,11 @@ public class BloodPressureMeasurement implements Serializable {
         o.setDiastolicBottomNumber(80);
         o.setPulse(68);
         o.setSituation(situation);
+        o.setUuid(UUID.randomUUID());
         return o;
     }
 
-    public static BloodPressureMeasurement getInstance(){
+    public static BloodPressureMeasurement getInstance() throws UnknownHostException {
         String situation = "New Measurement";
         return BloodPressureMeasurement.getInstance(situation);
     }

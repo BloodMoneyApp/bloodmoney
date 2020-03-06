@@ -7,6 +7,7 @@
 * Test a Rest Controller
 
 ## DatabaseSchemaEvolution
+* add new with UUID
 * Flyway: https://flywaydb.org/
 * Flyway upgrade or H2 Downgrade
 * Flyway upgrade Version from to 
