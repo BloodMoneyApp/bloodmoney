@@ -7,6 +7,7 @@ plugins {
     id "com.avast.gradle.docker-compose" version '0.10.9'
     //DatabaseSchemaEvolution
     id "org.liquibase.gradle" version "2.0.2"
+    id "io.franzbecker.gradle-lombok" version "3.3.0"
     id 'java'
     id 'java-library'
     id 'idea'
@@ -43,7 +44,7 @@ configurations {
         extendsFrom annotationProcessor
     }
     testCompile {
-        extendsFrom compileOnly
+        extendsFrom annotationProcessor
     }
     testImplementation {
         extendsFrom implementation
@@ -112,6 +113,11 @@ dependencies {
     implementation ('org.springframework.boot:spring-boot-starter-web') {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
+
+    compileOnly 'org.apache.logging.log4j:log4j-slf4j-impl'
+    compileOnly 'org.apache.logging.log4j:log4j-core'
+    compileOnly 'org.apache.logging.log4j:log4j-jul'
+    compileOnly 'org.slf4j:jul-to-slf4j'
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
     //Webservices
@@ -142,8 +148,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     //Testing
+    testCompile 'org.apache.logging.log4j:log4j-slf4j-impl'
+    testCompile 'org.apache.logging.log4j:log4j-core'
+    testCompile 'org.apache.logging.log4j:log4j-jul'
+    testCompile 'org.slf4j:jul-to-slf4j'
     testCompile 'org.junit.jupiter:junit-jupiter-engine'
     testCompile 'org.mockito:mockito-junit-jupiter'
+    testImplementation 'com.h2database:h2'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine'
     testImplementation 'org.mockito:mockito-junit-jupiter'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
