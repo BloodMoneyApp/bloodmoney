@@ -10,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
@@ -92,7 +91,6 @@ public class BloodPressureMeasurementServiceTest {
         persistTestData();
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void deletePersitentTestDataTest(){
         log.info("TEST: deletePersitentTestDataTest");
@@ -105,7 +103,6 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void persistTestDataTest(){
         log.info("TEST: persistTestDataTest");
@@ -119,7 +116,6 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void getAllListTest(){
         log.info("TEST: getAllPageTest");
@@ -151,7 +147,6 @@ public class BloodPressureMeasurementServiceTest {
         return randomEntity;
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void getOneTest(){
         log.info("TEST: getOneTest");
@@ -166,7 +161,6 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void addTest(){
         log.info("TEST: addTest");
@@ -192,7 +186,6 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void updateTest(){
         log.info("TEST: getAllPageTest");
@@ -208,7 +201,6 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void deleteTest(){
         log.info("TEST: deleteTest");
@@ -226,7 +218,6 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
-    @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
     public void getAllPagedTest(){
         log.info("TEST: getAllPagedTest");

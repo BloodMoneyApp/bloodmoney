@@ -47,6 +47,7 @@
 * #25 read [JAX-RS is just an API!](https://www.baeldung.com/jax-rs-spec-and-implementations)
 * #27 read [AX-RS/Jersey and Spring REST](https://learnjava.co.in/jax-rs-vs-spring-rest/)
 * #28 read [Let's Compare: JAX-RS vs Spring for REST Endpoints](https://developer.okta.com/blog/2017/08/09/jax-rs-vs-spring-rest-endpoints)
+* #58 read [Introduction to Spring Method Security](https://www.baeldung.com/spring-security-method-security)
 ### Frontend
 * #50 add bootwatch for bootstrap
 ### Deployments

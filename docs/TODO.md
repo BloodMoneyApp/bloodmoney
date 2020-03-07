@@ -7,9 +7,9 @@
 * [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
 
 ## Development
-* [Changelog](docs/RELEASES.md)
-* [Todo](docs/TODO.md)
-* [Howto](docs/HOWTO.md)
+* [Changelog](CHANGELOG.md)
+* [Todo](TODO.md)
+* [Howto](HOWTO.md)
 
 ## Todos
 * spring.config.location
