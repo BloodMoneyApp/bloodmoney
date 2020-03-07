@@ -97,7 +97,7 @@ spring:
             enabled: true
     application:
         admin:
-            enabled: true
+            enabled: false
     datasource:
         platform: H2
         driver-class-name: org.h2.Driver
@@ -137,14 +137,9 @@ spring:
             settings:
                 trace: true
                 web-allow-others: true
-endpoints:
-    endpoints:
-        shutdown:
-            enabled: true
 server:
     compression:
         enabled: false
-
 logging:
     file:
         name: bloodmoney.log

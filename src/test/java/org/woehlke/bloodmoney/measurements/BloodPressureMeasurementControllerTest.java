@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -17,29 +16,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@AutoConfigureMockMvc
-@EnableAutoConfiguration
 @Slf4j
 @Getter
 @ActiveProfiles("dev")
 @SpringBootTest
+@AutoConfigureMockMvc
 public class BloodPressureMeasurementControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-//    @LocalServerPort
-  //  int randomServerPort;
-
-   // @Autowired
-   // private HomeController homeController;
-
-   // @Autowired
-   // private BloodPressureMeasurementController bloodPressureMeasurementController;
-
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
+        log.info("TEST: shouldReturnDefaultMessage: /");
+        this.mockMvc.perform(get("/"))
+            .andDo(print())
+            .andExpect(status().is3xxRedirection());
+        log.info("TEST: shouldReturnDefaultMessage: /login");
+        this.mockMvc.perform(get("/login"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Willkommen zu BloodMoney")))
             .andExpect(content().string(containsString("Ihre App um Messwerte zu erfassen")));
     }
 }
