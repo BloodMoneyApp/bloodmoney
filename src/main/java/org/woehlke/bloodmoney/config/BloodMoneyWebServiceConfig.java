@@ -16,7 +16,7 @@ import org.springframework.ws.config.annotation.WsConfigurerAdapter;
     BloodMoneyWebSecurityConfig.class
 })
 @EnableAutoConfiguration
-public class WebServiceConfig extends WsConfigurerAdapter {
+public class BloodMoneyWebServiceConfig extends WsConfigurerAdapter {
 
     /*
     @Bean

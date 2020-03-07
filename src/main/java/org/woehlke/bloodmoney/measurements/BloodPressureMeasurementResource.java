@@ -20,6 +20,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.ALL_VALUE;
 
+//TODO: #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
 /**
  * http://localhost:5000/
  * http://localhost:5000/api/rs/1/measurement/all

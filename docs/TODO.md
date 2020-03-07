@@ -23,12 +23,8 @@
 
 next commit:
 
-fixed #30 use Lombok in Test Classes,
-fixed #31 use Logging in Test Classes,
-fixed #32 Test a SpringMVC Controller,
-fixed #33 Test a Rest Controller,
-fixed #39 add UUID Generation to Constructor and factories,
-fixed #41 make Flyway and H2 Versions compatible
+fixed #49 remove cookieconsent2/3.1.0/cookieconsent.min.js
+
 
 
 ## JAX-WS (SOAP)

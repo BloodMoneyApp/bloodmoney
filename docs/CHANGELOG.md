@@ -23,6 +23,8 @@
 ### DatabaseSchemaEvolution
 * #39 add UUID Generation to Constructor and factories 
 * #41 make Flyway and H2 Versions compatible
+### Frontend
+* #49 remove cookieconsent2/3.1.0/cookieconsent.min.js
 * TODO
 ## 1.8 Work in Progress
 ### IntegrationTests and Unit-Tests
@@ -46,8 +48,16 @@
 * #27 read [AX-RS/Jersey and Spring REST](https://learnjava.co.in/jax-rs-vs-spring-rest/)
 * #28 read [Let's Compare: JAX-RS vs Spring for REST Endpoints](https://developer.okta.com/blog/2017/08/09/jax-rs-vs-spring-rest-endpoints)
 ### Frontend
-* #49 remove cookieconsent2/3.1.0/cookieconsent.min.js
 * #50 add bootwatch for bootstrap
+### Deployments
+* #51 prepare DatabaseSchemaEvolution for Deployment 
+* #52 prepare REST-API for Deployment
+* #53 prepare Frontend for Deployments
+* #54 prepare IntegrationTests and Unit-Tests for Deployments
+* #55 Deploy Candidate to Heroku
+* #56 Test the Deployment
+* #57 make Release for Deployment
+
 ## 1.8 Known Issues
 * TODO
 
