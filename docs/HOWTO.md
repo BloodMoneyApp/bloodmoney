@@ -1,5 +1,17 @@
 # Howto Reminder
 
+## github
+* [Issues](https://github.com/BloodMoneyApp/bloodmoney/issues)
+* [Projects](https://github.com/BloodMoneyApp/bloodmoney/projects)
+* [Milestones](https://github.com/BloodMoneyApp/bloodmoney/milestones)
+* [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
+
+## Development
+* [Releases - Changelog](docs/RELEASES.md)
+* [Todo](docs/TODO.md)
+* [Howto](docs/HOWTO.md)
+
+
 ## 3rd Party Software 
 ### Howto
 * [Spring dependency-management-plugin](https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/)

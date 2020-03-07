@@ -6,10 +6,12 @@
 * [Milestones](https://github.com/BloodMoneyApp/bloodmoney/milestones)
 * [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
 
-## Releases - changelog
-* [Releases - changelog](RELEASES.md)
+## Development
+* [Releases - Changelog](docs/RELEASES.md)
+* [Todo](docs/TODO.md)
+* [Howto](docs/HOWTO.md)
 
-## 
+## Todos
 * spring.config.location
 * read [7 Reasons I Do Not Use JAX-RS in Spring Boot Web Applications](https://dzone.com/articles/7-reasons-i-do-not-use-jax-rs-in-spring-boot-web-a)
 * read [Protecting JAX-RS Resources with RBAC and Apache Shiro](https://stormpath.com/blog/protecting-jax-rs-resources-rbac-apache-shiro)
@@ -22,7 +24,6 @@
 
 ## JAX-WS (SOAP)
 * Add a JAX-WS - SOAPEndpoint
-
 * build.gradle
 
 ```

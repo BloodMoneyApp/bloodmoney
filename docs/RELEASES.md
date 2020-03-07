@@ -1,5 +1,17 @@
 # Releases
-* Github: [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
+
+## github
+* [Issues](https://github.com/BloodMoneyApp/bloodmoney/issues)
+* [Projects](https://github.com/BloodMoneyApp/bloodmoney/projects)
+* [Milestones](https://github.com/BloodMoneyApp/bloodmoney/milestones)
+* [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
+
+## Development
+* [Releases - Changelog](docs/RELEASES.md)
+* [Todo](docs/TODO.md)
+* [Howto](docs/HOWTO.md)
+
+# DRAFT (1.8)
 
 # 1.8 Release dd.mm.2020 Changelog
 ## 1.8 Fixed
@@ -46,3 +58,10 @@
 1.2
 1.1
 1.0 https://bloodmoney.herokuapp.com/
+
+
+# github
+* [Issues](https://github.com/BloodMoneyApp/bloodmoney/issues)
+* [Projects](https://github.com/BloodMoneyApp/bloodmoney/projects)
+* [Milestones](https://github.com/BloodMoneyApp/bloodmoney/milestones)
+* [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
