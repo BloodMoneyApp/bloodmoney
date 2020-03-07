@@ -113,7 +113,7 @@ spring:
             connectionfactory:
                 xa-connection-factory-class-name: org.h2.Driver
     jpa:
-        show-sql: true
+        show-sql: false
         database-platform: H2
         hibernate:
             ddl-auto: create-drop
@@ -160,7 +160,7 @@ logging:
             apache:
                 commons:
                     logging: WARN
-            h2: DEBUG
+            h2: WARN
             springframework:
                 data:
                     jdbc: INFO
@@ -204,7 +204,7 @@ logging:
                     config: DEBUG
                     measurements: DEBUG
                     user: DEBUG
-debug: true
+debug: false
 ---
 #Profile default: Production ready. Heroku with PostgreSQL
 spring:

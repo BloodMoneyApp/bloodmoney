@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,15 +24,11 @@ import java.util.*;
 public class BloodPressureMeasurementServiceTest {
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;
-
     private final BloodMoneyProperties bloodMoneyProperties;
 
     private final List<BloodPressureMeasurement> testData;
-
     private final List<BloodPressureMeasurement> testDataToAdd;
-
     private final int testDataHowManyPlustestDataToAdd;
-
     private final int testDataHowManyTestData;
 
     @Autowired
