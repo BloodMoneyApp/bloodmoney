@@ -23,8 +23,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 // https://www.baeldung.com/spring-boot-testing
-
-//TODO: #34 Test a SpringMVC Controller with Spring Security
 @Slf4j
 @Getter
 @ActiveProfiles("dev")
@@ -67,16 +65,11 @@ public class BloodPressureMeasurementControllerTest {
 
     @WithMockUser(username="thomas.woehlke@gmail.com")
     @Test
-    public void getrootPrivate() throws Exception {
-        log.info("TEST: shouldReturnDefaultMessage: /");
-        this.mockMvc.perform(get("/"))
-            .andDo(print())
-            .andExpect(status().is3xxRedirection());
-        log.info("TEST: shouldReturnDefaultMessage: /login");
-        this.mockMvc.perform(get("/login"))
+    public void getMeasurementAllPrivate() throws Exception {
+        log.info("TEST: getMeasurementAllPrivate: /measurement/all");
+        this.mockMvc.perform(get("/measurement/all"))
             .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Willkommen zu BloodMoney")))
-            .andExpect(content().string(containsString("Ihre App um Messwerte zu erfassen")));
+            .andExpect(content().string(containsString("<title>Alle Messungen</title>")));
     }
 }
