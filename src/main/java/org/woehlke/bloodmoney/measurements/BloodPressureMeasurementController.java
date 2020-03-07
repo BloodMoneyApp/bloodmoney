@@ -25,7 +25,7 @@ public class BloodPressureMeasurementController {
 
     @GetMapping("/all")
     public String getAll(
-        @PageableDefault(sort={"dateTime"}, direction=Sort.Direction.DESC) Pageable pageable,
+        @PageableDefault(sort={"created"}, direction=Sort.Direction.DESC) Pageable pageable,
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
         Model model
     ) {
