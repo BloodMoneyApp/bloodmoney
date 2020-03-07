@@ -20,6 +20,7 @@
 * #31 use Logging in Test Classes
 * #32 Test a SpringMVC Controller
 * #33 Test a Rest Controller
+* #34 Test a SpringMVC Controller with Spring Security
 ### DatabaseSchemaEvolution
 * #39 add UUID Generation to Constructor and factories 
 * #41 make Flyway and H2 Versions compatible
@@ -28,7 +29,6 @@
 * TODO
 ## 1.8 Work in Progress
 ### IntegrationTests and Unit-Tests
-* #34 Test a SpringMVC Controller with Spring Security
 * #35 Test a Rest Controller with Spring Security
 * #36 read, apply and evaluate [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
 * #37 read, apply and evaluate [Testing Spring Boot Spring Security](https://www.codeflow.site/de/article/spring-security-integration-tests)
