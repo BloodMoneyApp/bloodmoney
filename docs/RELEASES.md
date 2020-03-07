@@ -15,22 +15,24 @@
 
 # 1.8 Release dd.mm.2020 Changelog
 ## 1.8 Fixed
-* TODO
-## 1.8 Work in Progress
 ### IntegrationTests and Unit-Tests
 * #30 use Lombok in Test Classes
 * #31 use Logging in Test Classes
 * #32 Test a SpringMVC Controller
 * #33 Test a Rest Controller
+### DatabaseSchemaEvolution
+* #39 add UUID Generation to Constructor and factories 
+* #41 make Flyway and H2 Versions compatible
+* TODO
+## 1.8 Work in Progress
+### IntegrationTests and Unit-Tests
 * #34 Test a SpringMVC Controller with Spring Security
 * #35 Test a Rest Controller with Spring Security
 * #36 read, apply and evaluate [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
 * #37 read, apply and evaluate [Testing Spring Boot Spring Security](https://www.codeflow.site/de/article/spring-security-integration-tests)
 * #38 read [spring-boot-setup-security-for-testing](https://stackoverflow.com/questions/23335200/spring-boot-setup-security-for-testing)
 ### DatabaseSchemaEvolution
-* #39 add UUID Generation to Contructor and factories 
 * #40 add UUID Generation from Contructor and factories to Framework Automatism
-* #41 make Flyway and H2 Versions compatible
 * #42 apply and evaluate Flyway for DatabaseSchemaEvolution: https://flywaydb.org/
 * #43 apply and evaluate Liquibase for DatabaseSchemaEvolution: https://www.liquibase.org/
 * #44 read, apply and evaluate [Use Liquibase to Safely Evolve Your Database Schema](https://www.baeldung.com/liquibase-refactor-schema-of-java-app)

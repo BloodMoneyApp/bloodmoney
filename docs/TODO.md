@@ -21,6 +21,15 @@
 * doc [Spring.io Refence-Doc: spring-ws supports_ws_security](https://docs.spring.io/spring-ws/docs/3.0.8.RELEASE/reference/#_supports_ws_security)
 * doc [Spring.io Guide: producing-web-service](https://spring.io/guides/gs/producing-web-service/)
 
+next commit:
+
+fixed #30 use Lombok in Test Classes,
+fixed #31 use Logging in Test Classes,
+fixed #32 Test a SpringMVC Controller,
+fixed #33 Test a Rest Controller,
+fixed #39 add UUID Generation to Constructor and factories,
+fixed #41 make Flyway and H2 Versions compatible
+
 
 ## JAX-WS (SOAP)
 * Add a JAX-WS - SOAPEndpoint
