@@ -2,22 +2,18 @@ package org.woehlke.bloodmoney.measurements;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.woehlke.bloodmoney.application.HomeController;
-import org.woehlke.bloodmoney.application.MyErrorController;
-import org.woehlke.bloodmoney.user.login.UserLoginController;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
@@ -26,18 +22,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+// https://www.baeldung.com/spring-boot-testing
+
 //TODO: #34 Test a SpringMVC Controller with Spring Security
 @Slf4j
 @Getter
 @ActiveProfiles("dev")
 @SpringBootTest
-@AutoConfigureMockMvc
-@WebMvcTest({
-    HomeController.class,
-    MyErrorController.class,
-    UserLoginController.class,
-    BloodPressureMeasurementController.class
-})
 public class BloodPressureMeasurementControllerTest {
 
     @Autowired
@@ -45,7 +36,7 @@ public class BloodPressureMeasurementControllerTest {
 
     private MockMvc mockMvc;
 
-    @BeforeAll
+    @PostConstruct
     public void runBeforeAll() {
         log.info("TEST: runBeforeAll");
         mockMvc = MockMvcBuilders
@@ -55,7 +46,7 @@ public class BloodPressureMeasurementControllerTest {
         Assertions.assertNotNull(mockMvc,"runBeforeAll() context -> mockMvc");
     }
 
-    @AfterAll
+    @PreDestroy
     void runAfterAll() {
         log.info("TEST: runAfterAll");
     }
