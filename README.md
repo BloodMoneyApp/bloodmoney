@@ -9,7 +9,7 @@ Webapp for storing Blood Pressure Measurements for one Person.
 * [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
 
 ## Development
-* [Releases - Changelog](docs/CHANGELOG.md)
+* [Changelog](docs/CHANGELOG.md)
 * [Todo](docs/TODO.md)
 * [Howto](docs/HOWTO.md)
 

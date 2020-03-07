@@ -7,7 +7,7 @@
 * [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
 
 ## Development
-* [Releases - Changelog](docs/RELEASES.md)
+* [Changelog](docs/RELEASES.md)
 * [Todo](docs/TODO.md)
 * [Howto](docs/HOWTO.md)
 
