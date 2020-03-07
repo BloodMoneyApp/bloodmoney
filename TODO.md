@@ -5,6 +5,8 @@
 * Logging
 * Test a SpringMVC Controller
 * Test a Rest Controller
+* Use Spring Security for Testing Controllers [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
+
 
 ## DatabaseSchemaEvolution
 * add new with UUID

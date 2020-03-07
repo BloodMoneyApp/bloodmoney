@@ -18,6 +18,8 @@ Webapp for storing Blood Pressure Measurements for one Person.
 ## Security
 
 ## Testing
+* [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
+
 
 ## Trivia
 The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP 
