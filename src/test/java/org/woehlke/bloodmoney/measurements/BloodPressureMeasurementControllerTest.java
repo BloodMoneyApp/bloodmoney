@@ -45,7 +45,7 @@ public class BloodPressureMeasurementControllerTest {
     }
 
     @PreDestroy
-    void runAfterAll() {
+    public void runAfterAll() {
         log.info("TEST: runAfterAll");
     }
 

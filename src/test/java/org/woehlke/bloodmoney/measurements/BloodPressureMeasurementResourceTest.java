@@ -3,8 +3,11 @@ package org.woehlke.bloodmoney.measurements;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -18,8 +21,17 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @Slf4j
 @Getter
 @ActiveProfiles("dev")
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BloodPressureMeasurementResourceTest {
+
+    @LocalServerPort
+    private int port;
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Autowired
+    private BloodPressureMeasurementResource bloodPressureMeasurementResource;
 
     @Autowired
     private WebApplicationContext context;
@@ -36,8 +48,35 @@ public class BloodPressureMeasurementResourceTest {
         Assertions.assertNotNull(mockMvc,"runBeforeAll() context -> mockMvc");
     }
 
+    private final String host = "http://localhost:";
+    private final String path = "/rest/measurement";;
+
     @PreDestroy
-    void runAfterAll() {
+    public void runAfterAll() throws Exception {
         log.info("TEST: runAfterAll");
+    }
+
+    @Test
+    public void getAllTest() throws Exception {
+        String url = host + port + path + "/all";
+        log.info("TEST: getAllTest url="+url);
+    }
+
+    @Test
+    public void updateTest() throws Exception {
+        String url = host + port + path + "/{id}";
+        log.info("TEST: updateTest url="+url);
+    }
+
+    @Test
+    public void deleteTest() throws Exception {
+        String url = host + port + path + "/";
+        log.info("TEST: deleteTest url="+url);
+    }
+
+    @Test
+    public void addTest() throws Exception {
+        String url = host + port + path + "/";
+        log.info("TEST: addTest url="+url);
     }
 }

@@ -30,7 +30,7 @@ public class BloodPressureMeasurementResource {
     @GetMapping("/all")
     @ResponseBody
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<BloodPressureMeasurement>  getAll(
+    public List<BloodPressureMeasurement> getAll(
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
         Model model
     ) {
