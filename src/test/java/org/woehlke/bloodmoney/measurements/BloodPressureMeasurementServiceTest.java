@@ -134,6 +134,25 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
+    @Test
+    public void getAllListAndAllFieldsNonNullTest(){
+        log.info("TEST: getAllListAndAllFieldsNonNullTest");
+        resetTestData();
+        List<BloodPressureMeasurement> srcListe = this.getTestData();
+        List<BloodPressureMeasurement> resultList = bloodPressureMeasurementService.getAll();
+        Assertions.assertNotNull(resultList);
+        Assertions.assertEquals(srcListe.size(),resultList.size(),"srcListe.size()==resultList.size()");
+        Assertions.assertEquals(testDataHowManyTestData,srcListe.size(),"srcListe.size()=="+testDataHowManyTestData);
+        Assertions.assertEquals(testDataHowManyTestData,resultList.size(),"resultList.size()==,"+testDataHowManyTestData);
+        for(int i = 0; i < testDataHowManyTestData; i++){
+            BloodPressureMeasurement src = srcListe.get(i);
+            BloodPressureMeasurement target = resultList.get(i);
+            BloodPressureMeasurementTest.assertTransientEqualsPersistent(src,target);
+            BloodPressureMeasurementTest.assertAllFieldNonNullForPersistent(target);
+        }
+        Assertions.assertTrue(true);
+    }
+
     private BloodPressureMeasurement getRandomElement(){
         long size = bloodPressureMeasurementService.count();
         int mySize = Long.valueOf(size % Long.valueOf(Integer.MAX_VALUE)).intValue();

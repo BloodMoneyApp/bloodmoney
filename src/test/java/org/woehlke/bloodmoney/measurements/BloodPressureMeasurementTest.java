@@ -121,4 +121,23 @@ public class BloodPressureMeasurementTest {
         int targetTime = target.getTime().toSecondOfDay();
         Assertions.assertEquals(srcTime,targetTime,"getTime");
     }
+
+    public static void assertAllFieldNonNullForPersistent(BloodPressureMeasurement o) {
+        Assertions.assertNotNull(o,"o not null");
+        Assertions.assertNotNull(o.getId(),"o.getId() not null");
+        Assertions.assertNotNull(o.getUuid(),"o.getUuid() not null");
+        Assertions.assertNotNull(o.getCreated(),"o.getCreated() not null");
+        Assertions.assertNotNull(o.getUpdated(),"o.getUpdated() not null");
+        Assertions.assertNotNull(o.getIp(),"o.getIp() not null");
+        Assertions.assertNotNull(o.getVersion(),"o.getVersion() not null");
+        Assertions.assertNotNull(o.getHostname(),"o.getHostname() not null");
+        Assertions.assertNotNull(o.getHostnameCanonical(),"o.getHostnameCanonical() not null");
+        Assertions.assertNotNull(o.getDiastolicBottomNumber(),"o.getDiastolicBottomNumber() not null");
+        Assertions.assertNotNull(o.getSystolicTopNumber(),"o.getDiastolicBottomNumber() not null");
+        Assertions.assertNotNull(o.getPulse(),"o.getPulse() not null");
+        Assertions.assertNotNull(o.getSituation(),"o.getSituation() not null");
+        Assertions.assertNotNull(o.getDate(),"o.getDate() not null");
+        Assertions.assertNotNull(o.getTime(),"o.getTime() not null");
+        Assertions.assertNotNull(o.toString(),"o.toString() not null");
+    }
 }
