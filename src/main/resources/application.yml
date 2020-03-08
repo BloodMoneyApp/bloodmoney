@@ -70,8 +70,8 @@ org:
                 invalidate-http-session: true
                 ant-matchers-fully-authenticated: "/**"
                 ant-matchers-permit-all:
-                    - "/spring-jersey/resources/v1/bpm"
-                    - "/resources/v1/bpm"
+                    - "/spring-jersey/resources/bpm"
+                    - "/resources/bpm"
                     - "/bpm"
                     - "/webjars/**"
                     - "/css/**"

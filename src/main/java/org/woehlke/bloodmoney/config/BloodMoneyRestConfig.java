@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-@ApplicationPath("/resources/v1")
+@ApplicationPath("/resources")
 public class BloodMoneyRestConfig extends Application {
     public Set<Class<?>> getClasses() {
         return new HashSet<Class<?>>(
