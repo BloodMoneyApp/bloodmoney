@@ -13,6 +13,8 @@
 
 ## Changelog
 ## DRAFT (1.8 Release dd.mm.2020) 
+
+## 1.8 Release 08.03.2020
 ### Fixed
 |  Release 1.8 | *Fixed*                           |
 |--------------|---------------------------------|
