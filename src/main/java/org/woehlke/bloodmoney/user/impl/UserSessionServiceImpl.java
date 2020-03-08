@@ -23,7 +23,7 @@ public class UserSessionServiceImpl implements UserSessionService {
         if(userSessionBean ==null){
             userSessionBean = new UserSessionBean();
             userSessionBean.setDevTesting(bloodMoneyProperties.getDevTesting());
-            model.addAttribute("userSession", userSessionBean);
+            model.addAttribute("userSessionBean", userSessionBean);
         }
         return model;
     }
