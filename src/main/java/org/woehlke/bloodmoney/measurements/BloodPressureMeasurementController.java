@@ -14,7 +14,6 @@ import org.woehlke.bloodmoney.user.session.UserSession;
 import org.woehlke.bloodmoney.user.session.UserSessionService;
 
 import javax.validation.Valid;
-import java.net.UnknownHostException;
 
 
 @Slf4j
@@ -67,7 +66,7 @@ public class BloodPressureMeasurementController {
         if(result.hasErrors()){
             return "measurement/edit";
         } else {
-            one = bloodPressureMeasurementService.update(one);
+            one = bloodPressureMeasurementService.update(one,id);
             return "redirect:/measurement/all";
         }
     }
@@ -86,7 +85,7 @@ public class BloodPressureMeasurementController {
     public String addGet(
         @SessionAttribute(name="userSession",required=false) UserSession userSession,
         Model model
-    ) throws UnknownHostException {
+    ){
         model = userSessionService.handleUserSession(userSession, model);
         BloodPressureMeasurement one = BloodPressureMeasurement.getInstance();
         model.addAttribute("one", one);
@@ -102,6 +101,7 @@ public class BloodPressureMeasurementController {
         if(result.hasErrors()){
             return "measurement/edit";
         } else {
+            one.prepareNew();
             one = bloodPressureMeasurementService.add(one);
             return "redirect:/measurement/all";
         }

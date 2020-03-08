@@ -152,10 +152,7 @@ public class BloodPressureMeasurement implements Serializable {
     @Transient
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
 
-    public static BloodPressureMeasurement getInstance(String situation) {
-        Integer systolicTopNumber = 120;
-        Integer diastolicBottomNumber = 80;
-        Integer pulse = 68;
+    public void prepareNew(){
         String ip = "undefined";
         String hostname =  "undefined";
         String hostnameCanonical = "undefined";
@@ -170,19 +167,26 @@ public class BloodPressureMeasurement implements Serializable {
         LocalTime now = LocalTime.now(zone);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
         UUID uuid = UUID.randomUUID();
+        this.setDate(today);
+        this.setTime(now);
+        this.setUuid(uuid);
+        this.setCreated(dateTimeNow);
+        this.setUpdated(dateTimeNow);
+        this.setIp(ip);
+        this.setHostname(hostname);
+        this.setHostnameCanonical(hostnameCanonical);
+    }
+
+    public static BloodPressureMeasurement getInstance(String situation) {
+        Integer systolicTopNumber = 120;
+        Integer diastolicBottomNumber = 80;
+        Integer pulse = 68;
         BloodPressureMeasurement o = new BloodPressureMeasurement();
-        o.setDate(today);
-        o.setTime(now);
         o.setSystolicTopNumber(systolicTopNumber);
         o.setDiastolicBottomNumber(diastolicBottomNumber);
         o.setPulse(pulse);
         o.setSituation(situation);
-        o.setUuid(uuid);
-        o.setCreated(dateTimeNow);
-        o.setUpdated(dateTimeNow);
-        o.setIp(ip);
-        o.setHostname(hostname);
-        o.setHostnameCanonical(hostnameCanonical);
+        o.prepareNew();
         return o;
     }
 
