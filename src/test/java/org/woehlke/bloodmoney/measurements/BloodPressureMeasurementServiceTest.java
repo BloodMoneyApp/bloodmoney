@@ -20,7 +20,7 @@ import java.util.*;
 @Getter
 @ActiveProfiles("dev")
 @SpringBootTest
-public class BloodPressureMeasurementBloodMoneyEntityServiceTest {
+public class BloodPressureMeasurementServiceTest {
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;
     private final BloodMoneyProperties bloodMoneyProperties;
@@ -31,7 +31,7 @@ public class BloodPressureMeasurementBloodMoneyEntityServiceTest {
     private final int testDataHowManyTestData;
 
     @Autowired
-    public BloodPressureMeasurementBloodMoneyEntityServiceTest(
+    public BloodPressureMeasurementServiceTest(
         BloodPressureMeasurementService bloodPressureMeasurementService,
         BloodMoneyProperties bloodMoneyProperties) {
         this.bloodPressureMeasurementService = bloodPressureMeasurementService;

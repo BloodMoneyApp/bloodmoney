@@ -32,26 +32,6 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 public class SmokeTest20 {
 
     @Autowired
-    private WebApplicationContext context;
-
-    private MockMvc mockMvc;
-
-    @PostConstruct
-    public void runBeforeAll() {
-        log.info("TEST: runBeforeAll");
-        mockMvc = MockMvcBuilders
-            .webAppContextSetup(context)
-            .apply(springSecurity())
-            .build();
-        Assertions.assertNotNull(mockMvc,"runBeforeAll() context -> mockMvc");
-    }
-
-    @PreDestroy
-    public void runAfterAll() {
-        log.info("TEST: runAfterAll");
-    }
-
-    @Autowired
     private BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
@@ -72,10 +52,36 @@ public class SmokeTest20 {
     @Autowired
     private BloodMoneyErrorController bloodMoneyErrorController;
 
+    @Autowired
+    private WebApplicationContext context;
+
+    private MockMvc mockMvc;
+
+    @PostConstruct
+    public void runBeforeAll() {
+        log.info("TEST: runBeforeAll");
+        mockMvc = MockMvcBuilders
+            .webAppContextSetup(context)
+            .apply(springSecurity())
+            .build();
+        Assertions.assertNotNull(mockMvc,"runBeforeAll() context -> mockMvc");
+    }
+
+    @PreDestroy
+    public void runAfterAll() {
+        log.info("TEST: runAfterAll");
+    }
+
     @Test
     public void contexLoads() throws Exception {
         log.info("TEST: contexLoads");
         assertTrue(true);
+    }
+
+    @Test
+    public void bloodMoneyPropertiesTest()throws Exception {
+        log.info("TEST: bloodMoneyPropertiesTest");
+        assertThat(bloodMoneyProperties).isNotNull();
     }
 
     @Test
@@ -112,11 +118,5 @@ public class SmokeTest20 {
     public void myErrorControllerTest() throws Exception {
         log.info("TEST: myErrorController");
         assertThat(bloodMoneyErrorController).isNotNull();
-    }
-
-    @Test
-    public void bloodMoneyPropertiesTest()throws Exception {
-        log.info("TEST: bloodMoneyPropertiesTest");
-        assertThat(bloodMoneyProperties).isNotNull();
     }
 }
