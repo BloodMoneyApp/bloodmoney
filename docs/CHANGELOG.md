@@ -34,6 +34,7 @@
 | #27 | read [AX-RS/Jersey and Spring REST](https://learnjava.co.in/jax-rs-vs-spring-rest/) |
 | #28 | read [Let's Compare: JAX-RS vs Spring for REST Endpoints](https://developer.okta.com/blog/2017/08/09/jax-rs-vs-spring-rest-endpoints) |
 | #29 | read, apply and evaluate [REST API with Jersey and Spring](https://www.baeldung.com/jersey-rest-api-with-spring) |
+| #47 | Add a REST Controller Resource |
 | #48 | Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurementEntity |
 | **Project** | **Frontend** |
 | #49 | remove cookieconsent2/3.1.0/cookieconsent.min.js |
