@@ -42,7 +42,7 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public BloodPressureMeasurementEntity getOne(long id) {
+    public BloodPressureMeasurementEntity getOne(Long id) {
         return this.bloodPressureMeasurementRepository.getOne(id);
     }
 
@@ -66,7 +66,7 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     }
 
     @Override
-    public BloodPressureMeasurementEntity update(BloodPressureMeasurementEntity one, long id) {
+    public BloodPressureMeasurementEntity update(BloodPressureMeasurementEntity one, Long id) {
         one.setUpdated(LocalDateTime.now(zone));
         return null;
     }
