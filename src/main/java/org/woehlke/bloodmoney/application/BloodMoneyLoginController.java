@@ -48,7 +48,7 @@ public class BloodMoneyLoginController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public final String loginForm(Model model) {
         LoginFormBean loginFormBean = new LoginFormBean();
-        model.addAttribute("loginForm", loginFormBean);
+        model.addAttribute("loginFormBean", loginFormBean);
         log.info("show loginForm");
         return "user/loginForm";
     }
