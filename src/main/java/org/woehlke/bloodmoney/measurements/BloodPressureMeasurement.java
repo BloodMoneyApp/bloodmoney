@@ -8,10 +8,7 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -55,6 +52,8 @@ import java.util.UUID;
         )
     }
 )
+@XmlRootElement
+/*
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "transientBloodPressureMeasurement", propOrder = {
     "id",
@@ -64,6 +63,7 @@ import java.util.UUID;
     "diastolicBottomNumber",
     "pulse"
 })
+*/
 public class BloodPressureMeasurement implements Serializable {
 
     private static final long serialVersionUID = 2676529613061169122L;

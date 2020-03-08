@@ -70,6 +70,8 @@ org:
                 invalidate-http-session: true
                 ant-matchers-fully-authenticated: "/**"
                 ant-matchers-permit-all:
+                    - "/spring-jersey"
+                    - "/spring-jersey/**"
                     - "/webjars/**"
                     - "/css/**"
                     - "/img/**"

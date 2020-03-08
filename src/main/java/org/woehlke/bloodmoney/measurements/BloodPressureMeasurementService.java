@@ -14,6 +14,8 @@ public interface BloodPressureMeasurementService {
 
     BloodPressureMeasurement update(BloodPressureMeasurement one);
 
+    BloodPressureMeasurement update(BloodPressureMeasurement one, long id);
+
     void delete(BloodPressureMeasurement one);
 
     List<BloodPressureMeasurement> getAll();

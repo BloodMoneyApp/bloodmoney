@@ -3,87 +3,72 @@ package org.woehlke.bloodmoney.measurements;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.user.session.UserSession;
 import org.woehlke.bloodmoney.user.session.UserSessionService;
 
-import javax.validation.Valid;
-
-import static javax.ws.rs.core.MediaType.APPLICATION_XML;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.http.MediaType.ALL_VALUE;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import java.util.List;
 
 //TODO: #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
 /**
  * http://localhost:5000/
- * http://localhost:5000/api/rs/1/measurement/all
+ * http://localhost:5000/spring-jersey/resources/v1/measurements
  */
 @Slf4j
-@RestController
-@RequestMapping(
-    path="/api/rs/1/measurement",
-    produces={APPLICATION_XML, APPLICATION_JSON_VALUE},
-    consumes={ALL_VALUE}
-)
-@SessionAttributes("userSession")
+@Path("/measurements")
 public class BloodPressureMeasurementResource {
 
-    @GetMapping("/all")
-    public Page<BloodPressureMeasurement> getAll(
-        @PageableDefault(
-            sort={"date","time"},
-            direction= Sort.Direction.DESC
-        ) Pageable pageable,
-        @SessionAttribute(
-            name="userSession",
-            required=false
-        ) UserSession userSession,
+    @GET
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<BloodPressureMeasurement>  getAll(
+        @Context UriInfo uriInfo,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
-        Page<BloodPressureMeasurement> all = bloodPressureMeasurementService.getAll(pageable);
-        return all;
+      return bloodPressureMeasurementService.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GET
+    @Path("/{id}")
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public BloodPressureMeasurement getOne(
-        @PathVariable("id") BloodPressureMeasurement one,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
-        Model model
+        @PathParam("id") long id
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
-        model.addAttribute("one", one);
-        return one;
+        return bloodPressureMeasurementService.getOne(id);
     }
 
-    @PutMapping("/{id}")
-    public BloodPressureMeasurement updateOne(
-        @PathVariable("id") BloodPressureMeasurement one,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
-        Model model
+    @PUT
+    @Path("/{id}")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response update(
+        BloodPressureMeasurement one,
+        @PathParam("id") long id
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
-        model.addAttribute("one", one);
-        return one;
+        bloodPressureMeasurementService.update(one, id);
+        return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
-    @PostMapping("/add")
-    public final BloodPressureMeasurement addPost(
-        @Valid BloodPressureMeasurement one,
-        @SessionAttribute(name="userSession", required=false) UserSession userSession,
-        BindingResult result, Model model
+    @DELETE
+    @Path("/{id}")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public Response deleteEmployee(@PathParam("id") int id) {
+        BloodPressureMeasurement one = bloodPressureMeasurementService.getOne(id);
+        bloodPressureMeasurementService.delete(one);
+        return Response.status(Response.Status.OK.getStatusCode()).build();
+    }
+
+    @POST
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    public final Response add(
+       BloodPressureMeasurement one,
+       @Context UriInfo uriInfo
     ) {
-        if(!result.hasErrors()){
-            one = bloodPressureMeasurementService.add(one);
-        }
-        return one;
+        one = bloodPressureMeasurementService.add(one);
+        return Response.status(Response.Status.CREATED.getStatusCode()).header("Location", String.format("%s/%s", uriInfo.getAbsolutePath().toString(), one.getId())).build();
     }
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;

@@ -66,6 +66,12 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     }
 
     @Override
+    public BloodPressureMeasurement update(BloodPressureMeasurement one, long id) {
+        one.setUpdated(LocalDateTime.now(zone));
+        return null;
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteAll() {
         this.bloodPressureMeasurementRepository.deleteAll();
