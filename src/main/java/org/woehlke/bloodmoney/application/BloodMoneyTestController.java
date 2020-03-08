@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.application.test;
+package org.woehlke.bloodmoney.application;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

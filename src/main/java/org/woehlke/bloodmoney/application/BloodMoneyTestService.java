@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.application.test;
+package org.woehlke.bloodmoney.application;
 
 public interface BloodMoneyTestService {
 
