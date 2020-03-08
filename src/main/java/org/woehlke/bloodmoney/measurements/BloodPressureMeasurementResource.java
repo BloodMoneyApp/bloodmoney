@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.user.session.UserSession;
-import org.woehlke.bloodmoney.user.session.UserSessionService;
+import org.woehlke.bloodmoney.user.UserSessionBean;
+import org.woehlke.bloodmoney.user.UserSessionService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -30,34 +30,34 @@ public class BloodPressureMeasurementResource {
     @GetMapping("/all")
     @ResponseBody
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<BloodPressureMeasurement> getAll(
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+    public List<BloodPressureMeasurementEntity> getAll(
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-      model = userSessionService.handleUserSession(userSession, model);
+      model = userSessionService.handleUserSession(userSessionBean, model);
       return bloodPressureMeasurementService.getAll();
     }
 
     @GetMapping("/{id}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public BloodPressureMeasurement getOne(
-        @PathVariable("id") BloodPressureMeasurement one,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+    public BloodPressureMeasurementEntity getOne(
+        @PathVariable("id") BloodPressureMeasurementEntity one,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSessionBean, model);
         return one;
     }
 
     @PutMapping("/{id}")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public BloodPressureMeasurement update(
-        BloodPressureMeasurement one,
+    public BloodPressureMeasurementEntity update(
+        BloodPressureMeasurementEntity one,
         @PathVariable("id") long id,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSessionBean, model);
         return bloodPressureMeasurementService.update(one, id);
     }
 
@@ -65,24 +65,24 @@ public class BloodPressureMeasurementResource {
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response delete(
         @PathVariable("id") long id,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
-        BloodPressureMeasurement one = bloodPressureMeasurementService.getOne(id);
+        model = userSessionService.handleUserSession(userSessionBean, model);
+        BloodPressureMeasurementEntity one = bloodPressureMeasurementService.getOne(id);
         bloodPressureMeasurementService.delete(one);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
     @PostMapping("/add")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public BloodPressureMeasurement add(
-       BloodPressureMeasurement one,
+    public BloodPressureMeasurementEntity add(
+       BloodPressureMeasurementEntity one,
        @Context UriInfo uriInfo,
-       @SessionAttribute(name="userSession",required=false) UserSession userSession,
+       @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
        Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSessionBean, model);
         one = bloodPressureMeasurementService.add(one);
         return one;
     }

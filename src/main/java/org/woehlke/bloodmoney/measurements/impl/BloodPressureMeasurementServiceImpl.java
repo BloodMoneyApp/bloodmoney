@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.bloodmoney.measurements.BloodPressureMeasurement;
+import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementEntity;
 import org.woehlke.bloodmoney.measurements.BloodPressureMeasurementService;
 
 import java.time.LocalDateTime;
@@ -25,24 +25,24 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     @Autowired
     public BloodPressureMeasurementServiceImpl(BloodPressureMeasurementRepository bloodPressureMeasurementRepository) {
         this.bloodPressureMeasurementRepository = bloodPressureMeasurementRepository;
-        this.zone = ZoneId.of(BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS);
+        this.zone = ZoneId.of(BloodPressureMeasurementEntity.ZONE_ID__ECT__EUROPE_PARIS);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public Page<BloodPressureMeasurement> getAll(Pageable pageable) {
+    public Page<BloodPressureMeasurementEntity> getAll(Pageable pageable) {
         return this.bloodPressureMeasurementRepository.findAll(pageable);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public List<BloodPressureMeasurement> getAll() {
+    public List<BloodPressureMeasurementEntity> getAll() {
         return this.bloodPressureMeasurementRepository.findAll();
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public BloodPressureMeasurement getOne(long id) {
+    public BloodPressureMeasurementEntity getOne(long id) {
         return this.bloodPressureMeasurementRepository.getOne(id);
     }
 
@@ -54,19 +54,19 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public BloodPressureMeasurement add(BloodPressureMeasurement o) {
+    public BloodPressureMeasurementEntity add(BloodPressureMeasurementEntity o) {
         return this.bloodPressureMeasurementRepository.save(o);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public BloodPressureMeasurement update(BloodPressureMeasurement one) {
+    public BloodPressureMeasurementEntity update(BloodPressureMeasurementEntity one) {
         one.setUpdated(LocalDateTime.now(zone));
         return this.bloodPressureMeasurementRepository.save(one);
     }
 
     @Override
-    public BloodPressureMeasurement update(BloodPressureMeasurement one, long id) {
+    public BloodPressureMeasurementEntity update(BloodPressureMeasurementEntity one, long id) {
         one.setUpdated(LocalDateTime.now(zone));
         return null;
     }
@@ -78,13 +78,13 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     }
 
     @Override
-    public Optional<BloodPressureMeasurement> findById(Long id) {
+    public Optional<BloodPressureMeasurementEntity> findById(Long id) {
         return this.bloodPressureMeasurementRepository.findById(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void delete(BloodPressureMeasurement one) {
+    public void delete(BloodPressureMeasurementEntity one) {
         this.bloodPressureMeasurementRepository.delete(one);
     }
 

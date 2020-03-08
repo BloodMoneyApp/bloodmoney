@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.woehlke.bloodmoney.user.account.UserAccountSecurityService;
+import org.woehlke.bloodmoney.user.BloodMoneyUserAccountDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -97,12 +97,12 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder auth,
         AuthenticationSuccessHandler loginSuccessHandler,
-        UserAccountSecurityService userAccountSecurityService,
+        BloodMoneyUserAccountDetailsService bloodMoneyUserAccountDetailsService,
         BloodMoneyProperties bloodMoneyProperties, BloodMoneyWebMvcConfig bloodMoneyWebMvcConfig
     ) {
         this.auth = auth;
         this.loginSuccessHandler = loginSuccessHandler;
-        this.userAccountSecurityService = userAccountSecurityService;
+        this.userAccountSecurityService = bloodMoneyUserAccountDetailsService;
         this.bloodMoneyProperties = bloodMoneyProperties;
         this.mvcConfig = bloodMoneyWebMvcConfig;
     }

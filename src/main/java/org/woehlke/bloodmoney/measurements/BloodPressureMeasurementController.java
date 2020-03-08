@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.user.session.UserSession;
-import org.woehlke.bloodmoney.user.session.UserSessionService;
+import org.woehlke.bloodmoney.user.UserSessionBean;
+import org.woehlke.bloodmoney.user.UserSessionService;
 
 import javax.validation.Valid;
 
@@ -25,33 +25,33 @@ public class BloodPressureMeasurementController {
     @GetMapping("/all")
     public String getAll(
         @PageableDefault(sort={"created"}, direction=Sort.Direction.DESC) Pageable pageable,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
-        Page<BloodPressureMeasurement> all = bloodPressureMeasurementService.getAll(pageable);
+        model = userSessionService.handleUserSession(userSessionBean, model);
+        Page<BloodPressureMeasurementEntity> all = bloodPressureMeasurementService.getAll(pageable);
         model.addAttribute("all", all);
         return "measurement/all";
     }
 
     @GetMapping("/{id}")
     public String getOne(
-        @PathVariable("id") BloodPressureMeasurement one,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        @PathVariable("id") BloodPressureMeasurementEntity one,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSessionBean, model);
         model.addAttribute("one", one);
         return "measurement/one";
     }
 
     @GetMapping("/{id}/edit")
     public String editGet(
-        @PathVariable("id") BloodPressureMeasurement one,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        @PathVariable("id") BloodPressureMeasurementEntity one,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSession, model);
+        model = userSessionService.handleUserSession(userSessionBean, model);
         model.addAttribute("one", one);
         return "measurement/edit";
     }
@@ -59,8 +59,8 @@ public class BloodPressureMeasurementController {
     @PostMapping("/{id}/edit")
     public final String editPost(
             @PathVariable("id") Long id,
-            @Valid BloodPressureMeasurement one,
-            @SessionAttribute(name="userSession",required=false) UserSession userSession,
+            @Valid BloodPressureMeasurementEntity one,
+            @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
             BindingResult result, Model model
     ) {
         if(result.hasErrors()){
@@ -73,8 +73,8 @@ public class BloodPressureMeasurementController {
 
     @GetMapping("/{id}/delete")
     public String deleteGet(
-        @PathVariable("id") BloodPressureMeasurement one,
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        @PathVariable("id") BloodPressureMeasurementEntity one,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
         bloodPressureMeasurementService.delete(one);
@@ -83,19 +83,19 @@ public class BloodPressureMeasurementController {
 
     @GetMapping("/add")
     public String addGet(
-        @SessionAttribute(name="userSession",required=false) UserSession userSession,
+        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ){
-        model = userSessionService.handleUserSession(userSession, model);
-        BloodPressureMeasurement one = BloodPressureMeasurement.getInstance();
+        model = userSessionService.handleUserSession(userSessionBean, model);
+        BloodPressureMeasurementEntity one = BloodPressureMeasurementEntity.getInstance();
         model.addAttribute("one", one);
         return "measurement/add";
     }
 
     @PostMapping("/add")
     public final String addPost(
-            @Valid BloodPressureMeasurement one,
-            @SessionAttribute(name="userSession", required=false) UserSession userSession,
+            @Valid BloodPressureMeasurementEntity one,
+            @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
             BindingResult result, Model model
     ) {
         if(result.hasErrors()){

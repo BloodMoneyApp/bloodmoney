@@ -25,7 +25,7 @@ public class BloodPressureMeasurementControllerExport {
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
             "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
         //create a csv writer
-        StatefulBeanToCsv<BloodPressureMeasurement> writer = new StatefulBeanToCsvBuilder<BloodPressureMeasurement>(response.getWriter())
+        StatefulBeanToCsv<BloodPressureMeasurementEntity> writer = new StatefulBeanToCsvBuilder<BloodPressureMeasurementEntity>(response.getWriter())
             .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
             .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
             .withOrderedResults(false)

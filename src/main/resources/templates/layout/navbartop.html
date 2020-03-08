@@ -28,7 +28,7 @@
 							<span th:text="#{org.woehlke.mybp.measurement.add.title.short}"></span>
 						</a>
                     </li>
-                    <li class="nav-item" sec:authorize="isAuthenticated()" th:if="${userSession.devTesting}">
+                    <li class="nav-item" sec:authorize="isAuthenticated()" th:if="${userSessionBean.devTesting}">
                         <a class="nav-link" th:href="@{/test/createTestData/}" href="#">
 							<i class="far fa-file"></i>
 							<span th:text="#{org.woehlke.mybp.navigation.topbar.createtestdata}"></span>
@@ -40,7 +40,7 @@
 							<span th:text="#{org.woehlke.mybp.navigation.topbar.export}">Export List</span>
 						</a>
                     </li>
-                    <li class="nav-item dropdown" sec:authorize="isAuthenticated()" th:if="${userSession.devTesting}">
+                    <li class="nav-item dropdown" sec:authorize="isAuthenticated()" th:if="${userSessionBean.devTesting}">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<i class="far fa-file-code"></i>
 							<span th:text="#{org.woehlke.mybp.navigation.topbar.tests.tests}"></span>

@@ -41,7 +41,7 @@
 * #45 read [Liquibase – das Tool für agiles Database Deployment 20.10.2014](https://blog.orbit.de/2014/10/20/liquibase-das-tool-fuer-agiles-database-deployment/)
 * #46 read [Getting Started with Liquibase](https://www.liquibase.org/get_started/index.html)
 ### REST-API
-* #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
+* #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurementEntity
 * #29 read, apply and evaluate [REST API with Jersey and Spring](https://www.baeldung.com/jersey-rest-api-with-spring)
 * #26 read [Spring Boot JAX-RS Example March 29th, 2019](https://examples.javacodegeeks.com/enterprise-java/spring/boot/spring-boot-jax-rs-example/)
 * #25 read [JAX-RS is just an API!](https://www.baeldung.com/jax-rs-spec-and-implementations)

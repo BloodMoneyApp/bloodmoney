@@ -15,8 +15,8 @@ public class BloodPressureMeasurementTest {
     private final static boolean featureUuid_isSettedByOurselves = true;
 
     public static void assertTransientEqualsPersistent(
-        BloodPressureMeasurement src ,
-        BloodPressureMeasurement target
+        BloodPressureMeasurementEntity src ,
+        BloodPressureMeasurementEntity target
     ){
         int assertEqualsTrueExpected = 0;
         int assertEqualsTrueActual;
@@ -38,8 +38,8 @@ public class BloodPressureMeasurementTest {
     }
 
     public static void assertEqualsUuid(
-        BloodPressureMeasurement src ,
-        BloodPressureMeasurement target
+        BloodPressureMeasurementEntity src ,
+        BloodPressureMeasurementEntity target
     ){
         Assertions.assertNotNull(src,"src");
         Assertions.assertNotNull(target,"target");
@@ -53,8 +53,8 @@ public class BloodPressureMeasurementTest {
     }
 
     public static void assertEquals(
-        BloodPressureMeasurement src ,
-        BloodPressureMeasurement target
+        BloodPressureMeasurementEntity src ,
+        BloodPressureMeasurementEntity target
     ){
         Assertions.assertNotNull(src,"src");
         Assertions.assertNotNull(target,"target");
@@ -73,8 +73,8 @@ public class BloodPressureMeasurementTest {
     }
 
     public static void assertEqualsUpdated(
-        BloodPressureMeasurement src ,
-        BloodPressureMeasurement target
+        BloodPressureMeasurementEntity src ,
+        BloodPressureMeasurementEntity target
     ){
         Assertions.assertNotNull(src,"src");
         Assertions.assertNotNull(target,"target");
@@ -89,12 +89,12 @@ public class BloodPressureMeasurementTest {
             log.info(msg);
             boolean bothNotNull = (updatedSrc != null) && (updatedTarget != null);
             if (bothNotNull) {
-                ZoneId zoneId = ZoneId.of(BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS);
+                ZoneId zoneId = ZoneId.of(BloodPressureMeasurementEntity.ZONE_ID__ECT__EUROPE_PARIS);
                 ZoneOffset offset = zoneId.getRules().getOffset(updatedSrc);
                 msg = "src.getUpdated()toEpochSecond(offset) == target.getUpdated()toEpochSecond(offset) with offset=";
                 msg += offset.toString();
                 msg += " for timezone ";
-                msg += BloodPressureMeasurement.ZONE_ID__ECT__EUROPE_PARIS;
+                msg += BloodPressureMeasurementEntity.ZONE_ID__ECT__EUROPE_PARIS;
                 log.info(msg);
                 Assertions.assertEquals(
                     updatedSrc.toEpochSecond(offset),
@@ -112,8 +112,8 @@ public class BloodPressureMeasurementTest {
     }
 
     public static void assertEqualsCreated(
-        BloodPressureMeasurement src ,
-        BloodPressureMeasurement target
+        BloodPressureMeasurementEntity src ,
+        BloodPressureMeasurementEntity target
     ){
         Assertions.assertNotNull(src,"src");
         Assertions.assertNotNull(target,"target");
@@ -122,7 +122,7 @@ public class BloodPressureMeasurementTest {
         Assertions.assertEquals(srcTime,targetTime,"getTime");
     }
 
-    public static void assertAllFieldNonNullForPersistent(BloodPressureMeasurement o) {
+    public static void assertAllFieldNonNullForPersistent(BloodPressureMeasurementEntity o) {
         Assertions.assertNotNull(o,"o not null");
         Assertions.assertNotNull(o.getId(),"o.getId() not null");
         Assertions.assertNotNull(o.getUuid(),"o.getUuid() not null");
