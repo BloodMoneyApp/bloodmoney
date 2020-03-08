@@ -23,4 +23,4 @@
 
 next commit:
 
-fixed #47 Add a REST Controller Resource
+fixed # 36 apply Spring Security for Spring Boot Integration Tests
