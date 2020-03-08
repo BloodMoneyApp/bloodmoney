@@ -23,9 +23,10 @@
 
 next commit:
 
-fixed #49 remove cookieconsent2/3.1.0/cookieconsent.min.js
-
-
+fixed #35 Test a Rest Controller with Spring Security
+fixed #37 read, apply and evaluate Testing Spring Boot Spring Security
+fixed #38 read spring-boot-setup-security-for-testing
+fixed #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurementEntity
 
 ## JAX-WS (SOAP)
 * Add a JAX-WS - SOAPEndpoint
