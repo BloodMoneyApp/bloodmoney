@@ -8,7 +8,8 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -53,17 +54,6 @@ import java.util.UUID;
     }
 )
 @XmlRootElement
-/*
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "transientBloodPressureMeasurement", propOrder = {
-    "id",
-    "uuid",
-    "version",
-    "systolicTopNumber",
-    "diastolicBottomNumber",
-    "pulse"
-})
-*/
 public class BloodPressureMeasurement implements Serializable {
 
     private static final long serialVersionUID = 2676529613061169122L;
@@ -81,7 +71,7 @@ public class BloodPressureMeasurement implements Serializable {
     @XmlElement(required = true)
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "uuid", columnDefinition = "uuid", unique = true)
+    @Column(name = "uuid", columnDefinition = "uuid", unique = true, nullable = false, updatable = false)
     private UUID uuid;
 
     @XmlElement(required = true)
@@ -89,28 +79,30 @@ public class BloodPressureMeasurement implements Serializable {
     @Column
     private Long version;
 
-    @NotNull
+    @XmlElement(required = true)
+    @Nullable
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "measurement_date", columnDefinition = "DATE")
+    @Column(name = "measurement_date", columnDefinition = "DATE", nullable = false)
     private LocalDate date;
 
-    @NotNull
+    @XmlElement(required = true)
+    @Nullable
     @CsvBindByName
     @DateTimeFormat(pattern = "HH:mm")
-    @Column(name = "measurement_time", columnDefinition = "TIME")
+    @Column(name = "measurement_time", columnDefinition = "TIME", nullable = false)
     private LocalTime time;
 
     @XmlElement(required = true)
     @NotNull
     @CsvBindByName
-    @Column(name = "systolic_top_number")
+    @Column(name = "systolic_top_number", nullable = false)
     private Integer systolicTopNumber;
 
     @XmlElement(required = true)
     @NotNull
     @CsvBindByName
-    @Column(name = "diastolic_bottom_number")
+    @Column(name = "diastolic_bottom_number", nullable = false)
     private Integer diastolicBottomNumber;
 
     @XmlElement(required = true)
@@ -120,42 +112,42 @@ public class BloodPressureMeasurement implements Serializable {
     private Integer pulse;
 
     @XmlElement(required = true)
-    @Nullable
+    @NotNull
     @CsvBindByName
     @Column(name = "situation", nullable = false)
     private String situation;
 
-    @XmlElement
+    @XmlElement(required = true)
     @Nullable
     @CsvBindByName
-    @Column(name = "created_by_device_with_ip")
+    @Column(name = "created_by_device_with_ip", nullable = false)
     private String ip;
 
     @XmlElement
     @Nullable
     @CsvBindByName
-    @Column(name = "created_by_device_with_hostname")
+    @Column(name = "created_by_device_with_hostname", nullable = false)
     private String hostname;
 
     @XmlElement
     @Nullable
     @CsvBindByName
-    @Column(name = "created_by_device_with_hostname_canonical")
+    @Column(name = "created_by_device_with_hostname_canonical", nullable = false)
     private String hostnameCanonical;
 
-
+    @XmlElement(required = true)
     @Nullable
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    @Column(name = "created_timestamp", columnDefinition = "TIMESTAMP")
+    @Column(name = "created_timestamp", columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
     private LocalDateTime created;
 
+    @XmlElement
     @Nullable
     @CsvBindByName
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    @Column(name = "created_timestamp_updated", columnDefinition = "TIMESTAMP")
+    @Column(name = "created_timestamp_updated", columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDateTime updated;
-
 
     @Transient
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";

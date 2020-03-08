@@ -19,7 +19,7 @@ import java.util.List;
 //TODO: #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
 /**
  * http://localhost:5000/
- * http://localhost:5000/spring-jersey/resources/v1/bpm
+ * http://localhost:5000/rest/measurement/all
  */
 @Slf4j
 @RestController
