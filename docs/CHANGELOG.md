@@ -29,6 +29,11 @@
 | #39 | add UUID Generation to Constructor and factories |
 | #41 | make Flyway and H2 Versions compatible |
 | **Project** | **REST-API** |
+| #25 | read [JAX-RS is just an API!](https://www.baeldung.com/jax-rs-spec-and-implementations) |
+| #26 | read [Spring Boot JAX-RS Example March 29th, 2019](https://examples.javacodegeeks.com/enterprise-java/spring/boot/spring-boot-jax-rs-example/) |
+| #27 | read [AX-RS/Jersey and Spring REST](https://learnjava.co.in/jax-rs-vs-spring-rest/) |
+| #28 | read [Let's Compare: JAX-RS vs Spring for REST Endpoints](https://developer.okta.com/blog/2017/08/09/jax-rs-vs-spring-rest-endpoints) |
+| #29 | read, apply and evaluate [REST API with Jersey and Spring](https://www.baeldung.com/jersey-rest-api-with-spring) |
 | #48 | Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurementEntity |
 | **Project** | **Frontend** |
 | #49 | remove cookieconsent2/3.1.0/cookieconsent.min.js |
@@ -45,11 +50,6 @@
 | #45 | read [Liquibase – das Tool für agiles Database Deployment 20.10.2014](https://blog.orbit.de/2014/10/20/liquibase-das-tool-fuer-agiles-database-deployment/) |
 | #46 | read [Getting Started with Liquibase](https://www.liquibase.org/get_started/index.html) |
 | **Project** | **REST-API** |
-| #29 | read, apply and evaluate [REST API with Jersey and Spring](https://www.baeldung.com/jersey-rest-api-with-spring) |
-| #26 | read [Spring Boot JAX-RS Example March 29th, 2019](https://examples.javacodegeeks.com/enterprise-java/spring/boot/spring-boot-jax-rs-example/) |
-| #25 | read [JAX-RS is just an API!](https://www.baeldung.com/jax-rs-spec-and-implementations) |
-| #27 | read [AX-RS/Jersey and Spring REST](https://learnjava.co.in/jax-rs-vs-spring-rest/) |
-| #28 | read [Let's Compare: JAX-RS vs Spring for REST Endpoints](https://developer.okta.com/blog/2017/08/09/jax-rs-vs-spring-rest-endpoints) |
 | #58 | read [Introduction to Spring Method Security](https://www.baeldung.com/spring-security-method-security) |
 | **Project** | **Frontend** |
 | #50 | add bootwatch for bootstrap |

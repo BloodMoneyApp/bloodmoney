@@ -23,10 +23,11 @@
 
 next commit:
 
-fixed #35 Test a Rest Controller with Spring Security
-fixed #37 read, apply and evaluate Testing Spring Boot Spring Security
-fixed #38 read spring-boot-setup-security-for-testing
-fixed #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurementEntity
+fixed #25 read JAX-RS is just an API
+fixed #26 read Spring Boot JAX-RS Example March 29th, 2019
+fixed #27 read AX-RS/Jersey and Spring REST
+fixed #28 read Let's Compare: JAX-RS vs Spring for REST Endpoints
+fixed #29 read, apply and evaluate REST API with Jersey and Spring
 
 ## JAX-WS (SOAP)
 * Add a JAX-WS - SOAPEndpoint
