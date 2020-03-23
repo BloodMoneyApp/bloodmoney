@@ -37,17 +37,21 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
             )
             .permitAll()
-            .antMatchers(    this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated())
+            .antMatchers(
+                this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
+            )
             .fullyAuthenticated().anyRequest().authenticated()
             .and()
             .formLogin()
-            .loginPage(this.bloodMoneyProperties.getWebSecurity().getLoginPage())
+            .loginPage(
+                this.bloodMoneyProperties.getWebSecurity().getLoginPage()
+            )
             .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
             .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
             .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
             .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
             .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
-            .successHandler(loginSuccessHandler)
+            .successHandler(this.authenticationSuccessHandler)
             .permitAll()
             .and()
             .logout()
@@ -70,7 +74,7 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
-        return auth.userDetailsService(userAccountSecurityService).passwordEncoder(encoder()).and().build();
+        return this.authenticationManagerBuilder.userDetailsService(userAccountSecurityService).passwordEncoder(encoder()).and().build();
     }
 
     @Bean
@@ -87,8 +91,8 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    private final AuthenticationManagerBuilder auth;
-    private final AuthenticationSuccessHandler loginSuccessHandler;
+    private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final UserDetailsService userAccountSecurityService;
     private final BloodMoneyProperties bloodMoneyProperties;
     private final BloodMoneyWebMvcConfig mvcConfig;
@@ -96,12 +100,13 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder auth,
-        AuthenticationSuccessHandler loginSuccessHandler,
+        AuthenticationSuccessHandler authenticationSuccessHandler,
         BloodMoneyUserAccountDetailsService bloodMoneyUserAccountDetailsService,
-        BloodMoneyProperties bloodMoneyProperties, BloodMoneyWebMvcConfig bloodMoneyWebMvcConfig
+        BloodMoneyProperties bloodMoneyProperties,
+        BloodMoneyWebMvcConfig bloodMoneyWebMvcConfig
     ) {
-        this.auth = auth;
-        this.loginSuccessHandler = loginSuccessHandler;
+        this.authenticationManagerBuilder = auth;
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.userAccountSecurityService = bloodMoneyUserAccountDetailsService;
         this.bloodMoneyProperties = bloodMoneyProperties;
         this.mvcConfig = bloodMoneyWebMvcConfig;
