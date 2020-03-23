@@ -140,7 +140,7 @@ dockerCompose {
     isRequiredBy(project.tasks.bootRunDefault)
     isRequiredBy(project.tasks.testDefault)
     //exposeAsSystemProperties(project.tasks.bootRunDefault)
-    useComposeFiles = ['docker-compose.yml']
+    useComposeFiles = ['stack.yml']
 }
 
 //DevOps
