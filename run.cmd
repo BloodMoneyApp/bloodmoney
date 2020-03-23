@@ -55,10 +55,10 @@ goto:END
 
 :MAIN
 rem goto:bootRunHerokuLocal
-rem goto:bootRunPostgresSQL
+goto:bootRunPostgresSQL
 rem goto:bootRunH2
 rem goto:testH2
-goto:testBootRunPostgresSQL
+rem goto:testBootRunPostgresSQL
 
 :END
 echo "DONE"
