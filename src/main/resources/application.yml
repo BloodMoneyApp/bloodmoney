@@ -74,7 +74,6 @@ org:
                     - "favicon.ico"
                 web-add-resource-handlers:
                     - "webjars/"
-                    - "h2/"
             web-security:
                 iterations: ${BLOODMONEY_USER_INTERATIONS}
                 hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
@@ -90,9 +89,9 @@ org:
                 invalidate-http-session: true
                 ant-matchers-fully-authenticated: "/**"
                 ant-matchers-permit-all:
-                    - "bloodmoney/**"
-                    - "icon/**"
-                    - "language/**"
+                    - "/bloodmoney/**"
+                    - "/icon/**"
+                    - "/language/**"
                     - "/favicon.ico"
                     - "/test*/**"
                     - "/rest"
@@ -106,7 +105,6 @@ org:
                     - "/passwordResetConfirm*/**"
                     - "/error*"
                     - "/fehler*"
-                    - "/h2*/**"
 ---
 #Profile dev:
 spring:
