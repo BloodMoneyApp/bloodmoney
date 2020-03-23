@@ -45,3 +45,8 @@ build
 /webpack.generated.js
 /node_modules/
 /target/
+/wrapper/
+
+!.idea
+!/.idea/**
+/.idea/workspace.xml
