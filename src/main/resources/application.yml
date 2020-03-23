@@ -16,14 +16,33 @@ spring:
     application:
         admin:
             enabled: ${BLOODMONEY_DEV_TESTING}
+    datasource:
+        url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
+        username:  ${BLOODMONEY_DS_USR}
+        password:  ${BLOODMONEY_DS_PWD}
+        driver-class-name:  org.postgresql.Driver
+        platform: POSTGRESQL
+        initialization-mode: always
+    jta:
+        atomikos:
+            connectionfactory:
+                xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
     jpa:
-        show-sql: ${BLOODMONEY_DEV_TESTING}
         open-in-view: true
-        generate-ddl: true
+        show-sql: true
+        database-platform: POSTGRESQL
         hibernate:
+            #ddl-auto: create-drop update
             ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
-            #ddl-auto: create-drop
-            #ddl-auto: update
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQL95Dialect
+                temp:
+                    use_jdbc_metadata_defaults: false
+                generate_statistics: true
     thymeleaf:
         cache: false
     session:
@@ -89,9 +108,7 @@ org:
                     - "/fehler*"
                     - "/h2*/**"
 ---
-#Profile dev: With H2 Database in Memory
-
-
+#Profile dev:
 spring:
     profiles: dev
     thymeleaf:
@@ -102,45 +119,6 @@ spring:
     application:
         admin:
             enabled: false
-    datasource:
-        platform: H2
-        driver-class-name: org.h2.Driver
-        username: sa
-        password:
-        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-        initialization-mode: embedded
-        #temporary data storage
-        #url: jdbc:h2:file:/data/sample
-        #url: jdbc:h2:file:C:/data/sample (Windows only)
-    jta:
-        atomikos:
-            connectionfactory:
-                xa-connection-factory-class-name: org.h2.Driver
-    jpa:
-        show-sql: false
-        database-platform: H2
-        hibernate:
-            ddl-auto: create-drop
-            naming:
-                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
-                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.H2Dialect
-                temp:
-                    use_jdbc_metadata_defaults: false
-                naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-            #generate_statistics: true
-    session:
-        store-type: jdbc
-        jdbc:
-            initialize-schema: embedded
-    h2:
-        console:
-            enabled: true
-            settings:
-                trace: true
-                web-allow-others: true
 server:
     compression:
         enabled: false
