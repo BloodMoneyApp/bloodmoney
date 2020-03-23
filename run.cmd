@@ -2,7 +2,7 @@ call setenv.cmd
 
 goto:MAIN
 
-:bootRunHerokuLocal
+:runHerokuLocal
 echo -------------------------------- bootRun Heroku Local --------------------------------------------
 set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEFAULT%
 set BLOODMONEY_DEV_TESTING=false
@@ -14,7 +14,7 @@ cmd /c gradlew -i composeDown
 goto:END
 
 
-:startBootRunPostgresSQL
+:run
 echo ---------------------------- start PostgresSQL ------------------------------------------------
 set BLOODMONEY_DEV_TESTING=false
 set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEFAULT%
@@ -25,7 +25,7 @@ cmd /c gradlew -i bootRun
 cmd /c gradlew -i composeDown
 goto:END
 
-:testBootRunPostgresSQL
+:test
 echo ---------------------------- test PostgreSQL ------------------------------------------------
 set BLOODMONEY_DEV_TESTING=false
 set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEFAULT%
@@ -36,29 +36,10 @@ cmd /c gradlew -i build test check
 cmd /c gradlew -i composeDown
 goto:END
 
-:testH2
-echo ---------------------------- test H2 ------------------------------------------------
-set BLOODMONEY_DEV_TESTING=false
-set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEV%
-set JAVA_OPTS=%JAVA_OPTS_DEV%
-cmd /c gradlew -i clean assemble bootJar build test check
-goto:END
-
-
-:bootRunH2
-echo ---------------------------- bootRun H2 ------------------------------------------------
-set JAVA_OPTS=%JAVA_OPTS_DEV%
-set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEV%
-set BLOODMONEY_DEV_TESTING=false
-cmd /c gradlew -i clean bootRun
-goto:END
-
 :MAIN
-rem goto:bootRunHerokuLocal
-rem goto:testBootRunPostgresSQL
-goto:startBootRunPostgresSQL
-rem goto:bootRunH2
-rem goto:testH2
+rem goto:runHerokuLocal
+rem goto:test
+goto:run
 
 :END
 echo "DONE"

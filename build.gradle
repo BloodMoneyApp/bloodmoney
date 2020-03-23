@@ -38,6 +38,12 @@ def webjarsFontAwesomeVersion = '5.12.0'
 def liquibaseCoreVersion = '3.8.1'
 def liquibaseGroovyDslVersion = '2.0.1'
 
+def BLOODMONEY_DS_DB = 'bloodmoney'
+def BLOODMONEY_DS_USR = 'bloodmoney'
+def BLOODMONEY_DS_PWD = 'bloodmoneypwd'
+def BLOODMONEY_DS_HOST = 'localhost'
+def BLOODMONEY_DS_PORT = '5432'
+
 configurations {
     developmentOnly
     runtimeClasspath {
@@ -143,8 +149,9 @@ wrapper {
 }
 
 flywayMigrate {
-    url = 'jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE'
-    user = 'sa'
+    url = "jdbc:postgresql://${BLOODMONEY_DS_HOST}:${BLOODMONEY_DS_PORT}/${BLOODMONEY_DS_DB}"
+    user = "${BLOODMONEY_DS_USR}"
+    password = "${BLOODMONEY_DS_PWD}"
 }
 
 dependencyManagement {
