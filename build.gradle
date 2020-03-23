@@ -1,14 +1,14 @@
 plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
     //Lombok
     id "io.franzbecker.gradle-lombok" version "3.3.0"
     //DatabaseSchemaEvolution
     id "org.flywaydb.flyway" version "6.3.0"
     id "org.liquibase.gradle" version "2.0.2"
-    //DevOps
+    //Docker
     id "com.avast.gradle.docker-compose" version '0.10.9'
-    id 'java'
 }
 
 group = 'org.woehlke.bloodmoney'
