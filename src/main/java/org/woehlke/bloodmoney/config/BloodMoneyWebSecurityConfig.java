@@ -107,5 +107,4 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.mvcConfig = bloodMoneyWebMvcConfig;
     }
 
-
 }
