@@ -25,6 +25,14 @@ cmd /c gradlew -i bootRun
 cmd /c gradlew -i composeDown
 goto:END
 
+:testBootRunPostgresSQL
+echo ---------------------------- test H2 ------------------------------------------------
+set BLOODMONEY_DEV_TESTING=false
+set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEFAULT%
+set JAVA_OPTS=%JAVA_OPTS_DEFAULT%
+cmd /c gradlew -i clean assemble bootJar build test check
+goto:END
+
 :testH2
 echo ---------------------------- test H2 ------------------------------------------------
 set BLOODMONEY_DEV_TESTING=false
@@ -46,7 +54,8 @@ goto:END
 rem goto:bootRunHerokuLocal
 rem goto:bootRunPostgresSQL
 rem goto:bootRunH2
-goto:testH2
+rem goto:testH2
+goto:testBootRunPostgresSQL
 
 :END
 echo "DONE"
