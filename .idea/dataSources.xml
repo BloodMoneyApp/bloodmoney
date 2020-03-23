@@ -10,6 +10,7 @@
     <data-source source="LOCAL" name="bloodmoney@localhost" uuid="8f33d6da-9e7a-481c-8801-e3efc7548915">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>LINUX</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/bloodmoney</jdbc-url>
     </data-source>
