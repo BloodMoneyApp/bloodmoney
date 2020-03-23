@@ -12,7 +12,7 @@ set BLOODMONEY_DSREF_DB=bloodmoneyref
 set BLOODMONEY_DSREF_USR=bloodmoneyref
 set BLOODMONEY_DSREF_PWD=bloodmoneyrefpwd
 set BLOODMONEY_DSREF_HOST=localhost
-set BLOODMONEY_DSREF_PORT=25432
+set BLOODMONEY_DSREF_PORT=5464
 echo ""
 echo "Persistence Settings"
 set BLOODMONEY_HIBERNATE_DDL_AUTO=create-drop
