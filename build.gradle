@@ -47,13 +47,6 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-    testCompile {
-        extendsFrom annotationProcessor
-    }
-    testImplementation {
-        extendsFrom implementation
-    }
-    //jaxb
 }
 
 repositories {
@@ -66,12 +59,6 @@ ext {
     set('springBootAdminVersion', "${springBootAdminVersion}")
 }
 
-asciidoctor {
-    inputs.dir snippetsDir
-    dependsOn test
-}
-
-//Testing
 test {
     String activeProfile =  System.properties['spring.profiles.active']
     systemProperty "spring.profiles.active", activeProfile
@@ -83,62 +70,19 @@ springBoot {
     buildInfo()
 }
 
-
-//Testing
-task bootRunDefault {
-    bootRun.configure {
-        String activeProfile = 'default'
-        systemProperty "spring.profiles.active", activeProfile
-    }
-}
-
-task testDefault {
-    test.configure {
-        String activeProfile = 'default'
-        systemProperty "spring.profiles.active", activeProfile
-    }
-}
-
-task testDev {
-    test.configure {
-        String activeProfile = 'dev'
-        String jmxEnabled ='true'
-        systemProperty "spring.profiles.active", activeProfile
-        systemProperty "spring.jmx.enabled", jmxEnabled
-    }
-}
-
-//Testing
-task bootRunDev {
-    bootRun.configure {
-        String activeProfile = 'dev'
-        String jmxEnabled ='true'
-        systemProperty "spring.profiles.active", activeProfile
-        systemProperty "spring.jmx.enabled", jmxEnabled
-    }
-}
-
 bootRun {
     String activeProfile = System.properties['spring.profiles.active']
     systemProperty "spring.profiles.active", activeProfile
     String jmxEnabled = System.properties['spring.jmx.enabled']
     systemProperty "spring.jmx.enabled", jmxEnabled
-    //String confLoc = System.properties['spring.config.location']
-    //systemProperty "spring.config.location", "file:$confLoc"
 }
 
-bootRunDefault.finalizedBy bootRun
-bootRunDev.finalizedBy bootRun
-
-//DevOps
 dockerCompose {
-    isRequiredBy(project.tasks.bootRunDefault)
-    isRequiredBy(project.tasks.testDefault)
-    //exposeAsSystemProperties(project.tasks.bootRunDefault)
+    isRequiredBy(project.tasks.bootRun)
+    isRequiredBy(project.tasks.test)
     useComposeFiles = ['stack.yml']
 }
 
-//DevOps
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
@@ -151,7 +95,6 @@ flywayMigrate {
 
 dependencyManagement {
     imports {
-        //SpringBootAdmin
         mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
     }
 }
@@ -170,26 +113,22 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    //compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
 
     //SpringBootAdmin
     implementation 'de.codecentric:spring-boot-admin-starter-client'
     implementation 'de.codecentric:spring-boot-admin-starter-server'
 
     //FrontendHtml5
-    implementation "org.webjars:jquery:${webjarsJqueryVersion}"
-    implementation "org.webjars:popper.js:${webjarsPopperJsVersion}"
-    implementation "org.webjars:bootstrap:${webjarsBootstrap}"
-    implementation "org.webjars:font-awesome:${webjarsFontAwesomeVersion}"
-    implementation "org.webjars:bootswatch-sandstone:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-cyborg:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-cerulean:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-slate:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-cosmo:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-cosmo:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-darkly:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-flatly:${bootswatchVersion}"
-    implementation "org.webjars:bootswatch-spacelab:${bootswatchVersion}"
+    compile 'org.webjars:bootstrap:4.4.1-1'
+    compile 'org.webjars:jquery:3.4.1'
+    compile 'org.webjars:popper.js:2.0.2'
+    compile 'org.webjars:font-awesome:5.12.0'
+
+   // implementation "org.webjars:jquery:${webjarsJqueryVersion}"
+   // implementation "org.webjars:popper.js:${webjarsPopperJsVersion}"
+    //implementation "org.webjars:bootstrap:${webjarsBootstrap}"
+    //implementation "org.webjars:font-awesome:${webjarsFontAwesomeVersion}"
 
     //SpringMVC
     implementation 'org.thymeleaf:thymeleaf-spring5'
