@@ -7,14 +7,14 @@ export BLOODMONEY_DS_DB='bloodmoney'
 export BLOODMONEY_DS_USR='bloodmoney'
 export BLOODMONEY_DS_PWD='bloodmoneypwd'
 export BLOODMONEY_DS_HOST='localhost'
-export BLOODMONEY_DS_PORT=15432
+export BLOODMONEY_DS_PORT=5432
 #echo ""
 #echo "PostgreSQL Database from Docker: bloodmoney_dbref"
 export BLOODMONEY_DSREF_DB='bloodmoneyref'
 export BLOODMONEY_DSREF_USR='bloodmoneyref'
 export BLOODMONEY_DSREF_PWD='bloodmoneyrefpwd'
 export BLOODMONEY_DSREF_HOST='localhost'
-export BLOODMONEY_DSREF_PORT=25432
+export BLOODMONEY_DSREF_PORT=5464
 #echo ""
 #echo "Persistence Settings"
 export BLOODMONEY_HIBERNATE_DDL_AUTO='create-drop'
