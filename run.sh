@@ -40,8 +40,8 @@ function main() {
     # runHerokuLocal
     # composeDown
     # composeUp
-    # run
-    testApp
+    run
+    # testApp
 }
 
 main
