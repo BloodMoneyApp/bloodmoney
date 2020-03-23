@@ -10,7 +10,7 @@ function composeDown() {
     ./gradlew -i composeDown
 }
 
-function bootRunHerokuLocal() {
+function runHerokuLocal() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
     composeUp
@@ -19,7 +19,16 @@ function bootRunHerokuLocal() {
     composeDown
 }
 
-function bootRunPostgresSQL() {
+function testApp() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./gradlew -i clean assemble bootJar
+    composeUp
+    ./gradlew -i build test check
+    composeDown
+}
+
+function run() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
     composeUp
@@ -27,26 +36,12 @@ function bootRunPostgresSQL() {
     composeDown
 }
 
-function bootRunH2() {
-     export JAVA_OPTS=$JAVA_OPTS_RUN_DEV
-     showSettings
-    ./gradlew -i clean assemble bootJar bootRun
-}
-
-function testH2() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEV
-    showSettings
-    ./gradlew -i clean assemble bootJar build test check
-    #./gradlew -i bootRun
-}
-
 function main() {
-    # bootRunHerokuLocal
+    # runHerokuLocal
     # composeDown
     # composeUp
-    # bootRunPostgresSQL
-    testH2
-    #bootRunH2
+    # run
+    testApp
 }
 
 main
