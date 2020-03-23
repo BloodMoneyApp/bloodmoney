@@ -197,28 +197,6 @@ spring:
         store-type: jdbc
         jdbc:
             initialize-schema: always
-    jta:
-        atomikos:
-            connectionfactory:
-                xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
-    jpa:
-        show-sql: true
-        database-platform: POSTGRESQL
-        hibernate:
-            #ddl-auto: create-drop update
-            ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
-            naming:
-                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
-                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQL95Dialect
-                temp:
-                    use_jdbc_metadata_defaults: false
-            #generate_statistics: true
-    h2:
-        console:
-            enabled: false
     thymeleaf:
         cache: true
     devtools:
