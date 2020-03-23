@@ -5,7 +5,7 @@ set BLOODMONEY_DS_DB=bloodmoney
 set BLOODMONEY_DS_USR=bloodmoney
 set BLOODMONEY_DS_PWD=bloodmoneypwd
 set BLOODMONEY_DS_HOST=localhost
-set BLOODMONEY_DS_PORT=15432
+set BLOODMONEY_DS_PORT=5432
 echo ""
 echo "PostgreSQL Database from Docker: bloodmoney_dbref"
 set BLOODMONEY_DSREF_DB=bloodmoneyref

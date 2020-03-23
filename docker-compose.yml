@@ -20,7 +20,7 @@ services:
         networks:
             - net
         ports:
-            - 25432:5432
+            - 5464:5432
         environment:
             POSTGRES_PASSWORD: bloodmoneyrefpwd
             POSTGRES_USER: bloodmoneyref
