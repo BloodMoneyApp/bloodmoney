@@ -69,7 +69,7 @@ org:
                 web-add-resource-handlers-static:
                     - "bloodmoney/"
                     - "icon/"
-                    - "language/"
+                    - "languages/"
                     - "test/"
                     - "favicon.ico"
                 web-add-resource-handlers:
@@ -93,8 +93,8 @@ org:
                     - "/bloodmoney/**"
                     - "/icon/**"
                     - "/icon"
-                    - "/language"
-                    - "/language/**"
+                    - "/languages"
+                    - "/languages/**"
                     - "/favicon.ico"
                     - "/webjars/**"
                     - "/webjars"
