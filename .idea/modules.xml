@@ -3,11 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bloodmoney.iml" filepath="$PROJECT_DIR$/.idea/modules/bloodmoney.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/api/bloodmoney.api.iml" filepath="$PROJECT_DIR$/.idea/modules/api/bloodmoney.api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bloodmoney.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/services/bloodmoney.services.iml" filepath="$PROJECT_DIR$/.idea/modules/services/bloodmoney.services.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/services/webservice/bloodmoney.services.webservice.iml" filepath="$PROJECT_DIR$/.idea/modules/services/webservice/bloodmoney.services.webservice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/bloodmoney.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/bloodmoney.shared.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bloodmoney.test.iml" filepath="$PROJECT_DIR$/.idea/modules/bloodmoney.test.iml" />
     </modules>
   </component>

@@ -114,7 +114,7 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
     @XmlElement(required = true)
     @NotNull
     @CsvBindByName
-    @Column(name = "situation", nullable = false)
+    @Column(name = "situation", nullable = false, columnDefinition = "TEXT")
     private String situation;
 
     @XmlElement(required = true)
