@@ -2,7 +2,6 @@ plugins {
     id "com.jfrog.artifactory" version "4.15.1"
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'java'
     //Lombok
     id "io.franzbecker.gradle-lombok" version "3.3.0"
     //DatabaseSchemaEvolution
@@ -10,6 +9,7 @@ plugins {
     id "org.liquibase.gradle" version "2.0.2"
     //Docker
     id "com.avast.gradle.docker-compose" version '0.10.9'
+    id 'java'
 }
 
 group = 'org.woehlke.bloodmoney'
