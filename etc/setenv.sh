@@ -90,12 +90,12 @@ function showSettingsVava() {
     echo "JAVA Settings"
     WHICH_JAVA=`which java`
     WHICH_JAVAC=`which javac`
-    WHICH_GRADLE=`which gradle`
-    GRADLE_VERSION=`gradle -v`
+    WHICH_GRADLE=`which mvn`
+    GRADLE_VERSION=`mvn -version`
     echo "which java=$WHICH_JAVA"
     echo "which javac=$WHICH_JAVAC"
-    echo "which gradle=$WHICH_GRADLE"
-    echo "gradle -v = $GRADLE_VERSION"
+    echo "which mvn=$WHICH_GRADLE"
+    echo "mvn -version= $GRADLE_VERSION"
     echo "JAVA_HOME=$JAVA_HOME"
     echo "JAVA_OPTS=$JAVA_OPTS"
 }
