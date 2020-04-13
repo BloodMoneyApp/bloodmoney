@@ -635,15 +635,22 @@
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
                                 </requireJavaVersion>
-                                <!--
                                 <requireOS>
                                     <family>unix</family>
                                 </requireOS>
-                                 -->
                                 <requireFilesExist>
                                     <files>
+                                        <file>${project.basedir}/etc/psql.sh</file>
+                                        <file>${project.basedir}/etc/docker-start.sh</file>
+                                        <file>${project.basedir}/etc/docker-stop.sh</file>
+                                        <file>${project.basedir}/.github/FUNDING.yml</file>
+                                        <file>${project.basedir}/.github/workflows/maven.yml</file>
+                                        <file>${project.basedir}/_config.yml</file>
+                                        <file>${project.basedir}/app.json</file>
+                                        <file>${project.basedir}/Procfile</file>
                                         <file>${project.basedir}/docker-compose.yml</file>
                                         <file>${project.basedir}/etc/setenv.sh</file>
+                                        <file>${project.basedir}/run.sh</file>
                                     </files>
                                 </requireFilesExist>
                             </rules>
