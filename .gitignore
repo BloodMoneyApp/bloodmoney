@@ -38,7 +38,6 @@ bloodmoney.iml
 /bloodmoney.log
 /bloodmoney.log*
 build
-/.idea/**
 /package.json
 /package-lock.json
 /webpack.config.js
@@ -47,7 +46,5 @@ build
 /target
 /wrapper
 
-!.idea
-!/.idea/**
 /.idea/workspace.xml
 /.idea/dataSources.local.xml
