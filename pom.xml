@@ -93,6 +93,8 @@
         <spring-security.version>5.2.2.RELEASE</spring-security.version>
         <spring-session-bom.version>Corn-SR2</spring-session-bom.version>
 
+        <opencsv.version>5.1</opencsv.version>
+
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
         <xmlunit2.version>2.6.4</xmlunit2.version>
         <htmlunit.version>2.36.0</htmlunit.version>
@@ -224,6 +226,12 @@
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
                 <version>1.8.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>${opencsv.version}</version>
             </dependency>
 
             <dependency>
@@ -489,6 +497,11 @@
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-testing</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
         </dependency>
 
         <dependency>

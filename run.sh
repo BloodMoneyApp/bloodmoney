@@ -46,7 +46,7 @@ function testAppDev() {
 function runDev() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./gradlew -i clean assemble bootJar bootRun
+    ./mvnw -e clean spring-boot:run
 }
 
 function main() {

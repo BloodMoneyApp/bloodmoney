@@ -188,6 +188,13 @@ debug: false
 #Profile default: Production ready. Heroku with PostgreSQL
 spring:
     profiles: default
+    devtools:
+        livereload:
+            enabled: false
+        add-properties: false
+    application:
+        admin:
+            enabled: false
     datasource:
         url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
         username:  ${BLOODMONEY_DS_USR}
@@ -201,12 +208,9 @@ spring:
             initialize-schema: always
     thymeleaf:
         cache: true
-    devtools:
-        livereload:
-            enabled: false
-        add-properties: false
-    application:
-        admin:
+endpoints:
+    endpoints:
+        shutdown:
             enabled: false
 server:
     compression:
