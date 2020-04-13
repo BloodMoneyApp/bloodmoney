@@ -106,13 +106,6 @@ dependencyManagement {
 
 dependencies {
 
-    //Disabled Features
-    //implementation 'org.springframework.boot:spring-boot-starter-batch'
-    //testImplementation 'org.springframework.batch:spring-batch-test'
-    //implementation 'org.springframework.boot:spring-boot-starter-quartz'
-    //implementation 'org.springframework.boot:spring-boot-starter-mail'
-    //implementation 'org.springframework.boot:spring-boot-starter-cache'
-
     //SpringBoot
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -129,11 +122,6 @@ dependencies {
     compile 'org.webjars:jquery:3.4.1'
     compile 'org.webjars:popper.js:2.0.2'
     compile 'org.webjars:font-awesome:5.12.0'
-
-   // implementation "org.webjars:jquery:${webjarsJqueryVersion}"
-   // implementation "org.webjars:popper.js:${webjarsPopperJsVersion}"
-    //implementation "org.webjars:bootstrap:${webjarsBootstrap}"
-    //implementation "org.webjars:font-awesome:${webjarsFontAwesomeVersion}"
 
     //SpringMVC
     implementation 'org.thymeleaf:thymeleaf-spring5'
@@ -153,9 +141,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
     implementation "com.opencsv:opencsv:${opencsvVersion}"
     implementation 'org.springframework.data:spring-data-rest-hal-explorer'
-    //implementation 'wsdl4j:wsdl4j:1.6.1'
-    //implementation 'org.glassfish.jersey.containers:jersey-container-servlet'
-    //implementation 'org.glassfish.jersey.media:jersey-media-json-jackson'
 
     //DatabaseSchemaEvolution
     implementation "org.jsoup:jsoup:${jsoupVersion}"
