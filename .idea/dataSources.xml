@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="bloodmoneyref@localhost" uuid="0d4d08cc-304a-4ff1-a09f-11c08ca7dcba">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/bloodmoneyref</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="bloodmoney@localhost" uuid="8f33d6da-9e7a-481c-8801-e3efc7548915">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>LINUX</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/bloodmoney</jdbc-url>
+    </data-source>
+  </component>
+</project>

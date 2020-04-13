@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.woehlke.bloodmoney.user.UserAccountSecurityService;
+import org.woehlke.bloodmoney.user.BloodMoneyUserAccountDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -34,35 +34,39 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .disable()
             .authorizeRequests()
             .antMatchers(
-                mvcConfig().config().properties().getWebSecurity().getAntMatchersPermitAll()
+                this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
             )
             .permitAll()
-            .antMatchers(    mvcConfig().config().properties().getWebSecurity().getAntMatchersFullyAuthenticated())
+            .antMatchers(
+                this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
+            )
             .fullyAuthenticated().anyRequest().authenticated()
             .and()
             .formLogin()
-            .loginPage(mvcConfig().config().properties().getWebSecurity().getLoginPage())
-            .usernameParameter(mvcConfig().config().properties().getWebSecurity().getUsernameParameter())
-            .passwordParameter(mvcConfig().config().properties().getWebSecurity().getPasswordParameter())
-            .loginProcessingUrl(mvcConfig().config().properties().getWebSecurity().getLoginProcessingUrl())
-            .failureForwardUrl(mvcConfig().config().properties().getWebSecurity().getFailureForwardUrl())
-            .defaultSuccessUrl(mvcConfig().config().properties().getWebSecurity().getDefaultSuccessUrl())
-            .successHandler(loginSuccessHandler)
+            .loginPage(
+                this.bloodMoneyProperties.getWebSecurity().getLoginPage()
+            )
+            .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
+            .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
+            .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
+            .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
+            .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
+            .successHandler(this.authenticationSuccessHandler)
             .permitAll()
             .and()
             .logout()
-            .logoutUrl(mvcConfig().config().properties().getWebSecurity().getLogoutUrl())
-            .deleteCookies(mvcConfig().config().properties().getWebSecurity().getDeleteCookies())
-            .invalidateHttpSession(mvcConfig().config().properties().getWebSecurity().getInvalidateHttpSession())
+            .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
+            .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
+            .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
             .permitAll();
     }
 
     @Bean
     public PasswordEncoder encoder(){
         // https://asecuritysite.com/encryption/PBKDF2z
-        CharSequence secret=mvcConfig().config().properties().getWebSecurity().getSecret();
-        int iterations=mvcConfig().config().properties().getWebSecurity().getIterations();
-        int hashWidth=mvcConfig().config().properties().getWebSecurity().getHashWidth();
+        CharSequence secret=this.bloodMoneyProperties.getWebSecurity().getSecret();
+        int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
+        int hashWidth=this.bloodMoneyProperties.getWebSecurity().getHashWidth();
         Pbkdf2PasswordEncoder encoder = (new Pbkdf2PasswordEncoder(secret,iterations,hashWidth));
         encoder.setEncodeHashAsBase64(true);
         return encoder;
@@ -70,14 +74,14 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
-        return auth.userDetailsService(userAccountSecurityService).passwordEncoder(encoder()).and().build();
+        return this.authenticationManagerBuilder.userDetailsService(userAccountSecurityService).passwordEncoder(encoder()).and().build();
     }
 
     @Bean
     public UsernamePasswordAuthenticationFilter authenticationFilter() throws Exception {
         UsernamePasswordAuthenticationFilter filter = new UsernamePasswordAuthenticationFilter();
         filter.setAuthenticationManager(authenticationManager());
-        filter.setFilterProcessesUrl(mvcConfig().config().properties().getWebSecurity().getLoginProcessingUrl());
+        filter.setFilterProcessesUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl());
         return filter;
     }
 
@@ -86,23 +90,26 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
         return this.mvcConfig;
     }
 
-    private final AuthenticationManagerBuilder auth;
-    private final AuthenticationSuccessHandler loginSuccessHandler;
+
+    private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final UserDetailsService userAccountSecurityService;
+    private final BloodMoneyProperties bloodMoneyProperties;
     private final BloodMoneyWebMvcConfig mvcConfig;
 
     @Autowired
     public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder auth,
-        AuthenticationSuccessHandler loginSuccessHandler,
-        UserAccountSecurityService userAccountSecurityService,
+        AuthenticationSuccessHandler authenticationSuccessHandler,
+        BloodMoneyUserAccountDetailsService bloodMoneyUserAccountDetailsService,
+        BloodMoneyProperties bloodMoneyProperties,
         BloodMoneyWebMvcConfig bloodMoneyWebMvcConfig
     ) {
-        this.auth = auth;
-        this.loginSuccessHandler = loginSuccessHandler;
-        this.userAccountSecurityService = userAccountSecurityService;
+        this.authenticationManagerBuilder = auth;
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+        this.userAccountSecurityService = bloodMoneyUserAccountDetailsService;
+        this.bloodMoneyProperties = bloodMoneyProperties;
         this.mvcConfig = bloodMoneyWebMvcConfig;
     }
-
 
 }

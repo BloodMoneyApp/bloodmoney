@@ -15,7 +15,7 @@ build/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+#.idea
 *.iws
 *.iml
 *.ipr
@@ -38,4 +38,12 @@ bloodmoney.iml
 /bloodmoney.log
 /bloodmoney.log*
 build
-/.idea/**
+/package.json
+/package-lock.json
+/webpack.config.js
+/webpack.generated.js
+/node_modules/
+/target
+/wrapper
+
+/.idea/workspace.xml

@@ -1,35 +1,62 @@
 #!/usr/bin/env bash
 
-source setenv.sh
+source etc/setenv.sh
 
+function composeUp() {
+    ./mvnw docker-compose:up
+}
 
-function bootRunHerokuLocal() {
-    ./gradlew -i composeUp
-    ./gradlew -i clean assemble
+function composeDown() {
+    ./mvnw docker-compose:down
+}
+
+function runHerokuLocal() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    composeUp
+    ./mvnw clean package
     heroku local web
-    ./gradlew -i composeDown
+    composeDown
 }
 
-function bootRunPostgresSQL() {
-    ./gradlew -i composeUp
-    ./gradlew -i clean bootRun --args='--spring.profiles.active=default'
-    ./gradlew -i composeDown
+function testApp() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./mvnw clean package bootJar
+    composeUp
+    ./mvnw install test check
+    composeDown
 }
 
-function testH2() {
-    ./gradlew -i clean build test check bootJar
-    ./gradlew -i bootRun --args='--spring.profiles.active=dev'
+function run() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    composeUp
+    ./mvnw -e clean spring-boot:run
+    composeDown
 }
 
-function bootRunH2() {
-    ./gradlew -i clean bootRun --args='--spring.profiles.active=dev'
+function testAppDev() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./mvnw clean package bootJar
+    ./mvnw install test check
+}
+
+function runDev() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./mvnw -e clean spring-boot:run
 }
 
 function main() {
-    bootRunHerokuLocal
-    # bootRunPostgresSQL
-    # testH2
-    # bootRunH2
+    # runHerokuLocal
+    # composeDown
+    # composeUp
+    # run
+    # testApp
+    runDev
+    #testAppDev
 }
 
 main

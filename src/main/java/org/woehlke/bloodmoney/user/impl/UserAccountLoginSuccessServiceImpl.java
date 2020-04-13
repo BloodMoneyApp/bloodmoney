@@ -1,6 +1,5 @@
 package org.woehlke.bloodmoney.user.impl;
 
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,8 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.bloodmoney.application.BloodMoneyProperties;
-import org.woehlke.bloodmoney.user.UserAccount;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.user.UserAccountBean;
 import org.woehlke.bloodmoney.user.UserAccountLoginSuccessService;
 
 @Slf4j
@@ -35,10 +34,10 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     }
 
     @Override
-    public UserAccount retrieveCurrentUser() throws UsernameNotFoundException {
+    public UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException {
         String username = this.retrieveUsername();
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-            return new UserAccount(
+            return new UserAccountBean(
                 bloodMoneyProperties.getUserConfig().getUserEmail(),
                 bloodMoneyProperties.getUserConfig().getUserPassword(),
                 bloodMoneyProperties.getUserConfig().getUserFullname()
@@ -49,7 +48,7 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     }
 
     @Override
-    public void updateLastLoginTimestamp(UserAccount user) {
+    public void updateLastLoginTimestamp(UserAccountBean user) {
         //TODO:
     }
 }

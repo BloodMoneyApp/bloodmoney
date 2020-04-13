@@ -16,14 +16,33 @@ spring:
     application:
         admin:
             enabled: ${BLOODMONEY_DEV_TESTING}
+    datasource:
+        url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
+        username:  ${BLOODMONEY_DS_USR}
+        password:  ${BLOODMONEY_DS_PWD}
+        driver-class-name:  org.postgresql.Driver
+        platform: POSTGRESQL
+        initialization-mode: always
+    jta:
+        atomikos:
+            connectionfactory:
+                xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
     jpa:
-        show-sql: ${BLOODMONEY_DEV_TESTING}
         open-in-view: true
-        generate-ddl: true
+        show-sql: true
+        database-platform: POSTGRESQL
         hibernate:
+            #ddl-auto: create-drop update
             ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
-            #ddl-auto: create-drop
-            #ddl-auto: update
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQL95Dialect
+                temp:
+                    use_jdbc_metadata_defaults: false
+                generate_statistics: true
     thymeleaf:
         cache: false
     session:
@@ -38,6 +57,7 @@ spring:
 org:
     woehlke:
         bloodmoney:
+            testDataHowManyTestData: 10
             dev-testing: ${BLOODMONEY_DEV_TESTING}
             user-config:
                 userEmail: ${BLOODMONEY_USER_EMAIL}
@@ -47,15 +67,15 @@ org:
                 export-filename: "measurements.csv"
                 export-filename-separator: ";"
                 web-add-resource-handlers-static:
-                    - "css/"
-                    - "img/"
-                    - "js/"
+                    - "bloodmoney/"
+                    - "icon/"
+                    - "languages/"
+                    - "test/"
                     - "favicon.ico"
                 web-add-resource-handlers:
                     - "webjars/"
-                    - "h2/"
             web-security:
-                iterations: ${BLOODMONEY_USER_INTERATIONS}
+                iterations: ${BLOODMONEY_USER_ITERATIONS}
                 hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
                 secret: ${BLOODMONEY_USER_SECRET}
                 login-processing-url: "/j_spring_security_check"
@@ -69,12 +89,19 @@ org:
                 invalidate-http-session: true
                 ant-matchers-fully-authenticated: "/**"
                 ant-matchers-permit-all:
-                    - "/webjars/**"
-                    - "/css/**"
-                    - "/img/**"
-                    - "/js/**"
+                    - "/bloodmoney"
+                    - "/bloodmoney/**"
+                    - "/icon/**"
+                    - "/icon"
+                    - "/languages"
+                    - "/languages/**"
                     - "/favicon.ico"
+                    - "/webjars/**"
+                    - "/webjars"
                     - "/test*/**"
+                    - "/rest"
+                    - "/rest/**"
+                    - "/bpm"
                     - "/login*"
                     - "/register*"
                     - "/confirm*/**"
@@ -82,59 +109,21 @@ org:
                     - "/passwordResetConfirm*/**"
                     - "/error*"
                     - "/fehler*"
-                    - "/h2*/**"
 ---
-endpoints:
-    endpoints:
-        shutdown:
-            enabled: true
+#Profile dev:
 spring:
     profiles: dev
+    thymeleaf:
+        cache: false
     devtools:
         livereload:
             enabled: true
     application:
         admin:
-            enabled: true
-    datasource:
-        platform: H2
-        driver-class-name: org.h2.Driver
-        username: sa
-        password:
-        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-        initialization-mode: embedded
-        #temporary data storage
-        #url: jdbc:h2:file:/data/sample
-        #url: jdbc:h2:file:C:/data/sample (Windows only)
-    jta:
-        atomikos:
-            connectionfactory:
-                xa-connection-factory-class-name: org.h2.Driver
-    jpa:
-        show-sql: true
-        database-platform: H2
-        hibernate:
-            ddl-auto: create-drop
-            naming:
-                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
-                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.H2Dialect
-                temp:
-                    use_jdbc_metadata_defaults: false
-                naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-            #generate_statistics: true
-    session:
-        store-type: jdbc
-        jdbc:
-            initialize-schema: embedded
-    h2:
-        console:
-            enabled: true
-            settings:
-                trace: true
-                web-allow-others: true
+            enabled: false
+server:
+    compression:
+        enabled: false
 logging:
     file:
         name: bloodmoney.log
@@ -150,7 +139,7 @@ logging:
             apache:
                 commons:
                     logging: WARN
-            h2: DEBUG
+            h2: WARN
             springframework:
                 data:
                     jdbc: INFO
@@ -190,27 +179,22 @@ logging:
                 qos: INFO
             woehlke:
                 bloodmoney:
+                    application: DEBUG
                     config: DEBUG
-                    frontend:
-                        api: DEBUG
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                    oodm:
-                        entities: DEBUG
-                        repositories: DEBUG
-                        services:
-                            impl: DEBUG
-                    user:
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
-                        services:
-                            impl: DEBUG
-debug: true
+                    measurements: DEBUG
+                    user: DEBUG
+debug: false
 ---
+#Profile default: Production ready. Heroku with PostgreSQL
 spring:
     profiles: default
+    devtools:
+        livereload:
+            enabled: false
+        add-properties: false
+    application:
+        admin:
+            enabled: false
     datasource:
         url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
         username:  ${BLOODMONEY_DS_USR}
@@ -222,36 +206,11 @@ spring:
         store-type: jdbc
         jdbc:
             initialize-schema: always
-    jta:
-        atomikos:
-            connectionfactory:
-                xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
-    jpa:
-        show-sql: true
-        database-platform: POSTGRESQL
-        hibernate:
-            #ddl-auto: create-drop update
-            ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
-            naming:
-                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
-                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQL95Dialect
-                temp:
-                    use_jdbc_metadata_defaults: false
-            #generate_statistics: true
-    h2:
-        console:
-            enabled: false
     thymeleaf:
         cache: true
-    devtools:
-        livereload:
-            enabled: false
-        add-properties: false
-    application:
-        admin:
+endpoints:
+    endpoints:
+        shutdown:
             enabled: false
 server:
     compression:

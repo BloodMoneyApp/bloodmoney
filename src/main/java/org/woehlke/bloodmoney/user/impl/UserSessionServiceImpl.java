@@ -3,9 +3,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.woehlke.bloodmoney.application.BloodMoneyProperties;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.user.UserSessionBean;
 import org.woehlke.bloodmoney.user.UserSessionService;
-import org.woehlke.bloodmoney.frontend.model.UserSession;
 
 
 @Slf4j
@@ -19,11 +19,11 @@ public class UserSessionServiceImpl implements UserSessionService {
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
 
-    public Model handleUserSession(UserSession userSession, Model model){
-        if(userSession==null){
-            userSession = new UserSession();
-            userSession.setDevTesting(bloodMoneyProperties.getDevTesting());
-            model.addAttribute("userSession", userSession);
+    public Model handleUserSession(UserSessionBean userSessionBean, Model model){
+        if(userSessionBean ==null){
+            userSessionBean = new UserSessionBean();
+            userSessionBean.setDevTesting(bloodMoneyProperties.getDevTesting());
+            model.addAttribute("userSessionBean", userSessionBean);
         }
         return model;
     }
