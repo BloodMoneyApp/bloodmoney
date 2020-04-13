@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: de.codecentric:spring-boot-admin-server:2.2.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.codecentric/spring-boot-admin-server/2.2.1/ba4e1720ddf90e04eac1a839ae87b4d0d6970e6f/spring-boot-admin-server-2.2.1.jar!/" />
+      <root url="jar://$USER_HOME$/caches/modules-2/files-2.1/de.codecentric/spring-boot-admin-server/2.2.1/ba4e1720ddf90e04eac1a839ae87b4d0d6970e6f/spring-boot-admin-server-2.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.codecentric/spring-boot-admin-server/2.2.1/b494dd6eb1c1cc1abcb86a9d3e5fa9fc870c7888/spring-boot-admin-server-2.2.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/caches/modules-2/files-2.1/de.codecentric/spring-boot-admin-server/2.2.1/b494dd6eb1c1cc1abcb86a9d3e5fa9fc870c7888/spring-boot-admin-server-2.2.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

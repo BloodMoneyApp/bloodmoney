@@ -75,7 +75,7 @@ org:
                 web-add-resource-handlers:
                     - "webjars/"
             web-security:
-                iterations: ${BLOODMONEY_USER_INTERATIONS}
+                iterations: ${BLOODMONEY_USER_ITERATIONS}
                 hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
                 secret: ${BLOODMONEY_USER_SECRET}
                 login-processing-url: "/j_spring_security_check"
