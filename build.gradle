@@ -84,11 +84,11 @@ bootRun {
 dockerCompose {
     isRequiredBy(project.tasks.bootRun)
     isRequiredBy(project.tasks.test)
-    useComposeFiles = ['stack.yml']
+    useComposeFiles = ['docker-compose.yml']
 }
 
 wrapper {
-    gradleVersion = '6.2.2'
+    gradleVersion = '6.3'
     distributionType = Wrapper.DistributionType.ALL
 }
 

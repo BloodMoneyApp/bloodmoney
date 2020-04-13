@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source setenv.sh
+source etc/setenv.sh
 
 function composeUp() {
     ./gradlew -i composeUp

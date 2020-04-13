@@ -1,4 +1,4 @@
-call setenv.cmd
+call etc\setenv.cmd
 
 goto:MAIN
 
