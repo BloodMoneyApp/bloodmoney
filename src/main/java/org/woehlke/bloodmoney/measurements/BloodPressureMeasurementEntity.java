@@ -152,6 +152,23 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
     @Transient
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
 
+    public void merge(BloodPressureMeasurementEntity otherEntity){
+        this.systolicTopNumber = otherEntity.systolicTopNumber;
+        this.diastolicBottomNumber = otherEntity.diastolicBottomNumber;
+        this.pulse = otherEntity.pulse;
+        this.date = otherEntity.date;
+        this.time = otherEntity.time;
+        this.situation = otherEntity.situation;
+        ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
+        LocalDateTime dateTimeNow = LocalDateTime.now(zone);
+        this.setUpdated(dateTimeNow);
+    }
+
+    public void setUuid(){
+        UUID uuid = UUID.randomUUID();
+        this.setUuid(uuid);
+    }
+
     public void prepareNew(){
         String ip = "undefined";
         String hostname =  "undefined";
@@ -166,10 +183,8 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
         LocalDate today = LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
-        UUID uuid = UUID.randomUUID();
         this.setDate(today);
         this.setTime(now);
-        this.setUuid(uuid);
         this.setCreated(dateTimeNow);
         this.setUpdated(dateTimeNow);
         this.setIp(ip);

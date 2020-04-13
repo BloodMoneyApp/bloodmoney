@@ -101,7 +101,6 @@ public class BloodPressureMeasurementController {
         if(result.hasErrors()){
             return "measurement/edit";
         } else {
-            one.prepareNew();
             one = bloodPressureMeasurementService.add(one);
             return "redirect:/measurement/all";
         }

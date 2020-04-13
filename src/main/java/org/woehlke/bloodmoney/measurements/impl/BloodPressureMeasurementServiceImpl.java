@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -55,20 +56,22 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public BloodPressureMeasurementEntity add(BloodPressureMeasurementEntity o) {
+        o.prepareNew();
+        o.setUuid();
         return this.bloodPressureMeasurementRepository.save(o);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public BloodPressureMeasurementEntity update(BloodPressureMeasurementEntity one) {
-        one.setUpdated(LocalDateTime.now(zone));
-        return this.bloodPressureMeasurementRepository.save(one);
-    }
-
-    @Override
     public BloodPressureMeasurementEntity update(BloodPressureMeasurementEntity one, Long id) {
-        one.setUpdated(LocalDateTime.now(zone));
-        return null;
+        Optional<BloodPressureMeasurementEntity> persistentEntity = this.bloodPressureMeasurementRepository.findById(id);
+        if(persistentEntity.isPresent()) {
+            BloodPressureMeasurementEntity p = persistentEntity.get();
+            p.merge(one);
+            p.prepareNew();
+            one = this.bloodPressureMeasurementRepository.save(p);
+        }
+        return one;
     }
 
     @Override
