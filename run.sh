@@ -3,18 +3,18 @@
 source etc/setenv.sh
 
 function composeUp() {
-    ./gradlew -i composeUp
+    ./mvnw docker-compose:up
 }
 
 function composeDown() {
-    ./gradlew -i composeDown
+    ./mvnw docker-compose:down
 }
 
 function runHerokuLocal() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
     composeUp
-    ./gradlew -i clean assemble
+    ./mvnw clean package
     heroku local web
     composeDown
 }
@@ -22,9 +22,9 @@ function runHerokuLocal() {
 function testApp() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./gradlew -i clean assemble bootJar
+    ./mvnw clean package bootJar
     composeUp
-    ./gradlew -i build test check
+    ./mvnw install test check
     composeDown
 }
 
@@ -32,15 +32,15 @@ function run() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
     composeUp
-    ./gradlew -i clean assemble bootJar bootRun
+    ./mvnw -e clean spring-boot:run
     composeDown
 }
 
 function testAppDev() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./gradlew -i clean assemble bootJar
-    ./gradlew -i build test check
+    ./mvnw clean package bootJar
+    ./mvnw install test check
 }
 
 function runDev() {
