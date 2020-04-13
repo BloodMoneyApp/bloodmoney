@@ -213,7 +213,7 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertNotNull(src);
         String situation = "Xfcfdcdcrd";
         src.setSituation(situation);
-        BloodPressureMeasurementEntity target = bloodPressureMeasurementService.update(src);
+        BloodPressureMeasurementEntity target = bloodPressureMeasurementService.update(src,src.getId());
         BloodPressureMeasurementTest.assertEquals(src,target);
         BloodPressureMeasurementTest.assertEqualsUuid(src,target);
         BloodPressureMeasurementTest.assertEqualsCreated(src,target);

@@ -152,6 +152,36 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
     @Transient
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
 
+    public void merge(BloodPressureMeasurementEntity otherEntity){
+        this.systolicTopNumber = otherEntity.systolicTopNumber;
+        this.diastolicBottomNumber = otherEntity.diastolicBottomNumber;
+        this.pulse = otherEntity.pulse;
+        this.date = otherEntity.date;
+        this.time = otherEntity.time;
+        this.situation = otherEntity.situation;
+        ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
+        LocalDateTime dateTimeNow = LocalDateTime.now(zone);
+        this.setUpdated(dateTimeNow);
+    }
+
+    public void prepareUpdated(){
+        String ip = "undefined";
+        String hostname =  "undefined";
+        String hostnameCanonical = "undefined";
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            ip = localHost.getHostAddress();
+            hostname = localHost.getHostName();
+            hostnameCanonical = localHost.getCanonicalHostName();
+        } catch (UnknownHostException e){}
+        ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
+        LocalDateTime dateTimeNow = LocalDateTime.now(zone);
+        this.setUpdated(dateTimeNow);
+        this.setIp(ip);
+        this.setHostname(hostname);
+        this.setHostnameCanonical(hostnameCanonical);
+    }
+
     public void prepareNew(){
         String ip = "undefined";
         String hostname =  "undefined";
@@ -167,9 +197,9 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
         LocalTime now = LocalTime.now(zone);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
         UUID uuid = UUID.randomUUID();
+        this.setUuid(uuid);
         this.setDate(today);
         this.setTime(now);
-        this.setUuid(uuid);
         this.setCreated(dateTimeNow);
         this.setUpdated(dateTimeNow);
         this.setIp(ip);
