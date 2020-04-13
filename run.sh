@@ -36,12 +36,27 @@ function run() {
     composeDown
 }
 
+function testAppDev() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./gradlew -i clean assemble bootJar
+    ./gradlew -i build test check
+}
+
+function runDev() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./gradlew -i clean assemble bootJar bootRun
+}
+
 function main() {
     # runHerokuLocal
     # composeDown
     # composeUp
-    run
+    # run
     # testApp
+    runDev
+    #testAppDev
 }
 
 main
