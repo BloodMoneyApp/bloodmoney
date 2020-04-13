@@ -44,8 +44,8 @@ build
 /webpack.config.js
 /webpack.generated.js
 /node_modules/
-/target/
-/wrapper/
+/target
+/wrapper
 
 !.idea
 !/.idea/**
