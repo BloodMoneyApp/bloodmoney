@@ -82,8 +82,8 @@ bootRun {
 }
 
 dockerCompose {
-    isRequiredBy(project.tasks.bootRun)
-    isRequiredBy(project.tasks.test)
+    //isRequiredBy(project.tasks.bootRun)
+    //isRequiredBy(project.tasks.test)
     useComposeFiles = ['docker-compose.yml']
 }
 
