@@ -27,3 +27,5 @@ fixed # 36 apply Spring Security for Spring Boot Integration Tests
 
 # 1.8.3
 Fixed #59, Fixed #60
+
+
