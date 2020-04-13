@@ -12,8 +12,8 @@
         <version>2.2.6.RELEASE</version>
     </parent>
 
-    <name>simpleworklist</name>
-    <description>Your Todo-List for Getting Things Done</description>
+    <name>bloodmoney</name>
+    <description>Webapp for storing Blood Pressure Measurements for one Person</description>
     <url>https://woehlke.org/p/bloodmoney</url>
     <inceptionYear>2012</inceptionYear>
 
