@@ -57,7 +57,6 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public BloodPressureMeasurementEntity add(BloodPressureMeasurementEntity o) {
         o.prepareNew();
-        o.setUuid();
         return this.bloodPressureMeasurementRepository.save(o);
     }
 
@@ -68,7 +67,7 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
         if(persistentEntity.isPresent()) {
             BloodPressureMeasurementEntity p = persistentEntity.get();
             p.merge(one);
-            p.prepareNew();
+            p.prepareUpdated();
             one = this.bloodPressureMeasurementRepository.save(p);
         }
         return one;

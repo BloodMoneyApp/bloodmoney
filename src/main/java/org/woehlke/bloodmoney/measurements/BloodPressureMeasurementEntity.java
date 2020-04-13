@@ -164,9 +164,22 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
         this.setUpdated(dateTimeNow);
     }
 
-    public void setUuid(){
-        UUID uuid = UUID.randomUUID();
-        this.setUuid(uuid);
+    public void prepareUpdated(){
+        String ip = "undefined";
+        String hostname =  "undefined";
+        String hostnameCanonical = "undefined";
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            ip = localHost.getHostAddress();
+            hostname = localHost.getHostName();
+            hostnameCanonical = localHost.getCanonicalHostName();
+        } catch (UnknownHostException e){}
+        ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
+        LocalDateTime dateTimeNow = LocalDateTime.now(zone);
+        this.setUpdated(dateTimeNow);
+        this.setIp(ip);
+        this.setHostname(hostname);
+        this.setHostnameCanonical(hostnameCanonical);
     }
 
     public void prepareNew(){
@@ -183,6 +196,8 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
         LocalDate today = LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
+        UUID uuid = UUID.randomUUID();
+        this.setUuid(uuid);
         this.setDate(today);
         this.setTime(now);
         this.setCreated(dateTimeNow);
