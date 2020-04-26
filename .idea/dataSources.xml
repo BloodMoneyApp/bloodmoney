@@ -14,5 +14,13 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/bloodmoney</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="bloodmoney/Hibernate" uuid="5021da8b-4bf2-45b3-9479-ddd2e74ccc4a">
+      <driver-ref>azure.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="CheckStyle-IDEA-Module">
+    <option name="configuration">
+      <map />
+    </option>
+  </component>
   <component name="FacetManager">
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="bloodmoney" />
+          <factory-entry name="bloodmoney" value="5021da8b-4bf2-45b3-9479-ddd2e74ccc4a" />
+          <factory-entry name="entityManagerFactory" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/../../src/main/java/org/woehlke/bloodmoney/BloodMoneyApplication.java</file>
+          <file>file://$MODULE_DIR$/../../src/main/java/org/woehlke/bloodmoney/config/BloodMoneyWebMvcConfig.java</file>
+          <file>file://$MODULE_DIR$/../../src/main/java/org/woehlke/bloodmoney/config/BloodMoneyWebSecurityConfig.java</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
@@ -351,15 +363,6 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ant:ant:1.10.7" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ant:ant-launcher:1.10.7" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: com.sun:tools:1.8.0">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.sdkman/candidates/java/8.0.242-open/lib/tools.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:indy:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-ant:indy:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:2.5.10" level="project" />
