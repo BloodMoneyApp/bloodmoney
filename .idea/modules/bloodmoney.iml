@@ -169,7 +169,7 @@
     <orderEntry type="library" name="Maven: org.flywaydb:flyway-core:6.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.liquibase:liquibase-core:3.8.8" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-rest-hal-browser:3.2.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-rest-hal-explorer:3.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.session:spring-session-jdbc:2.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.2.5.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.springframework.boot:spring-boot-devtools:2.2.6.RELEASE" level="project" />
