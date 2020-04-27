@@ -46,7 +46,7 @@ function testAppDev() {
 function runDev() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./mvnw -e clean spring-boot:run
+    ./mvnw -e -DskipTests=true clean dependency:tree package spring-boot:run
 }
 
 function main() {
