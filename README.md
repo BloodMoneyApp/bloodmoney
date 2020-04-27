@@ -9,9 +9,9 @@ Webapp for storing Blood Pressure Measurements for one Person.
 * [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
 
 ## Development
-* [Changelog](etc/CHANGELOG.md)
+* [Changelog](src/site/markdown/CHANGELOG.md)
 * [Todo](etc/TODO.md)
-* [Howto](etc/HOWTO.md)
+* [Howto](src/site/markdown/HOWTO.md)
 
 ## Trivia
 The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP 

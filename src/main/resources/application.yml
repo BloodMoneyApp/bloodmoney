@@ -10,6 +10,8 @@ endpoints:
         shutdown:
             enabled: ${BLOODMONEY_DEV_TESTING}
 spring:
+    liquibase:
+        enabled: false
     devtools:
         livereload:
             enabled: ${BLOODMONEY_DEV_TESTING}
