@@ -33,10 +33,5 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="bloodmoney/Hibernate" uuid="5021da8b-4bf2-45b3-9479-ddd2e74ccc4a">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="AZURE" exact-version="0" />
-      <user-name>${BLOODMONEY_DS_USR}</user-name>
-      <schema-mapping />
-    </data-source>
   </component>
 </project>

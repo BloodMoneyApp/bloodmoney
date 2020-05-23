@@ -32,4 +32,6 @@ Fixed #53, Fixed #55, Fixed #56, Fixed #57, Fixed #59, Fixed #60
 # 1.8.4
 Fixed #24
 
+Update Spring-Boot to 2.3.0
+
 
