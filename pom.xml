@@ -11,7 +11,7 @@
 
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
-    <version>1.8.4</version>
+    <version>1.8.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
     <name>BloodMoney</name>
@@ -52,7 +52,7 @@
     </distributionManagement>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>11</java.version>
         <version.maven>3.6.3</version.maven>
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
         <vaadin.version>14.1.25</vaadin.version>
