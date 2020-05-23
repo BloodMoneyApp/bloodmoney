@@ -1417,7 +1417,7 @@ true posixrules
     <database id="3" parent="1" name="bloodmoney">
       <ObjectId>32676</ObjectId>
       <Owner>bloodmoney</Owner>
-      <IntrospectionStateNumber>73348</IntrospectionStateNumber>
+      <IntrospectionStateNumber>90804</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="4" parent="1" name="bloodmoneyref">
@@ -1554,7 +1554,7 @@ true posixrules
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>73349</IntrospectionStateNumber>
+      <IntrospectionStateNumber>90805</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="32" parent="3" name="btree">
