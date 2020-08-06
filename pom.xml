@@ -654,9 +654,11 @@
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
                                 </requireJavaVersion>
+                                <!--
                                 <requireOS>
                                     <family>unix</family>
                                 </requireOS>
+                                -->
                                 <requireFilesExist>
                                     <files>
                                         <file>${project.basedir}/etc/psql.sh</file>
