@@ -49,14 +49,19 @@ function runDev() {
     ./mvnw -e clean spring-boot:run
 }
 
+function firstSetup() {
+    ./mvnw clean install site -DskipTests=true
+}
+
 function main() {
-    # runHerokuLocal
-    # composeDown
-    # composeUp
-    # run
-    # testApp
-    runDev
-    #testAppDev
+    ## runHerokuLocal
+    ## composeDown
+    ## composeUp
+    ## run
+    ## testApp
+    #runDev
+    ##testAppDev
+    firstSetup
 }
 
 main

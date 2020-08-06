@@ -68,7 +68,7 @@
     <orderEntry type="library" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jaxb:txw2:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.11" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:2.2.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:2.3.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.2.5.RELEASE" level="project" />
@@ -134,7 +134,7 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-data:5.2.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.2.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.3.2.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.postgresql:postgresql:42.2.14" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.3.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.12" level="project" />
@@ -143,9 +143,9 @@
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:4.4.1-1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:ckeditor:4.14.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:popper.js:1.16.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.session:spring-session-core:2.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.session:spring-session-core:2.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.2.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.session:spring-session-jdbc:2.2.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.session:spring-session-jdbc:2.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:3.0.11.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: ognl:ognl:3.1.12" level="project" />
@@ -385,17 +385,17 @@
     <orderEntry type="library" name="Maven: net.sourceforge.pmd:pmd-jsp:6.21.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.12" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:2.22.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.surefire:maven-surefire-common:2.22.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.plugin-tools:maven-plugin-annotations:3.5.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-api:2.22.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-booter:2.22.2" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-descriptor:2.2.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-toolchain:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:3.0.0-M5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.surefire:maven-surefire-common:3.0.0-M5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-api:3.0.0-M5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-extensions-api:3.0.0-M5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-booter:3.0.0-M5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-extensions-spi:3.0.0-M5" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-toolchain:3.0-alpha-2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-shared-utils:3.0.0-M4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-surefire-report-plugin:maven-plugin:3.0.0-M5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-report-parser:3.0.0-M5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-logger-api:3.0.0-M5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-shared-utils:3.0.0-M4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-changes-plugin:maven-plugin:2.12.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-project:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-profile:2.2.1" level="project" />
