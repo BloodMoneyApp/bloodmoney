@@ -50,7 +50,7 @@ function runDev() {
 }
 
 function firstSetup() {
-    ./mvnw clean install site -DskipTests=true
+    ./mvnw clean dependency:tree dependency:resolve dependency:resolve-plugins dependency:sources install -DskipTests=true
 }
 
 function main() {
@@ -59,9 +59,9 @@ function main() {
     ## composeUp
     ## run
     ## testApp
-    runDev
+    #runDev
     ##testAppDev
-    #firstSetup
+    firstSetup
 }
 
 main

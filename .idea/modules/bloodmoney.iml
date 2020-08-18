@@ -372,7 +372,6 @@
     <orderEntry type="library" name="Maven: commons-digester:commons-digester:2.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-container-default:2.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.xbean:xbean-reflect:3.7" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:7.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-commons:7.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:7.3.1" level="project" />
@@ -449,5 +448,6 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
     <orderEntry type="library" name="Maven: rome:rome:1.0" level="project" />
     <orderEntry type="library" name="Maven: jdom:jdom:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.3.1" level="project" />
   </component>
 </module>
