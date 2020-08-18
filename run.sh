@@ -53,7 +53,11 @@ function firstSetup() {
     #./mvnw clean dependency:tree dependency:resolve dependency:resolve-plugins dependency:sources install -DskipTests=true
     ./mvnw clean package site -DskipTests=true
 }
-
+function setupTravis() {
+    ./mvnw clean
+    ./mvnw dependency:purge-local-repository
+    ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+}
 function main() {
     ## runHerokuLocal
     ## composeDown
@@ -62,7 +66,8 @@ function main() {
     ## testApp
     #runDev
     ##testAppDev
-    firstSetup
+    #firstSetup
+    setupTravis
 }
 
 main
