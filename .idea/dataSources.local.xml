@@ -33,5 +33,9 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="bloodmoney/Hibernate" uuid="fd0dafd5-eed8-4136-ae3c-24bcc8b37512">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="CASSANDRA" exact-version="0" />
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
