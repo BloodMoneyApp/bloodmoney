@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
-    <version>1.8.5-SNAPSHOT</version>
+    <version>1.8.6</version>
 	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -30,10 +30,10 @@
     </developers>
 
     <scm>
-        <url>https://github.com/BloodMoneyApp/bloodmoney.git</url>
         <connection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</connection>
         <developerConnection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</developerConnection>
-        <tag>HEAD</tag>
+        <url>https://github.com/BloodMoneyApp/bloodmoney/tree/${project.scm.tag}</url>
+        <tag>master</tag>
     </scm>
     <issueManagement>
         <system>Github</system>
