@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -52,7 +52,7 @@
     </distributionManagement>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>13</java.version>
         <version.maven>3.6.3</version.maven>
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
         <vaadin.version>14.1.25</vaadin.version>
