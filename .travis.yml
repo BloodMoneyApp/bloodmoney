@@ -3,10 +3,10 @@ language: java
 jdk: openjdk13
 services:
     - docker
-    - docker-compose
 env:
     - COMPOSE_FILE=docker-compose.yml:docker-compose.override.travis.yml
 script:
+    - ./mvnw dependency:purge-local-repository
     - ./mvnw clean
     - ./mvnw dependency:resolve dependency:resolve-plugins dependency:sources -DskipTests=true -B -V
     - ./mvnw dependency:tree
