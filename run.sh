@@ -50,7 +50,8 @@ function runDev() {
 }
 
 function firstSetup() {
-    ./mvnw clean dependency:tree dependency:resolve dependency:resolve-plugins dependency:sources install -DskipTests=true
+    #./mvnw clean dependency:tree dependency:resolve dependency:resolve-plugins dependency:sources install -DskipTests=true
+    ./mvnw clean package site -DskipTests=true
 }
 
 function main() {
