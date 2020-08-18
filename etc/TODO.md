@@ -32,4 +32,9 @@ Fixed #53, Fixed #55, Fixed #56, Fixed #57, Fixed #59, Fixed #60
 # 1.8.4
 Fixed #24
 
+# 1.8.5
+#67 Update to Spring-Boot 2.3.3 
+#68 Update to Spring Data Bom Neumann-SR3 for Spring-Boot 2.3.3
+#69 Update to Spring Framework for Spring-Boot 2.3.3
+#70 Update to Spring Security for Spring-Boot 2.3.3
 
