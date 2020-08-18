@@ -13,3 +13,6 @@ script:
     - ./mvnw docker-compose:up
     - ./mvnw clean package site -DskipTests=true -B -V
     - ./mvnw docker-compose:down
+notifications:
+    email:
+        - thomas.woehlke@gmail.com
