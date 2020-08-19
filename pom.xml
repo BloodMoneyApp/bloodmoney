@@ -50,12 +50,12 @@
         <snapshotRepository>
             <id>snapshots</id>
             <name>tw-thinkpad-snapshots</name>
-            <url>http://tw-thinkpad:8081/artifactory/libs-snapshot-local</url>
+            <url>file://${user.home}/.m2/libs-snapshot-local</url>
         </snapshotRepository>
         <repository>
             <id>central</id>
             <name>tw-thinkpad-releases</name>
-            <url>http://tw-thinkpad:8081/artifactory/libs-release-local</url>
+            <url>file://${user.home}/.m2/libs-release-local</url>
         </repository>
     </distributionManagement>
 
