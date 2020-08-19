@@ -1,4 +1,4 @@
-call etc\setenv.cmd
+call src\main\cmd\setenv.cmd
 
 goto:MAIN
 

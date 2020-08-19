@@ -7,6 +7,11 @@
       <option name="url" value="https://jcenter.bintray.com/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="libs-snapshot" />
+      <option name="url" value="http://tw-thinkpad:8081/artifactory/all" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
@@ -15,6 +20,11 @@
       <option name="id" value="snapshots" />
       <option name="name" value="all" />
       <option name="url" value="http://localhost:8081/artifactory/all" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="libs-release" />
+      <option name="url" value="http://tw-thinkpad:8081/artifactory/all" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="snapshots" />

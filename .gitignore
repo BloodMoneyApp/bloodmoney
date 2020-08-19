@@ -49,3 +49,5 @@ build
 /.idea
 /.idea/
 /.idea/
+/release.properties
+/pom.xml.releaseBackup
