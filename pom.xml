@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
-    <version>1.8.6</version>
+    <version>1.8.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -460,6 +460,11 @@
             <artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+        <!--
+        <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
@@ -467,6 +472,7 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
+        -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-hal-explorer</artifactId>
@@ -495,7 +501,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <optional>false</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -909,7 +915,7 @@
                                         <file>${project.basedir}/_config.yml</file>
                                         <file>${project.basedir}/app.json</file>
                                         <file>${project.basedir}/Procfile</file>
-                                        <file>${project.basedir}/src/docker/docker-compose.yml</file>
+                                        <file>${project.basedir}/docker-compose.yml</file>
                                         <file>${project.basedir}/etc/setenv.sh</file>
                                         <file>${project.basedir}/run.sh</file>
                                     </files>

@@ -46,7 +46,7 @@ function testAppDev() {
 function runDev() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./mvnw -e -DskipTests=true clean dependency:tree package spring-boot:run
+    ./mvnw -e -DskipTests=true clean package spring-boot:run
 }
 
 function firstSetup() {
@@ -64,12 +64,12 @@ function setupTravis() {
     ./mvnw -e -DskipTests=true -B -V clean
     ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources
     ./mvnw -e -DskipTests=true -B -V dependency:tree
-    #./mvnw docker-compose:up
-    #docker ps
+    ./mvnw docker-compose:up
+    docker ps
     ./mvnw -e -DskipTests=true -B -V clean package
     ./mvnw -e -DskipTests=true -B -V site
-    #./mvnw docker-compose:down
-    #docker ps
+    ./mvnw docker-compose:down
+    docker ps
 }
 
 function main() {
@@ -78,10 +78,10 @@ function main() {
     ## composeUp
     ## run
     ## testApp
-    #runDev
+    runDev
     ##testAppDev
     # firstSetup
-    setupTravis
+    # setupTravis
 }
 
 main
