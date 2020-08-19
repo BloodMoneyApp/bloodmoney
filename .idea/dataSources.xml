@@ -14,13 +14,5 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/bloodmoney</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="bloodmoney/Hibernate" uuid="fd0dafd5-eed8-4136-ae3c-24bcc8b37512">
-      <driver-ref>cassandra</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate</remarks>
-      <jdbc-driver>com.dbschema.CassandraJdbcDriver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}</jdbc-url>
-    </data-source>
   </component>
 </project>

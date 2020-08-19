@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source etc/setenv.sh
+source src/main/bash/setenv.sh
 
 function composeUp() {
     ./mvnw docker-compose:up
@@ -46,28 +46,43 @@ function testAppDev() {
 function runDev() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./mvnw -e clean spring-boot:run
+    ./mvnw -e -DskipTests=true clean package spring-boot:run
 }
 
 function firstSetup() {
-    #./mvnw clean dependency:tree dependency:resolve dependency:resolve-plugins dependency:sources install -DskipTests=true
-    ./mvnw clean package site -DskipTests=true
-}
-function setupTravis() {
-    ./mvnw clean
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
     ./mvnw dependency:purge-local-repository
-    ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    ./mvnw -e -DskipTests=true clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
+    ./mvnw -e -DskipTests=true clean package site
 }
+
+function setupTravis() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./mvnw -e -DskipTests=true -B -V install -Dmaven.javadoc.skip=true
+    ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
+    ./mvnw -e -DskipTests=true -B -V clean
+    ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources
+    ./mvnw -e -DskipTests=true -B -V dependency:tree
+    #./mvnw docker-compose:up
+    #docker ps
+    ./mvnw -e -DskipTests=true -B -V clean package
+    ./mvnw -e -DskipTests=true -B -V site
+    #./mvnw docker-compose:down
+    #docker ps
+}
+
 function main() {
     ## runHerokuLocal
     ## composeDown
     ## composeUp
     ## run
     ## testApp
-    #runDev
     ##testAppDev
-    #firstSetup
-    setupTravis
+    # firstSetup
+    # setupTravis
+    runDev
 }
 
 main
