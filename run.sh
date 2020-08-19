@@ -68,10 +68,11 @@ function setupTravis() {
     ./mvnw dependency:tree
     ./mvnw docker-compose:up
     docker ps
-    ./mvnw clean package site -DskipTests=true -B -V
+    #./mvnw clean package site -DskipTests=true -B -V
     ./mvnw docker-compose:down
     docker ps
 }
+
 function main() {
     ## runHerokuLocal
     ## composeDown
