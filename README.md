@@ -60,4 +60,5 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 ## 1.8.8
 * issue #79 merge branches
 * issue #80 release plugin 
+* issue #81 mvnw docker-compose:up 
 
