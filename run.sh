@@ -50,13 +50,27 @@ function runDev() {
 }
 
 function firstSetup() {
-    #./mvnw clean dependency:tree dependency:resolve dependency:resolve-plugins dependency:sources install -DskipTests=true
-    ./mvnw clean package site -DskipTests=true
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./mvnw dependency:purge-local-repository
+    ./mvnw -e -DskipTests=true clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
+    ./mvnw -e -DskipTests=true clean package site
 }
 function setupTravis() {
-    ./mvnw clean
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    #./mvnw clean
+    #./mvnw dependency:purge-local-repository
+    #./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
     ./mvnw dependency:purge-local-repository
-    ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    ./mvnw clean
+    ./mvnw dependency:resolve dependency:resolve-plugins dependency:sources -DskipTests=true -B -V
+    ./mvnw dependency:tree
+    ./mvnw docker-compose:up
+    docker ps
+    ./mvnw clean package site -DskipTests=true -B -V
+    ./mvnw docker-compose:down
+    docker ps
 }
 function main() {
     ## runHerokuLocal
@@ -66,8 +80,8 @@ function main() {
     ## testApp
     #runDev
     ##testAppDev
-    #firstSetup
-    setupTravis
+    firstSetup
+    # setupTravis
 }
 
 main
