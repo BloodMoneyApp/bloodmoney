@@ -48,8 +48,9 @@
             <url>file://${user.home}/public_html/java/bloodmoney</url>
         </site>
         <repository>
-            <id>libs-release-local</id>
-            <url>http://tw-thinkpad:8081/artifactory/libs-release-local/</url>
+            <id>central</id>
+            <name>tw-thinkpad-releases</name>
+            <url>http://tw-thinkpad:8081/artifactory/libs-release-local</url>
         </repository>
     </distributionManagement>
 
