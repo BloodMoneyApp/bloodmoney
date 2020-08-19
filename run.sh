@@ -56,6 +56,7 @@ function firstSetup() {
     ./mvnw -e -DskipTests=true clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
     ./mvnw -e -DskipTests=true clean package site
 }
+
 function setupTravis() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
@@ -80,8 +81,8 @@ function main() {
     ## testApp
     ##testAppDev
     # firstSetup
-    setupTravis
-    # runDev
+    # setupTravis
+    runDev
 }
 
 main
