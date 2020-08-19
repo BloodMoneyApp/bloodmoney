@@ -72,6 +72,13 @@ function setupTravis() {
     docker ps
 }
 
+function releaseMe(){
+    ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
+    ./mvnw -e -DskipTests=true -B -V clean
+    ./mvnw -e -DskipTests=true -B -V release:prepare
+    ./mvnw -e -DskipTests=true -B -V release:perform
+}
+
 function main() {
     ## runHerokuLocal
     ## composeDown
@@ -80,8 +87,9 @@ function main() {
     ## testApp
     ##testAppDev
     # firstSetup
-    setupTravis
-    runDev
+    # setupTravis
+    # runDev
+    releaseMe
 }
 
 main
