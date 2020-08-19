@@ -47,6 +47,11 @@
             <id>bloodmoney.public_html</id>
             <url>file://${user.home}/public_html/java/bloodmoney</url>
         </site>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>tw-thinkpad-snapshots</name>
+            <url>http://tw-thinkpad:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
         <repository>
             <id>central</id>
             <name>tw-thinkpad-releases</name>
