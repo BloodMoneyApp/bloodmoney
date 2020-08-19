@@ -46,7 +46,7 @@ function testAppDev() {
 function runDev() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./mvnw -e -DskipTests=true clean dependency:tree package spring-boot:run
+    ./mvnw -e -DskipTests=true clean package spring-boot:run
 }
 
 function firstSetup() {
@@ -78,10 +78,10 @@ function main() {
     ## composeUp
     ## run
     ## testApp
-    #runDev
+    runDev
     ##testAppDev
     # firstSetup
-    setupTravis
+    # setupTravis
 }
 
 main
