@@ -50,12 +50,12 @@
         <snapshotRepository>
             <id>snapshots</id>
             <name>tw-thinkpad-snapshots</name>
-            <url>file://${user.home}/.m2/libs-snapshot-local</url>
+            <url>file://${user.home}/public_html/java/libs-snapshot-local</url>
         </snapshotRepository>
         <repository>
             <id>central</id>
             <name>tw-thinkpad-releases</name>
-            <url>file://${user.home}/.m2/libs-release-local</url>
+            <url>file://${user.home}/public_html/java/libs-release-local</url>
         </repository>
     </distributionManagement>
 
