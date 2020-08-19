@@ -1130,7 +1130,7 @@
                         <configuration>
                             <classifier>sources</classifier>
                             <excludeGroupIds>org.webjars,antlr,org.beanshell</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core</excludeArtifactIds>
+                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
                             <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
                             <outputDirectory>${project.build.directory}/dependency-sources/</outputDirectory>
                         </configuration>
