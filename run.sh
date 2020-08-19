@@ -66,11 +66,11 @@ function setupTravis() {
     ./mvnw clean
     ./mvnw dependency:resolve dependency:resolve-plugins dependency:sources -DskipTests=true -B -V
     ./mvnw dependency:tree
-    ./mvnw docker-compose:up
-    docker ps
+    #./mvnw docker-compose:up
+    #docker ps
     #./mvnw clean package site -DskipTests=true -B -V
-    ./mvnw docker-compose:down
-    docker ps
+    #./mvnw docker-compose:down
+    #docker ps
 }
 
 function main() {
