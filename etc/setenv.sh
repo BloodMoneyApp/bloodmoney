@@ -28,7 +28,7 @@ export BLOODMONEY_USER_SECRET=25D8484AB208F08C59FFAFE57DB9FF87
 export BLOODMONEY_USER_PASSWORD=gdEB4vO/E8ArK1X1Cj2bnKGDPiJPUusEJfxxzpgUsf4G2fIrz+bHoQ==
 #echo ""
 #echo "Runtime and Application Service Settings"
-export PORT=5000
+export PORT=8080
 export BLOODMONEY_DEV_TESTING=false
 export SPRING_PROFILES_ACTIVE=dev
 export JAVA_OPTS_GRADLE='-Xmx1g -XX:MaxMetaspaceSize=256m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8'

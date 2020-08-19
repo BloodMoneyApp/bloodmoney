@@ -34,6 +34,7 @@ public class BloodMoneyErrorController implements ErrorController {
         return "error/error";
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public String getErrorPath() {
         return "/fehler";

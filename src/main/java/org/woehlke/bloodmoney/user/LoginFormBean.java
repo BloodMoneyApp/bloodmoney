@@ -23,11 +23,13 @@ public class LoginFormBean implements Serializable {
     private String userEmail;
 
     //TODO: Messages i18n
+    @SuppressWarnings("deprecation")
     @SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
     @NotNull(message = "Password is compulsory")
     @NotBlank(message = "Password is compulsory")
     private String userPassword;
 
+    @SuppressWarnings("deprecation")
     public LoginFormBean(
         @NotNull(message = "Email Address is compulsory")
         @NotBlank(message = "Email Address is compulsory")
