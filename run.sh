@@ -59,14 +59,14 @@ function firstSetup() {
 function setupTravis() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-    ./mvnw dependency:purge-local-repository
-    ./mvnw clean
-    ./mvnw dependency:resolve dependency:resolve-plugins dependency:sources -DskipTests=true -B -V
-    ./mvnw dependency:tree
+    ./mvnw -e -DskipTests=true -B -V install -Dmaven.javadoc.skip=true
+    ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
+    ./mvnw -e -DskipTests=true -B -V clean
+    ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources
+    ./mvnw -e -DskipTests=true -B -V dependency:tree
     #./mvnw docker-compose:up
     #docker ps
-    ./mvnw clean package site -DskipTests=true -B -V
+    ./mvnw -e -DskipTests=true -B -V clean package site
     #./mvnw docker-compose:down
     #docker ps
 }
@@ -79,8 +79,8 @@ function main() {
     ## testApp
     #runDev
     ##testAppDev
-    firstSetup
-    # setupTravis
+    # firstSetup
+    setupTravis
 }
 
 main
