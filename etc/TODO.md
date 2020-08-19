@@ -38,3 +38,7 @@ fixed #68 Update to Spring Data Bom Neumann-SR3 for Spring-Boot 2.3.3
 fixed #69 Update to Spring Framework for Spring-Boot 2.3.3
 fixed #70 Update to Spring Security for Spring-Boot 2.3.3
 
+# 1.8.6
+merge branches
+fixed #78 Release 1.8.6
+
