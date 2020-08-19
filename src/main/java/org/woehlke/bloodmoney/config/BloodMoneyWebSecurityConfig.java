@@ -61,9 +61,12 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll();
     }
 
+    /**
+     * https://asecuritysite.com/encryption/PBKDF2z
+     * @return PasswordEncoder encoder
+     */
     @Bean
     public PasswordEncoder encoder(){
-        // https://asecuritysite.com/encryption/PBKDF2z
         CharSequence secret=this.bloodMoneyProperties.getWebSecurity().getSecret();
         int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
         int hashWidth=this.bloodMoneyProperties.getWebSecurity().getHashWidth();

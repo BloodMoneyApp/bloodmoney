@@ -1,5 +1,8 @@
 # bloodmoney
 
+![Java CI with Maven](https://github.com/BloodMoneyApp/bloodmoney/workflows/Java%20CI%20with%20Maven/badge.svg)
+[![Build Status](https://travis-ci.com/BloodMoneyApp/bloodmoney.svg?branch=master)](https://travis-ci.com/BloodMoneyApp/bloodmoney)
+
 Webapp for storing Blood Pressure Measurements for one Person.
 
 ## github

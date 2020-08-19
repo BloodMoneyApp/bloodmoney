@@ -18,9 +18,11 @@ public class UserAccountBean implements Serializable {
     @Email
     private String userEmail;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
     private String userPassword;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
     private String userFullname;
 
@@ -39,6 +41,7 @@ public class UserAccountBean implements Serializable {
     @NotNull
     private Boolean enabled=true;
 
+    @SuppressWarnings("deprecation")
     public UserAccountBean(
         @Email String userEmail,
         @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE) String userPassword,

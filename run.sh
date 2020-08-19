@@ -49,14 +49,39 @@ function runDev() {
     ./mvnw -e -DskipTests=true clean dependency:tree package spring-boot:run
 }
 
+function firstSetup() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./mvnw dependency:purge-local-repository
+    ./mvnw -e -DskipTests=true clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
+    ./mvnw -e -DskipTests=true clean package site
+}
+function setupTravis() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    showSettings
+    ./mvnw -e -DskipTests=true -B -V install -Dmaven.javadoc.skip=true
+    ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
+    ./mvnw -e -DskipTests=true -B -V clean
+    ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources
+    ./mvnw -e -DskipTests=true -B -V dependency:tree
+    #./mvnw docker-compose:up
+    #docker ps
+    ./mvnw -e -DskipTests=true -B -V clean package
+    ./mvnw -e -DskipTests=true -B -V site
+    #./mvnw docker-compose:down
+    #docker ps
+}
+
 function main() {
-    # runHerokuLocal
-    # composeDown
-    # composeUp
-    # run
-    # testApp
-    runDev
-    #testAppDev
+    ## runHerokuLocal
+    ## composeDown
+    ## composeUp
+    ## run
+    ## testApp
+    #runDev
+    ##testAppDev
+    # firstSetup
+    setupTravis
 }
 
 main

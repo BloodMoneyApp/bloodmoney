@@ -2,17 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>org.woehlke.bloodmoney</groupId>
+    <artifactId>bloodmoney</artifactId>
+    <version>1.8.6</version>
+	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.3.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>org.woehlke.bloodmoney</groupId>
-    <artifactId>bloodmoney</artifactId>
-    <version>1.8.5-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
     <name>BloodMoney</name>
     <description>Webapp for storing Blood Pressure Measurements for one Person</description>
@@ -33,8 +31,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/BloodMoneyApp/bloodmoney.git</connection>
-        <developerConnection>scm:git:https://github.com/BloodMoneyApp/bloodmoney.git</developerConnection>
+        <connection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</connection>
+        <developerConnection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</developerConnection>
         <url>https://github.com/BloodMoneyApp/bloodmoney/tree/${project.scm.tag}</url>
         <tag>master</tag>
     </scm>
@@ -60,8 +58,8 @@
         <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
         <!-- SCM and Releasing -->
 		<maven.scm.version>1.11.2</maven.scm.version>
-        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <!-- Maven plugins -->
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
@@ -76,15 +74,22 @@
         <maven-invoker-plugin.version>3.2.1</maven-invoker-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
         <maven-site-plugin.version>3.9.0</maven-site-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
         <xml-maven-plugin.version>1.0.2</xml-maven-plugin.version>
-        <git-commit-id-plugin.version>3.0.1</git-commit-id-plugin.version>
+        <git-commit-id-plugin.version>4.0.1</git-commit-id-plugin.version>
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
         <asciidoctor-maven-plugin.version>1.5.8</asciidoctor-maven-plugin.version>
         <liquibase-maven-plugin.version>3.8.9</liquibase-maven-plugin.version>
@@ -95,8 +100,8 @@
         <thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
         <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
 
-        <spring-data-releasetrain.version>Neumann-RELEASE</spring-data-releasetrain.version>
-        <spring-framework.version>5.2.6.RELEASE</spring-framework.version>
+        <spring-data-releasetrain.version>Neumann-SR3</spring-data-releasetrain.version>
+        <spring-framework.version>5.2.8.RELEASE</spring-framework.version>
         <spring-security.version>5.3.2.RELEASE</spring-security.version>
         <spring-session-bom.version>Dragonfruit-RELEASE</spring-session-bom.version>
 
@@ -109,13 +114,13 @@
         <lombok.version>1.18.12</lombok.version>
 
         <!-- Maven Reports and Site -->
-        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+        <maven-project-info-reports-plugin.version>3.1.0</maven-project-info-reports-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <maven-pmd-plugin.version>3.11.0</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
-        <maven-surefire-report-plugin.version>3.0.0-M4</maven-surefire-report-plugin.version>
+        <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
 
         <!-- Docker -->
         <version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
@@ -128,6 +133,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>
@@ -145,17 +151,44 @@
             </dependency>
             -->
             <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring-data-releasetrain.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring-framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-bom</artifactId>
+                <version>${spring-integration.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-bom</artifactId>
+                <version>${spring-security.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.session</groupId>
                 <artifactId>spring-session-bom</artifactId>
                 <version>${spring-session-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -180,20 +213,22 @@
                 <artifactId>ckeditor</artifactId>
                 <version>4.14.0</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>popper.js</artifactId>
+                <version>1.16.0</version>
+            </dependency>
             <dependency>
                 <groupId>org.thymeleaf</groupId>
                 <artifactId>thymeleaf-testing</artifactId>
                 <version>3.0.4.RELEASE</version>
                 <scope>test</scope>
             </dependency>
-
             <dependency>
                 <groupId>io.github.jpenren</groupId>
                 <artifactId>thymeleaf-spring-data-dialect</artifactId>
                 <version>3.4.0</version>
             </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -323,11 +358,23 @@
                 <version>${maven-surefire-report-plugin.version}</version>
                 <type>maven-plugin</type>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
                 <version>${maven-changes-plugin.version}</version>
                 <type>maven-plugin</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>7.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.attoparser</groupId>
+                <artifactId>attoparser</artifactId>
+                <version>2.0.5.RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>org.asciidoctor</groupId>
@@ -523,6 +570,10 @@
             <artifactId>ckeditor</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>popper.js</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
         </dependency>
@@ -652,6 +703,7 @@
             <artifactId>maven-surefire-report-plugin</artifactId>
             <type>maven-plugin</type>
         </dependency>
+
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-changes-plugin</artifactId>
@@ -749,11 +801,13 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>${maven-project-info-reports-plugin.version}</version>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-changes-plugin</artifactId>
                     <version>${maven-changes-plugin.version}</version>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
@@ -778,6 +832,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
                     <version>${maven-surefire-report-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -830,9 +894,11 @@
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
                                 </requireJavaVersion>
+                                <!--
                                 <requireOS>
                                     <family>unix</family>
                                 </requireOS>
+                                -->
                                 <requireFilesExist>
                                     <files>
                                         <file>${project.basedir}/etc/psql.sh</file>
@@ -1063,8 +1129,8 @@
                         </goals>
                         <configuration>
                             <classifier>sources</classifier>
-                            <excludeGroupIds>org.webjars</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core</excludeArtifactIds>
+                            <excludeGroupIds>org.webjars,antlr,org.beanshell</excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
                             <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
                             <outputDirectory>${project.build.directory}/dependency-sources/</outputDirectory>
                         </configuration>
@@ -1149,10 +1215,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
+                <!--
                 <configuration>
                     <githubAPIScheme>https</githubAPIScheme>
                     <githubAPIPort>443</githubAPIPort>
                 </configuration>
+                -->
                 <reportSets>
                     <reportSet>
                         <id>id-github-report</id>
