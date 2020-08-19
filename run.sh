@@ -78,10 +78,10 @@ function main() {
     ## composeUp
     ## run
     ## testApp
-    runDev
     ##testAppDev
     # firstSetup
-    # setupTravis
+    setupTravis
+    runDev
 }
 
 main
