@@ -1169,7 +1169,7 @@
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <outputFile>${project.build.outputDirectory}/classes/</outputFile>
                             <excludeTypes>pom,maven-plugin</excludeTypes>
-                            <excludeGroupIds>org.apache.maven.plugins</excludeGroupIds>
+                            <excludeGroupIds>org.apache.maven.plugins,org.apache.maven.scm</excludeGroupIds>
                         </configuration>
                     </execution>
                     <execution>
