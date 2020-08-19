@@ -1156,8 +1156,27 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>unpack-dependency-classes</id>
+                        <id>unpack-dependency-classes-install</id>
                         <phase>install</phase>
+                        <goals>
+                            <goal>resolve</goal>
+                            <goal>collect</goal>
+                            <goal>copy-dependencies</goal>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <outputFile>${project.build.outputDirectory}/classes/</outputFile>
+                            <excludeTypes>pom,maven-plugin</excludeTypes>
+                            <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm</excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-dependency-classes-deploy</id>
+                        <phase>deploy</phase>
                         <goals>
                             <goal>resolve</goal>
                             <goal>collect</goal>
