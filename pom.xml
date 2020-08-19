@@ -551,50 +551,59 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
+            <scope>compile</scope>
         </dependency>
-
-
 
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -1145,21 +1154,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <executions><execution>
-                    <id>unpack-dependency-classes</id>
-                    <phase>install</phase>
-                    <goals>
-                        <goal>resolve</goal>
-                        <goal>collect</goal>
-                        <goal>copy-dependencies</goal>
-                        <goal>unpack-dependencies</goal>
-                    </goals>
-                    <configuration>
-                        <overWriteReleases>true</overWriteReleases>
-                        <overWriteSnapshots>true</overWriteSnapshots>
-                        <outputFile>${project.build.outputDirectory}/classes/</outputFile>
-                    </configuration>
-                </execution>
+                <executions>
+                    <execution>
+                        <id>unpack-dependency-classes</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>resolve</goal>
+                            <goal>collect</goal>
+                            <goal>copy-dependencies</goal>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <outputFile>${project.build.outputDirectory}/classes/</outputFile>
+                            <excludeScope>test</excludeScope>
+                            <excludeTypes>pom,maven-plugin</excludeTypes>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>unpack-dependencies-classpath</id>
                         <phase>site</phase>
@@ -1180,6 +1192,7 @@
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <outputFile>${project.build.outputDirectory}/classpath.txt</outputFile>
                             <failOnWarning>false</failOnWarning>
+                            <ignoreNonCompile>true</ignoreNonCompile>
                             <ignoredDependencies>
                                 <ignoredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredDependency>
                                 <!--
