@@ -7,8 +7,7 @@ function releaseMe(){
     ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
     ./mvnw -e -DskipTests=true -B -V clean
     ./mvnw -e -DskipTests=true -B -V release:clean
-    ./mvnw -e -DskipTests=true -B -V release:prepare
-    ./mvnw -e -DskipTests=true -B -V release:perform
+    ./mvnw -e -DskipTests=true -B -V release:prepare && ./mvnw -e -DskipTests=true -B -V release:perform
 }
 
 releaseMe
