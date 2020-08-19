@@ -88,9 +88,9 @@ function main() {
     ## testApp
     ##testAppDev
     # firstSetup
-    # setupTravis
+    setupTravis
     # runDev
-    releaseMe
+    # releaseMe
 }
 
 main
