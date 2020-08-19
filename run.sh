@@ -66,7 +66,8 @@ function setupTravis() {
     ./mvnw -e -DskipTests=true -B -V dependency:tree
     #./mvnw docker-compose:up
     #docker ps
-    ./mvnw -e -DskipTests=true -B -V clean package site
+    ./mvnw -e -DskipTests=true -B -V clean package
+    ./mvnw -e -X -DskipTests=true -B -V site
     #./mvnw docker-compose:down
     #docker ps
 }
