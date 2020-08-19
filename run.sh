@@ -67,7 +67,7 @@ function setupTravis() {
     #./mvnw docker-compose:up
     #docker ps
     ./mvnw -e -DskipTests=true -B -V clean package
-    ./mvnw -e -X -DskipTests=true -B -V site
+    ./mvnw -e -DskipTests=true -B -V site
     #./mvnw docker-compose:down
     #docker ps
 }
