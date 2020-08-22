@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
-    <version>1.8.8-SNAPSHOT</version>
+    <version>1.8.10-SNAPSHOT</version>
 	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -133,10 +133,17 @@
         <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
 
         <!-- Docker -->
-        <docker-compose-maven-plugin.version>3.0.1</docker-compose-maven-plugin.version>
+        <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
         <docker-compose-maven-plugin.verbose>true</docker-compose-maven-plugin.verbose>
         <docker-compose-maven-plugin.removeImages>true</docker-compose-maven-plugin.removeImages>
         <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
+
+        <!-- Webjars -->
+        <webjars.bootstrap.version>4.5.2</webjars.bootstrap.version>
+        <webjars.jquery.version>3.5.1</webjars.jquery.version>
+        <webjars.popper.js.version>1.16.0</webjars.popper.js.version>
+        <webjars.font-awesome.version>5.14.0</webjars.font-awesome.version>
+        <webjars.ckeditor.version>18.0.0</webjars.ckeditor.version>
 
         <skipTests>true</skipTests>
     </properties>
@@ -205,33 +212,33 @@
 
             <dependency>
                 <groupId>org.webjars</groupId>
-                <artifactId>jquery</artifactId>
-                <version>3.4.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
                 <artifactId>bootstrap</artifactId>
-                <version>4.4.1-1</version>
+                <version>${webjars.bootstrap.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
-                <artifactId>font-awesome</artifactId>
-                <version>5.13.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>ckeditor</artifactId>
-                <version>4.14.0</version>
+                <artifactId>jquery</artifactId>
+                <version>${webjars.jquery.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
                 <artifactId>popper.js</artifactId>
-                <version>1.16.0</version>
+                <version>${webjars.popper.js.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>font-awesome</artifactId>
+                <version>${webjars.font-awesome.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>ckeditor</artifactId>
+                <version>${webjars.ckeditor.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.jpenren</groupId>
                 <artifactId>thymeleaf-spring-data-dialect</artifactId>
-                <version>3.4.0</version>
+                <version>3.4.1</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -1037,8 +1044,8 @@
                                         <file>${project.basedir}/run.sh</file>
                                         <file>${project.basedir}/src/main/bash/setenv.sh</file>
                                         <file>${project.basedir}/src/main/bash/psql.sh</file>
-                                        <file>${project.basedir}/src/main/bash/docker-start.sh</file>
-                                        <file>${project.basedir}/src/main/bash/docker-stop.sh</file>
+                                        <file>${project.basedir}/docker-start.sh</file>
+                                        <file>${project.basedir}/docker-stop.sh</file>
                                         <file>${project.basedir}/.github/FUNDING.yml</file>
                                         <file>${project.basedir}/.github/workflows/maven.yml</file>
                                         <file>${project.basedir}/_config.yml</file>
@@ -1075,10 +1082,10 @@
                 <groupId>com.dkanejs.maven.plugins</groupId>
                 <artifactId>docker-compose-maven-plugin</artifactId>
                 <configuration>
-                    <composeFile>${project.basedir}/src/docker/docker-compose.yml</composeFile>
+                    <composeFile>${project.basedir}/src/main/docker/docker-compose.yml</composeFile>
                     <verbose>${docker-compose-maven-plugin.verbose}</verbose>
                     <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
-                    <removeVolumes>true</removeVolumes>
+                    <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
                     <ignorePullFailures>true</ignorePullFailures>
                     <detachedMode>true</detachedMode>
                 </configuration>
