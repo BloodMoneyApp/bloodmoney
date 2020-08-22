@@ -1044,8 +1044,8 @@
                                         <file>${project.basedir}/run.sh</file>
                                         <file>${project.basedir}/src/main/bash/setenv.sh</file>
                                         <file>${project.basedir}/src/main/bash/psql.sh</file>
-                                        <file>${project.basedir}/src/main/bash/docker-start.sh</file>
-                                        <file>${project.basedir}/src/main/bash/docker-stop.sh</file>
+                                        <file>${project.basedir}/docker-start.sh</file>
+                                        <file>${project.basedir}/docker-stop.sh</file>
                                         <file>${project.basedir}/.github/FUNDING.yml</file>
                                         <file>${project.basedir}/.github/workflows/maven.yml</file>
                                         <file>${project.basedir}/_config.yml</file>
