@@ -133,7 +133,7 @@
         <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
 
         <!-- Docker -->
-        <docker-compose-maven-plugin.version>3.0.1</docker-compose-maven-plugin.version>
+        <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
         <docker-compose-maven-plugin.verbose>true</docker-compose-maven-plugin.verbose>
         <docker-compose-maven-plugin.removeImages>true</docker-compose-maven-plugin.removeImages>
         <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
@@ -1082,10 +1082,10 @@
                 <groupId>com.dkanejs.maven.plugins</groupId>
                 <artifactId>docker-compose-maven-plugin</artifactId>
                 <configuration>
-                    <composeFile>${project.basedir}/src/docker/docker-compose.yml</composeFile>
+                    <composeFile>${project.basedir}/src/main/docker/docker-compose.yml</composeFile>
                     <verbose>${docker-compose-maven-plugin.verbose}</verbose>
                     <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
-                    <removeVolumes>true</removeVolumes>
+                    <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
                     <ignorePullFailures>true</ignorePullFailures>
                     <detachedMode>true</detachedMode>
                 </configuration>
