@@ -22,7 +22,7 @@ function runHerokuLocal() {
 function testApp() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
-    ./mvnw clean package bootJar
+    ./mvnw clean package spring-boot:repackage
     composeUp
     ./mvnw install test check
     composeDown
