@@ -58,7 +58,12 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * release plugin
 
 ## 1.8.8
-* issue #79 merge branches
-* issue #80 release plugin 
+* fixed #79 merge branches
+* fixed #80 release plugin 
+* fixed #75 SLF4J: Class path contains multiple SLF4J bindings
+* fixed #50 add bootwatch for bootstrap
+
+## 1.8.9
 * issue #81 mvnw docker-compose:up 
+* issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);
 
