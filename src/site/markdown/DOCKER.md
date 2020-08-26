@@ -1,3 +1,3 @@
-# setup Docker on Linux Mint 19.3
+# setup Docker on Linux Mint 20
 
 

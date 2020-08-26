@@ -12,6 +12,13 @@
         <version>2.3.3.RELEASE</version>
     </parent>
 
+    <scm>
+        <connection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</connection>
+        <developerConnection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</developerConnection>
+        <url>https://github.com/BloodMoneyApp/bloodmoney/tree/${project.scm.tag}</url>
+        <tag>master</tag>
+    </scm>
+
     <name>BloodMoney</name>
     <description>Webapp for storing Blood Pressure Measurements for one Person</description>
     <url>https://woehlke.org/java/bloodmoney</url>
@@ -29,13 +36,6 @@
             <url>https://github.com/thomaswoehlke/</url>
         </developer>
     </developers>
-
-    <scm>
-        <connection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</connection>
-        <developerConnection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</developerConnection>
-        <url>https://github.com/BloodMoneyApp/bloodmoney/tree/${project.scm.tag}</url>
-        <tag>master</tag>
-    </scm>
 
     <issueManagement>
         <url>https://github.com/BloodMoneyApp/bloodmoney/issues</url>
@@ -117,12 +117,6 @@
 
         <opencsv.version>5.2</opencsv.version>
 
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <xmlunit2.version>2.7.0</xmlunit2.version>
-        <htmlunit.version>2.43.0</htmlunit.version>
-        <hamcrest.version>2.2</hamcrest.version>
-        <lombok.version>1.18.12</lombok.version>
-
         <!-- Maven Reports and Site -->
         <maven-project-info-reports-plugin.version>3.1.0</maven-project-info-reports-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
@@ -137,6 +131,8 @@
         <docker-compose-maven-plugin.verbose>true</docker-compose-maven-plugin.verbose>
         <docker-compose-maven-plugin.removeImages>true</docker-compose-maven-plugin.removeImages>
         <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
+        <docker-compose-maven-plugin.ignorePullFailures>true</docker-compose-maven-plugin.ignorePullFailures>
+        <docker-compose-maven-plugin.detachedMode>true</docker-compose-maven-plugin.detachedMode>
 
         <!-- Webjars -->
         <webjars.bootstrap.version>4.5.2</webjars.bootstrap.version>
@@ -144,6 +140,14 @@
         <webjars.popper.js.version>1.16.0</webjars.popper.js.version>
         <webjars.font-awesome.version>5.14.0</webjars.font-awesome.version>
         <webjars.ckeditor.version>18.0.0</webjars.ckeditor.version>
+
+        <!-- Unit and Integration Testing -->
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <xmlunit2.version>2.7.0</xmlunit2.version>
+        <htmlunit.version>2.43.0</htmlunit.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <lombok.version>1.18.12</lombok.version>
+        <jsoup.version>1.13.1</jsoup.version>
 
         <skipTests>true</skipTests>
     </properties>
@@ -1086,8 +1090,8 @@
                     <verbose>${docker-compose-maven-plugin.verbose}</verbose>
                     <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
                     <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
-                    <ignorePullFailures>true</ignorePullFailures>
-                    <detachedMode>true</detachedMode>
+                    <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
+                    <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
                 </configuration>
             </plugin>
             <plugin>
