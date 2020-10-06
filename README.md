@@ -80,7 +80,7 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * fixed #91 update spring-framework-bom
 * fixed #92 update spring-integration-bom
 * fixed #93 update webjars
-* issue #94 add github actions for CI 
+* fixed #94 add github actions for CI 
 
 ## 1.8.12
 * issue #95 check dependency: thymeleaf-testing
@@ -103,9 +103,10 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * issue #112 check dependency: spring-boot-starter-test
 * issue #113 check dependency: spring-boot-admin-starter-client
 * issue #114 check dependency: spring-boot-admin-starter-server
-* issue #116 check dependency: spring-session-core
-* issue #117 check dependency: spring-session-jdbc
-* issue #118 check dependency: spring-data-rest-hal-explore
+* issue #115 check dependency: spring-session-core
+* issue #116 check dependency: spring-session-jdbc
+* issue #117 check dependency: spring-data-rest-hal-explore
+* fixed #118 check dependency: spring-data-rest-hal-explore 
 * issue #119 check dependency: thymeleaf
 * issue #120 check dependency: thymeleaf-spring5
 * issue #121 check dependency: thymeleaf-extras-java8time
