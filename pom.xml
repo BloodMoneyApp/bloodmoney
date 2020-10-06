@@ -70,15 +70,28 @@
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
 
         <!-- Web Templates -->
+        <!--
         <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
-        <thymeleaf-extras-java8time.version>3.0.4.RELEASE</thymeleaf-extras-java8time.version>
-        <thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
-        <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
-        <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
-        <thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
-        <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
+        -->
+        <!--
+      <thymeleaf-extras-java8time.version>3.0.4.RELEASE</thymeleaf-extras-java8time.version>
+       -->
+        <!--
+            <thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
+             -->
 
-        <!-- Webjars -->
+   <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
+
+        <!--
+   <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
+       -->
+        <!--
+  <thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
+    -->
+  <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
+
+
+  <!-- Webjars -->
         <webjars.bootstrap.version>4.5.2</webjars.bootstrap.version>
         <webjars.jquery.version>3.5.1</webjars.jquery.version>
         <webjars.popper.js.version>1.16.0</webjars.popper.js.version>
@@ -460,12 +473,13 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- TODO #103 check dependency: spring-boot-properties-migrator -->
+        <!-- TODO #103 check dependency: spring-boot-properties-migrator
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-properties-migrator</artifactId>
             <scope>runtime</scope>
         </dependency>
+        -->
         <!-- spring-boot-starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -479,16 +493,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- TODO #104 check dependency: spring-boot-starter-data-rest -->
+        <!-- TODO #104 check dependency: spring-boot-starter-data-rest
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
-        <!-- TODO #105 check dependency: spring-boot-starter-hateoas -->
+        -->
+        <!-- TODO #105 check dependency: spring-boot-starter-hateoas
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -498,11 +514,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
         </dependency>
-        <!-- TODO #107 check dependency: spring-boot-starter-mustache -->
+
+        <!-- TODO #107 check dependency: spring-boot-starter-mustache
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mustache</artifactId>
         </dependency>
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -519,30 +537,33 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- TODO #108 check dependency: spring-boot-starter-web-services -->
+        <!-- TODO #108 check dependency: spring-boot-starter-web-services
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
-        <!-- TODO #109 check dependency: spring-boot-starter-mail -->
+        <!-- TODO #109 check dependency: spring-boot-starter-mail
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+         -->
         <!-- TODO #110 check dependency: spring-boot-starter-cache -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
-        <!-- TODO #111 check dependency: spring-boot-starter-json -->
+        <!-- TODO #111 check dependency: spring-boot-starter-json
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
+        -->
         <!-- TODO #112 check dependency: spring-boot-starter-test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -560,27 +581,6 @@
             </exclusions>
         </dependency>
         <!-- spring-boot-starter 3rd Party-->
-        <!-- TODO #114 check dependency: spring-boot-admin-starter-client -->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-        </dependency>
-        <!-- TODO #113 check dependency: spring-boot-admin-starter-server -->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-server</artifactId>
-        </dependency>
-
-        <!--
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-        </dependency>
-        -->
 
         <!-- org.springframework -->
         <dependency>
@@ -670,11 +670,12 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
         </dependency>
-        <!-- TODO #117 check dependency: spring-data-rest-hal-explore -->
+        <!-- TODO #117 check dependency: spring-data-rest-hal-explore
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-hal-explorer</artifactId>
         </dependency>
+        -->
         <!-- Frontend Webjars -->
         <dependency>
             <groupId>org.webjars</groupId>
@@ -769,12 +770,13 @@
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- TODO  #130 check dependency: spring-restdocs-mockmvc -->
+        <!-- TODO  #130 check dependency: spring-restdocs-mockmvc
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
             <scope>test</scope>
         </dependency>
+         -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>

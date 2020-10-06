@@ -95,43 +95,54 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * fixed #94 add github actions for CI 
 
 ## 1.8.12
-* fixed #137 Webapp shall send Emails
-* issue #95 check dependency: thymeleaf-testing
-* issue #96 check dependency: thymeleaf-spring-data-dialect
-* issue #97 check dependency: jsoup
-* issue #98 check dependency: opencsv
-* issue #99 check dependency: asm
-* issue #100 check dependency: attoparser
+* fixed #113 check dependency: spring-boot-admin-starter-client
+* fixed #114 check dependency: spring-boot-admin-starter-server
+
+* fixed #95 check dependency: thymeleaf-testing
+* fixed #96 check dependency: thymeleaf-spring-data-dialect
+* fixed #119 check dependency: thymeleaf
+* fixed #120 check dependency: thymeleaf-spring5
+* fixed #121 check dependency: thymeleaf-extras-java8time
+* fixed #122 check dependency: thymeleaf-extras-springsecurity5
+* fixed #123 check dependency: thymeleaf-extras-data-attribute
+* fixed #124 check dependency: thymeleaf-spring-data-dialect
+
+* issue #107 check dependency: spring-boot-starter-mustache
+
 * issue #101 check dependency: spring-boot-devtools
 * issue #102 check dependency: spring-boot-configuration-processor
 * issue #103 check dependency: spring-boot-properties-migrator
+
+* fixed #137 Webapp shall send Emails
+* issue #109 check dependency: spring-boot-starter-mail
+
 * issue #104 check dependency: spring-boot-starter-data-rest
 * issue #105 check dependency: spring-boot-starter-hateoas
 * issue #106 check dependency: spring-boot-starter-jersey
-* issue #107 check dependency: spring-boot-starter-mustache
-* issue #108 check dependency: spring-boot-starter-web-services
-* issue #109 check dependency: spring-boot-starter-mail
-* issue #110 check dependency: spring-boot-starter-cache
-* issue #111 check dependency: spring-boot-starter-json
-* issue #112 check dependency: spring-boot-starter-test
-* issue #113 check dependency: spring-boot-admin-starter-client
-* issue #114 check dependency: spring-boot-admin-starter-server
-* issue #115 check dependency: spring-session-core
-* issue #116 check dependency: spring-session-jdbc
 * issue #117 check dependency: spring-data-rest-hal-explore
 * fixed #118 check dependency: spring-data-rest-hal-explore 
-* issue #119 check dependency: thymeleaf
-* issue #120 check dependency: thymeleaf-spring5
-* issue #121 check dependency: thymeleaf-extras-java8time
-* issue #122 check dependency: thymeleaf-extras-springsecurity5
-* issue #123 check dependency: thymeleaf-extras-data-attribute
-* issue #124 check dependency: thymeleaf-spring-data-dialect
-* issue #125 check dependency: opencsv
-* issue #126 check dependency: jsoup
-* issue #127 check dependency: hibernate-core
-* issue #128 check dependency: jaxb-api
-* issue #129 check dependency: postgresql
 * issue #130 check dependency: spring-restdocs-mockmvc
+
+* issue #108 check dependency: spring-boot-starter-web-services
+
+* issue #111 check dependency: spring-boot-starter-json
+* issue #128 check dependency: jaxb-api
+* issue #125 check dependency: opencsv
+* issue #98 check dependency: opencsv
+
+* issue #99 check dependency: asm
+* issue #100 check dependency: attoparser
+
+* issue #110 check dependency: spring-boot-starter-cache
+* issue #97 check dependency: jsoup
+* issue #126 check dependency: jsoup
+
+* issue #115 check dependency: spring-session-core
+* issue #116 check dependency: spring-session-jdbc
+* issue #127 check dependency: hibernate-core
+* issue #129 check dependency: postgresql
+
+* issue #112 check dependency: spring-boot-starter-test
 
 ## 1.8.13
 * issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);
