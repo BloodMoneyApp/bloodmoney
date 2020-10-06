@@ -66,8 +66,23 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * fixed #50 add bootwatch for bootstrap
 
 ## 1.8.9
-* issue #81 mvnw docker-compose:up 
-* issue #84 update webjars
+* fixed #81 mvnw docker-compose:up 
+* fixed #84 update webjars
 
 ## 1.8.10
+* Merge #86
+ 
+## 1.8.11
+* issue #87 update spring-boot to 2.3.4
+* issue #88 update spring-data-releasetrain to Neumann-SR4
+* issue #89 update spring-session-bom to Dragonfruit-SR1
+* issue #90 update spring-security-bom
+* issue #91 update spring-framework-bom
+* issue #92 update spring-integration-bom
+* issue #93 update webjars
+* issue #94 add github actions for CI 
+
+## 1.8.12
 * issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);
+
+## 1.8.13
