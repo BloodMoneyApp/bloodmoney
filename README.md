@@ -22,6 +22,18 @@ Webapp for storing Blood Pressure Measurements for one Person.
 The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP 
 [The Sisters Of Mercy: No Time To Cry (UK & Europe, Feb 1985)](https://www.discogs.com/The-Sisters-Of-Mercy-No-Time-To-Cry/release/6717124)
 
+## Feature Request Backlog
+* Feature #142 CRUD for Measurements
+* Feature #141 Very Simple Login
+* Feature #140 Frontend: Thmyleaf, Bootstrap
+* Feature #138 Deployment om Heroku
+* Feature #136 Better Login and User Selfservice
+* Feature #135 Soap Webservice with Login and CRUD for Measurements
+* Feature #134 Test Client for Soap Webservice
+* Feature #133 REST Webservice with Login and CRUD for Measurements
+* Feature #132 Test Client for REST Webservice
+* Feature #139 Webapp shall send Emails
+
 ## Todos
 * spring.config.location
 * read [7 Reasons I Do Not Use JAX-RS in Spring Boot Web Applications](https://dzone.com/articles/7-reasons-i-do-not-use-jax-rs-in-spring-boot-web-a)
@@ -83,6 +95,7 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * fixed #94 add github actions for CI 
 
 ## 1.8.12
+* fixed #137 Webapp shall send Emails
 * issue #95 check dependency: thymeleaf-testing
 * issue #96 check dependency: thymeleaf-spring-data-dialect
 * issue #97 check dependency: jsoup
