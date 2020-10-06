@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.lang.Nullable;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
@@ -31,12 +32,12 @@ public class BloodPressureMeasurementResource {
 
     @GetMapping(
         path = "/all",
-        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML},
-        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     public Page<BloodPressureMeasurementEntity> getAll(
+        @Nullable
         @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
       model = userSessionService.handleUserSession(userSessionBean, model);
