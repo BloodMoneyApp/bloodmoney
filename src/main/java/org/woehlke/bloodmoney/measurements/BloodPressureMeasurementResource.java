@@ -13,12 +13,11 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.UserSessionBean;
 import org.woehlke.bloodmoney.user.UserSessionService;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.util.List;
 
 /**
  * http://localhost:5000/
@@ -30,9 +29,11 @@ import java.util.List;
 @SessionAttributes("userSession")
 public class BloodPressureMeasurementResource {
 
-    @GetMapping("/all")
+    @GetMapping(
+        path = "/all",
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML},
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @ResponseBody
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Page<BloodPressureMeasurementEntity> getAll(
         @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -42,8 +43,11 @@ public class BloodPressureMeasurementResource {
       return bloodPressureMeasurementService.getAll(pageable);
     }
 
-    @GetMapping("/{id}")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @GetMapping(
+        path = "/{id}",
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML},
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @ResponseBody
     public BloodPressureMeasurementEntity getOne(
         @PathVariable("id") BloodPressureMeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -53,8 +57,11 @@ public class BloodPressureMeasurementResource {
         return one;
     }
 
-    @PutMapping("/{id}")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @PutMapping(
+        path = "/{id}",
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML},
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @ResponseBody
     public BloodPressureMeasurementEntity update(
         BloodPressureMeasurementEntity one,
         @PathVariable("id") long id,
@@ -65,8 +72,9 @@ public class BloodPressureMeasurementResource {
         return bloodPressureMeasurementService.update(one, id);
     }
 
-    @DeleteMapping("/{id}")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @DeleteMapping(
+        path = "/{id}",
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response delete(
         @PathVariable("id") long id,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -78,8 +86,11 @@ public class BloodPressureMeasurementResource {
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
-    @PostMapping("/add")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @PostMapping(
+        path = "/add",
+        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML },
+        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @ResponseBody
     public BloodPressureMeasurementEntity add(
        BloodPressureMeasurementEntity one,
        @Context UriInfo uriInfo,

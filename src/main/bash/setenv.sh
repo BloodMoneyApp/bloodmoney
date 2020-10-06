@@ -17,7 +17,8 @@ export BLOODMONEY_DSREF_HOST='localhost'
 export BLOODMONEY_DSREF_PORT=5464
 #echo ""
 #echo "Persistence Settings"
-export BLOODMONEY_HIBERNATE_DDL_AUTO='create-drop'
+#export BLOODMONEY_HIBERNATE_DDL_AUTO='create-drop'
+export BLOODMONEY_HIBERNATE_DDL_AUTO='update'
 #echo ""
 #echo "Credentials for Testing"
 export BLOODMONEY_USER_EMAIL='thomas.woehlke@gmail.com'
