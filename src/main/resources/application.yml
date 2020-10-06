@@ -154,7 +154,7 @@ logging:
                 beans: INFO
                 jdbc: INFO
                 orm: INFO
-                session: INFO
+                session: WARN
                 test: INFO
                 mock: WARN
                 transaction: INFO
@@ -178,7 +178,7 @@ logging:
                 service: INFO
                 result: INFO
             ch:
-                qos: INFO
+                qos: WARN
             woehlke:
                 bloodmoney:
                     application: DEBUG
@@ -222,10 +222,11 @@ logging:
         root: INFO
         org:
             springframework: INFO
-            hibernate.SQL: INFO
+            hibernate:
+                SQL: INFO
             ch:
                 qos: WARN
-            postgresql: DEBUG
+            postgresql: WARN
             woehlke:
                 bloodmoney:
                     config: DEBUG
