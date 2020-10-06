@@ -247,28 +247,6 @@
                 <scope>test</scope>
             </dependency>
 
-            <!--
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>bootstrap</artifactId>
-                <version>${webjars.bootstrap.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>jquery</artifactId>
-                <version>${webjars.jquery.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>font-awesome</artifactId>
-                <version>${webjars.font-awesome.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>ckeditor</artifactId>
-                <version>${webjars.ckeditor.version}</version>
-            </dependency>
-            -->
             <dependency>
                 <groupId>org.webjars</groupId>
                 <artifactId>popper.js</artifactId>
@@ -537,12 +515,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- TODO #108 check dependency: spring-boot-starter-web-services
+        <!-- TODO #108 check dependency: spring-boot-starter-web-services    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
-        -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
@@ -670,12 +648,12 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
         </dependency>
-        <!-- TODO #117 check dependency: spring-data-rest-hal-explore
+        <!-- TODO #117 check dependency: spring-data-rest-hal-explore    -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-hal-explorer</artifactId>
         </dependency>
-        -->
+
         <!-- Frontend Webjars -->
         <dependency>
             <groupId>org.webjars</groupId>

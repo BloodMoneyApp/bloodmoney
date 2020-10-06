@@ -4,6 +4,7 @@ package org.woehlke.bloodmoney.measurements;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -14,6 +15,8 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.UserSessionBean;
 import org.woehlke.bloodmoney.user.UserSessionService;
 
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -30,9 +33,8 @@ import javax.ws.rs.core.UriInfo;
 @SessionAttributes("userSession")
 public class BloodPressureMeasurementResource {
 
-    @GetMapping(
-        path = "/all",
-        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @GetMapping("all")
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     public Page<BloodPressureMeasurementEntity> getAll(
         @Nullable
@@ -40,14 +42,17 @@ public class BloodPressureMeasurementResource {
         @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
+        if(null == pageable){
+            int page=0; int size=10;
+            Sort sort = Sort.by(Sort.Direction.DESC, "created");
+            pageable = PageRequest.of(page, size, sort);
+        }
       model = userSessionService.handleUserSession(userSessionBean, model);
       return bloodPressureMeasurementService.getAll(pageable);
     }
 
-    @GetMapping(
-        path = "/{id}",
-        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML},
-        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @GetMapping("/{id}")
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     public BloodPressureMeasurementEntity getOne(
         @PathVariable("id") BloodPressureMeasurementEntity one,
@@ -58,13 +63,12 @@ public class BloodPressureMeasurementResource {
         return one;
     }
 
-    @PutMapping(
-        path = "/{id}",
-        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML},
-        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @PutMapping("/{id}")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     public BloodPressureMeasurementEntity update(
-        BloodPressureMeasurementEntity one,
+        @Valid BloodPressureMeasurementEntity one,
         @PathVariable("id") long id,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
@@ -73,9 +77,8 @@ public class BloodPressureMeasurementResource {
         return bloodPressureMeasurementService.update(one, id);
     }
 
-    @DeleteMapping(
-        path = "/{id}",
-        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @DeleteMapping(path = "/{id}")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response delete(
         @PathVariable("id") long id,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -87,10 +90,9 @@ public class BloodPressureMeasurementResource {
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
-    @PostMapping(
-        path = "/add",
-        consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML },
-        produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @PostMapping("/add")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     public BloodPressureMeasurementEntity add(
        BloodPressureMeasurementEntity one,
