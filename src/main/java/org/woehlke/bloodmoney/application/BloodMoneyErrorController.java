@@ -17,7 +17,7 @@ public class BloodMoneyErrorController implements ErrorController {
     @RequestMapping("/fehler")
     public String handleError(HttpServletRequest request, Model model) {
         Exception exception = (Exception) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
-        log.info("exceptionMessage: "+exception.getLocalizedMessage());
+        log.info("exceptionMessage: "+exception);
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         if (status != null) {
             log.info("statusCode: "+status.toString());
@@ -32,7 +32,7 @@ public class BloodMoneyErrorController implements ErrorController {
                 return "error/error-500";
             }
         }
-        model.addAttribute("exceptionMessage",exception.getLocalizedMessage());
+        model.addAttribute("exceptionMessage",exception);
         return "error/error";
     }
 
