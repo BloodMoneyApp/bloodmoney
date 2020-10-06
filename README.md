@@ -73,16 +73,51 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * Merge #86
  
 ## 1.8.11
-* issue #87 update spring-boot to 2.3.4
-* issue #88 update spring-data-releasetrain to Neumann-SR4
-* issue #89 update spring-session-bom to Dragonfruit-SR1
-* issue #90 update spring-security-bom
-* issue #91 update spring-framework-bom
-* issue #92 update spring-integration-bom
-* issue #93 update webjars
+* fixed #87 update spring-boot to 2.3.4
+* fixed #88 update spring-data-releasetrain to Neumann-SR4
+* fixed #89 update spring-session-bom to Dragonfruit-SR1
+* fixed #90 update spring-security-bom
+* fixed #91 update spring-framework-bom
+* fixed #92 update spring-integration-bom
+* fixed #93 update webjars
 * issue #94 add github actions for CI 
 
 ## 1.8.12
-* issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);
+* issue check dependency: thymeleaf-testing
+* issue check dependency: thymeleaf-spring-data-dialect
+* issue check dependency: jsoup
+* issue check dependency: opencsv
+* issue check dependency: asm
+* issue check dependency: attoparser
+* issue check dependency: spring-boot-devtools
+* issue check dependency: spring-boot-configuration-processor
+* issue check dependency: spring-boot-properties-migrator
+* issue check dependency: spring-boot-starter-data-rest
+* issue check dependency: spring-boot-starter-hateoas
+* issue check dependency: spring-boot-starter-jersey
+* issue check dependency: spring-boot-starter-mustache
+* issue check dependency: spring-boot-starter-web-services
+* issue check dependency: spring-boot-starter-mail
+* issue check dependency: spring-boot-starter-cache
+* issue check dependency: spring-boot-starter-json
+* issue check dependency: spring-boot-starter-test
+* issue check dependency: spring-boot-admin-starter-client
+* issue check dependency: spring-boot-admin-starter-server
+* issue check dependency: spring-session-core
+* issue check dependency: spring-session-jdbc
+* issue check dependency: spring-data-rest-hal-explore
+* issue check dependency: thymeleaf
+* issue check dependency: thymeleaf-spring5
+* issue check dependency: thymeleaf-extras-java8time
+* issue check dependency: thymeleaf-extras-springsecurity5
+* issue check dependency: thymeleaf-extras-data-attribute
+* issue check dependency: thymeleaf-spring-data-dialect
+* issue check dependency: opencsv
+* issue check dependency: jsoup
+* issue check dependency: hibernate-core
+* issue check dependency: jaxb-api
+* issue check dependency: postgresql
+* issue check dependency: spring-restdocs-mockmvc
 
 ## 1.8.13
+* issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);
