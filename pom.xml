@@ -94,10 +94,6 @@
         <hamcrest.version>2.2</hamcrest.version>
         <jsoup.version>1.13.1</jsoup.version>
 
-        <!--
-        <vaadin.version>14.1.25</vaadin.version>
-        -->
-
         <!-- Database Evolution -->
         <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
 
@@ -112,46 +108,6 @@
         <docker-compose-maven-plugin.ignorePullFailures>true</docker-compose-maven-plugin.ignorePullFailures>
         <docker-compose-maven-plugin.detachedMode>true</docker-compose-maven-plugin.detachedMode>
 
-        <!-- Maven plugins -->
-        <!--
-          <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-          <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-          <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-          <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
-          <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-          <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
-          <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
-          <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-
-          <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
-          <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
-          <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-          <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-          <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
-
-           <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
-           <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-
-        <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
-        <maven-invoker-plugin.version>3.2.1</maven-invoker-plugin.version>
-
-        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-
-        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
-
-        <xml-maven-plugin.version>1.0.2</xml-maven-plugin.version>
-        <git-commit-id-plugin.version>4.0.1</git-commit-id-plugin.version>
-
-
-
-
-          <maven-help-plugin.version>3.2.0</maven-help-plugin.version>
-            <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-        -->
-
         <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
         <liquibase-maven-plugin.version>3.8.9</liquibase-maven-plugin.version>
 
@@ -165,6 +121,7 @@
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
         <!--
+        TODO: maven-changes-plugin is broken #131
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
         -->
         <asciidoctor-maven-plugin.version>1.5.8</asciidoctor-maven-plugin.version>
@@ -788,14 +745,14 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
-        <!-- TODO check dependency: jaxb-api -->
+        <!-- TODO #128  check dependency: jaxb-api -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
         </dependency>
 
         <!-- scope runtime -->
-        <!-- TODO check dependency: postgresql -->
+        <!-- TODO #129 check dependency: postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -813,7 +770,7 @@
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- TODO check dependency: spring-restdocs-mockmvc -->
+        <!-- TODO  #130 check dependency: spring-restdocs-mockmvc -->
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
@@ -1033,6 +990,7 @@
                     <version>${maven-project-info-reports-plugin.version}</version>
                 </plugin>
                 <!--
+                TODO: maven-changes-plugin is broken #131
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-changes-plugin</artifactId>
@@ -1155,11 +1113,6 @@
                                 <requireJavaVersion>
                                     <version>${java.version}</version>
                                 </requireJavaVersion>
-                                <!--
-                                <requireOS>
-                                    <family>unix</family>
-                                </requireOS>
-                                -->
                                 <requireFilesExist>
                                     <files>
                                         <file>${project.basedir}/run.sh</file>
@@ -1243,26 +1196,6 @@
                     <addResources>true</addResources>
                 </configuration>
                 <executions>
-                    <!--
-                    <execution>
-                        <id>pre-integration-test</id>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                        <configuration>
-                            <skip>${skipTests}</skip>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>post-integration-test</id>
-                        <goals>
-                            <goal>stop</goal>
-                        </goals>
-                        <configuration>
-                            <skip>${skipTests}</skip>
-                        </configuration>
-                    </execution>
-                    -->
                     <execution>
                         <id>id-build-info</id>
                         <goals>
@@ -1347,13 +1280,6 @@
                             <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
                             <ignoredDependencies>
                                 <ignoredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredDependency>
-                                <!--
-                                <ignoredDependency>org.apache.maven.scm:maven-scm</ignoredDependency>
-                                <ignoredDependency>org.apache.maven.scm:maven-scm-providers-git</ignoredDependency>
-                                <ignoredDependency>org.apache.maven.scm:maven-scm-providers-standard</ignoredDependency>
-                                <ignoredDependency>org.apache.maven.scm:maven-scm-providers</ignoredDependency>
-                                <ignoredDependency>org.apache.maven.scm:maven-scm-managers</ignoredDependency>
-                                -->
                             </ignoredDependencies>
                             <ignoredUsedUndeclaredDependencies>
                                 <ignoredUsedUndeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUsedUndeclaredDependency>
@@ -1532,6 +1458,7 @@
                 <inherited>true</inherited>
             </plugin>
             <!--
+            TODO: maven-changes-plugin is broken #131
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
