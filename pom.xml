@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
-    <version>1.8.11</version>
+    <version>1.8.12-SNAPSHOT</version>
 	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
