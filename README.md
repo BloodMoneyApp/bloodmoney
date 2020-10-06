@@ -97,7 +97,6 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 ## 1.8.12
 * fixed #113 check dependency: spring-boot-admin-starter-client
 * fixed #114 check dependency: spring-boot-admin-starter-server
-
 * fixed #95 check dependency: thymeleaf-testing
 * fixed #96 check dependency: thymeleaf-spring-data-dialect
 * fixed #119 check dependency: thymeleaf
@@ -106,46 +105,34 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * fixed #122 check dependency: thymeleaf-extras-springsecurity5
 * fixed #123 check dependency: thymeleaf-extras-data-attribute
 * fixed #124 check dependency: thymeleaf-spring-data-dialect
-
-* issue #107 check dependency: spring-boot-starter-mustache
-
-* issue #101 check dependency: spring-boot-devtools
-* issue #102 check dependency: spring-boot-configuration-processor
-* issue #103 check dependency: spring-boot-properties-migrator
-
+* fixed #107 check dependency: spring-boot-starter-mustache
+* fixed #101 check dependency: spring-boot-devtools
+* fixed #102 check dependency: spring-boot-configuration-processor
+* fixed #103 check dependency: spring-boot-properties-migrator
 * fixed #137 Webapp shall send Emails
-* issue #109 check dependency: spring-boot-starter-mail
-
+* fixed #109 check dependency: spring-boot-starter-mail
 * fixed #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
-* issue #106 check dependency: spring-boot-starter-jersey
-* issue #111 check dependency: spring-boot-starter-json
-* issue #128 check dependency: jaxb-api
-* issue #125 check dependency: opencsv
-* issue #98 check dependency: opencsv
-
-
-* issue #104 check dependency: spring-boot-starter-data-rest
-* issue #105 check dependency: spring-boot-starter-hateoas
-
-* issue #117 check dependency: spring-data-rest-hal-explore
+* fixed #106 check dependency: spring-boot-starter-jersey
+* fixed #111 check dependency: spring-boot-starter-json
+* fixed #128 check dependency: jaxb-api
+* fixed #125 check dependency: opencsv
+* fixed #104 check dependency: spring-boot-starter-data-rest
+* fixed #105 check dependency: spring-boot-starter-hateoas
+* fixed #117 check dependency: spring-data-rest-hal-explore
 * fixed #118 check dependency: spring-data-rest-hal-explore 
-* issue #130 check dependency: spring-restdocs-mockmvc
-
-* issue #108 check dependency: spring-boot-starter-web-services
-
-* issue #99 check dependency: asm
-* issue #100 check dependency: attoparser
-
-* issue #110 check dependency: spring-boot-starter-cache
-* issue #97 check dependency: jsoup
-* issue #126 check dependency: jsoup
-
+* fixed #130 check dependency: spring-restdocs-mockmvc
+* fixed #108 check dependency: spring-boot-starter-web-services
+* fixed #110 check dependency: spring-boot-starter-cache
+* fixed #126 check dependency: jsoup
 * fixed #115 check dependency: spring-session-core
 * fixed #116 check dependency: spring-session-jdbc
 * fixed #127 check dependency: hibernate-core
 * fixed #129 check dependency: postgresql
-
-* issue #112 check dependency: spring-boot-starter-test
+* fixed #112 check dependency: spring-boot-starter-test
+* issue #97 check dependency: jsoup
+* issue #99 check dependency: asm
+* issue #100 check dependency: attoparser
+* issue #98 check dependency: opencsv
 
 ## 1.8.13
 * issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);

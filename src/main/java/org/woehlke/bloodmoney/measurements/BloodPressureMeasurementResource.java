@@ -35,9 +35,10 @@ import javax.ws.rs.core.UriInfo;
 @PreAuthorize("isAuthenticated()")
 public class BloodPressureMeasurementResource {
 
+    //TODO: #151 HTTP 406 - XML not accepted
     @GetMapping("all")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_XML })
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_XML })
+   // @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
     public Page<BloodPressureMeasurementEntity> getAll(
