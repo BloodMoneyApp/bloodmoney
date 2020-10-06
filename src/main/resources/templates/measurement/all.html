@@ -33,7 +33,19 @@
                 <span class="col">
                     <a href="#" th:href="@{/measurement/export/all}" class="btn btn-dark btn-block" role="button">
                         <i class="fas fa-download"></i>
-                        <span th:text="#{org.woehlke.mybp.measurement.all.button.export}">Export List of All Measurements</span>
+                        <span th:text="#{org.woehlke.mybp.measurement.all.button.export.csv}">Export List of All Measurements</span>
+                    </a>
+                </span>
+                <span class="col">
+                    <a href="#" th:href="@{/rest/measurement/all}" class="btn btn-dark btn-block" role="button">
+                        <i class="fas fa-download"></i>
+                        <span th:text="#{org.woehlke.mybp.measurement.all.button.export.xml}">Export List of All Measurements</span>
+                    </a>
+                </span>
+                <span class="col">
+                    <a href="#" th:href="@{/rest/measurement/all}" class="btn btn-dark btn-block" role="button">
+                        <i class="fas fa-download"></i>
+                        <span th:text="#{org.woehlke.mybp.measurement.all.button.export.json}">Export List of All Measurements</span>
                     </a>
                 </span>
             </span>

@@ -3,6 +3,10 @@ package org.woehlke.bloodmoney.measurements;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
@@ -16,7 +20,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
-//TODO: #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
 /**
  * http://localhost:5000/
  * http://localhost:5000/rest/measurement/all
@@ -30,12 +33,13 @@ public class BloodPressureMeasurementResource {
     @GetMapping("/all")
     @ResponseBody
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<BloodPressureMeasurementEntity> getAll(
+    public Page<BloodPressureMeasurementEntity> getAll(
+        @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
       model = userSessionService.handleUserSession(userSessionBean, model);
-      return bloodPressureMeasurementService.getAll();
+      return bloodPressureMeasurementService.getAll(pageable);
     }
 
     @GetMapping("/{id}")

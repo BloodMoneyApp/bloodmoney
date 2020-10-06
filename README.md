@@ -116,19 +116,22 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * fixed #137 Webapp shall send Emails
 * issue #109 check dependency: spring-boot-starter-mail
 
+* fixed #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
+* issue #106 check dependency: spring-boot-starter-jersey
+* issue #111 check dependency: spring-boot-starter-json
+* issue #128 check dependency: jaxb-api
+* issue #125 check dependency: opencsv
+* issue #98 check dependency: opencsv
+
+
 * issue #104 check dependency: spring-boot-starter-data-rest
 * issue #105 check dependency: spring-boot-starter-hateoas
-* issue #106 check dependency: spring-boot-starter-jersey
+
 * issue #117 check dependency: spring-data-rest-hal-explore
 * fixed #118 check dependency: spring-data-rest-hal-explore 
 * issue #130 check dependency: spring-restdocs-mockmvc
 
 * issue #108 check dependency: spring-boot-starter-web-services
-
-* issue #111 check dependency: spring-boot-starter-json
-* issue #128 check dependency: jaxb-api
-* issue #125 check dependency: opencsv
-* issue #98 check dependency: opencsv
 
 * issue #99 check dependency: asm
 * issue #100 check dependency: attoparser
@@ -137,10 +140,10 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * issue #97 check dependency: jsoup
 * issue #126 check dependency: jsoup
 
-* issue #115 check dependency: spring-session-core
-* issue #116 check dependency: spring-session-jdbc
-* issue #127 check dependency: hibernate-core
-* issue #129 check dependency: postgresql
+* fixed #115 check dependency: spring-session-core
+* fixed #116 check dependency: spring-session-jdbc
+* fixed #127 check dependency: hibernate-core
+* fixed #129 check dependency: postgresql
 
 * issue #112 check dependency: spring-boot-starter-test
 
