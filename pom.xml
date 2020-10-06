@@ -164,7 +164,9 @@
         <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
+        <!--
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
+        -->
         <asciidoctor-maven-plugin.version>1.5.8</asciidoctor-maven-plugin.version>
         <doxia-module-markdown.version>1.9.1</doxia-module-markdown.version>
     </properties>
@@ -423,12 +425,14 @@
                 <version>${maven-surefire-report-plugin.version}</version>
                 <type>maven-plugin</type>
             </dependency>
+            <!--
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
                 <version>${maven-changes-plugin.version}</version>
                 <type>maven-plugin</type>
             </dependency>
+            -->
             <dependency>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -927,11 +931,13 @@
             <artifactId>maven-surefire-report-plugin</artifactId>
             <type>maven-plugin</type>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-changes-plugin</artifactId>
             <type>maven-plugin</type>
         </dependency>
+        -->
         <dependency>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -1026,13 +1032,13 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>${maven-project-info-reports-plugin.version}</version>
                 </plugin>
-
+                <!--
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-changes-plugin</artifactId>
                     <version>${maven-changes-plugin.version}</version>
                 </plugin>
-
+                -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
@@ -1525,15 +1531,10 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <inherited>true</inherited>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
-                <!--
-                <configuration>
-                    <githubAPIScheme>https</githubAPIScheme>
-                    <githubAPIPort>443</githubAPIPort>
-                </configuration>
-                -->
                 <reportSets>
                     <reportSet>
                         <id>id-github-report</id>
@@ -1543,6 +1544,7 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
