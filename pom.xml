@@ -62,15 +62,58 @@
     <properties>
         <java.version>13</java.version>
         <version.maven>3.6.3</version.maven>
-        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
-        <vaadin.version>14.1.25</vaadin.version>
+
         <spring-boot-maven-plugin.version>${project.parent.version}</spring-boot-maven-plugin.version>
+        <spring-data-releasetrain.version>Neumann-SR4</spring-data-releasetrain.version>
+        <spring-session-bom.version>Dragonfruit-SR1</spring-session-bom.version>
+        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
+
+        <!-- Web Templates -->
+        <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
+        <thymeleaf-extras-java8time.version>3.0.4.RELEASE</thymeleaf-extras-java8time.version>
+        <thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
+        <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
+        <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
+        <thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
+        <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
+
+        <!-- Webjars -->
+        <webjars.bootstrap.version>4.5.2</webjars.bootstrap.version>
+        <webjars.jquery.version>3.5.1</webjars.jquery.version>
+        <webjars.popper.js.version>1.16.0</webjars.popper.js.version>
+        <webjars.font-awesome.version>5.14.0</webjars.font-awesome.version>
+        <webjars.ckeditor.version>18.0.0</webjars.ckeditor.version>
+        <opencsv.version>5.2</opencsv.version>
+
+        <!-- Unit and Integration Testing -->
+        <skipTests>true</skipTests>
+        <xmlunit2.version>2.6.4</xmlunit2.version>
+        <xmlunit.version>2.6.4</xmlunit.version>
+        <htmlunit.version>2.43.0</htmlunit.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <jsoup.version>1.13.1</jsoup.version>
+
+        <!--
+        <vaadin.version>14.1.25</vaadin.version>
+        -->
+
+        <!-- Database Evolution -->
         <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
+
         <!-- SCM and Releasing -->
-		<maven.scm.version>1.11.2</maven.scm.version>
+        <maven.scm.version>1.11.2</maven.scm.version>
+
+        <!-- Docker -->
+        <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
+        <docker-compose-maven-plugin.verbose>true</docker-compose-maven-plugin.verbose>
+        <docker-compose-maven-plugin.removeImages>true</docker-compose-maven-plugin.removeImages>
+        <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
+        <docker-compose-maven-plugin.ignorePullFailures>true</docker-compose-maven-plugin.ignorePullFailures>
+        <docker-compose-maven-plugin.detachedMode>true</docker-compose-maven-plugin.detachedMode>
+
+        <!-- Maven plugins -->
         <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-        <!-- Maven plugins -->
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
@@ -101,20 +144,9 @@
         <xml-maven-plugin.version>1.0.2</xml-maven-plugin.version>
         <git-commit-id-plugin.version>4.0.1</git-commit-id-plugin.version>
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
+        <doxia-module-markdown.version>1.9.1</doxia-module-markdown.version>
         <asciidoctor-maven-plugin.version>1.5.8</asciidoctor-maven-plugin.version>
         <liquibase-maven-plugin.version>3.8.9</liquibase-maven-plugin.version>
-
-        <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
-        <thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
-        <thymeleaf-extras-java8time.version>3.0.4.RELEASE</thymeleaf-extras-java8time.version>
-        <thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
-        <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
-
-        <spring-data-releasetrain.version>Neumann-SR4</spring-data-releasetrain.version>
-        <spring-session-bom.version>Dragonfruit-SR1</spring-session-bom.version>
-
-        <opencsv.version>5.2</opencsv.version>
-
         <!-- Maven Reports and Site -->
         <maven-project-info-reports-plugin.version>3.1.0</maven-project-info-reports-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
@@ -123,47 +155,21 @@
         <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
-
-        <!-- Docker -->
-        <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
-        <docker-compose-maven-plugin.verbose>true</docker-compose-maven-plugin.verbose>
-        <docker-compose-maven-plugin.removeImages>true</docker-compose-maven-plugin.removeImages>
-        <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
-        <docker-compose-maven-plugin.ignorePullFailures>true</docker-compose-maven-plugin.ignorePullFailures>
-        <docker-compose-maven-plugin.detachedMode>true</docker-compose-maven-plugin.detachedMode>
-
-        <!-- Webjars -->
-        <webjars.bootstrap.version>4.5.2</webjars.bootstrap.version>
-        <webjars.jquery.version>3.5.1</webjars.jquery.version>
-        <webjars.popper.js.version>1.16.0</webjars.popper.js.version>
-        <webjars.font-awesome.version>5.14.0</webjars.font-awesome.version>
-        <webjars.ckeditor.version>18.0.0</webjars.ckeditor.version>
-
-        <!-- Unit and Integration Testing -->
-
-        <xmlunit2.version>2.6.4</xmlunit2.version>
-        <xmlunit.version>2.6.4</xmlunit.version>
-        <htmlunit.version>2.43.0</htmlunit.version>
-        <hamcrest.version>2.2</hamcrest.version>
-        <jsoup.version>1.13.1</jsoup.version>
-
-        <skipTests>true</skipTests>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.joinfaces</groupId>
-                <artifactId>joinfaces-dependencies</artifactId>
-                <version>${joinfaces.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
                 <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring-data-releasetrain.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -175,9 +181,30 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring-framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-bom</artifactId>
                 <version>${spring-security.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-bom</artifactId>
+                <version>${spring-integration.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -214,20 +241,14 @@
                 <artifactId>thymeleaf-spring-data-dialect</artifactId>
                 <version>${thymeleaf-spring-data-dialect.version}</version>
             </dependency>
+            <!-- TODO check dependency: thymeleaf-testing -->
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-testing</artifactId>
+                <version>3.0.4.RELEASE</version>
+                <scope>test</scope>
+            </dependency>
             <!-- compile -->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <optional>false</optional>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jsoup</groupId>
-                <artifactId>jsoup</artifactId>
-                <version>${jsoup.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.hamcrest</groupId>
@@ -248,57 +269,7 @@
                 <scope>test</scope>
             </dependency>
 
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <!--
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>${spring-data-releasetrain.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${spring-framework.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.integration</groupId>
-                <artifactId>spring-integration-bom</artifactId>
-                <version>${spring-integration.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-bom</artifactId>
-                <version>${spring-security.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.session</groupId>
-                <artifactId>spring-session-bom</artifactId>
-                <version>${spring-session-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <dependency>
                 <groupId>org.webjars</groupId>
                 <artifactId>bootstrap</artifactId>
@@ -308,11 +279,6 @@
                 <groupId>org.webjars</groupId>
                 <artifactId>jquery</artifactId>
                 <version>${webjars.jquery.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>popper.js</artifactId>
-                <version>${webjars.popper.js.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
@@ -326,45 +292,46 @@
             </dependency>
             -->
             <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>popper.js</artifactId>
+                <version>${webjars.popper.js.version}</version>
+            </dependency>
+            <!-- TODO check dependency: thymeleaf-spring-data-dialect -->
+            <dependency>
                 <groupId>io.github.jpenren</groupId>
                 <artifactId>thymeleaf-spring-data-dialect</artifactId>
                 <version>3.4.1</version>
             </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <optional>false</optional>
-            </dependency>
 
+            <!-- TODO check dependency: jsoup -->
             <dependency>
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
-                <version>1.13.1</version>
+                <version>${jsoup.version}</version>
             </dependency>
 
+            <!-- TODO check dependency: opencsv -->
             <dependency>
                 <groupId>com.opencsv</groupId>
                 <artifactId>opencsv</artifactId>
                 <version>${opencsv.version}</version>
             </dependency>
+
+            <!-- TODO check dependency: asm -->
             <dependency>
                 <groupId>org.ow2.asm</groupId>
                 <artifactId>asm</artifactId>
                 <version>7.3.1</version>
             </dependency>
+
+            <!-- TODO check dependency: attoparser -->
             <dependency>
                 <groupId>org.attoparser</groupId>
                 <artifactId>attoparser</artifactId>
                 <version>2.0.5.RELEASE</version>
             </dependency>
             <!-- scope test -->
-            <dependency>
-                <groupId>org.thymeleaf</groupId>
-                <artifactId>thymeleaf-testing</artifactId>
-                <version>3.0.4.RELEASE</version>
-                <scope>test</scope>
-            </dependency>
+
             <!-- maven plugins -->
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -501,6 +468,13 @@
                 <artifactId>htmlunit</artifactId>
                 <version>${htmlunit.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>false</optional>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -508,30 +482,36 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>provided</scope>
             <optional>false</optional>
         </dependency>
         <!-- spring-boot runtime -->
+        <!-- TODO check dependency: spring-boot-devtools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!-- TODO check dependency: spring-boot-configuration-processor -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- TODO check dependency: spring-boot-properties-migrator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-properties-migrator</artifactId>
             <scope>runtime</scope>
         </dependency>
         <!-- spring-boot-starter -->
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -540,10 +520,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
@@ -552,10 +534,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mustache</artifactId>
@@ -564,10 +548,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
@@ -576,6 +562,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
@@ -584,18 +571,22 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -612,10 +603,12 @@
             </exclusions>
         </dependency>
         <!-- spring-boot-starter 3rd Party-->
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
@@ -711,14 +704,17 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-data</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-rest-hal-explorer</artifactId>
@@ -745,50 +741,63 @@
             <artifactId>popper.js</artifactId>
         </dependency>
         <!-- Fronted Templates thymeleaf -->
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring5</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-java8time</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>com.github.mxab.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-data-attribute</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>io.github.jpenren</groupId>
             <artifactId>thymeleaf-spring-data-dialect</artifactId>
         </dependency>
 
         <!-- 3rd Party -->
+        <!-- TODO check dependency: opencsv -->
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
         </dependency>
+        <!-- TODO check dependency: jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
         </dependency>
 
+
+
         <!-- scope runtime -->
+        <!-- TODO check dependency: spring-boot-starter-actuator -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -837,6 +846,14 @@
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xmlunit</groupId>
+            <artifactId>xmlunit-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
         </dependency>
 
         <!-- maven plugins -->
@@ -939,6 +956,10 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
             <type>maven-plugin</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
         </dependency>
     </dependencies>
 
