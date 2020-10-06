@@ -83,41 +83,41 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * issue #94 add github actions for CI 
 
 ## 1.8.12
-* issue check dependency: thymeleaf-testing
-* issue check dependency: thymeleaf-spring-data-dialect
-* issue check dependency: jsoup
-* issue check dependency: opencsv
-* issue check dependency: asm
-* issue check dependency: attoparser
-* issue check dependency: spring-boot-devtools
-* issue check dependency: spring-boot-configuration-processor
-* issue check dependency: spring-boot-properties-migrator
-* issue check dependency: spring-boot-starter-data-rest
-* issue check dependency: spring-boot-starter-hateoas
-* issue check dependency: spring-boot-starter-jersey
-* issue check dependency: spring-boot-starter-mustache
-* issue check dependency: spring-boot-starter-web-services
-* issue check dependency: spring-boot-starter-mail
-* issue check dependency: spring-boot-starter-cache
-* issue check dependency: spring-boot-starter-json
-* issue check dependency: spring-boot-starter-test
-* issue check dependency: spring-boot-admin-starter-client
-* issue check dependency: spring-boot-admin-starter-server
-* issue check dependency: spring-session-core
-* issue check dependency: spring-session-jdbc
-* issue check dependency: spring-data-rest-hal-explore
-* issue check dependency: thymeleaf
-* issue check dependency: thymeleaf-spring5
-* issue check dependency: thymeleaf-extras-java8time
-* issue check dependency: thymeleaf-extras-springsecurity5
-* issue check dependency: thymeleaf-extras-data-attribute
-* issue check dependency: thymeleaf-spring-data-dialect
-* issue check dependency: opencsv
-* issue check dependency: jsoup
-* issue check dependency: hibernate-core
-* issue check dependency: jaxb-api
-* issue check dependency: postgresql
-* issue check dependency: spring-restdocs-mockmvc
+* issue #95 check dependency: thymeleaf-testing
+* issue #96 check dependency: thymeleaf-spring-data-dialect
+* issue #97 check dependency: jsoup
+* issue #98 check dependency: opencsv
+* issue #99 check dependency: asm
+* issue #100 check dependency: attoparser
+* issue #101 check dependency: spring-boot-devtools
+* issue #102 check dependency: spring-boot-configuration-processor
+* issue #103 check dependency: spring-boot-properties-migrator
+* issue #104 check dependency: spring-boot-starter-data-rest
+* issue #105 check dependency: spring-boot-starter-hateoas
+* issue #106 check dependency: spring-boot-starter-jersey
+* issue #107 check dependency: spring-boot-starter-mustache
+* issue #108 check dependency: spring-boot-starter-web-services
+* issue #109 check dependency: spring-boot-starter-mail
+* issue #110 check dependency: spring-boot-starter-cache
+* issue #111 check dependency: spring-boot-starter-json
+* issue #112 check dependency: spring-boot-starter-test
+* issue #113 check dependency: spring-boot-admin-starter-client
+* issue #114 check dependency: spring-boot-admin-starter-server
+* issue #116 check dependency: spring-session-core
+* issue #117 check dependency: spring-session-jdbc
+* issue #118 check dependency: spring-data-rest-hal-explore
+* issue #119 check dependency: thymeleaf
+* issue #120 check dependency: thymeleaf-spring5
+* issue #121 check dependency: thymeleaf-extras-java8time
+* issue #122 check dependency: thymeleaf-extras-springsecurity5
+* issue #123 check dependency: thymeleaf-extras-data-attribute
+* issue #124 check dependency: thymeleaf-spring-data-dialect
+* issue #125 check dependency: opencsv
+* issue #126 check dependency: jsoup
+* issue #127 check dependency: hibernate-core
+* issue #128 check dependency: jaxb-api
+* issue #129 check dependency: postgresql
+* issue #130 check dependency: spring-restdocs-mockmvc
 
 ## 1.8.13
 * issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);
