@@ -36,7 +36,8 @@ import javax.ws.rs.core.UriInfo;
 public class BloodPressureMeasurementResource {
 
     @GetMapping("all")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_XML })
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_XML })
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
     public Page<BloodPressureMeasurementEntity> getAll(
@@ -45,12 +46,16 @@ public class BloodPressureMeasurementResource {
         @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
+        log.info("getAll");
         if(null == pageable){
             int page=0; int size=10;
             Sort sort = Sort.by(Sort.Direction.DESC, "created");
             pageable = PageRequest.of(page, size, sort);
         }
+        log.info("getAll - pageable:"+ pageable.toString());
       model = userSessionService.handleUserSession(userSessionBean, model);
+        UserSessionBean u = (UserSessionBean) model.getAttribute("userSessionBean");
+        log.info("getAll - userSessionBean: "+ u);
       return bloodPressureMeasurementService.getAll(pageable);
     }
 

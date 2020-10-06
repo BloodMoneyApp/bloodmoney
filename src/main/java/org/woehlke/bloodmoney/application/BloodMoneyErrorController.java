@@ -17,8 +17,10 @@ public class BloodMoneyErrorController implements ErrorController {
     @RequestMapping("/fehler")
     public String handleError(HttpServletRequest request, Model model) {
         Exception exception = (Exception) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
+        log.info("exceptionMessage: "+exception.getLocalizedMessage());
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         if (status != null) {
+            log.info("statusCode: "+status.toString());
             Integer statusCode = Integer.valueOf(status.toString());
             if(statusCode == HttpStatus.FORBIDDEN.value()) {
                 return "error/error-403";
