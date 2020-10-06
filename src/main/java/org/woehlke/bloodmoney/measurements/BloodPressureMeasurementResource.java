@@ -38,6 +38,7 @@ public class BloodPressureMeasurementResource {
     @GetMapping("all")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
+    @PreAuthorize("isAuthenticated()")
     public Page<BloodPressureMeasurementEntity> getAll(
         @Nullable
         @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
@@ -56,6 +57,7 @@ public class BloodPressureMeasurementResource {
     @GetMapping("/{id}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
+    @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity getOne(
         @PathVariable("id") BloodPressureMeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -69,6 +71,7 @@ public class BloodPressureMeasurementResource {
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
+    @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity update(
         @Valid BloodPressureMeasurementEntity one,
         @PathVariable("id") long id,
@@ -81,6 +84,7 @@ public class BloodPressureMeasurementResource {
 
     @DeleteMapping(path = "/{id}")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @PreAuthorize("isAuthenticated()")
     public Response delete(
         @PathVariable("id") long id,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -96,6 +100,7 @@ public class BloodPressureMeasurementResource {
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
+    @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity add(
        BloodPressureMeasurementEntity one,
        @Context UriInfo uriInfo,
