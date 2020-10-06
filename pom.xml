@@ -558,12 +558,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
-        <!-- TODO #111 check dependency: spring-boot-starter-json
+        <!-- TODO #111 check dependency: spring-boot-starter-json  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
-        -->
+
         <!-- TODO #112 check dependency: spring-boot-starter-test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
