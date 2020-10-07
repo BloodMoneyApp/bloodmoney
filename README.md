@@ -140,3 +140,4 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * issue #150 http://localhost:8080/rest/measurement/all XML broken
 * issue #149 http://localhost:8080/rest/measurement/all JSON broken
 * issue #131 maven-changes-plugin is broken
+* issue #17 add Security config for API
