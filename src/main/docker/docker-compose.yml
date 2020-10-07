@@ -4,7 +4,7 @@ version: '3.3'
 services:
 
     bloodmoney_dbmaster:
-        image: postgres:11.6
+        image: postgres:12.4
         restart: always
         networks:
             - net
@@ -15,7 +15,7 @@ services:
             POSTGRES_USER: bloodmoney
             POSTGRES_DB: bloodmoney
     bloodmoney_dbref:
-        image: postgres:11.6
+        image: postgres:12.4
         restart: always
         networks:
             - net

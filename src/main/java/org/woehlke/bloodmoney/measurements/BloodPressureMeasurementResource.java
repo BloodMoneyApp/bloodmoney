@@ -3,20 +3,27 @@ package org.woehlke.bloodmoney.measurements;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.lang.Nullable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.user.UserSessionBean;
 import org.woehlke.bloodmoney.user.UserSessionService;
 
-import javax.ws.rs.*;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.util.List;
 
-//TODO: #48 Add a REST Controller Resource for org.woehlke.bloodmoney.measurements.BloodPressureMeasurement
 /**
  * http://localhost:5000/
  * http://localhost:5000/rest/measurement/all
@@ -25,21 +32,38 @@ import java.util.List;
 @RestController
 @RequestMapping("/rest/measurement")
 @SessionAttributes("userSession")
+@PreAuthorize("isAuthenticated()")
 public class BloodPressureMeasurementResource {
 
-    @GetMapping("/all")
+    //TODO: #151 HTTP 406 - XML not accepted
+    @GetMapping("all")
+   // @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
     @ResponseBody
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<BloodPressureMeasurementEntity> getAll(
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
+    @PreAuthorize("isAuthenticated()")
+    public Page<BloodPressureMeasurementEntity> getAll(
+        @Nullable
+        @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
+        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
+        log.info("getAll");
+        if(null == pageable){
+            int page=0; int size=10;
+            Sort sort = Sort.by(Sort.Direction.DESC, "created");
+            pageable = PageRequest.of(page, size, sort);
+        }
+        log.info("getAll - pageable:"+ pageable.toString());
       model = userSessionService.handleUserSession(userSessionBean, model);
-      return bloodPressureMeasurementService.getAll();
+        UserSessionBean u = (UserSessionBean) model.getAttribute("userSessionBean");
+        log.info("getAll - userSessionBean: "+ u);
+      return bloodPressureMeasurementService.getAll(pageable);
     }
 
     @GetMapping("/{id}")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @ResponseBody
+    @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity getOne(
         @PathVariable("id") BloodPressureMeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -51,8 +75,11 @@ public class BloodPressureMeasurementResource {
 
     @PutMapping("/{id}")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @ResponseBody
+    @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity update(
-        BloodPressureMeasurementEntity one,
+        @Valid BloodPressureMeasurementEntity one,
         @PathVariable("id") long id,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
@@ -61,8 +88,9 @@ public class BloodPressureMeasurementResource {
         return bloodPressureMeasurementService.update(one, id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(path = "/{id}")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @PreAuthorize("isAuthenticated()")
     public Response delete(
         @PathVariable("id") long id,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -76,6 +104,9 @@ public class BloodPressureMeasurementResource {
 
     @PostMapping("/add")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @ResponseBody
+    @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity add(
        BloodPressureMeasurementEntity one,
        @Context UriInfo uriInfo,

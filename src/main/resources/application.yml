@@ -130,18 +130,18 @@ logging:
     file:
         name: bloodmoney.log
     level:
-        root: WARN
+        root: INFO
         javax: INFO
         com:
-            atomikos: WARN
+            atomikos: INFO
         org:
             thymeleaf:
                 dialect:
-                    springdata: WARN
+                    springdata: INFO
             apache:
                 commons:
                     logging: WARN
-            h2: WARN
+            h2: INFO
             springframework:
                 data:
                     jdbc: INFO
@@ -150,22 +150,22 @@ logging:
                 security:
                     web: INFO
                     context: INFO
-                boot: WARN
-                beans: WARN
-                jdbc: WARN
-                orm: WARN
+                boot: INFO
+                beans: INFO
+                jdbc: INFO
+                orm: INFO
                 session: WARN
-                test: WARN
+                test: INFO
                 mock: WARN
-                transaction: WARN
-                jca: WARN
-                web: WARN
-                remoting: WARN
-                http: WARN
-                expression: WARN
-                util: WARN
-                lang: WARN
-                core: WARN
+                transaction: INFO
+                jca: INFO
+                web: INFO
+                remoting: INFO
+                http: INFO
+                expression: INFO
+                util: INFO
+                lang: INFO
+                core: INFO
                 cglib: WARN
             hibernate:
                 sql: INFO
@@ -178,7 +178,7 @@ logging:
                 service: INFO
                 result: INFO
             ch:
-                qos: INFO
+                qos: WARN
             woehlke:
                 bloodmoney:
                     application: DEBUG
@@ -219,13 +219,14 @@ server:
         enabled: true
 logging:
     level:
-        root: WARN
+        root: INFO
         org:
-            springframework: WARN
-            hibernate.SQL: INFO
+            springframework: INFO
+            hibernate:
+                SQL: INFO
             ch:
                 qos: WARN
-            postgresql: DEBUG
+            postgresql: WARN
             woehlke:
                 bloodmoney:
                     config: DEBUG
