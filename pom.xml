@@ -68,30 +68,10 @@
         <spring-data-releasetrain.version>Neumann-SR4</spring-data-releasetrain.version>
         <spring-session-bom.version>Dragonfruit-SR1</spring-session-bom.version>
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
+        <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
+        <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
 
-        <!-- Web Templates -->
-        <!--
-        <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
-        -->
-        <!--
-      <thymeleaf-extras-java8time.version>3.0.4.RELEASE</thymeleaf-extras-java8time.version>
-       -->
-        <!--
-            <thymeleaf-extras-springsecurity.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity.version>
-             -->
-
-   <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
-
-        <!--
-   <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
-       -->
-        <!--
-  <thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
-    -->
-  <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
-
-
-  <!-- Webjars -->
+        <!-- Webjars -->
         <webjars.bootstrap.version>4.5.2</webjars.bootstrap.version>
         <webjars.jquery.version>3.5.1</webjars.jquery.version>
         <webjars.popper.js.version>1.16.0</webjars.popper.js.version>
@@ -133,10 +113,6 @@
         <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
-        <!--
-        TODO: maven-changes-plugin is broken #131
-        <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
-        -->
         <asciidoctor-maven-plugin.version>1.5.8</asciidoctor-maven-plugin.version>
         <doxia-module-markdown.version>1.9.1</doxia-module-markdown.version>
     </properties>
@@ -178,15 +154,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            -->
             <dependency>
                 <groupId>org.springframework.integration</groupId>
                 <artifactId>spring-integration-bom</artifactId>
@@ -223,14 +190,12 @@
                 <version>${webjars.ckeditor.version}</version>
             </dependency>
             <!-- Thymeleaf -->
-            <!-- TODO check dependency: thymeleaf-testing -->
             <dependency>
                 <groupId>org.thymeleaf</groupId>
                 <artifactId>thymeleaf-testing</artifactId>
                 <version>${thymeleaf-testing.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- TODO check dependency: thymeleaf-spring-data-dialect -->
             <dependency>
                 <groupId>io.github.jpenren</groupId>
                 <artifactId>thymeleaf-spring-data-dialect</artifactId>
@@ -382,14 +347,6 @@
                 <version>${maven-surefire-report-plugin.version}</version>
                 <type>maven-plugin</type>
             </dependency>
-            <!--
-            <dependency>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <version>${maven-changes-plugin.version}</version>
-                <type>maven-plugin</type>
-            </dependency>
-            -->
             <dependency>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -453,19 +410,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- TODO #102 check dependency: spring-boot-configuration-processor -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- TODO #103 check dependency: spring-boot-properties-migrator
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-properties-migrator</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        -->
         <!-- spring-boot-starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -503,12 +453,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
         </dependency>
-        <!-- TODO #107 check dependency: spring-boot-starter-mustache
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mustache</artifactId>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -659,12 +603,10 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-data</artifactId>
         </dependency>
-        <!-- TODO #114 check dependency: spring-session-core -->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
         </dependency>
-        <!-- TODO #116 check dependency: spring-session-jdbc -->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
@@ -1194,6 +1136,12 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <addResources>true</addResources>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
@@ -1442,6 +1390,12 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <addResources>true</addResources>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -1457,21 +1411,6 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <inherited>true</inherited>
             </plugin>
-            <!--
-            TODO: maven-changes-plugin is broken #131
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <reportSets>
-                    <reportSet>
-                        <id>id-github-report</id>
-                        <reports>
-                            <report>github-report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
