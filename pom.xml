@@ -1473,10 +1473,7 @@
                     <linkXref>true</linkXref>
                     <sourceEncoding>utf-8</sourceEncoding>
                     <minimumTokens>100</minimumTokens>
-                    <targetJdk>15</targetJdk>
-                    <!--
                     <targetJdk>${java.version}</targetJdk>
-                    -->
                     <excludeRoots>
                         <excludeRoot>target</excludeRoot>
                     </excludeRoots>
