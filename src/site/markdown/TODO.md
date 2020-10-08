@@ -24,16 +24,21 @@
 * doc [Spring.io Refence-Doc: spring-ws supports_ws_security](https://docs.spring.io/spring-ws/docs/3.0.8.RELEASE/reference/#_supports_ws_security)
 * doc [Spring.io Guide: producing-web-service](https://spring.io/guides/gs/producing-web-service/)
 
-## 1.8.13
+## 1.8.14
+* fixed #154 try out java15
+
+## 1.8.15
+* issue #154 try out java15
+* issue #17 add Security config for API
+* issue #151 /rest/measurement/all.xml HTTP Status 406 – Not Acceptable
 * issue #97 check dependency: jsoup
 * issue #99 check dependency: asm
 * issue #100 check dependency: attoparser
 * issue #98 check dependency: opencsv
 * issue #82 implement void updateLastLoginTimestamp(UserAccountBean user);
-* issue #151 /rest/measurement/all.xml HTTP Status 406 – Not Acceptable
-* issue #150 http://localhost:8080/rest/measurement/all XML broken
-* issue #149 http://localhost:8080/rest/measurement/all JSON broken
-* issue #131 maven-changes-plugin is broken
-* issue #17 add Security config for API
+
+
+
+
 
 

@@ -16,7 +16,7 @@ function firstSetup() {
     showSettings
     ./mvnw dependency:purge-local-repository
     ./mvnw -e $TW_SKIP_TESTS clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
-    ./mvnw -e $TW_SKIP_TESTS clean package spring-boot:repackage site
+    ./mvnw -e $TW_SKIP_TESTS clean package spring-boot:repackage site site:deploy
 }
 
 function setupTravis() {
@@ -27,7 +27,7 @@ function setupTravis() {
     ./mvnw -e $TW_SKIP_TESTS -B -V dependency:purge-local-repository clean && \
     ./mvnw -e $TW_SKIP_TESTS -B -V dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree && \
     ./mvnw -e $TW_SKIP_TESTS -B -V clean package spring-boot:repackage && \
-    ./mvnw -e $TW_SKIP_TESTS -B -V site
+    ./mvnw -e $TW_SKIP_TESTS -B -V site site:deploy
 }
 
 function main() {
