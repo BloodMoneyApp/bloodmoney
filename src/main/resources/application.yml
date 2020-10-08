@@ -177,6 +177,8 @@ logging:
                 cfg: INFO
                 service: INFO
                 result: INFO
+                engine:
+                    internal: WARN
             ch:
                 qos: WARN
             woehlke:
@@ -224,6 +226,8 @@ logging:
             springframework: INFO
             hibernate:
                 SQL: INFO
+                engine:
+                    internal: WARN
             ch:
                 qos: WARN
             postgresql: WARN
