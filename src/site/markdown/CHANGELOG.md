@@ -206,6 +206,9 @@
 
 ## 1.8.14
 * issue #154 try out java15
+
+## 1.8.15
+* issue #154 try out java15
 * issue #17 add Security config for API
 * issue #151 /rest/measurement/all.xml HTTP Status 406 – Not Acceptable
 * issue #97 check dependency: jsoup
