@@ -7,6 +7,10 @@
 
 Webapp for storing Blood Pressure Measurements for one Person.
 
+## Deployments
+* https://bloodmoney.herokuapp.com/
+* http://localhost:8080/
+
 ## github
 * [Issues](https://github.com/BloodMoneyApp/bloodmoney/issues)
 * [Projects](https://github.com/BloodMoneyApp/bloodmoney/projects)

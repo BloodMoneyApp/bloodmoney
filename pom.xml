@@ -61,7 +61,7 @@
     </distributionManagement>
 
     <properties>
-        <java.version>13</java.version>
+        <java.version>15</java.version>
         <version.maven>3.6.3</version.maven>
 
         <spring-boot-maven-plugin.version>${project.parent.version}</spring-boot-maven-plugin.version>
