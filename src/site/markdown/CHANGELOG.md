@@ -198,11 +198,11 @@
 * fixed #112 check dependency: spring-boot-starter-test
 
 ## 1.8.13
-* fixed #149 http://localhost:8080/rest/measurement/all JSON broken
 * fixed #131 maven-changes-plugin is broken
 * fixed #147 REST button.export.xml
 * fixed #148 REST button.export.json
-* fixed #150 http://localhost:8080/rest/measurement/all XML broken
+* fixed #149 http://localhost:8080/rest/measurement/all.json JSON broken
+* fixed #150 http://localhost:8080/rest/measurement/all.xml XML broken
 
 ## 1.8.14
 * issue #154 try out java15
