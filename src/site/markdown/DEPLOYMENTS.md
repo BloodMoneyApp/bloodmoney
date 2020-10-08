@@ -11,7 +11,7 @@
 * [Todo](docs/TODO.md)
 * [Howto](docs/HOWTO.md)
 
-# Heroku Deployment Steps
+## Heroku Deployment Steps
 * prepare DatabaseSchemaEvolution for Deployment 
 * prepare REST-API for Deployment
 * prepare Frontend for Deployments
