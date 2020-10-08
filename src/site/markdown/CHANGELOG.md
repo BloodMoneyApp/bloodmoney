@@ -205,7 +205,7 @@
 * fixed #150 http://localhost:8080/rest/measurement/all.xml XML broken
 
 ## 1.8.14
-* issue #154 try out java15
+* fixed #154 try out java15
 
 ## 1.8.15
 * issue #154 try out java15

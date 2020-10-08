@@ -25,7 +25,7 @@
 * doc [Spring.io Guide: producing-web-service](https://spring.io/guides/gs/producing-web-service/)
 
 ## 1.8.14
-* issue #154 try out java15
+* fixed #154 try out java15
 
 ## 1.8.15
 * issue #154 try out java15
