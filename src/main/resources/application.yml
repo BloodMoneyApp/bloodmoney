@@ -233,21 +233,21 @@ logging:
             postgresql: WARN
             woehlke:
                 bloodmoney:
-                    config: DEBUG
+                    config: INFO
                     frontend:
-                        api: DEBUG
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
+                        api: INFO
+                        config: INFO
+                        controller: INFO
+                        model: INFO
                     oodm:
-                        entities: DEBUG
-                        repositories: DEBUG
+                        entities: INFO
+                        repositories: INFO
                         services:
-                            impl: DEBUG
+                            impl: INFO
                     user:
-                        config: DEBUG
-                        controller: DEBUG
-                        model: DEBUG
+                        config: INFO
+                        controller: INFO
+                        model: INFO
                         services:
-                            impl: DEBUG
+                            impl: INFO
 debug: false
