@@ -9,7 +9,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.0</version>
+        <version>2.4.1</version>
         <relativePath />
     </parent>
 
@@ -69,19 +69,19 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <spring-boot-maven-plugin.version>${project.parent.version}</spring-boot-maven-plugin.version>
-        <spring-data-releasetrain.version>Neumann-SR4</spring-data-releasetrain.version>
-        <spring-session-bom.version>Dragonfruit-SR1</spring-session-bom.version>
+        <spring-data-releasetrain.version>Neumann-SR6</spring-data-releasetrain.version>
+        <spring-session-bom.version>2020.0.1</spring-session-bom.version>
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
         <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
         <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
 
         <!-- Webjars -->
-        <webjars.bootstrap.version>4.5.2</webjars.bootstrap.version>
+        <webjars.bootstrap.version>4.5.3</webjars.bootstrap.version>
         <webjars.jquery.version>3.5.1</webjars.jquery.version>
-        <webjars.popper.js.version>1.16.0</webjars.popper.js.version>
-        <webjars.font-awesome.version>5.14.0</webjars.font-awesome.version>
+        <webjars.popper.js.version>2.5.4</webjars.popper.js.version>
+        <webjars.font-awesome.version>5.15.1</webjars.font-awesome.version>
         <webjars.ckeditor.version>18.0.0</webjars.ckeditor.version>
-        <opencsv.version>5.2</opencsv.version>
+        <opencsv.version>5.3</opencsv.version>
 
         <!-- Unit and Integration Testing -->
         <skipTests>true</skipTests>

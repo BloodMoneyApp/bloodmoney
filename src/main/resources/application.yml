@@ -51,7 +51,7 @@ spring:
         store-type: jdbc
         jdbc:
             initialize-schema: ALWAYS
-            cleanup-cron: 0 * * * *simpleworklist *
+            cleanup-cron: 0 * * * * *
             #schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
             #table-name: SPRING_SESSION
     main:
