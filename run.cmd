@@ -1,4 +1,4 @@
-call src\main\cmd\setenv.cmd
+rem call src\main\cmd\setenv.cmd
 
 goto:MAIN
 
@@ -19,10 +19,7 @@ echo ---------------------------- run PostgresSQL ------------------------------
 set BLOODMONEY_DEV_TESTING=false
 set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEFAULT%
 set JAVA_OPTS=%JAVA_OPTS_DEFAULT%
-cmd /c gradlew -i clean bootJar
-cmd /c gradlew -i composeUp
-cmd /c gradlew -i bootRun
-cmd /c gradlew -i composeDown
+cmd /c mvnw -e -DskipTests=true dependency:purge-local-repository clean package spring-boot:run
 goto:END
 
 :test
