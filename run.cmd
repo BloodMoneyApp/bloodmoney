@@ -19,7 +19,7 @@ echo ---------------------------- run PostgresSQL ------------------------------
 set BLOODMONEY_DEV_TESTING=false
 set SPRING_PROFILES_ACTIVE=%SPRING_PROFILES_ACTIVE_DEFAULT%
 set JAVA_OPTS=%JAVA_OPTS_DEFAULT%
-cmd /c mvnw -e -DskipTests=true dependency:purge-local-repository clean package spring-boot:run
+cmd /c mvnw -e -DskipTests=true dependency:purge-local-repository clean package spring-boot:repackage spring-boot:run
 goto:END
 
 :test
