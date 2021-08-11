@@ -79,7 +79,7 @@ function main() {
     ## run
     ## testApp
     ##testAppDev
-    # firstSetup
+    firstSetup
     # setupTravis
     runDev
 }
