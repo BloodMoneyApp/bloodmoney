@@ -15,7 +15,7 @@ services:
             POSTGRES_USER: bloodmoney
             POSTGRES_DB: bloodmoney
     bloodmoney_dbref:
-        image: postgres:12.4
+        image: postgres:13.3
         restart: always
         networks:
             - net

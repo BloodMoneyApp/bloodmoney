@@ -1115,7 +1115,7 @@
                 <groupId>com.dkanejs.maven.plugins</groupId>
                 <artifactId>docker-compose-maven-plugin</artifactId>
                 <configuration>
-                    <composeFile>${project.basedir}/src/main/docker/docker-compose.yml</composeFile>
+                    <composeFile>docker-compose.yml</composeFile>
                     <verbose>${docker-compose-maven-plugin.verbose}</verbose>
                     <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
                     <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
