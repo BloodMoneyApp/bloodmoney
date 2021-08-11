@@ -15,8 +15,9 @@ function firstSetup() {
     export TW_SKIP_TESTS='-DskipTests=true'
     showSettings
     ./mvnw dependency:purge-local-repository
-    ./mvnw -e $TW_SKIP_TESTS clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
-    ./mvnw -e $TW_SKIP_TESTS clean package spring-boot:repackage site site:deploy
+    ./mvnw -e $TW_SKIP_TESTS clean install dependency:tree dependency:resolve dependency:resolve-plugins dependency:sources
+    ./mvnw -e $TW_SKIP_TESTS site site:deploy
+    ./mvnw -e $TW_SKIP_TESTS clean package spring-boot:repackage
 }
 
 function setupTravis() {

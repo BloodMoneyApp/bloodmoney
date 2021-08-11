@@ -53,7 +53,7 @@ function firstSetup() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     showSettings
     ./mvnw dependency:purge-local-repository
-    ./mvnw -e -DskipTests=true clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
+    ./mvnw -e -DskipTests=true clean install dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
     ./mvnw -e -DskipTests=true clean package site
 }
 
