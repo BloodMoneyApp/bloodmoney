@@ -834,13 +834,6 @@
             <artifactId>maven-surefire-report-plugin</artifactId>
             <type>maven-plugin</type>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-changes-plugin</artifactId>
-            <type>maven-plugin</type>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
