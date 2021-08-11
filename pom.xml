@@ -1088,8 +1088,8 @@
                                 <requireFilesExist>
                                     <files>
                                         <file>${project.basedir}/run.sh</file>
-                                        <file>${project.basedir}/etc/bash/setenv.sh</file>
-                                        <file>${project.basedir}/etc/bash/psql.sh</file>
+                                        <file>${project.basedir}/src/main/bash/setenv.sh</file>
+                                        <file>${project.basedir}/src/main/bash/psql.sh</file>
                                         <file>${project.basedir}/docker-start.sh</file>
                                         <file>${project.basedir}/docker-stop.sh</file>
                                         <file>${project.basedir}/.github/FUNDING.yml</file>
