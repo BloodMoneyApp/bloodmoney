@@ -1075,16 +1075,16 @@
                                 <requireFilesExist>
                                     <files>
                                         <file>${project.basedir}/run.sh</file>
-                                        <file>${project.basedir}/src/main/bash/setenv.sh</file>
-                                        <file>${project.basedir}/src/main/bash/psql.sh</file>
+                                        <file>${project.basedir}/etc/bash/setenv.sh</file>
+                                        <file>${project.basedir}/etc/bash/psql.sh</file>
                                         <file>${project.basedir}/docker-start.sh</file>
                                         <file>${project.basedir}/docker-stop.sh</file>
                                         <file>${project.basedir}/.github/FUNDING.yml</file>
                                         <file>${project.basedir}/.github/workflows/maven.yml</file>
                                         <file>${project.basedir}/_config.yml</file>
                                         <file>${project.basedir}/app.json</file>
-                                        <file>${project.basedir}/Procfile</file>s
-                                        <file>${project.basedir}/src/main/docker/docker-compose.yml</file>
+                                        <file>${project.basedir}/Procfile</file>
+                                        <file>${project.basedir}/docker-compose.yml</file>
                                     </files>
                                 </requireFilesExist>
                             </rules>

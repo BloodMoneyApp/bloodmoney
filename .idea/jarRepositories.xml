@@ -62,6 +62,16 @@
       <option name="url" value="http://tw-thinkpad:8081/artifactory/all" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="mvn" />
+      <option name="url" value="http://tw-asus7:8081/artifactory/mvn" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="mvn" />
+      <option name="url" value="http://tw-asus7:8081/artifactory/mvn" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="all" />
       <option name="url" value="http://localhost:8081/artifactory/all" />
