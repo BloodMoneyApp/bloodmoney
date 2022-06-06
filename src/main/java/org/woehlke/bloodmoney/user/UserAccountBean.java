@@ -1,9 +1,10 @@
 package org.woehlke.bloodmoney.user;
 
 import lombok.*;
-import org.hibernate.validator.constraints.SafeHtml;
+//import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Locale;
@@ -16,14 +17,17 @@ public class UserAccountBean implements Serializable {
     private static final long serialVersionUID = 4168992193351369032L;
 
     @Email
+    @NotNull
+    @NotBlank
     private String userEmail;
 
-    @SuppressWarnings("deprecation")
-    @SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
+    @NotNull
+    @NotBlank
+    //@SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
     private String userPassword;
 
-    @SuppressWarnings("deprecation")
-    @SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
+    @NotNull
+    //@SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
     private String userFullname;
 
     @NotNull
@@ -41,11 +45,12 @@ public class UserAccountBean implements Serializable {
     @NotNull
     private Boolean enabled=true;
 
-    @SuppressWarnings("deprecation")
     public UserAccountBean(
         @Email String userEmail,
-        @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE) String userPassword,
-        @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE) String userFullname
+        //@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+        String userPassword,
+        //@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+        String userFullname
     ) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;

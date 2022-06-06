@@ -4,12 +4,12 @@
 
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
-    <version>1.8.18-SNAPSHOT</version>
+    <version>1.8.19-SNAPSHOT</version>
 	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.9</version>
+        <version>2.7.0</version>
         <relativePath />
     </parent>
 
@@ -62,18 +62,20 @@
 
     <properties>
         <java.version>11</java.version>
-        <version.maven>3.6.2</version.maven>
+        <version.maven>3.6.3</version.maven>
         <pmdVersion>6.28.0</pmdVersion>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <spring-boot-maven-plugin.version>${project.parent.version}</spring-boot-maven-plugin.version>
-        <spring-data-releasetrain.version>Neumann-SR6</spring-data-releasetrain.version>
-        <spring-session-bom.version>2020.0.1</spring-session-bom.version>
+        <spring-data-releasetrain.version>Neumann-SR9</spring-data-releasetrain.version>
+        <spring-session-bom.version>2021.2.0</spring-session-bom.version>
+        <!--
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
-        <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
-        <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
+        -->
+        <thymeleaf-testing.version>3.1.0.M2</thymeleaf-testing.version>
+        <thymeleaf-spring-data-dialect.version>3.5.0</thymeleaf-spring-data-dialect.version>
 
         <!-- Webjars -->
         <webjars.bootstrap.version>4.5.3</webjars.bootstrap.version>
@@ -95,7 +97,7 @@
         <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
 
         <!-- SCM and Releasing -->
-        <maven.scm.version>1.11.2</maven.scm.version>
+        <maven.scm.version>1.13.0</maven.scm.version>
 
         <!-- Docker -->
         <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
