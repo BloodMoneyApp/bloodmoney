@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -34,7 +35,13 @@ import java.util.Locale;
 @EnableWebMvc
 @EnableSpringDataWebSupport
 @EnableAutoConfiguration
-public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implements WebMvcConfigurer {
+public class BloodMoneyWebMvcConfig implements WebMvcConfigurer {
+
+    private final BloodMoneyProperties bloodMoneyProperties;
+    @Autowired
+    public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
+        this.bloodMoneyProperties = bloodMoneyProperties;
+    }
 
     @Bean
     public Java8TimeDialect java8TimeDialect() {
@@ -82,10 +89,4 @@ public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implem
         }
     }
 
-    private final BloodMoneyProperties bloodMoneyProperties;
-
-    @Autowired
-    public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
-        this.bloodMoneyProperties = bloodMoneyProperties;
-    }
 }
