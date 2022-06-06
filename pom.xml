@@ -86,7 +86,7 @@
         <xmlunit.version>2.6.4</xmlunit.version>
         <htmlunit.version>2.43.0</htmlunit.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <jsoup.version>1.13.1</jsoup.version>
+        <jsoup.version>1.14.2</jsoup.version>
 
         <!-- Database Evolution -->
         <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
