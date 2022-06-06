@@ -24,9 +24,11 @@ public class BloodMoneyUserAccountAuthorizationServiceImpl implements BloodMoney
 
     @Override
     public boolean confirmUserByLoginAndPassword(String userEmail, String userPassword) {
+        String email = bloodMoneyProperties.getUserConfig().getUserEmail();
+        String pwd = bloodMoneyProperties.getUserConfig().getUserPassword();
         return (
-            (userEmail.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0)
-            &&(userPassword.compareTo(bloodMoneyProperties.getUserConfig().getUserPassword())==0)
+            (userEmail.compareTo(email)==0)
+            &&(userPassword.compareTo(pwd)==0)
         );
     }
 
