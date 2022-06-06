@@ -1,6 +1,6 @@
 dist: bionic
 language: java
-jdk: openjdk15
+jdk: openjdk11
 services:
     - docker
 env:
