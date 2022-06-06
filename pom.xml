@@ -397,7 +397,6 @@
             <optional>false</optional>
         </dependency>
         <!-- spring-boot runtime -->
-        <!-- TODO #101 check dependency: spring-boot-devtools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
