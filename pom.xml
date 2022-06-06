@@ -69,15 +69,6 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <spring-boot-maven-plugin.version>${project.parent.version}</spring-boot-maven-plugin.version>
-        <!--
-        <spring-data-releasetrain.version>Neumann-SR9</spring-data-releasetrain.version>
-        -->
-        <!--
-        <spring-session-bom.version>2021.2.0</spring-session-bom.version>
-        -->
-        <!--
-        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
-        -->
         <thymeleaf-testing.version>3.1.0.M2</thymeleaf-testing.version>
         <thymeleaf-spring-data-dialect.version>3.5.0</thymeleaf-spring-data-dialect.version>
 
@@ -442,21 +433,15 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- TODO #104 check dependency: spring-boot-starter-data-rest       -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
-
-        <!-- TODO #105 check dependency: spring-boot-starter-hateoas -->
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
 
-        <!-- TODO #106 check dependency: spring-boot-starter-jersey -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
@@ -480,7 +465,6 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- TODO #108 check dependency: spring-boot-starter-web-services    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
