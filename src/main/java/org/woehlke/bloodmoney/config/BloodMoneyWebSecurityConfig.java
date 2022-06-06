@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -16,7 +17,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.woehlke.bloodmoney.user.BloodMoneyUserAccountDetailsService;
+import org.woehlke.bloodmoney.user.UserAccountLoginSuccessService;
 
 @Configuration
 @EnableWebSecurity
@@ -24,8 +28,18 @@ import org.woehlke.bloodmoney.user.BloodMoneyUserAccountDetailsService;
 @Import({
     BloodMoneyWebMvcConfig.class
 })
+@EnableWebMvc
 @EnableAutoConfiguration
 public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    //private final AuthenticationSuccessHandler authenticationSuccessHandler;
+    private final UserDetailsService userAccountSecurityService;
+
+    //private final UserAccountLoginSuccessService userAccountLoginSuccessService;
+    //private final LocaleResolver localeResolver;
+
+    private final BloodMoneyProperties bloodMoneyProperties;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -48,10 +62,10 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
             )
             .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
             .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
-            .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
-            .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
             .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
-            .successHandler(this.authenticationSuccessHandler)
+            .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
+            .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
+            //.successHandler(this.authenticationSuccessHandler)
             .permitAll()
             .and()
             .logout()
@@ -61,8 +75,9 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll();
     }
 
+
     /**
-     * https://asecuritysite.com/encryption/PBKDF2z
+     * https://asecuritysite.com/encryption/PBKDF2
      * @return PasswordEncoder encoder
      */
     @Bean
@@ -73,6 +88,14 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
         Pbkdf2PasswordEncoder encoder = (new Pbkdf2PasswordEncoder(secret,iterations,hashWidth));
         encoder.setEncodeHashAsBase64(true);
         return encoder;
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(  this.userAccountSecurityService);
+        authProvider.setPasswordEncoder(encoder());
+        return authProvider;
     }
 
     @Bean
@@ -88,31 +111,19 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
         return filter;
     }
 
-    @Bean
-    public BloodMoneyWebMvcConfig mvcConfig(){
-        return this.mvcConfig;
-    }
-
-
-    private final AuthenticationManagerBuilder authenticationManagerBuilder;
-    private final AuthenticationSuccessHandler authenticationSuccessHandler;
-    private final UserDetailsService userAccountSecurityService;
-    private final BloodMoneyProperties bloodMoneyProperties;
-    private final BloodMoneyWebMvcConfig mvcConfig;
-
     @Autowired
     public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder auth,
-        AuthenticationSuccessHandler authenticationSuccessHandler,
+        //AuthenticationSuccessHandler authenticationSuccessHandler,
         BloodMoneyUserAccountDetailsService bloodMoneyUserAccountDetailsService,
-        BloodMoneyProperties bloodMoneyProperties,
-        BloodMoneyWebMvcConfig bloodMoneyWebMvcConfig
-    ) {
+        //UserAccountLoginSuccessService userAccountLoginSuccessService,
+        //LocaleResolver localeResolver,
+        BloodMoneyProperties bloodMoneyProperties) {
         this.authenticationManagerBuilder = auth;
-        this.authenticationSuccessHandler = authenticationSuccessHandler;
+        //this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.userAccountSecurityService = bloodMoneyUserAccountDetailsService;
+        //this.userAccountLoginSuccessService = userAccountLoginSuccessService;
+        //this.localeResolver = localeResolver;
         this.bloodMoneyProperties = bloodMoneyProperties;
-        this.mvcConfig = bloodMoneyWebMvcConfig;
     }
-
 }

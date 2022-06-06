@@ -4,12 +4,12 @@
 
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
-    <version>1.8.18-SNAPSHOT</version>
+    <version>1.8.19-SNAPSHOT</version>
 	<packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.9</version>
+        <version>2.7.0</version>
         <relativePath />
     </parent>
 
@@ -62,18 +62,15 @@
 
     <properties>
         <java.version>11</java.version>
-        <version.maven>3.6.2</version.maven>
+        <version.maven>3.6.3</version.maven>
         <pmdVersion>6.28.0</pmdVersion>
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <spring-boot-maven-plugin.version>${project.parent.version}</spring-boot-maven-plugin.version>
-        <spring-data-releasetrain.version>Neumann-SR6</spring-data-releasetrain.version>
-        <spring-session-bom.version>2020.0.1</spring-session-bom.version>
-        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
-        <thymeleaf-testing.version>3.0.4.RELEASE</thymeleaf-testing.version>
-        <thymeleaf-spring-data-dialect.version>3.4.1</thymeleaf-spring-data-dialect.version>
+        <thymeleaf-testing.version>3.1.0.M2</thymeleaf-testing.version>
+        <thymeleaf-spring-data-dialect.version>3.5.0</thymeleaf-spring-data-dialect.version>
 
         <!-- Webjars -->
         <webjars.bootstrap.version>4.5.3</webjars.bootstrap.version>
@@ -95,7 +92,7 @@
         <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
 
         <!-- SCM and Releasing -->
-        <maven.scm.version>1.11.2</maven.scm.version>
+        <maven.scm.version>1.13.0</maven.scm.version>
 
         <!-- Docker -->
         <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
@@ -131,13 +128,6 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>${spring-data-releasetrain.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.session</groupId>
                 <artifactId>spring-session-bom</artifactId>
                 <version>${spring-session-bom.version}</version>
@@ -166,12 +156,11 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.ws</groupId>
-                <artifactId>spring-ws</artifactId>
-                <version>3.0.10.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-ws</artifactId>
+                <version>${spring-integration.version}</version>
             </dependency>
+
             <!-- webjars -->
             <dependency>
                 <groupId>org.webjars</groupId>
@@ -407,24 +396,18 @@
             <scope>provided</scope>
             <optional>false</optional>
         </dependency>
-        <!-- spring-boot runtime -->
-        <!-- TODO #101 check dependency: spring-boot-devtools -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- spring-boot-starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jta-atomikos</artifactId>
@@ -437,26 +420,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- TODO #104 check dependency: spring-boot-starter-data-rest       -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
-
-        <!-- TODO #105 check dependency: spring-boot-starter-hateoas -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        <!-- TODO #106 check dependency: spring-boot-starter-jersey -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -469,7 +452,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <!-- TODO #108 check dependency: spring-boot-starter-web-services    -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
@@ -586,7 +569,6 @@
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-support</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -615,10 +597,9 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
         </dependency>
-        <!-- TODO #117 check dependency: spring-data-rest-hal-explore    -->
         <dependency>
             <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-hal-explorer</artifactId>
+            <artifactId>spring-data-commons</artifactId>
         </dependency>
 
         <!-- Frontend Webjars -->
@@ -715,13 +696,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- TODO  #130 check dependency: spring-restdocs-mockmvc
-        <dependency>
-            <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-mockmvc</artifactId>
-            <scope>test</scope>
-        </dependency>
-         -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>

@@ -5,11 +5,14 @@ server:
     compression:
         enabled: true
         min-response-size: 2048
-endpoints:
+    servlet:
+        context-path: "/bloodmoney"
     endpoints:
         shutdown:
             enabled: ${BLOODMONEY_DEV_TESTING}
 spring:
+    config:
+        name: bloodmoney
     liquibase:
         enabled: false
     devtools:
@@ -23,8 +26,6 @@ spring:
         username:  ${BLOODMONEY_DS_USR}
         password:  ${BLOODMONEY_DS_PWD}
         driver-class-name:  org.postgresql.Driver
-        platform: POSTGRESQL
-        initialization-mode: always
     jta:
         atomikos:
             connectionfactory:
@@ -56,6 +57,10 @@ spring:
             #table-name: SPRING_SESSION
     main:
         allow-bean-definition-overriding: true
+    sql:
+        init:
+            platform: POSTGRESQL
+            mode: ALWAYS
 org:
     woehlke:
         bloodmoney:

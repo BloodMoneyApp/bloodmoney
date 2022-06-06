@@ -6,6 +6,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.LocaleResolver;
 
 import javax.servlet.ServletException;
@@ -15,7 +18,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 @Slf4j
-@Component
+@Service
+@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private final UserAccountLoginSuccessService userAccountLoginSuccessService;
@@ -23,7 +27,10 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
     private final LocaleResolver localeResolver;
 
     @Autowired
-    public LoginSuccessHandler(UserAccountLoginSuccessService userAccountLoginSuccessService, LocaleResolver localeResolver) {
+    public LoginSuccessHandler(
+        UserAccountLoginSuccessService userAccountLoginSuccessService,
+        LocaleResolver localeResolver
+    ) {
         super();
         this.userAccountLoginSuccessService = userAccountLoginSuccessService;
         this.localeResolver = localeResolver;

@@ -1,7 +1,7 @@
 package org.woehlke.bloodmoney.user;
 
 import lombok.*;
-import org.hibernate.validator.constraints.SafeHtml;
+
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,18 +23,16 @@ public class LoginFormBean implements Serializable {
     private String userEmail;
 
     //TODO: Messages i18n
-    @SuppressWarnings("deprecation")
-    @SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
+    //@SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
     @NotNull(message = "Password is compulsory")
     @NotBlank(message = "Password is compulsory")
     private String userPassword;
 
-    @SuppressWarnings("deprecation")
     public LoginFormBean(
         @NotNull(message = "Email Address is compulsory")
         @NotBlank(message = "Email Address is compulsory")
         @Email(message = "Email Address is not a valid format") String userEmail,
-        @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+        //@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
         @NotNull(message = "Password is compulsory")
         @NotBlank(message = "Password is compulsory") String userPassword) {
         this.userEmail = userEmail;
