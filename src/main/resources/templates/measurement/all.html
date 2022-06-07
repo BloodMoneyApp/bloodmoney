@@ -13,14 +13,14 @@
             <i class="fa-solid fa-heart-pulse"></i>
             <span th:utext="#{org.woehlke.mybp.measurement.all.title}">All Measurements</span>
         </h1>
-        <p class="tw-content-subtitle">
-            <span th:text="#{org.woehlke.mybp.measurement.all.subtitle.long}"></span>
-        </p>
+        <h2>
+            <small th:text="#{org.woehlke.mybp.measurement.all.subtitle.long}"></small>
+        </h2>
         <p class="tw-content-subtitle">
             <span class="row">
                 <span class="col">
                     <a href="#" th:href="@{/measurement/add}" class="btn btn-primary btn-block" role="button">
-                        <i class="fa-solid fa-heart-circle-plus"></i>
+                        <i class="fa-solid fa-square-plus"></i>
                         <span th:text="#{org.woehlke.mybp.measurement.all.button.add}">Add New Measurement</span>
                     </a>
                 </span>
