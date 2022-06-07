@@ -118,6 +118,167 @@
         <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <name>JCenter Repository</name>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <name>Central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>sonatype-releases</id>
+            <name>Sonatype Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+        </repository>
+        <!--
+        <repository>
+            <id>springio-plugins-release</id>
+            <name>Spring Plugins Repository</name>
+            <url>https://repo.spring.io/plugins-release/</url>
+        </repository>
+        <repository>
+            <id>springio-libs-release</id>
+            <name>Spring Lib Release Repository</name>
+            <url>https://repo.spring.io/libs-release/</url>
+        </repository>
+        <repository>
+            <id>spring-libs-milestone</id>
+            <name>Spring Lib M Repository</name>
+            <url>https://repo.spring.io/libs-milestone/</url>
+        </repository>
+        -->
+        <repository>
+            <id>apache-releases</id>
+            <name>Apache Releases</name>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>atlassian-public</id>
+            <name>Atlassian Repository</name>
+            <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
+        </repository>
+        <repository>
+            <id>jboss-releases</id>
+            <name>JBoss Releases Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>jboss-ea</id>
+            <name>JBossEA Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/ea/</url>
+        </repository>
+        <repository>
+            <id>wso2-public</id>
+            <name>WSO2 Public Repository</name>
+            <url>https://maven.wso2.org/nexus/content/repositories/public/</url>
+        </repository>
+        <!--
+        <repository>
+            <id>hortonworks-releases</id>
+            <name>Hortonworks Repository</name>
+            <url>https://repo.hortonworks.com/content/repositories/releases/</url>
+        </repository>
+        -->
+        <repository>
+            <id>adobe-public</id>
+            <name>AdobePublic Repository</name>
+            <url>https://repo.adobe.com/nexus/content/repositories/public/</url>
+        </repository>
+        <repository>
+            <id>atlassian-3rdparty</id>
+            <name>Atlassian 3rd-P Old Repository</name>
+            <url>https://packages.atlassian.com/3rdparty/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jcenter</id>
+            <name>JCenter Repository</name>
+            <url>https://jcenter.bintray.com/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>central</id>
+            <name>Central</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>sonatype-releases</id>
+            <name>Sonatype Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+        </pluginRepository>
+        <!--
+        <pluginRepository>
+            <id>springio-plugins-release</id>
+            <name>Spring Plugins Repository</name>
+            <url>https://repo.spring.io/plugins-release/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>springio-libs-release</id>
+            <name>Spring Lib Release Repository</name>
+            <url>https://repo.spring.io/libs-release/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-libs-milestone</id>
+            <name>Spring Lib M Repository</name>
+            <url>https://repo.spring.io/libs-milestone/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone/</url>
+        </pluginRepository>
+        -->
+        <pluginRepository>
+            <id>apache-releases</id>
+            <name>Apache Releases</name>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>atlassian-public</id>
+            <name>Atlassian Repository</name>
+            <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-releases</id>
+            <name>JBoss Releases Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-ea</id>
+            <name>JBossEA Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/ea/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>wso2-public</id>
+            <name>WSO2 Public Repository</name>
+            <url>https://maven.wso2.org/nexus/content/repositories/public/</url>
+        </pluginRepository>
+        <!--
+        <pluginRepository>
+            <id>hortonworks-releases</id>
+            <name>Hortonworks Repository</name>
+            <url>https://repo.hortonworks.com/content/repositories/releases/</url>
+        </pluginRepository>
+        -->
+        <pluginRepository>
+            <id>adobe-public</id>
+            <name>AdobePublic Repository</name>
+            <url>https://repo.adobe.com/nexus/content/repositories/public/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>atlassian-3rdparty</id>
+            <name>Atlassian 3rd-P Old Repository</name>
+            <url>https://packages.atlassian.com/3rdparty/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
