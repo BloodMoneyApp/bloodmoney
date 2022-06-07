@@ -15,13 +15,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.woehlke.bloodmoney.user.BloodMoneyUserAccountDetailsService;
-import org.woehlke.bloodmoney.user.UserAccountLoginSuccessService;
 
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 @EnableSpringDataWebSupport
@@ -33,12 +31,7 @@ import org.woehlke.bloodmoney.user.UserAccountLoginSuccessService;
 public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
-    //private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final UserDetailsService userAccountSecurityService;
-
-    //private final UserAccountLoginSuccessService userAccountLoginSuccessService;
-    //private final LocaleResolver localeResolver;
-
     private final BloodMoneyProperties bloodMoneyProperties;
 
     @Override
@@ -75,9 +68,8 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll();
     }
 
-
     /**
-     * https://asecuritysite.com/encryption/PBKDF2
+     * @see <a href="https://asecuritysite.com/encryption/PBKDF2">Encrypt with PBKDF2</a>
      * @return PasswordEncoder encoder
      */
     @Bean
@@ -114,16 +106,10 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder auth,
-        //AuthenticationSuccessHandler authenticationSuccessHandler,
         BloodMoneyUserAccountDetailsService bloodMoneyUserAccountDetailsService,
-        //UserAccountLoginSuccessService userAccountLoginSuccessService,
-        //LocaleResolver localeResolver,
         BloodMoneyProperties bloodMoneyProperties) {
         this.authenticationManagerBuilder = auth;
-        //this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.userAccountSecurityService = bloodMoneyUserAccountDetailsService;
-        //this.userAccountLoginSuccessService = userAccountLoginSuccessService;
-        //this.localeResolver = localeResolver;
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
 }

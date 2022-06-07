@@ -44,7 +44,7 @@ public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasure
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public BloodPressureMeasurementEntity getOne(Long id) {
-        return this.bloodPressureMeasurementRepository.getOne(id);
+        return this.bloodPressureMeasurementRepository.getReferenceById(id);
     }
 
     @Override
