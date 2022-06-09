@@ -207,7 +207,7 @@ spring:
         admin:
             enabled: false
     datasource:
-        url:  jdbc:postgresql://bloodmoney:5432/bloodmoney
+        url:  jdbc:postgresql://localhost:5432/bloodmoney
         username: bloodmoney
         password: bloodmoneypwd
         driver-class-name:  org.postgresql.Driver
@@ -233,7 +233,7 @@ endpoints:
         shutdown:
             enabled: false
 server:
-    port: 5000
+    port: 5050
     compression:
         enabled: true
 org:
