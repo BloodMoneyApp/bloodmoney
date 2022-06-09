@@ -133,8 +133,6 @@ server:
     compression:
         enabled: false
 logging:
-    file:
-        name: bloodmoney.log
     level:
         root: INFO
         javax: INFO
