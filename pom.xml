@@ -5,7 +5,7 @@
     <groupId>org.woehlke.bloodmoney</groupId>
     <artifactId>bloodmoney</artifactId>
     <version>1.8.21-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -67,6 +67,8 @@
 
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <spring-boot.repackage.layout>WAR</spring-boot.repackage.layout>
 
         <spring-boot-maven-plugin.version>${project.parent.version}</spring-boot-maven-plugin.version>
         <thymeleaf-testing.version>3.1.0.M2</thymeleaf-testing.version>

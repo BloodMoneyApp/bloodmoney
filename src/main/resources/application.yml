@@ -119,7 +119,8 @@ org:
 ---
 #Profile dev:
 spring:
-    profiles: dev
+    profiles:
+        active: dev
     thymeleaf:
         cache: false
     devtools:
@@ -196,7 +197,8 @@ debug: false
 ---
 #Profile default: Production ready. Heroku with PostgreSQL
 spring:
-    profiles: default
+    profiles:
+        active: default
     devtools:
         livereload:
             enabled: false
@@ -205,9 +207,9 @@ spring:
         admin:
             enabled: false
     datasource:
-        url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
-        username:  ${BLOODMONEY_DS_USR}
-        password:  ${BLOODMONEY_DS_PWD}
+        url:  jdbc:postgresql://bloodmoney:5432/bloodmoney
+        username: bloodmoney
+        password: bloodmoneypwd
         driver-class-name:  org.postgresql.Driver
     session:
         store-type: jdbc
@@ -219,13 +221,33 @@ spring:
         init:
             platform: POSTGRESQL
             mode: always
+    jpa:
+        open-in-view: true
+        show-sql: true
+        database-platform: POSTGRESQL
+        hibernate:
+            #ddl-auto: create-drop update
+            ddl-auto: update
 endpoints:
     endpoints:
         shutdown:
             enabled: false
 server:
+    port: 5000
     compression:
         enabled: true
+org:
+    woehlke:
+        bloodmoney:
+            dev-testing: false
+            user-config:
+                userEmail: ${BLOODMONEY_USER_EMAIL}
+                userPassword: ${BLOODMONEY_USER_PASSWORD}
+                userFullname: ${BLOODMONEY_USER_FULLNAME}
+            web-security:
+                iterations: ${BLOODMONEY_USER_ITERATIONS}
+                hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+                secret: ${BLOODMONEY_USER_SECRET}
 logging:
     level:
         root: INFO
