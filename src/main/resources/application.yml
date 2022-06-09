@@ -136,6 +136,7 @@ logging:
     level:
         root: INFO
         javax: INFO
+        jakartaee: INFO
         com:
             atomikos: INFO
         org:
