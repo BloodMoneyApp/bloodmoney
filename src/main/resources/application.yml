@@ -228,6 +228,7 @@ spring:
             ddl-auto: update
     jta:
         transaction-manager-id: tx-manager-bloodmoney
+        log-dir: transaction-logs/tx-logs-bloodmoney
 endpoints:
     endpoints:
         shutdown:
