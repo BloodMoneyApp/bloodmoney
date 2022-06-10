@@ -227,12 +227,15 @@ spring:
         hibernate:
             #ddl-auto: create-drop update
             ddl-auto: update
+    jta:
+        log-dir: transaction-logs/transaction-logs-bloodmoney
+        transaction-manager-id: transaction-manager-bloodmoney
 endpoints:
     endpoints:
         shutdown:
             enabled: false
 server:
-    port: 5050
+    port: 9010
     compression:
         enabled: true
 org:
