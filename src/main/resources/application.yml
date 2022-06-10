@@ -227,6 +227,9 @@ spring:
         hibernate:
             ddl-auto: update
     jta:
+        atomikos:
+            properties:
+                transaction-manager-unique-name: tx-manager-simpleworklist
         transaction-manager-id: tx-manager-bloodmoney
         log-dir: transaction-logs/tx-logs-bloodmoney
 endpoints:
