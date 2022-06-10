@@ -227,8 +227,7 @@ spring:
         hibernate:
             ddl-auto: update
     jta:
-        log-dir: transaction-logs/transaction-logs-bloodmoney
-        transaction-manager-id: transaction-manager-bloodmoney
+        transaction-manager-id: tx-manager-bloodmoney
 endpoints:
     endpoints:
         shutdown:
