@@ -332,6 +332,11 @@
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
+                <artifactId>popper.js</artifactId>
+                <version>${webjars.popper.js.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
                 <artifactId>bootstrap</artifactId>
                 <version>${webjars.bootstrap.version}</version>
             </dependency>
@@ -345,6 +350,7 @@
                 <artifactId>ckeditor</artifactId>
                 <version>${webjars.ckeditor.version}</version>
             </dependency>
+
             <!-- Thymeleaf -->
             <dependency>
                 <groupId>org.thymeleaf</groupId>
@@ -357,6 +363,7 @@
                 <artifactId>thymeleaf-spring-data-dialect</artifactId>
                 <version>${thymeleaf-spring-data-dialect.version}</version>
             </dependency>
+
             <!-- compile -->
             <dependency>
                 <groupId>org.hamcrest</groupId>
@@ -377,11 +384,7 @@
                 <scope>test</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>popper.js</artifactId>
-                <version>${webjars.popper.js.version}</version>
-            </dependency>
+
 
             <!-- TODO check dependency: jsoup -->
             <dependency>
@@ -786,12 +789,14 @@
             <groupId>org.webjars</groupId>
             <artifactId>popper.js</artifactId>
         </dependency>
+
         <!-- Fronted Templates thymeleaf -->
         <!-- TODO #119 check dependency: thymeleaf -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>
         </dependency>
+
         <!-- TODO #120 check dependency: thymeleaf-spring5 -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -845,7 +850,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <scope>provided</scope>
         </dependency>
 
         <!-- scope test - without dependency-management in this pom.xml -->
@@ -1071,63 +1076,6 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>${maven-project-info-reports-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jxr-plugin</artifactId>
-                    <version>${maven-jxr-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven-checkstyle-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>com.github.spotbugs</groupId>
-                    <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>${spotbugs-maven-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-pmd-plugin</artifactId>
-                    <version>${maven-pmd-plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-core</artifactId>
-                            <version>${pmdVersion}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-java</artifactId>
-                            <version>${pmdVersion}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-javascript</artifactId>
-                            <version>${pmdVersion}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>net.sourceforge.pmd</groupId>
-                            <artifactId>pmd-jsp</artifactId>
-                            <version>${pmdVersion}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>${maven-surefire-report-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${maven-site-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
                     <version>${maven-install-plugin.version}</version>
                 </plugin>
@@ -1171,9 +1119,210 @@
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot-maven-plugin.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>${maven-project-info-reports-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>${maven-jxr-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${maven-surefire-report-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>${spotbugs-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>${maven-pmd-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-core</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-java</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-javascript</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-jsp</artifactId>
+                            <version>${pmdVersion}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-dependency-classes-install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>resolve</goal>
+                            <goal>collect</goal>
+                            <goal>copy-dependencies</goal>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <outputFile>${project.build.outputDirectory}/classes/</outputFile>
+                            <excludeTypes>pom,maven-plugin</excludeTypes>
+                            <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-dependency-classes-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>resolve</goal>
+                            <goal>collect</goal>
+                            <goal>copy-dependencies</goal>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <outputFile>${project.build.outputDirectory}/classes/</outputFile>
+                            <excludeTypes>pom,maven-plugin</excludeTypes>
+                            <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-dependencies-classpath</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>analyze-only</goal>
+                            <goal>analyze-dep-mgt</goal>
+                            <goal>analyze-report</goal>
+                            <goal>sources</goal>
+                            <goal>resolve</goal>
+                            <goal>resolve-plugins</goal>
+                            <goal>collect</goal>
+                            <goal>copy-dependencies</goal>
+                            <goal>unpack-dependencies</goal>
+                            <goal>build-classpath</goal>
+                        </goals>
+                        <configuration>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <outputFile>${project.build.outputDirectory}/classpath.txt</outputFile>
+                            <failOnWarning>false</failOnWarning>
+                            <ignoreNonCompile>true</ignoreNonCompile>
+                            <excludeTypes>pom</excludeTypes>
+                            <excludeGroupIds>org.webjars,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
+                            <ignoredDependencies>
+                                <ignoredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredDependency>
+                            </ignoredDependencies>
+                            <ignoredUsedUndeclaredDependencies>
+                                <ignoredUsedUndeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUsedUndeclaredDependency>
+                            </ignoredUsedUndeclaredDependencies>
+                            <ignoredUnusedDeclaredDependencies>
+                                <ignoredUnusedDeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUnusedDeclaredDependency>
+                            </ignoredUnusedDeclaredDependencies>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>check-dependencies-1</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>list</goal>
+                            <goal>list-repositories</goal>
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>check-dependencies-2</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>analyze</goal>
+                            <goal>analyze-dep-mgt</goal>
+                            <goal>analyze-duplicate</goal>
+                            <goal>analyze-report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>check-dependencies-3</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>tree</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>site</phase>
+                        <configuration>
+                            <excludeGroupIds>org.webjars</excludeGroupIds>
+                            <excludeGroupIds>org.webjars,org.jclouds,org.jboss.as,xml-resolver,commons-configuration,org.codehaus.plexus,commons-digester,junit,log4j,io.openliberty.features,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,commons-configuration,jdk.tools,maven-antrun-plugin,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <reportSets>
+                                <reportSet>
+                                    <reports>
+                                        <report>analyze-report</report>
+                                    </reports>
+                                </reportSet>
+                            </reportSets>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>get-dependency-sources</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>sources</goal>
+                            <goal>resolve</goal>
+                            <goal>resolve-plugins</goal>
+                            <goal>collect</goal>
+                            <goal>copy-dependencies</goal>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <excludeTypes>pom,maven-plugin</excludeTypes>
+                            <excludeGroupIds>org.webjars,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
+                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
+                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+                            <outputDirectory>${project.build.directory}/dependency-sources/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -1329,148 +1478,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack-dependency-classes-install</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>resolve</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                            <overWriteReleases>true</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <outputFile>${project.build.outputDirectory}/classes/</outputFile>
-                            <excludeTypes>pom,maven-plugin</excludeTypes>
-                            <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>unpack-dependency-classes-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>resolve</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                            <overWriteReleases>true</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <outputFile>${project.build.outputDirectory}/classes/</outputFile>
-                            <excludeTypes>pom,maven-plugin</excludeTypes>
-                            <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>unpack-dependencies-classpath</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>analyze-only</goal>
-                            <goal>analyze-dep-mgt</goal>
-                            <goal>analyze-report</goal>
-                            <goal>sources</goal>
-                            <goal>resolve</goal>
-                            <goal>resolve-plugins</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
-                            <goal>build-classpath</goal>
-                        </goals>
-                        <configuration>
-                            <overWriteReleases>true</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <outputFile>${project.build.outputDirectory}/classpath.txt</outputFile>
-                            <failOnWarning>false</failOnWarning>
-                            <ignoreNonCompile>true</ignoreNonCompile>
-                            <excludeTypes>pom</excludeTypes>
-                            <excludeGroupIds>org.webjars,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
-                            <ignoredDependencies>
-                                <ignoredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredDependency>
-                            </ignoredDependencies>
-                            <ignoredUsedUndeclaredDependencies>
-                                <ignoredUsedUndeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUsedUndeclaredDependency>
-                            </ignoredUsedUndeclaredDependencies>
-                            <ignoredUnusedDeclaredDependencies>
-                                <ignoredUnusedDeclaredDependency>org.apache.maven.plugins:maven-surefire-plugin</ignoredUnusedDeclaredDependency>
-                            </ignoredUnusedDeclaredDependencies>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>check-dependencies-1</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>list</goal>
-                            <goal>list-repositories</goal>
-                            <goal>properties</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>check-dependencies-2</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>analyze</goal>
-                            <goal>analyze-dep-mgt</goal>
-                            <goal>analyze-duplicate</goal>
-                            <goal>analyze-report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>check-dependencies-3</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>tree</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>site</phase>
-                        <configuration>
-                            <excludeGroupIds>org.webjars</excludeGroupIds>
-                            <excludeGroupIds>org.webjars,org.jclouds,org.jboss.as,xml-resolver,commons-configuration,org.codehaus.plexus,commons-digester,junit,log4j,io.openliberty.features,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,commons-configuration,jdk.tools,maven-antrun-plugin,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
-                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                            <reportSets>
-                                <reportSet>
-                                    <reports>
-                                        <report>analyze-report</report>
-                                    </reports>
-                                </reportSet>
-                            </reportSets>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>get-dependency-sources</id>
-                        <phase>site</phase>
-                        <goals>
-                            <goal>sources</goal>
-                            <goal>resolve</goal>
-                            <goal>resolve-plugins</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>sources</classifier>
-                            <excludeTypes>pom,maven-plugin</excludeTypes>
-                            <excludeGroupIds>org.webjars,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
-                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                            <outputDirectory>${project.build.directory}/dependency-sources/</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
@@ -1591,13 +1598,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <configuration>
-                    <linkJavadoc>true</linkJavadoc>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <configuration>
                     <enableRulesSummary>true</enableRulesSummary>
@@ -1605,6 +1605,13 @@
                     <enableFilesSummary>true</enableFilesSummary>
                     <failOnViolation>false</failOnViolation>
                     <failsOnError>false</failsOnError>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <configuration>
+                    <linkJavadoc>true</linkJavadoc>
                 </configuration>
             </plugin>
 	        <plugin>
@@ -1648,6 +1655,14 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <configuration>
+                    <skipFailsafeReport>${skipTests}</skipFailsafeReport>
+                    <skipSurefireReport>${skipTests}</skipSurefireReport>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
                     <skipTests>${skipTests}</skipTests>
@@ -1655,14 +1670,6 @@
                         <spring.profiles.active>default</spring.profiles.active>
                         <skipIntegrationTests>${skipTests}</skipIntegrationTests>
                     </systemPropertyVariables>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <configuration>
-                    <skipFailsafeReport>${skipTests}</skipFailsafeReport>
-                    <skipSurefireReport>${skipTests}</skipSurefireReport>
                 </configuration>
             </plugin>
         </plugins>
