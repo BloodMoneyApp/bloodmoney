@@ -225,7 +225,6 @@ spring:
         show-sql: true
         database-platform: POSTGRESQL
         hibernate:
-            #ddl-auto: create-drop update
             ddl-auto: update
     jta:
         log-dir: transaction-logs/transaction-logs-bloodmoney
