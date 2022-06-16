@@ -38,7 +38,7 @@ public class BloodPressureMeasurementResource {
     //TODO: #151 HTTP 406 - XML not accepted
     @GetMapping("all")
    // @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
+    @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_XML /* MediaType.APPLICATION_XML, */ })
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
     public Page<BloodPressureMeasurementEntity> getAll(

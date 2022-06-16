@@ -52,3 +52,4 @@ build
 /release.properties
 /pom.xml.releaseBackup
 /x.txt
+/x.log.txt
