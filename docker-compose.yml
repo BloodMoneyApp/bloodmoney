@@ -4,7 +4,7 @@ version: '3.3'
 services:
 
     bloodmoney_dbmaster:
-        image: postgres:13.3
+        image: postgres:latest
         restart: always
         networks:
             - net
