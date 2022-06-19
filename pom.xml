@@ -1318,32 +1318,15 @@
                         <id>unpack-dependency-classes-install</id>
                         <phase>install</phase>
                         <goals>
+                            <goal>analyze-only</goal>
+                            <goal>analyze-dep-mgt</goal>
+                            <goal>analyze-report</goal>
+                            <goal>sources</goal>
                             <goal>resolve</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
+                            <goal>resolve-plugins</goal>
+                            <goal>tree</goal>
                         </goals>
                         <configuration>
-                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                            <overWriteReleases>true</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <outputFile>${project.build.outputDirectory}/classes/</outputFile>
-                            <excludeTypes>pom,maven-plugin</excludeTypes>
-                            <excludeGroupIds>antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
-                            <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>unpack-dependency-classes-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>resolve</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
                             <overWriteReleases>true</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <outputFile>${project.build.outputDirectory}/classes/</outputFile>
@@ -1362,9 +1345,6 @@
                             <goal>sources</goal>
                             <goal>resolve</goal>
                             <goal>resolve-plugins</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
                             <goal>build-classpath</goal>
                         </goals>
                         <configuration>
@@ -1437,17 +1417,12 @@
                             <goal>sources</goal>
                             <goal>resolve</goal>
                             <goal>resolve-plugins</goal>
-                            <goal>collect</goal>
-                            <goal>copy-dependencies</goal>
-                            <goal>unpack-dependencies</goal>
                         </goals>
                         <configuration>
                             <classifier>sources</classifier>
                             <excludeTypes>pom,maven-plugin</excludeTypes>
                             <excludeGroupIds>org.webjars,antlr,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby</excludeGroupIds>
                             <excludeArtifactIds>weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete</excludeArtifactIds>
-                            <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                            <outputDirectory>${project.build.directory}/dependency-sources/</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
