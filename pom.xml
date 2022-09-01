@@ -88,7 +88,7 @@
         <xmlunit.version>2.6.4</xmlunit.version>
         <htmlunit.version>2.43.0</htmlunit.version>
         <hamcrest.version>2.2</hamcrest.version>
-        <jsoup.version>1.14.2</jsoup.version>
+        <jsoup.version>1.15.3</jsoup.version>
 
         <!-- SCM and Releasing -->
         <version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
