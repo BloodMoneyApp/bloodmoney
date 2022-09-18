@@ -111,6 +111,7 @@
     <version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
     <version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
     <version.maven-install-plugin>3.0.1</version.maven-install-plugin>
+    <version.maven-help-plugin>3.3.0</version.maven-help-plugin>
     <version.maven-deploy-plugin>3.0.0</version.maven-deploy-plugin>
     <version.maven-javadoc-plugin>3.4.1</version.maven-javadoc-plugin>
     <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
@@ -414,21 +415,21 @@
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>${version.maven-clean-plugin}</version>
+        <version>${version.maven-enforcer-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-invoker-plugin</artifactId>
-        <version>${version.maven-clean-plugin}</version>
+        <version>${version.maven-invoker-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>com.dkanejs.maven.plugins</groupId>
         <artifactId>docker-compose-maven-plugin</artifactId>
-        <version>${version.maven-clean-plugin}</version>
+        <version>${version.docker-compose-maven-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
@@ -1520,18 +1521,32 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
+          <layout>JAR</layout>
           <executable>true</executable>
           <addResources>true</addResources>
+          <excludeGroupIds>org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module</excludeGroupIds>
           <excludes>
-            <exclude>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-configuration-processor</artifactId>
-            </exclude>
+          <exclude>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+          </exclude>
+          <exclude>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+          </exclude>
           </excludes>
         </configuration>
         <executions>
           <execution>
+            <id>id-repackage</id>
+            <phase>install</phase>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+          <execution>
             <id>id-build-info</id>
+            <phase>process-resources</phase>
             <goals>
               <goal>build-info</goal>
             </goals>
@@ -1539,8 +1554,8 @@
               <additionalProperties>
                 <encoding.source>${project.build.sourceEncoding}</encoding.source>
                 <encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
-                <java.source>${java.version}</java.source>
-                <java.target>${java.version}</java.target>
+                <java.source>${maven.compiler.source}</java.source>
+                <java.target>${maven.compiler.target}</java.target>
               </additionalProperties>
             </configuration>
           </execution>
