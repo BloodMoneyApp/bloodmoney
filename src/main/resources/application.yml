@@ -237,9 +237,11 @@ endpoints:
         shutdown:
             enabled: false
 server:
-    port: 9000
+    port: 8080
     compression:
         enabled: true
+    servlet:
+      context-path: ""
 org:
     woehlke:
         bloodmoney:
