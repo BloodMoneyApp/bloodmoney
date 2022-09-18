@@ -27,7 +27,7 @@ import java.util.Locale;
 @Configuration
 @EnableAsync
 @EnableJpaRepositories({
-    "org.woehlke.bloodmoney.measurements"
+    "org.woehlke.bloodmoney"
 })
 @EnableConfigurationProperties({
     BloodMoneyProperties.class

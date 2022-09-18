@@ -65,37 +65,32 @@ org:
   woehlke:
     bloodmoney:
       testDataHowManyTestData: 10
-      dev-testing: ${BLOODMONEY_DEV_TESTING}
-      user-config:
+      devTesting: ${BLOODMONEY_DEV_TESTING}
+      userConfig:
         userEmail: ${BLOODMONEY_USER_EMAIL}
         userPassword: ${BLOODMONEY_USER_PASSWORD}
         userFullname: ${BLOODMONEY_USER_FULLNAME}
-      web-config:
-        export-filename: "measurements.csv"
-        export-filename-separator: ";"
-        web-add-resource-handlers-static:
+      webConfig:
+        exportFilename: "measurements.csv"
+        exportFilenameSeparator: ";"
+        webAddResourceHandlers:
+          - "webjars/"
+        webAddResourceHandlersStatic:
           - "bloodmoney/"
           - "icon/"
           - "languages/"
           - "test/"
           - "favicon.ico"
-        web-add-resource-handlers:
-          - "webjars/"
-      webSsecurity:
-        iterations: ${BLOODMONEY_USER_ITERATIONS}
-        hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
-        secret: ${BLOODMONEY_USER_SECRET}
-        login-processing-url: "/j_spring_security_check"
-        failure-forward-url: "/login?login_error=1"
-        default-success-url: "/"
+      webSecurity:
+        loginProcessingUrl: "/j_spring_security_check"
+        failureForwardUrl: "/login?login_error=1"
+        defaultSuccessUrl: "/"
         login-page: "/login"
         logout-url: "/logout"
-        username-parameter: "userEmail"
-        password-parameter: "userPassword"
         delete-cookies: "JSESSIONID"
         invalidate-http-session: true
-        ant-matchers-fully-authenticated: "/**"
-        ant-matchers-permit-all:
+        antMatchersFullyAuthenticated: "/**"
+        antMatchersPermitAll:
           - "/bloodmoney"
           - "/bloodmoney/**"
           - "/icon/**"
@@ -116,6 +111,11 @@ org:
           - "/passwordResetConfirm*/**"
           - "/error*"
           - "/fehler*"
+        usernameParameter: "userEmail"
+        passwordParameter: "userPassword"
+        secret: ${BLOODMONEY_USER_SECRET}
+        iterations: ${BLOODMONEY_USER_ITERATIONS}
+        hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
 logging:
   level:
     root: INFO
