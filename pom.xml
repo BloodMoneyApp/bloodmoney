@@ -1095,58 +1095,6 @@
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>${version.maven-dependency-plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.asciidoctor</groupId>
-          <artifactId>asciidoctor-maven-plugin</artifactId>
-          <version>${version.asciidoctor-maven-plugin}</version>
-          <executions>
-            <execution>
-              <id>generate-docs</id>
-              <phase>prepare-package</phase>
-              <goals>
-                <goal>process-asciidoc</goal>
-              </goals>
-              <configuration>
-                <backend>html</backend>
-                <doctype>book</doctype>
-              </configuration>
-            </execution>
-          </executions>
-          <dependencies>
-            <dependency>
-              <groupId>org.springframework.restdocs</groupId>
-              <artifactId>spring-restdocs-asciidoctor</artifactId>
-              <version>${version.spring-restdocs}</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-        <plugin>
-          <groupId>org.liquibase</groupId>
-          <artifactId>liquibase-maven-plugin</artifactId>
-          <version>${version.liquibase-maven-plugin}</version>
-          <configuration>
-            <propertyFile>${liquibase.propertyFile}</propertyFile>
-          </configuration>
-          <dependencies>
-            <dependency>
-              <groupId>org.postgresql</groupId>
-              <artifactId>postgresql</artifactId>
-            </dependency>
-            <dependency>
-              <groupId>org.hibernate</groupId>
-              <artifactId>hibernate-core</artifactId>
-            </dependency>
-            <dependency>
-              <groupId>javax.xml.bind</groupId>
-              <artifactId>jaxb-api</artifactId>
-            </dependency>
-          </dependencies>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
           <version>${version.maven-enforcer-plugin}</version>
         </plugin>
@@ -1162,56 +1110,29 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>${version.maven-install-plugin}</version>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${version.maven-clean-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-help-plugin</artifactId>
-          <version>${version.maven-help-plugin}</version>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${version.maven-dependency-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>${version.maven-source-plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${version.maven-javadoc-plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>${version.maven-surefire-plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>${version.maven-failsafe-plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>${version.maven-release-plugin}</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>${version.maven-deploy-plugin}</version>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${version.maven-compiler-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <version>${version.spring-boot-maven-plugin}</version>
         </plugin>
-
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>${version.maven-site-plugin}</version>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${version.maven-install-plugin}</version>
         </plugin>
-
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -1228,14 +1149,34 @@
           <version>${version.maven-checkstyle-plugin}</version>
         </plugin>
         <plugin>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-maven-plugin</artifactId>
+          <version>${version.spotbugs-maven-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${version.maven-surefire-plugin}</version>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-report-plugin</artifactId>
           <version>${version.maven-surefire-report-plugin}</version>
         </plugin>
         <plugin>
-          <groupId>com.github.spotbugs</groupId>
-          <artifactId>spotbugs-maven-plugin</artifactId>
-          <version>${version.spotbugs-maven-plugin}</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${version.maven-release-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+          <version>${version.asciidoctor-maven-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${version.maven-javadoc-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1246,72 +1187,51 @@
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-core</artifactId>
               <version>${version.pmd}</version>
+              <scope>compile</scope>
             </dependency>
             <dependency>
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-java</artifactId>
               <version>${version.pmd}</version>
+              <scope>compile</scope>
             </dependency>
             <dependency>
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-javascript</artifactId>
               <version>${version.pmd}</version>
+              <scope>compile</scope>
             </dependency>
             <dependency>
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-jsp</artifactId>
               <version>${version.pmd}</version>
+              <scope>compile</scope>
             </dependency>
           </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${version.maven-source-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>${version.maven-site-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${version.maven-deploy-plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${version.maven-failsafe-plugin}</version>
         </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <configuration>
-          <includeScope>compile</includeScope>
-          <excludeTypes>maven-plugin</excludeTypes>
-          <excludeScope>test,provided</excludeScope>
-          <excludeGroupIds>org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module,  </excludeGroupIds>
-          <excludeArtifactIds>jboss-transaction-api_1.2_spec,byte-buddy-agent,byte-buddy,backport9,backport-util-concurrent,spring-boot-configuration-processor,spring-boot-devtools,ganymed-ssh2,maven-toolchain,weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api,lombok,jcommander,checkstyle,plexus-build-api</excludeArtifactIds>
-        </configuration>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.asciidoctor</groupId>
-        <artifactId>asciidoctor-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>generate-docs</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>process-asciidoc</goal>
-            </goals>
-            <configuration>
-              <backend>html</backend>
-              <doctype>book</doctype>
-            </configuration>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-asciidoctor</artifactId>
-            <version>${spring-restdocs.version}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -1328,7 +1248,8 @@
                   <excludes>
                     <exclude>org.apache.maven.plugins:maven-verifier-plugin</exclude>
                   </excludes>
-                  <message>Please consider using the maven-invoker-plugin
+                  <message>
+                    Please consider using the maven-invoker-plugin
                     (http://maven.apache.org/plugins/maven-invoker-plugin/)!
                   </message>
                 </bannedPlugins>
@@ -1340,17 +1261,24 @@
                 </requireJavaVersion>
                 <requireFilesExist>
                   <files>
-                    <file>${project.basedir}/run.sh</file>
-                    <file>${project.basedir}/src/main/bash/setenv.sh</file>
-                    <file>${project.basedir}/src/main/bash/psql.sh</file>
+                    <file>${project.basedir}/README.md</file>
+                    <file>${project.basedir}/LICENSE</file>
+                    <file>${project.basedir}/docker-compose.yml</file>
+                    <file>${project.basedir}/app.json</file>
+                    <file>${project.basedir}/_config.yml</file>
+                    <file>${project.basedir}/Procfile</file>
+                    <file>${project.basedir}/src/site/markdown/CHANGELOG.md</file>
+                    <file>${project.basedir}/src/site/markdown/DEPLOYMENTS.md</file>
+                    <file>${project.basedir}/src/site/markdown/DOCKER.md</file>
+                    <file>${project.basedir}/src/site/markdown/HOWTO.md</file>
+                    <file>${project.basedir}/src/site/markdown/HELP.md</file>
+                    <file>${project.basedir}/src/site/markdown/HOWTO.md</file>
+                    <file>${project.basedir}/src/site/markdown/TODO.md</file>
+                    <file>${project.basedir}/build.sh</file>
                     <file>${project.basedir}/docker-start.sh</file>
                     <file>${project.basedir}/docker-stop.sh</file>
-                    <file>${project.basedir}/.github/FUNDING.yml</file>
-                    <file>${project.basedir}/.github/workflows/maven.yml</file>
-                    <file>${project.basedir}/_config.yml</file>
-                    <file>${project.basedir}/app.json</file>
-                    <file>${project.basedir}/Procfile</file>
-                    <file>${project.basedir}/docker-compose.yml</file>
+                    <file>${project.basedir}/etc/db/setup-postgresql-account-and-db.sql</file>
+                    <file>${project.basedir}/etc/db/setup-postgresql-tw.sql</file>
                   </files>
                 </requireFilesExist>
               </rules>
@@ -1378,43 +1306,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>com.dkanejs.maven.plugins</groupId>
-        <artifactId>docker-compose-maven-plugin</artifactId>
-        <configuration>
-          <composeFile>docker-compose.yml</composeFile>
-          <verbose>${docker-compose-maven-plugin.verbose}</verbose>
-          <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
-          <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
-          <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
-          <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-clean-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-install-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-help-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <linksource>true</linksource>
-          <maxmemory>1024m</maxmemory>
-          <source>${java.version}</source>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
@@ -1423,19 +1314,19 @@
           <addResources>true</addResources>
           <excludeGroupIds>org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module</excludeGroupIds>
           <excludes>
-          <exclude>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-          </exclude>
-          <exclude>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-          </exclude>
+            <exclude>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-configuration-processor</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-devtools</artifactId>
+            </exclude>
           </excludes>
         </configuration>
         <executions>
           <execution>
-            <id>id-repackage</id>
+            <id>unpack-dependency-classes-install</id>
             <phase>install</phase>
             <goals>
               <goal>repackage</goal>
@@ -1459,9 +1350,43 @@
         </executions>
       </plugin>
       <plugin>
+        <groupId>com.dkanejs.maven.plugins</groupId>
+        <artifactId>docker-compose-maven-plugin</artifactId>
+        <configuration>
+          <composeFile>${project.basedir}/src/main/docker/docker-compose.yml</composeFile>
+          <verbose>${docker-compose-maven-plugin.verbose}</verbose>
+          <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
+          <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
+          <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
+          <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <configuration>
+          <includeScope>compile</includeScope>
+          <excludeTypes>maven-plugin</excludeTypes>
+          <excludeScope>test,provided</excludeScope>
+          <excludeGroupIds>org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module,  </excludeGroupIds>
+          <excludeArtifactIds>jboss-transaction-api_1.2_spec,byte-buddy-agent,byte-buddy,backport9,backport-util-concurrent,spring-boot-configuration-processor,spring-boot-devtools,ganymed-ssh2,maven-toolchain,weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api,lombok,jcommander,checkstyle,plexus-build-api</excludeArtifactIds>
+        </configuration>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
           <encoding>${project.build.sourceEncoding}</encoding>
           <compilerArgs>
             <arg>-Xlint:all,-options,-path</arg>
@@ -1489,6 +1414,52 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <linksource>true</linksource>
+          <maxmemory>1024m</maxmemory>
+          <source>${java.version}</source>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <configuration>
+          <linkJavadoc>true</linkJavadoc>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <tagNameFormat>v@{project.version}</tagNameFormat>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <skipTests>${skipTests}</skipTests>
@@ -1497,6 +1468,10 @@
             <skipIntegrationTests>${skipTests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1510,19 +1485,24 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <configuration>
-          <tagNameFormat>v@{project.version}</tagNameFormat>
-        </configuration>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -1531,34 +1511,30 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <inherited>true</inherited>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-invoker-plugin</artifactId>
-        <configuration>
-          <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-          <settingsFile>src/it/settings.xml</settingsFile>
-          <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
-          <postBuildHookScript>verify</postBuildHookScript> <!-- no extension required -->
-        </configuration>
+        <inherited>true</inherited>
       </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <addResources>true</addResources>
-          <excludes>
-            <exclude>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-configuration-processor</artifactId>
-            </exclude>
-          </excludes>
-        </configuration>
+        <inherited>true</inherited>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <groupId>com.dkanejs.maven.plugins</groupId>
+        <artifactId>docker-compose-maven-plugin</artifactId>
+        <inherited>true</inherited>
         <configuration>
-          <skipEmptyReport>true</skipEmptyReport>
-          <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
-        </configuration>
+          <composeFile>${project.basedir}/docker-compose.yml</composeFile>
+          <verbose>${docker-compose-maven-plugin.verbose}</verbose>
+          <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
+          <removeVolumes>true</removeVolumes>
+          <ignorePullFailures>true</ignorePullFailures>
+          <detachedMode>true</detachedMode>  </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1567,7 +1543,8 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <inherited>true</inherited>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1580,6 +1557,37 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <configuration>
+          <linkJavadoc>true</linkJavadoc>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <configuration>
+          <skipEmptyReport>true</skipEmptyReport>
+          <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
           <enableRulesSummary>true</enableRulesSummary>
@@ -1587,13 +1595,6 @@
           <enableFilesSummary>true</enableFilesSummary>
           <failOnViolation>false</failOnViolation>
           <failsOnError>false</failsOnError>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <configuration>
-          <linkJavadoc>true</linkJavadoc>
         </configuration>
       </plugin>
       <plugin>
@@ -1609,7 +1610,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <configuration>
-          <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
           <targetJdk>${java.version}</targetJdk>
           <excludeRoots>
@@ -1637,14 +1637,6 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <configuration>
-          <skipFailsafeReport>${skipTests}</skipFailsafeReport>
-          <skipSurefireReport>${skipTests}</skipSurefireReport>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
           <skipTests>${skipTests}</skipTests>
@@ -1654,12 +1646,22 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <configuration>
+          <skipFailsafeReport>${skipTests}</skipFailsafeReport>
+          <skipSurefireReport>${skipTests}</skipSurefireReport>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </reporting>
 
-
   <profiles>
-
     <profile>
       <id>jar</id>
       <properties>
