@@ -1,288 +1,200 @@
 server:
-    port: ${BLOODMONEY_PORT}
-    error:
-        path: /fehler
-    compression:
-        enabled: true
-        min-response-size: 2048
-    servlet:
-        context-path: "/bloodmoney"
-    endpoints:
-        shutdown:
-            enabled: ${BLOODMONEY_DEV_TESTING}
+  port: ${PORT}
+  error:
+    path: /fehler
+  compression:
+    enabled: true
+    min-response-size: 2048
+  servlet:
+    context-path: "/"
+  endpoints:
+    shutdown:
+      enabled: ${BLOODMONEY_DEV_TESTING}
 spring:
-    config:
-        name: bloodmoney
-    liquibase:
-        enabled: false
-    devtools:
-        livereload:
-            enabled: ${BLOODMONEY_DEV_TESTING}
-    application:
-        admin:
-            enabled: ${BLOODMONEY_DEV_TESTING}
-    datasource:
-        url:  jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
-        username:  ${BLOODMONEY_DS_USR}
-        password:  ${BLOODMONEY_DS_PWD}
-        driver-class-name:  org.postgresql.Driver
-    jta:
-        atomikos:
-            connectionfactory:
-                xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
-    jpa:
-        open-in-view: true
-        show-sql: true
-        database-platform: POSTGRESQL
-        hibernate:
-            #ddl-auto: create-drop update
-            ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
-            naming:
-                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
-                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQL95Dialect
-                temp:
-                    use_jdbc_metadata_defaults: false
-                generate_statistics: true
-    thymeleaf:
-        cache: false
-    session:
-        store-type: jdbc
-        jdbc:
-            initialize-schema: ALWAYS
-            cleanup-cron: 0 * * * * *
-            #schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
-            #table-name: SPRING_SESSION
-    main:
-        allow-bean-definition-overriding: true
-    sql:
-        init:
-            platform: POSTGRESQL
-            mode: ALWAYS
+  config:
+    name: bloodmoney
+  liquibase:
+    enabled: false
+  devtools:
+    livereload:
+      enabled: ${BLOODMONEY_DEV_TESTING}
+  application:
+    admin:
+      enabled: ${BLOODMONEY_DEV_TESTING}
+  datasource:
+    url: jdbc:postgresql://${BLOODMONEY_DS_HOST}:5432/${BLOODMONEY_DS_DB}
+    username: ${BLOODMONEY_DS_USR}
+    password: ${BLOODMONEY_DS_PWD}
+    driver-class-name: org.postgresql.Driver
+  jta:
+    atomikos:
+      connectionfactory:
+        xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
+  jpa:
+    open-in-view: true
+    show-sql: true
+    database-platform: POSTGRESQL
+    hibernate:
+      #ddl-auto: create-drop update
+      ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        temp:
+          use_jdbc_metadata_defaults: false
+        generate_statistics: true
+  thymeleaf:
+    cache: false
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: ALWAYS
+      cleanup-cron: 0 * * * * *
+      #schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
+      #table-name: SPRING_SESSION
+  main:
+    allow-bean-definition-overriding: true
+  sql:
+    init:
+      platform: POSTGRESQL
+      mode: ALWAYS
 org:
-    woehlke:
-        bloodmoney:
-            testDataHowManyTestData: 10
-            dev-testing: ${BLOODMONEY_DEV_TESTING}
-            user-config:
-                userEmail: ${BLOODMONEY_USER_EMAIL}
-                userPassword: ${BLOODMONEY_USER_PASSWORD}
-                userFullname: ${BLOODMONEY_USER_FULLNAME}
-            web-config:
-                export-filename: "measurements.csv"
-                export-filename-separator: ";"
-                web-add-resource-handlers-static:
-                    - "bloodmoney/"
-                    - "icon/"
-                    - "languages/"
-                    - "test/"
-                    - "favicon.ico"
-                web-add-resource-handlers:
-                    - "webjars/"
-            web-security:
-                iterations: ${BLOODMONEY_USER_ITERATIONS}
-                hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
-                secret: ${BLOODMONEY_USER_SECRET}
-                login-processing-url: "/j_spring_security_check"
-                failure-forward-url: "/login?login_error=1"
-                default-success-url: "/"
-                login-page: "/login"
-                logout-url: "/logout"
-                username-parameter: "userEmail"
-                password-parameter: "userPassword"
-                delete-cookies: "JSESSIONID"
-                invalidate-http-session: true
-                ant-matchers-fully-authenticated: "/**"
-                ant-matchers-permit-all:
-                    - "/bloodmoney"
-                    - "/bloodmoney/**"
-                    - "/icon/**"
-                    - "/icon"
-                    - "/languages"
-                    - "/languages/**"
-                    - "/favicon.ico"
-                    - "/webjars/**"
-                    - "/webjars"
-                    - "/test*/**"
-                    - "/rest"
-                    - "/rest/**"
-                    - "/bpm"
-                    - "/login*"
-                    - "/register*"
-                    - "/confirm*/**"
-                    - "/resetPassword*"
-                    - "/passwordResetConfirm*/**"
-                    - "/error*"
-                    - "/fehler*"
----
-#Profile dev:
-spring:
-    profiles:
-        active: dev
-    thymeleaf:
-        cache: false
-    devtools:
-        livereload:
-            enabled: true
-    application:
-        admin:
-            enabled: false
-server:
-    compression:
-        enabled: false
+  woehlke:
+    bloodmoney:
+      testDataHowManyTestData: 10
+      dev-testing: ${BLOODMONEY_DEV_TESTING}
+      user-config:
+        userEmail: ${BLOODMONEY_USER_EMAIL}
+        userPassword: ${BLOODMONEY_USER_PASSWORD}
+        userFullname: ${BLOODMONEY_USER_FULLNAME}
+      web-config:
+        export-filename: "measurements.csv"
+        export-filename-separator: ";"
+        web-add-resource-handlers-static:
+          - "bloodmoney/"
+          - "icon/"
+          - "languages/"
+          - "test/"
+          - "favicon.ico"
+        web-add-resource-handlers:
+          - "webjars/"
+      webSsecurity:
+        iterations: ${BLOODMONEY_USER_ITERATIONS}
+        hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+        secret: ${BLOODMONEY_USER_SECRET}
+        login-processing-url: "/j_spring_security_check"
+        failure-forward-url: "/login?login_error=1"
+        default-success-url: "/"
+        login-page: "/login"
+        logout-url: "/logout"
+        username-parameter: "userEmail"
+        password-parameter: "userPassword"
+        delete-cookies: "JSESSIONID"
+        invalidate-http-session: true
+        ant-matchers-fully-authenticated: "/**"
+        ant-matchers-permit-all:
+          - "/bloodmoney"
+          - "/bloodmoney/**"
+          - "/icon/**"
+          - "/icon"
+          - "/languages"
+          - "/languages/**"
+          - "/favicon.ico"
+          - "/webjars/**"
+          - "/webjars"
+          - "/test*/**"
+          - "/rest"
+          - "/rest/**"
+          - "/bpm"
+          - "/login*"
+          - "/register*"
+          - "/confirm*/**"
+          - "/resetPassword*"
+          - "/passwordResetConfirm*/**"
+          - "/error*"
+          - "/fehler*"
 logging:
-    level:
-        root: INFO
-        javax: INFO
-        jakartaee: INFO
-        com:
-            atomikos: INFO
-        org:
-            thymeleaf:
-                dialect:
-                    springdata: INFO
-            apache:
-                commons:
-                    logging: WARN
-            h2: INFO
-            springframework:
-                data:
-                    jdbc: INFO
-                    jpa: INFO
-                    relational: INFO
-                security:
-                    web: INFO
-                    context: INFO
-                boot: INFO
-                beans: INFO
-                jdbc: INFO
-                orm: INFO
-                session: WARN
-                test: INFO
-                mock: WARN
-                transaction: INFO
-                jca: INFO
-                web: INFO
-                remoting: INFO
-                http: INFO
-                expression: INFO
-                util: INFO
-                lang: INFO
-                core: INFO
-                cglib: WARN
-            hibernate:
-                sql: INFO
-                query: INFO
-                mapping: INFO
-                jpa: INFO
-                id: INFO
-                graph: INFO
-                cfg: INFO
-                service: INFO
-                result: INFO
-                engine:
-                    internal: WARN
-            ch:
-                qos: WARN
-            woehlke:
-                bloodmoney:
-                    application: DEBUG
-                    config: DEBUG
-                    measurements: DEBUG
-                    user: DEBUG
+  level:
+    root: INFO
+    org:
+      springframework: INFO
+      hibernate:
+        SQL: INFO
+        engine:
+          internal: WARN
+      ch:
+        qos: WARN
+      postgresql: WARN
+      woehlke:
+        java:
+          bloodmoney: INFO
 debug: false
 ---
-#Profile default: Production ready. Heroku with PostgreSQL
 spring:
-    profiles:
-        active: default
-    devtools:
-        livereload:
-            enabled: false
-        add-properties: false
-    application:
-        admin:
-            enabled: false
-    datasource:
-        url:  jdbc:postgresql://localhost:5432/bloodmoney
-        username: bloodmoney
-        password: bloodmoneypwd
-        driver-class-name:  org.postgresql.Driver
-    session:
-        store-type: jdbc
-        jdbc:
-            initialize-schema: always
-    thymeleaf:
-        cache: true
-    sql:
-        init:
-            platform: POSTGRESQL
-            mode: always
-    jpa:
-        open-in-view: true
-        show-sql: true
-        database-platform: POSTGRESQL
-        hibernate:
-            ddl-auto: update
-    jta:
-        atomikos:
-            properties:
-                transaction-manager-unique-name: tx-manager-simpleworklist
-        transaction-manager-id: tx-manager-bloodmoney
-        log-dir: transaction-logs/tx-logs-bloodmoney
-endpoints:
-    endpoints:
-        shutdown:
-            enabled: false
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+  devtools:
+    livereload:
+      enabled: true
+  application:
+    admin:
+      enabled: false
 server:
-    port: 8080
-    compression:
-        enabled: true
-    servlet:
-      context-path: ""
-org:
-    woehlke:
-        bloodmoney:
-            dev-testing: false
-            user-config:
-                userEmail: ${BLOODMONEY_USER_EMAIL}
-                userPassword: ${BLOODMONEY_USER_PASSWORD}
-                userFullname: ${BLOODMONEY_USER_FULLNAME}
-            web-security:
-                iterations: ${BLOODMONEY_USER_ITERATIONS}
-                hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
-                secret: ${BLOODMONEY_USER_SECRET}
+  compression:
+    enabled: false
 logging:
-    level:
-        root: INFO
-        org:
-            springframework: INFO
-            hibernate:
-                SQL: INFO
-                engine:
-                    internal: WARN
-            ch:
-                qos: WARN
-            postgresql: WARN
-            woehlke:
-                bloodmoney:
-                    config: INFO
-                    frontend:
-                        api: INFO
-                        config: INFO
-                        controller: INFO
-                        model: INFO
-                    oodm:
-                        entities: INFO
-                        repositories: INFO
-                        services:
-                            impl: INFO
-                    user:
-                        config: INFO
-                        controller: INFO
-                        model: INFO
-                        services:
-                            impl: INFO
+  level:
+    root: INFO
+    org:
+      springframework: INFO
+      hibernate:
+        SQL: INFO
+        engine:
+          internal: WARN
+      ch:
+        qos: WARN
+      postgresql: WARN
+      woehlke:
+        java:
+          bloodmoney: INFO
+debug: false
+---
+spring:
+  profiles:
+    active: default
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bloodmoney
+  jta:
+    atomikos:
+      properties:
+        transaction-manager-unique-name: tx-manager-bloodmoney
+    transaction-manager-id: tx-manager-bloodmoney
+    log-dir: transaction-logs/tx-logs-bloodmoney
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: ${PORT}
+  compression:
+    enabled: true
+logging:
+  level:
+    root: INFO
+    org:
+      springframework: INFO
+      hibernate:
+        SQL: INFO
+        engine:
+          internal: WARN
+      ch:
+        qos: WARN
+      postgresql: WARN
+      woehlke:
+        java:
+          bloodmoney: INFO
 debug: false
