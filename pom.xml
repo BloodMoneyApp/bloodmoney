@@ -81,7 +81,7 @@
     <opencsv.version>5.7.0</opencsv.version>
 
     <!-- Unit and Integration Testing -->
-    <skipTests>true</skipTests>
+    <skip.tests>true</skip.tests>
     <xmlunit.version>2.9.0</xmlunit.version>
     <htmlunit.version>2.64.0</htmlunit.version>
     <version.groovy-all>3.0.12</version.groovy-all>
@@ -91,7 +91,7 @@
 
     <!-- SCM and Releasing -->
     <version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
-    <maven-release-plugin.version>3.0.0-M6</maven-release-plugin.version>
+    <version.maven-release-plugin>3.0.0-M6</version.maven-release-plugin>
 
     <!-- Docker -->
     <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
@@ -116,7 +116,6 @@
     <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
     <version.maven-surefire-plugin>3.0.0-M7</version.maven-surefire-plugin>
     <version.maven-failsafe-plugin>3.0.0-M7</version.maven-failsafe-plugin>
-    <version.maven-release-plugin>3.0.0-M6</version.maven-release-plugin>
     <version.maven-site-plugin>3.12.0</version.maven-site-plugin>
     <version.maven-project-info-reports-plugin>3.3.0</version.maven-project-info-reports-plugin>
     <version.maven-checkstyle-plugin>3.1.2</version.maven-checkstyle-plugin>
@@ -1085,10 +1084,11 @@
                   <files>
                     <file>${project.basedir}/README.md</file>
                     <file>${project.basedir}/LICENSE</file>
-                    <file>${project.basedir}/docker-compose.yml</file>
-                    <file>${project.basedir}/app.json</file>
-                    <file>${project.basedir}/_config.yml</file>
-                    <file>${project.basedir}/Procfile</file>
+                    <file>${project.basedir}/LICENSE.code.txt</file>
+                    <file>${project.basedir}/LICENSE.writing.txt</file>
+                    <file>${project.basedir}/LICENSE</file>
+                    <file>${project.basedir}/etc/db/setup-postgresql-account-and-db.sql</file>
+                    <file>${project.basedir}/etc/db/setup-postgresql-tw.sql</file>
                     <file>${project.basedir}/src/site/markdown/CHANGELOG.md</file>
                     <file>${project.basedir}/src/site/markdown/DEPLOYMENTS.md</file>
                     <file>${project.basedir}/src/site/markdown/DOCKER.md</file>
@@ -1096,11 +1096,14 @@
                     <file>${project.basedir}/src/site/markdown/HELP.md</file>
                     <file>${project.basedir}/src/site/markdown/HOWTO.md</file>
                     <file>${project.basedir}/src/site/markdown/TODO.md</file>
+                    <file>${project.basedir}/src/main/bash/docker-compose.yml</file>
+                    <file>${project.basedir}/src/main/bash/docker-start.sh</file>
+                    <file>${project.basedir}/src/main/bash/docker-stop.sh</file>
+                    <file>${project.basedir}/app.json</file>
+                    <file>${project.basedir}/_config.yml</file>
+                    <file>${project.basedir}/Procfile</file>
                     <file>${project.basedir}/build.sh</file>
-                    <file>${project.basedir}/docker-start.sh</file>
-                    <file>${project.basedir}/docker-stop.sh</file>
-                    <file>${project.basedir}/etc/db/setup-postgresql-account-and-db.sql</file>
-                    <file>${project.basedir}/etc/db/setup-postgresql-tw.sql</file>
+                    <file>${project.basedir}/run.sh</file>
                   </files>
                 </requireFilesExist>
               </rules>
@@ -1207,6 +1210,9 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
+          <!--
+          <proc>none</proc>
+          -->
           <source>${java.version}</source>
           <target>${java.version}</target>
           <encoding>${project.build.sourceEncoding}</encoding>
@@ -1284,10 +1290,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <skipTests>${skipTests}</skipTests>
+          <skipTests>${skip.tests}</skipTests>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skipTests}</skipIntegrationTests>
+            <skipIntegrationTests>${skip.tests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1299,10 +1305,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
-          <skipTests>${skipTests}</skipTests>
+          <skipTests>${skip.tests}</skipTests>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skipTests}</skipIntegrationTests>
+            <skipIntegrationTests>${skip.tests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1351,7 +1357,7 @@
         <artifactId>docker-compose-maven-plugin</artifactId>
         <inherited>true</inherited>
         <configuration>
-          <composeFile>${project.basedir}/docker-compose.yml</composeFile>
+          <composeFile>${project.basedir}/src/main/bash/docker-compose.yml</composeFile>
           <verbose>${docker-compose-maven-plugin.verbose}</verbose>
           <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
           <removeVolumes>true</removeVolumes>
@@ -1461,10 +1467,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
-          <skipTests>${skipTests}</skipTests>
+          <skipTests>${skip.tests}</skipTests>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skipTests}</skipIntegrationTests>
+            <skipIntegrationTests>${skip.tests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1472,8 +1478,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
         <configuration>
-          <skipFailsafeReport>${skipTests}</skipFailsafeReport>
-          <skipSurefireReport>${skipTests}</skipSurefireReport>
+          <skipFailsafeReport>${skip.tests}</skipFailsafeReport>
+          <skipSurefireReport>${skip.tests}</skipSurefireReport>
         </configuration>
       </plugin>
       <plugin>

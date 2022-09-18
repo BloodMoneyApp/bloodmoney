@@ -2,7 +2,7 @@ package org.woehlke.bloodmoney.measurements;
 
 /*
 import org.springframework.test.web.servlet.MockMvc;
-import org.woehlke.bloodmoney.user.UserSessionService;
+import org.woehlke.bloodmoney.domain.user.UserSessionService;
 
 import java.util.ArrayList;
 

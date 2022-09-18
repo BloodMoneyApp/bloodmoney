@@ -3,6 +3,7 @@ package org.woehlke.bloodmoney.measurements;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.test.context.ActiveProfiles;
+import org.woehlke.bloodmoney.domain.db.BloodPressureMeasurementEntity;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

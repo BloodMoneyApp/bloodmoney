@@ -7,4 +7,4 @@ referenceDriver: org.postgresql.Driver
 referenceUrl: jdbc:postgresql://${BLOODMONEY_DSREF_HOST}:/${BLOODMONEY_DSREF_PORT}/${BLOODMONEY_DSREF_DB}
 referenceUsername: ${BLOODMONEY_DSREF_USR}
 referencePassword: ${BLOODMONEY_DSREF_PWD}
-classpath: postgresql-42.2.10.jar
+classpath: postgresql-42.5.0.jar

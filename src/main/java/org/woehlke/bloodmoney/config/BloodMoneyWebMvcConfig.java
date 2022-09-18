@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.con  fig;
+package org.woehlke.bloodmoney.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

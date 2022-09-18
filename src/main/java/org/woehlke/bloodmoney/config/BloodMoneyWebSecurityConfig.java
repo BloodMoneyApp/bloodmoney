@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.woehlke.bloodmoney.user.BloodMoneyUserAccountDetailsService;
+import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserAccountDetailsService;
 
 @SuppressWarnings("deprecation")
 @Configuration
