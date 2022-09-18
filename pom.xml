@@ -88,7 +88,7 @@
     <version.groovy-all>3.0.12</version.groovy-all>
     <hamcrest.version>2.2</hamcrest.version>
     <jsoup.version>1.15.3</jsoup.version>
-    <pmdVersion>6.49.0</pmdVersion>
+    <version.pmd>6.49.0</version.pmd>
 
     <!-- SCM and Releasing -->
     <version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
@@ -125,6 +125,7 @@
     <version.spotbugs-maven-plugin>4.7.0.0</version.spotbugs-maven-plugin>
     <version.maven-surefire-report-plugin>3.0.0-M7</version.maven-surefire-report-plugin>
     <version.asciidoctor-maven-plugin>2.2.2</version.asciidoctor-maven-plugin>
+    <version.liquibase-maven-plugin>4.16.1</version.liquibase-maven-plugin>
     <version.doxia-module-markdown>1.11.1</version.doxia-module-markdown>
     <version.maven-enforcer-plugin>3.1.0</version.maven-enforcer-plugin>
     <version.plantuml-maven-plugin>1.5.2</version.plantuml-maven-plugin>
@@ -306,13 +307,13 @@
       <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf-testing</artifactId>
-        <version>${thymeleaf-testing.version}</version>
+        <version>${version.thymeleaf-testing}</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>io.github.jpenren</groupId>
         <artifactId>thymeleaf-spring-data-dialect</artifactId>
-        <version>${thymeleaf-spring-data-dialect.version}</version>
+        <version>${version.thymeleaf-spring-data-dialect}</version>
       </dependency>
 
       <!-- compile -->
@@ -413,140 +414,140 @@
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>${maven-enforcer-plugin.version}</version>
+        <version>${version.maven-clean-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-invoker-plugin</artifactId>
-        <version>${maven-invoker-plugin.version}</version>
+        <version>${version.maven-clean-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>com.dkanejs.maven.plugins</groupId>
         <artifactId>docker-compose-maven-plugin</artifactId>
-        <version>${docker-compose-maven-plugin.version}</version>
+        <version>${version.maven-clean-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>${maven-clean-plugin.version}</version>
+        <version>${version.maven-clean-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>${maven-dependency-plugin.version}</version>
+        <version>${version.maven-dependency-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven-compiler-plugin.version}</version>
+        <version>${version.maven-compiler-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring-boot-maven-plugin.version}</version>
+        <version>${version.spring-boot-maven-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>${maven-site-plugin.version}</version>
+        <version>${version.maven-site-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>${maven-project-info-reports-plugin.version}</version>
+        <version>${version.maven-project-info-reports-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>${maven-jxr-plugin.version}</version>
+        <version>${version.maven-jxr-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${maven-checkstyle-plugin.version}</version>
+        <version>${version.maven-checkstyle-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>${spotbugs-maven-plugin.version}</version>
+        <version>${version.spotbugs-maven-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>${maven-pmd-plugin.version}</version>
+        <version>${version.maven-pmd-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-surefire-plugin.version}</version>
+        <version>${version.maven-surefire-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>${maven-surefire-report-plugin.version}</version>
+        <version>${version.maven-surefire-report-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.asciidoctor</groupId>
         <artifactId>asciidoctor-maven-plugin</artifactId>
-        <version>${asciidoctor-maven-plugin.version}</version>
+        <version>${version.asciidoctor-maven-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.liquibase</groupId>
         <artifactId>liquibase-maven-plugin</artifactId>
-        <version>${liquibase-maven-plugin.version}</version>
+        <version>${version.liquibase-maven-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>${maven-release-plugin.version}</version>
+        <version>${version.maven-release-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
-        <version>${maven-deploy-plugin.version}</version>
+        <version>${version.maven-deploy-plugin}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.doxia</groupId>
         <artifactId>doxia-module-markdown</artifactId>
-        <version>${doxia-module-markdown.version}</version>
+        <version>${version.doxia-module-markdown}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
@@ -1083,18 +1084,18 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <defaultGoal>clean install dependency:tree spring-boot:run</defaultGoal>
+    <defaultGoal>clean package dependency:list spring-boot:run</defaultGoal>
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>${maven-dependency-plugin.version}</version>
+          <version>${version.maven-dependency-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.asciidoctor</groupId>
           <artifactId>asciidoctor-maven-plugin</artifactId>
-          <version>${asciidoctor-maven-plugin.version}</version>
+          <version>${version.asciidoctor-maven-plugin}</version>
           <executions>
             <execution>
               <id>generate-docs</id>
@@ -1112,14 +1113,14 @@
             <dependency>
               <groupId>org.springframework.restdocs</groupId>
               <artifactId>spring-restdocs-asciidoctor</artifactId>
-              <version>${spring-restdocs.version}</version>
+              <version>${version.spring-restdocs}</version>
             </dependency>
           </dependencies>
         </plugin>
         <plugin>
           <groupId>org.liquibase</groupId>
           <artifactId>liquibase-maven-plugin</artifactId>
-          <version>${liquibase-maven-plugin.version}</version>
+          <version>${version.liquibase-maven-plugin}</version>
           <configuration>
             <propertyFile>${liquibase.propertyFile}</propertyFile>
           </configuration>
@@ -1141,119 +1142,119 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>${maven-enforcer-plugin.version}</version>
+          <version>${version.maven-enforcer-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-invoker-plugin</artifactId>
-          <version>${maven-invoker-plugin.version}</version>
+          <version>${version.maven-invoker-plugin}</version>
         </plugin>
         <plugin>
           <groupId>com.dkanejs.maven.plugins</groupId>
           <artifactId>docker-compose-maven-plugin</artifactId>
-          <version>${docker-compose-maven-plugin.version}</version>
+          <version>${version.docker-compose-maven-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
-          <version>${maven-install-plugin.version}</version>
+          <version>${version.maven-install-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-help-plugin</artifactId>
-          <version>${maven-help-plugin.version}</version>
+          <version>${version.maven-help-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>${maven-source-plugin.version}</version>
+          <version>${version.maven-source-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${maven-javadoc-plugin.version}</version>
+          <version>${version.maven-javadoc-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>${maven-surefire-plugin.version}</version>
+          <version>${version.maven-surefire-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>${maven-failsafe-plugin.version}</version>
+          <version>${version.maven-failsafe-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>${maven-release-plugin.version}</version>
+          <version>${version.maven-release-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>${maven-deploy-plugin.version}</version>
+          <version>${version.maven-deploy-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
-          <version>${spring-boot-maven-plugin.version}</version>
+          <version>${version.spring-boot-maven-plugin}</version>
         </plugin>
 
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>${maven-site-plugin.version}</version>
+          <version>${version.maven-site-plugin}</version>
         </plugin>
 
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>${maven-project-info-reports-plugin.version}</version>
+          <version>${version.maven-project-info-reports-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jxr-plugin</artifactId>
-          <version>${maven-jxr-plugin.version}</version>
+          <version>${version.maven-jxr-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>${maven-checkstyle-plugin.version}</version>
+          <version>${version.maven-checkstyle-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-report-plugin</artifactId>
-          <version>${maven-surefire-report-plugin.version}</version>
+          <version>${version.maven-surefire-report-plugin}</version>
         </plugin>
         <plugin>
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
-          <version>${spotbugs-maven-plugin.version}</version>
+          <version>${version.spotbugs-maven-plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
-          <version>${maven-pmd-plugin.version}</version>
+          <version>${version.maven-pmd-plugin}</version>
           <dependencies>
             <dependency>
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-core</artifactId>
-              <version>${pmdVersion}</version>
+              <version>${version.pmd}</version>
             </dependency>
             <dependency>
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-java</artifactId>
-              <version>${pmdVersion}</version>
+              <version>${version.pmd}</version>
             </dependency>
             <dependency>
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-javascript</artifactId>
-              <version>${pmdVersion}</version>
+              <version>${version.pmd}</version>
             </dependency>
             <dependency>
               <groupId>net.sourceforge.pmd</groupId>
               <artifactId>pmd-jsp</artifactId>
-              <version>${pmdVersion}</version>
+              <version>${version.pmd}</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -1743,5 +1744,103 @@
       </plugin>
     </plugins>
   </reporting>
+
+
+  <profiles>
+
+    <profile>
+      <id>jar</id>
+      <properties>
+        <skip.unit.tests>false</skip.unit.tests>
+        <skip.integration.tests>true</skip.integration.tests>
+      </properties>
+      <build>
+        <finalName>${project.artifactId}</finalName>
+        <defaultGoal>clean install</defaultGoal>
+      </build>
+    </profile>
+
+    <profile>
+      <id>cloud</id>
+      <properties>
+        <skip.unit.tests>true</skip.unit.tests>
+        <skip.integration.tests>true</skip.integration.tests>
+      </properties>
+      <build>
+        <finalName>${project.artifactId}</finalName>
+        <defaultGoal>clean dependency:list install</defaultGoal>
+      </build>
+    </profile>
+
+    <profile>
+      <id>uml</id>
+      <properties>
+        <skip.unit.tests>true</skip.unit.tests>
+        <skip.integration.tests>true</skip.integration.tests>
+      </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>com.github.funthomas424242</groupId>
+            <artifactId>plantuml-maven-plugin</artifactId>
+            <version>${version.plantuml-maven-plugin}</version>
+            <type>maven-plugin</type>
+            <exclusions>
+              <exclusion>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+          <dependency>
+            <groupId>net.sourceforge.plantuml</groupId>
+            <artifactId>plantuml</artifactId>
+            <version>${version.net.sourceforge.plantuml}</version>
+            <scope>runtime</scope>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>com.github.funthomas424242</groupId>
+          <artifactId>plantuml-maven-plugin</artifactId>
+          <type>maven-plugin</type>
+        </dependency>
+        <dependency>
+          <groupId>net.sourceforge.plantuml</groupId>
+          <artifactId>plantuml</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+      </dependencies>
+      <build>
+        <defaultGoal>clean com.github.funthomas424242:plantuml-maven-plugin:generate</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>com.github.funthomas424242</groupId>
+            <artifactId>plantuml-maven-plugin</artifactId>
+            <version>${version.plantuml-maven-plugin}</version>
+            <configuration>
+              <truncatePattern>src/main/*</truncatePattern>
+              <sourceFiles>
+                <directory>${basedir}</directory>
+                <includes>
+                  <include>src/main/plantuml/**/*.puml</include>
+                </includes>
+              </sourceFiles>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>net.sourceforge.plantuml</groupId>
+                <artifactId>plantuml</artifactId>
+                <version>${version.net.sourceforge.plantuml}</version>
+                <scope>runtime</scope>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
 
 </project>
