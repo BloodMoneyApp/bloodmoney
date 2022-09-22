@@ -12,7 +12,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.domain.db.BloodPressureMeasurementEntity;
 import org.woehlke.bloodmoney.domain.db.measurements.BloodPressureMeasurementService;
 import org.woehlke.bloodmoney.domain.meso.session.UserSessionBean;
@@ -68,7 +67,7 @@ public class BloodPressureMeasurementResource {
     @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity getOne(
         @PathVariable("id") BloodPressureMeasurementEntity one,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
@@ -83,7 +82,7 @@ public class BloodPressureMeasurementResource {
     public BloodPressureMeasurementEntity update(
         @Valid BloodPressureMeasurementEntity one,
         @PathVariable("id") long id,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
@@ -95,7 +94,7 @@ public class BloodPressureMeasurementResource {
     @PreAuthorize("isAuthenticated()")
     public Response delete(
         @PathVariable("id") long id,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
@@ -112,7 +111,7 @@ public class BloodPressureMeasurementResource {
     public BloodPressureMeasurementEntity add(
        BloodPressureMeasurementEntity one,
        @Context UriInfo uriInfo,
-       @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
+       @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
        Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
@@ -121,13 +120,11 @@ public class BloodPressureMeasurementResource {
     }
 
     private final BloodPressureMeasurementService bloodPressureMeasurementService;
-    private final BloodMoneyProperties bloodMoneyProperties;
     private final UserSessionService userSessionService;
 
     @Autowired
-    public BloodPressureMeasurementResource(BloodPressureMeasurementService bloodPressureMeasurementService, BloodMoneyProperties bloodMoneyProperties, UserSessionService userSessionService) {
+    public BloodPressureMeasurementResource(BloodPressureMeasurementService bloodPressureMeasurementService, UserSessionService userSessionService) {
         this.bloodPressureMeasurementService = bloodPressureMeasurementService;
-        this.bloodMoneyProperties = bloodMoneyProperties;
         this.userSessionService = userSessionService;
     }
 }
