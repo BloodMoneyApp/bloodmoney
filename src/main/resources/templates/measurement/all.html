@@ -17,33 +17,34 @@
             <span th:text="#{org.woehlke.mybp.measurement.edit.subtitle.long}"></span>
         </p>
         <p class="tw-content-subtitle">
-            <span class="row">
-                <span class="col">
+            <span class="row my-2">
+                <span class="col-3">
                     <a href="#" th:href="@{/measurement/add}" class="btn btn-primary btn-block" role="button">
                         <i class="fa-solid fa-square-plus"></i>
                         <span th:text="#{org.woehlke.mybp.measurement.all.button.add}">Add New Measurement</span>
                     </a>
                 </span>
-                <span class="col">
+                <span class="col-3">
                     <a href="#" th:href="@{/measurement/all}" class="btn btn-secondary btn-block" role="button">
                         <i class="fas fa-sync"></i>
                         <span th:text="#{org.woehlke.mybp.measurement.all.button.reload}">Reload List of All Measurements</span>
                     </a>
                 </span>
-                <span class="col">
+                <span class="col-3" th:text="#{org.woehlke.mybp.measurement.all.button.export.label}">Export List of All Measurements</span>
+                <span class="col-1">
                     <a href="#" th:href="@{/measurement/export/all}" class="btn btn-outline-dark btn-block" role="button">
                         <i class="fas fa-download"></i>
                         <span th:text="#{org.woehlke.mybp.measurement.all.button.export.csv}">Export List of All Measurements</span>
                     </a>
                 </span>
-                <span class="col">
+                <span class="col-1">
                     <!-- TODO: #147 REST button.export.xml -->
                     <a href="#" th:href="@{/rest/measurement/all.xml}" class="btn btn-outline-dark btn-block" role="button">
                         <i class="fas fa-download"></i>
                         <span th:text="#{org.woehlke.mybp.measurement.all.button.export.xml}">Export List of All Measurements</span>
                     </a>
                 </span>
-                <span class="col">
+                <span class="col-1">
                     <!-- TODO: #148 REST button.export.json -->
                     <a href="#" th:href="@{/rest/measurement/all.json}" class="btn btn-outline-dark btn-block" role="button">
                         <i class="fas fa-download"></i>
