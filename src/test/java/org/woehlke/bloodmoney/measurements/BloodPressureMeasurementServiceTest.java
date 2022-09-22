@@ -235,7 +235,7 @@ public class BloodPressureMeasurementServiceTest {
         long countAfter = bloodPressureMeasurementService.count();
         Assertions.assertEquals(countBefore-1,countAfter,"count after deöete");
         Optional<BloodPressureMeasurementEntity> target = bloodPressureMeasurementService.findById(id);
-        Assertions.assertTrue(target.isPresent());
+        Assertions.assertFalse(target.isPresent());
         Assertions.assertTrue(true);
     }
 

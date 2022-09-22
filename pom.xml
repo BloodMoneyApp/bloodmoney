@@ -81,7 +81,9 @@
     <opencsv.version>5.7.0</opencsv.version>
 
     <!-- Unit and Integration Testing -->
-    <skip.tests>true</skip.tests>
+    <skip.test>false</skip.test>
+    <skip.unit.tests>false</skip.unit.tests>
+    <skip.integration.tests>false</skip.integration.tests>
     <xmlunit.version>2.9.0</xmlunit.version>
     <htmlunit.version>2.64.0</htmlunit.version>
     <version.groovy-all>3.0.12</version.groovy-all>
@@ -1447,7 +1449,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <skipTests>${skipTests}</skipTests>
+          <skipTests>${skip.test}</skipTests>
           <includes>
             <include>**/*Tests.java</include>
             <include>**/*Test.java</include>
@@ -1457,7 +1459,7 @@
           </excludes>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skipTests}</skipIntegrationTests>
+            <skipIntegrationTests>${skip.integration.tests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1468,7 +1470,7 @@
           <skipTests>${skip.tests}</skipTests>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skip.tests}</skipIntegrationTests>
+            <skipIntegrationTests>${skip.integration.tests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1476,8 +1478,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
         <configuration>
-          <skipFailsafeReport>${skip.tests}</skipFailsafeReport>
-          <skipSurefireReport>${skip.tests}</skipSurefireReport>
+          <skipFailsafeReport>${skip.integration.tests}</skipFailsafeReport>
+          <skipSurefireReport>${skip.integration.tests}</skipSurefireReport>
         </configuration>
       </plugin>
       <plugin>
@@ -1490,10 +1492,6 @@
   <profiles>
     <profile>
       <id>jar</id>
-      <properties>
-        <skip.unit.tests>false</skip.unit.tests>
-        <skip.integration.tests>true</skip.integration.tests>
-      </properties>
       <build>
         <finalName>${project.artifactId}</finalName>
         <defaultGoal>clean install</defaultGoal>
