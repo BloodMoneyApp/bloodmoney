@@ -1092,7 +1092,7 @@
                     <file>${project.basedir}/src/site/markdown/HELP.md</file>
                     <file>${project.basedir}/src/site/markdown/HOWTO.md</file>
                     <file>${project.basedir}/src/site/markdown/TODO.md</file>
-                    <file>${project.basedir}/src/main/bash/docker-compose.yml</file>
+                    <file>${project.basedir}/src/main/resources/docker-compose.yml</file>
                     <file>${project.basedir}/src/main/bash/docker-start.sh</file>
                     <file>${project.basedir}/src/main/bash/docker-stop.sh</file>
                     <file>${project.basedir}/app.json</file>
