@@ -1,8 +1,8 @@
 # bloodmoney
 
-[![Java CI with Maven](https://github.com/BloodMoneyApp/bloodmoney/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/BloodMoneyApp/bloodmoney/actions)
 [![OSSAR](https://github.com/BloodMoneyApp/bloodmoney/workflows/OSSAR/badge.svg)](https://github.com/BloodMoneyApp/bloodmoney/actions)
-[![Build Status](https://travis-ci.com/BloodMoneyApp/bloodmoney.svg?branch=master)](https://api.travis-ci.com/BloodMoneyApp/bloodmoney.svg?branch=master)
+[![Java CI with Maven](https://github.com/BloodMoneyApp/bloodmoney/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/BloodMoneyApp/bloodmoney/actions)
+[![Build Status](https://api.travis-ci.com/BloodMoneyApp/bloodmoney.svg?branch=master)](https://api.travis-ci.com/BloodMoneyApp/bloodmoney.svg?branch=master)
 [![Maven Project Reports](src/site/resources/img/maven-feather.png)](https://homepages.ruhr-uni-bochum.de/Thomas.Woehlke/java/bloodmoney/)
 
 
