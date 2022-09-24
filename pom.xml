@@ -1209,40 +1209,6 @@
       <plugin>
         <groupId>com.dkanejs.maven.plugins</groupId>
         <artifactId>docker-compose-maven-plugin</artifactId>
-        <!--
-        <executions>
-          <execution>
-            <id>maven-docker-up</id>
-            <phase>process-test-resources</phase>
-            <goals>
-              <goal>up</goal>
-            </goals>
-            <configuration>
-              <composeFile>${docker-compose-maven-plugin.composeFile}</composeFile>
-              <verbose>${docker-compose-maven-plugin.verbose}</verbose>
-              <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
-              <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
-              <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
-              <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
-            </configuration>
-          </execution>
-          <execution>
-            <id>maven-docker-down</id>
-            <phase>post-site</phase>
-            <goals>
-              <goal>down</goal>
-            </goals>
-            <configuration>
-              <composeFile>${docker-compose-maven-plugin.composeFile}</composeFile>
-              <verbose>${docker-compose-maven-plugin.verbose}</verbose>
-              <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
-              <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
-              <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
-              <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
-            </configuration>
-          </execution>
-        </executions>
-        -->
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
