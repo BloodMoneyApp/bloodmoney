@@ -148,9 +148,9 @@ function setupTravis() {
     ./mvnw -e -DskipTests=true -B -V clean
     ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources
     ./mvnw -e -DskipTests=true -B -V dependency:tree
-    ./mvnw -e -DskipTests=true -B -V docker-compose:up
+    ./mvnw -e -DskipTests=true -B -V install
      docker ps
-    ./mvnw -e -DskipTests=true -B -V clean package
+    ./mvnw -e -DskipTests=true -B -V clean package spring-boot:repackage
     ./mvnw -e -DskipTests=true -B -V site
     ./mvnw docker-compose:down
     docker ps
