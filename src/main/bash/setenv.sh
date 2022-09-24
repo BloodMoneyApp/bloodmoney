@@ -144,6 +144,22 @@ function setupTravis() {
     export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
     export TW_SKIP_TESTS='-DskipTests=true'
     showSettings
+    ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
+    ./mvnw -e -DskipTests=true -B -V clean
+    ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources
+    ./mvnw -e -DskipTests=true -B -V dependency:tree
+    ./mvnw -e -DskipTests=true -B -V docker-compose:up
+     docker ps
+    ./mvnw -e -DskipTests=true -B -V clean package
+    ./mvnw -e -DskipTests=true -B -V site
+    ./mvnw docker-compose:down
+    docker ps
+}
+
+function setupTravis_tmp2() {
+    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
+    export TW_SKIP_TESTS='-DskipTests=true'
+    showSettings
     ./mvnw -e $TW_SKIP_TESTS -B -V install -Dmaven.javadoc.skip=true && \
     ./mvnw -e $TW_SKIP_TESTS -B -V dependency:purge-local-repository clean && \
     ./mvnw -e $TW_SKIP_TESTS -B -V dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree && \

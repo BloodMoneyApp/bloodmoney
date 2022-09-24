@@ -3,8 +3,8 @@
 source src/main/bash/setenv.sh
 
 function main() {
-    firstSetup
-    # setupTravis
+   # firstSetup
+    setupTravis
 }
 
 main
