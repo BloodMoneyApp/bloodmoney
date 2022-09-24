@@ -82,9 +82,7 @@
 
     <!-- Unit and Integration Testing -->
     <skipTests>false</skipTests>
-    <skip.tests>${skipTests}</skip.tests>
-    <skip.unit.tests>${skipTests}</skip.unit.tests>
-    <skip.integration.tests>${skipTests}</skip.integration.tests>
+    <skipIntegrationTests>${skipTests}</skipIntegrationTests>
     <xmlunit.version>2.9.0</xmlunit.version>
     <htmlunit.version>2.64.0</htmlunit.version>
     <version.groovy-all>3.0.12</version.groovy-all>
@@ -924,6 +922,38 @@
           <groupId>com.dkanejs.maven.plugins</groupId>
           <artifactId>docker-compose-maven-plugin</artifactId>
           <version>${version.docker-compose-maven-plugin}</version>
+          <executions>
+            <execution>
+              <id>maven-docker-up</id>
+              <phase>pre-clean</phase>
+              <goals>
+                <goal>up</goal>
+              </goals>
+              <configuration>
+                <composeFile>${docker-compose-maven-plugin.composeFile}</composeFile>
+                <verbose>${docker-compose-maven-plugin.verbose}</verbose>
+                <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
+                <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
+                <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
+                <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
+              </configuration>
+            </execution>
+            <execution>
+              <id>maven-docker-down</id>
+              <phase>post-site</phase>
+              <goals>
+                <goal>down</goal>
+              </goals>
+              <configuration>
+                <composeFile>${docker-compose-maven-plugin.composeFile}</composeFile>
+                <verbose>${docker-compose-maven-plugin.verbose}</verbose>
+                <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
+                <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
+                <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
+                <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1173,6 +1203,7 @@
       <plugin>
         <groupId>com.dkanejs.maven.plugins</groupId>
         <artifactId>docker-compose-maven-plugin</artifactId>
+        <!--
         <executions>
           <execution>
             <id>maven-docker-up</id>
@@ -1205,6 +1236,7 @@
             </configuration>
           </execution>
         </executions>
+        -->
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1310,10 +1342,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <skipTests>${skip.tests}</skipTests>
+          <skipTests>${skipTests}</skipTests>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skip.tests}</skipIntegrationTests>
+            <skipIntegrationTests>${skipIntegrationTests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1325,10 +1357,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
-          <skipTests>${skip.tests}</skipTests>
+          <skipTests>${skipTests}</skipTests>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skip.tests}</skipIntegrationTests>
+            <skipIntegrationTests>${skipIntegrationTests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1375,17 +1407,7 @@
       <plugin>
         <groupId>com.dkanejs.maven.plugins</groupId>
         <artifactId>docker-compose-maven-plugin</artifactId>
-        <!--
         <inherited>true</inherited>
-        -->
-        <configuration>
-          <composeFile>${docker-compose-maven-plugin.composeFile}</composeFile>
-          <verbose>${docker-compose-maven-plugin.verbose}</verbose>
-          <removeImages>${docker-compose-maven-plugin.removeImages}</removeImages>
-          <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
-          <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
-          <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1472,7 +1494,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <skipTests>${skip.test}</skipTests>
+          <skipTests>${skipTests}</skipTests>
           <includes>
             <include>**/*Tests.java</include>
             <include>**/*Test.java</include>
@@ -1482,7 +1504,7 @@
           </excludes>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skip.integration.tests}</skipIntegrationTests>
+            <skipIntegrationTests>${skipIntegrationTests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1490,10 +1512,10 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
-          <skipTests>${skip.tests}</skipTests>
+          <skipTests>${skipTests}</skipTests>
           <systemPropertyVariables>
             <spring.profiles.active>default</spring.profiles.active>
-            <skipIntegrationTests>${skip.integration.tests}</skipIntegrationTests>
+            <skipIntegrationTests>${skipIntegrationTests}</skipIntegrationTests>
           </systemPropertyVariables>
         </configuration>
       </plugin>
@@ -1501,8 +1523,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
         <configuration>
-          <skipFailsafeReport>${skip.integration.tests}</skipFailsafeReport>
-          <skipSurefireReport>${skip.integration.tests}</skipSurefireReport>
+          <skipFailsafeReport>false</skipFailsafeReport>
+          <skipSurefireReport>false</skipSurefireReport>
         </configuration>
       </plugin>
       <plugin>
@@ -1513,11 +1535,28 @@
   </reporting>
 
   <profiles>
+
     <profile>
-      <id>jar</id>
+      <id>test</id>
+      <properties>
+        <skipTests>false</skipTests>
+        <skipIntegrationTests>false</skipIntegrationTests>
+      </properties>
       <build>
         <finalName>${project.artifactId}</finalName>
-        <defaultGoal>clean install</defaultGoal>
+        <defaultGoal>clean dependency:list install spring-boot:repackage</defaultGoal>
+      </build>
+    </profile>
+
+    <profile>
+      <id>jar</id>
+      <properties>
+        <skipTests>true</skipTests>
+        <skipIntegrationTests>true</skipIntegrationTests>
+      </properties>
+      <build>
+        <finalName>${project.artifactId}</finalName>
+        <defaultGoal>clean dependency:list install spring-boot:repackage</defaultGoal>
       </build>
     </profile>
 
@@ -1525,13 +1564,11 @@
       <id>cloud</id>
       <properties>
         <skipTests>true</skipTests>
-        <skip.tests>${skipTests}</skip.tests>
-        <skip.unit.tests>${skipTests}</skip.unit.tests>
-        <skip.integration.tests>${skipTests}</skip.integration.tests>
+        <skipIntegrationTests>true</skipIntegrationTests>
       </properties>
       <build>
         <finalName>${project.artifactId}</finalName>
-        <defaultGoal>clean dependency:list install</defaultGoal>
+        <defaultGoal>clean dependency:list install spring-boot:repackage</defaultGoal>
       </build>
     </profile>
 
@@ -1539,9 +1576,7 @@
       <id>uml</id>
       <properties>
         <skipTests>true</skipTests>
-        <skip.tests>${skipTests}</skip.tests>
-        <skip.unit.tests>${skipTests}</skip.unit.tests>
-        <skip.integration.tests>${skipTests}</skip.integration.tests>
+        <skipIntegrationTests>true</skipIntegrationTests>
       </properties>
       <dependencyManagement>
         <dependencies>
