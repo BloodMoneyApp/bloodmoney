@@ -1185,6 +1185,22 @@
           <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
           <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
         </configuration>
+        <executions>
+          <execution>
+            <id>maven-docker-up</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>up</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>maven-docker-down</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>down</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
