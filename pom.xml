@@ -103,6 +103,9 @@
     <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
     <docker-compose-maven-plugin.ignorePullFailures>true</docker-compose-maven-plugin.ignorePullFailures>
     <docker-compose-maven-plugin.detachedMode>true</docker-compose-maven-plugin.detachedMode>
+    <docker-compose-maven-plugin.projectName>bloodmon</docker-compose-maven-plugin.projectName>
+
+
 
     <!-- Database Evolution -->
     <liquibase-maven-plugin.version>4.12.0</liquibase-maven-plugin.version>
@@ -939,6 +942,7 @@
                 <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
                 <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
                 <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
+                <projectName>${docker-compose-maven-plugin.bloodmon}</projectName>
               </configuration>
             </execution>
             <execution>
@@ -954,6 +958,7 @@
                 <removeVolumes>${docker-compose-maven-plugin.removeVolumes}</removeVolumes>
                 <ignorePullFailures>${docker-compose-maven-plugin.ignorePullFailures}</ignorePullFailures>
                 <detachedMode>${docker-compose-maven-plugin.detachedMode}</detachedMode>
+                <projectName>${docker-compose-maven-plugin.bloodmon}</projectName>
               </configuration>
             </execution>
           </executions>
