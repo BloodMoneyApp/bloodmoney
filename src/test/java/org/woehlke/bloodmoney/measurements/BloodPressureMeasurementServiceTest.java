@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
+import org.woehlke.bloodmoney.domain.db.BloodPressureMeasurementEntity;
+import org.woehlke.bloodmoney.domain.db.measurements.BloodPressureMeasurementService;
 
 import java.time.ZoneId;
 import java.util.*;
@@ -233,7 +235,7 @@ public class BloodPressureMeasurementServiceTest {
         long countAfter = bloodPressureMeasurementService.count();
         Assertions.assertEquals(countBefore-1,countAfter,"count after deöete");
         Optional<BloodPressureMeasurementEntity> target = bloodPressureMeasurementService.findById(id);
-        Assertions.assertTrue(target.isPresent());
+        Assertions.assertFalse(target.isPresent());
         Assertions.assertTrue(true);
     }
 

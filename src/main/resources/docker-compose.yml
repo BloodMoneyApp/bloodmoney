@@ -1,0 +1,38 @@
+# Use postgres/example user/password credentials
+version: '3.3'
+
+services:
+
+    bloodmoney_dbmaster:
+        image: postgres:latest
+        restart: always
+        networks:
+            - net
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: bloodmoneypwd
+            POSTGRES_USER: bloodmoney
+            POSTGRES_DB: bloodmoney
+    bloodmoney_dbref:
+        image: postgres:latest
+        restart: always
+        networks:
+            - net
+        ports:
+            - 5464:5432
+        environment:
+            POSTGRES_PASSWORD: bloodmoneyrefpwd
+            POSTGRES_USER: bloodmoneyref
+            POSTGRES_DB: bloodmoneyref
+    bloodmoney_adminer:
+        image: adminer:latest
+        restart: always
+        networks:
+            - net
+        ports:
+            - 4000:8080
+networks:
+    net:
+
+

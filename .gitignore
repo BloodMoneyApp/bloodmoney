@@ -45,10 +45,14 @@ build
 /target
 /wrapper
 
-/.idea/workspace.xml
-/.idea
-/.idea/
-/.idea/
+#/.idea/workspace.xml
+#/.idea
+#/.idea/
+#/.idea/
 /release.properties
 /pom.xml.releaseBackup
 /x.txt
+/x.log.txt
+/xy.txt
+/xx2.txt
+/xy2.txt

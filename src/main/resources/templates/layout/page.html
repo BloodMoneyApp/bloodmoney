@@ -13,8 +13,8 @@
 	<meta name="author" content="Thomas Woehlke">
 	<meta name="generator" content="Spring Boot and Java">
 	<title th:replace="${twtitle}">Blood Pressure Measurement</title>
-	<link th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.css}" rel="stylesheet"/>
-	<link th:href="@{/webjars/font-awesome/5.14.0/css/all.css}" rel="stylesheet"/>
+  <link th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}" rel="stylesheet"/>
+  <link th:href="@{/webjars/font-awesome/6.1.2/css/all.min.css}" rel="stylesheet"/>
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Lato|Varela+Round" rel="stylesheet">
 	<!-- Custom styles for this template -->
@@ -50,10 +50,10 @@
 			<div class="container">
 				<h1 th:replace="${twtitle}">Hello, world!</h1>
 				<p class="tw-content-subtitle lead" th:replace="${description}">
-                    This is a template for a simple marketing or informational website.
-                    It includes a large callout called a jumbotron and three supporting pieces of content.
-                    Use it as a starting point to create something more unique.
-                </p>
+          This is a template for a simple marketing or informational website.
+          It includes a large callout called a jumbotron and three supporting pieces of content.
+          Use it as a starting point to create something more unique.
+        </p>
 			</div>
 		</div>
 	</header>
@@ -67,17 +67,28 @@
 
 	<div th:fragment="tw-footer">
 		<!-- Footer -->
-		<footer class="footer">
-			<nav class="navbar fixed-bottom navbar-dark bg-dark">
-				<div class="container">
-					<span class="navbar-text">© 2020 Thomas Wöhlke</span>
-				</div>
-			</nav>
-		</footer>
-		<script th:src="@{/webjars/jquery/3.5.1/jquery.js}"></script>
-		<script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
-		<script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.bundle.js}"></script>
-		<script th:src="@{/webjars/font-awesome/5.14.0/js/all.js}"></script>
+    <footer class="footer">
+      <nav class="navbar fixed-bottom navbar-dark bg-dark navbar-text">
+        <div class="container">
+          <div class="navbar-text">© 2020-2022 Thomas Wöhlke</div>
+          <div class="col nav-link">
+            <a href="https://twitter.com/GustaveSchiller" class="nav-link text-center">
+              <i class="fa-brands fa-twitter"></i> GustaveSchiller
+            </a>
+          </div>
+          <div class="col nav-link">
+            <a href="https://github.com/BloodMoneyApp/bloodmoney" class="nav-link text-end">
+              <i class="fa-brands fa-github"></i> BloodMoneyApp/bloodmoney
+            </a>
+          </div>
+        </div>
+      </nav>
+    </footer>
+
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.js}"></script>
+    <script th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/font-awesome/6.1.2/js/all.js}"></script>
 		<!-- my own JavaScript -->
 		<script th:src="@{/bloodmoney/bloodmoney.js}"></script>
 	</div>

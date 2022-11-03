@@ -1,2 +1,4 @@
 spring:
-    profiles: dev
+  config:
+    activate:
+      on-profile: dev

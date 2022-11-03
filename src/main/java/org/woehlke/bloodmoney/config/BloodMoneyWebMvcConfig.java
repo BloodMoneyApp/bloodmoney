@@ -19,6 +19,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.dialect.springdata.SpringDataDialect;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 import java.util.Locale;
 
@@ -26,7 +27,7 @@ import java.util.Locale;
 @Configuration
 @EnableAsync
 @EnableJpaRepositories({
-    "org.woehlke.bloodmoney.measurements"
+    "org.woehlke.bloodmoney"
 })
 @EnableConfigurationProperties({
     BloodMoneyProperties.class
@@ -34,7 +35,13 @@ import java.util.Locale;
 @EnableWebMvc
 @EnableSpringDataWebSupport
 @EnableAutoConfiguration
-public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implements WebMvcConfigurer {
+public class BloodMoneyWebMvcConfig implements WebMvcConfigurer {
+
+    private final BloodMoneyProperties bloodMoneyProperties;
+    @Autowired
+    public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
+        this.bloodMoneyProperties = bloodMoneyProperties;
+    }
 
     @Bean
     public Java8TimeDialect java8TimeDialect() {
@@ -82,10 +89,4 @@ public class BloodMoneyWebMvcConfig /* extends WebMvcConfigurerAdapter */ implem
         }
     }
 
-    private final BloodMoneyProperties bloodMoneyProperties;
-
-    @Autowired
-    public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
-        this.bloodMoneyProperties = bloodMoneyProperties;
-    }
 }

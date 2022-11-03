@@ -2,74 +2,16 @@
 
 source src/main/bash/setenv.sh
 
-function composeUp() {
-    ./mvnw docker-compose:up
-}
 
-function composeDown() {
-    ./mvnw docker-compose:down
-}
-
-function runHerokuLocal() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
-    showSettings
-    composeUp
-    ./mvnw clean package
-    heroku local web
-    composeDown
-}
-
-function testApp() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
-    showSettings
-    ./mvnw clean package bootJar
-    composeUp
-    ./mvnw install test check
-    composeDown
+function herokuRun() {
+    ./mvnw -Pjar
+    JAVA_TOOL_OPTIONS=' -XX:+UseContainerSupport -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8'
+    JAVA_OPTIONS=JAVA_OPTIONS:$JAVA_TOOL_OPTIONS
+    java -jar target/bloodmoney.jar org.woehlke.bloodmoney.BloodMoneyApplication -Dspring.profiles.active=default
 }
 
 function run() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
-    showSettings
-    composeUp
-    ./mvnw -e clean spring-boot:run
-    composeDown
-}
-
-function testAppDev() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
-    showSettings
-    ./mvnw clean package bootJar
-    ./mvnw install test check
-}
-
-function runDev() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
-    showSettings
-    ./mvnw -e -DskipTests=true dependency:purge-local-repository clean package spring-boot:run
-}
-
-function firstSetup() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
-    showSettings
-    ./mvnw dependency:purge-local-repository
-    ./mvnw -e -DskipTests=true clean dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
-    ./mvnw -e -DskipTests=true clean package site
-}
-
-function setupTravis() {
-    export JAVA_OPTS=$JAVA_OPTS_RUN_DEFAULT
-    showSettings
-    ./mvnw -e -DskipTests=true -B -V install -Dmaven.javadoc.skip=true
-    ./mvnw -e -DskipTests=true -B -V dependency:purge-local-repository
-    ./mvnw -e -DskipTests=true -B -V clean
-    ./mvnw -e -DskipTests=true -B -V dependency:resolve dependency:resolve-plugins dependency:sources dependency:tree
-    #./mvnw docker-compose:up
-    #docker ps
-    ./mvnw -e -DskipTests=true -B -V clean package
-    ./mvnw -e -DskipTests=true -B -V site
-    #./mvnw docker-compose:down
-    #docker ps
+    ./mvnw
 }
 
 function main() {
@@ -79,11 +21,11 @@ function main() {
     ## run
     ## testApp
     ##testAppDev
-    # firstSetup
+    firstSetup
     # setupTravis
     runDev
 }
 
-main
+herokuRun
 
 
