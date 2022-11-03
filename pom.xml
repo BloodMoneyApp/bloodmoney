@@ -1377,11 +1377,6 @@
         <inherited>true</inherited>
       </plugin>
       <plugin>
-        <groupId>com.dkanejs.maven.plugins</groupId>
-        <artifactId>docker-compose-maven-plugin</artifactId>
-        <inherited>true</inherited>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <inherited>true</inherited>
@@ -1517,6 +1512,25 @@
       <build>
         <finalName>${project.artifactId}</finalName>
         <defaultGoal>clean dependency:list install spring-boot:repackage</defaultGoal>
+      </build>
+    </profile>
+
+    <profile>
+      <id>docker</id>
+      <properties>
+        <skipTests>false</skipTests>
+        <skip.unit.tests>false</skip.unit.tests>
+        <skip.integration.tests>false</skip.integration.tests>
+      </properties>
+      <build>
+        <finalName>${project.artifactId}</finalName>
+        <defaultGoal>clean dependency:purge-local-repository install spring-boot:repackage</defaultGoal>
+        <plugins>
+          <plugin>
+            <groupId>com.dkanejs.maven.plugins</groupId>
+            <artifactId>docker-compose-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
       </build>
     </profile>
 
