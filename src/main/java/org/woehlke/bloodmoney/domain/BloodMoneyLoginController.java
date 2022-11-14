@@ -1,24 +1,24 @@
 package org.woehlke.bloodmoney.domain;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
-//import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.bind.support.SessionStatus;
 import org.woehlke.bloodmoney.domain.security.vo.UserAccountBean;
 import org.woehlke.bloodmoney.domain.security.authorization.BloodMoneyUserAccountAuthorizationService;
 import org.woehlke.bloodmoney.domain.security.vo.LoginFormBean;
 import org.woehlke.bloodmoney.domain.security.login.UserAccountLoginSuccessService;
 
-//import jakarta.servlet.http.HttpServletRequest;
-//import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @Slf4j
@@ -81,7 +81,6 @@ public class BloodMoneyLoginController {
         }
     }
 
-    /*
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (SessionStatus status, HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -92,5 +91,5 @@ public class BloodMoneyLoginController {
         log.info("logged out");
         return "redirect:/";
     }
-    */
+
 }
