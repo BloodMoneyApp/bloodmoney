@@ -58,13 +58,11 @@ public class BloodPressureMeasurementEntityControllerTest {
             .andExpect(status().is3xxRedirection());
         log.info("TEST: shouldReturnDefaultMessage: /login");
         //TODO
-        /*
         this.mockMvc.perform(get("/login"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Willkommen zu BloodMoney")))
             .andExpect(content().string(containsString("Ihre App um Messwerte zu erfassen")));
-         */
     }
 
     @WithMockUser(username="thomas.woehlke@gmail.com")
@@ -72,12 +70,10 @@ public class BloodPressureMeasurementEntityControllerTest {
     public void getMeasurementAllPrivate() throws Exception {
         log.info("TEST: getMeasurementAllPrivate: /measurement/all");
         //TODO
-        /*
         this.mockMvc.perform(get("/measurement/all"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("<title>Alle Messungen</title>")));
 
-        */
     }
 }
