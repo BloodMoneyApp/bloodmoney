@@ -69,6 +69,7 @@
     <maven.compiler.target>${version.java}</maven.compiler.target>
     <spring-boot.repackage.layout>JAR</spring-boot.repackage.layout>
     <version.spring-boot-maven-plugin>${project.parent.version}</version.spring-boot-maven-plugin>
+
     <version.thymeleaf-testing>3.1.0.M2</version.thymeleaf-testing>
     <version.thymeleaf-spring-data-dialect>3.5.0</version.thymeleaf-spring-data-dialect>
 
@@ -327,6 +328,7 @@
       </dependency>
 
       <!-- Thymeleaf -->
+      <!--
       <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf-testing</artifactId>
@@ -338,6 +340,7 @@
         <artifactId>thymeleaf-spring-data-dialect</artifactId>
         <version>${version.thymeleaf-spring-data-dialect}</version>
       </dependency>
+      -->
 
       <dependency>
         <groupId>org.postgresql</groupId>
@@ -716,10 +719,12 @@
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring6</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>org.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-java8time</artifactId>
     </dependency>
+    -->
     <dependency>
       <groupId>org.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-springsecurity6</artifactId>
@@ -728,6 +733,7 @@
       <groupId>com.github.mxab.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-data-attribute</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>io.github.jpenren</groupId>
       <artifactId>thymeleaf-spring-data-dialect</artifactId>
@@ -737,6 +743,7 @@
       <artifactId>thymeleaf-testing</artifactId>
       <scope>test</scope>
     </dependency>
+    -->
 
     <dependency>
       <groupId>com.opencsv</groupId>
