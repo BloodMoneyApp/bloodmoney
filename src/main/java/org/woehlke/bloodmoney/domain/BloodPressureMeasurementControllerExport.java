@@ -11,7 +11,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.domain.db.BloodPressureMeasurementEntity;
 import org.woehlke.bloodmoney.domain.db.measurements.BloodPressureMeasurementService;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Slf4j
 @RestController

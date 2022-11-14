@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+//import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -25,8 +25,8 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BloodPressureMeasurementEntityResourceTest {
 
-    @SuppressWarnings("deprecation")
-    @LocalServerPort
+    //@SuppressWarnings("deprecation")
+    //@LocalServerPort
     private int port;
 
     @Autowired

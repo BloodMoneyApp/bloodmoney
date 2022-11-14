@@ -15,7 +15,7 @@ import org.woehlke.bloodmoney.domain.db.measurements.BloodPressureMeasurementSer
 import org.woehlke.bloodmoney.domain.meso.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.meso.session.UserSessionService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 
 @Slf4j
