@@ -44,11 +44,6 @@ public class BloodMoneyWebMvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public Java8TimeDialect java8TimeDialect() {
-        return new Java8TimeDialect();
-    }
-
-    @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
         slr.setDefaultLocale(Locale.GERMAN);
