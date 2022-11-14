@@ -79,7 +79,7 @@
     <webjars.bootstrap.version>5.2.2</webjars.bootstrap.version>
     <webjars.font-awesome.version>6.2.0</webjars.font-awesome.version>
     <webjars.ckeditor.version>31.0.0</webjars.ckeditor.version>
-    <opencsv.version>5.7.0</opencsv.version>
+    <opencsv.version>5.7.1</opencsv.version>
 
     <!-- Unit and Integration Testing -->
     <skipTests>false</skipTests>
@@ -328,13 +328,16 @@
       </dependency>
 
       <!-- Thymeleaf -->
-      <!--
+      <!-- TODO
       <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf-testing</artifactId>
         <version>${version.thymeleaf-testing}</version>
         <scope>test</scope>
       </dependency>
+     -->
+
+     <!-- TODO
       <dependency>
         <groupId>io.github.jpenren</groupId>
         <artifactId>thymeleaf-spring-data-dialect</artifactId>
@@ -591,11 +594,13 @@
       <scope>provided</scope>
       <optional>true</optional>
     </dependency>
+
+    <!-- spring-boot-starter -->
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jersey</artifactId>
@@ -659,6 +664,8 @@
       <artifactId>spring-boot-starter-logging</artifactId>
     </dependency>
 
+    <!-- spring framework, security, et al. -->
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
@@ -681,13 +688,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!--
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    -->
+    <!-- webfrontend: webjars -->
 
     <dependency>
       <groupId>org.webjars</groupId>
@@ -719,12 +720,6 @@
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring6</artifactId>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>org.thymeleaf.extras</groupId>
-      <artifactId>thymeleaf-extras-java8time</artifactId>
-    </dependency>
-    -->
     <dependency>
       <groupId>org.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-springsecurity6</artifactId>
@@ -734,17 +729,20 @@
       <artifactId>thymeleaf-extras-data-attribute</artifactId>
     </dependency>
     <!--
+    TODO
     <dependency>
       <groupId>io.github.jpenren</groupId>
       <artifactId>thymeleaf-spring-data-dialect</artifactId>
     </dependency>
+    -->
+    <!--
+    TODO
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-testing</artifactId>
       <scope>test</scope>
     </dependency>
     -->
-
     <dependency>
       <groupId>com.opencsv</groupId>
       <artifactId>opencsv</artifactId>
