@@ -283,6 +283,13 @@
         <version>${spring-integration.version}</version>
       </dependency>
 
+
+      <dependency>
+        <groupId>in.hocg.boot</groupId>
+        <artifactId>flyway-spring-boot-starter</artifactId>
+        <version>1.0.51</version>
+      </dependency>
+
       <!-- TODO check dependency: jsoup -->
       <dependency>
         <groupId>org.jsoup</groupId>
@@ -324,6 +331,11 @@
         <groupId>org.webjars</groupId>
         <artifactId>font-awesome</artifactId>
         <version>${webjars.font-awesome.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>in.hocg.boot</groupId>
+        <artifactId>flyway-spring-boot-autoconfigure</artifactId>
+        <version>1.0.51</version>
       </dependency>
 
       <!-- Thymeleaf -->
@@ -649,13 +661,25 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-logging</artifactId>
     </dependency>
+    <dependency>
+      <groupId>in.hocg.boot</groupId>
+      <artifactId>flyway-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>in.hocg.boot</groupId>
+      <artifactId>flyway-spring-boot-autoconfigure</artifactId>
+      <version>1.0.51</version>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-test</artifactId>
       <scope>test</scope>
     </dependency>
-
 
     <dependency>
       <groupId>org.webjars</groupId>

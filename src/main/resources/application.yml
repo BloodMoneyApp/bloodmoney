@@ -30,6 +30,9 @@ spring:
     atomikos:
       connectionfactory:
         xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
   jpa:
     open-in-view: true
     show-sql: true
@@ -54,8 +57,8 @@ spring:
     jdbc:
       initialize-schema: ALWAYS
       cleanup-cron: 0 * * * * *
-      #schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
-      #table-name: SPRING_SESSION
+      schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
+      table-name: SPRING_SESSION
   main:
     allow-bean-definition-overriding: true
   sql:
@@ -137,6 +140,9 @@ debug: false
 spring:
   profiles:
     active: dev
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
   thymeleaf:
     cache: false
   devtools:
@@ -145,6 +151,9 @@ spring:
   application:
     admin:
       enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
 server:
   compression:
     enabled: false
@@ -168,6 +177,8 @@ debug: false
 spring:
   profiles:
     active: default
+  flyway:
+    enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5432/bloodmoney
   jta:
