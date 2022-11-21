@@ -114,6 +114,12 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
     @XmlElement(required = true)
     @NotNull
     @CsvBindByName
+    @Column
+    private Integer weight;
+
+    @XmlElement(required = true)
+    @NotNull
+    @CsvBindByName
     @Column(name = "situation", nullable = false, columnDefinition = "TEXT")
     private String situation;
 
@@ -158,6 +164,7 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
         this.pulse = otherEntity.pulse;
         this.date = otherEntity.date;
         this.time = otherEntity.time;
+        this.weight = otherEntity.weight;
         this.situation = otherEntity.situation;
         ZoneId zone = ZoneId.of(ZONE_ID__ECT__EUROPE_PARIS);
         LocalDateTime dateTimeNow = LocalDateTime.now(zone);
@@ -211,11 +218,13 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
         Integer systolicTopNumber = 120;
         Integer diastolicBottomNumber = 80;
         Integer pulse = 68;
+        Integer weight = 86;
         BloodPressureMeasurementEntity o = new BloodPressureMeasurementEntity();
         o.setSystolicTopNumber(systolicTopNumber);
         o.setDiastolicBottomNumber(diastolicBottomNumber);
         o.setPulse(pulse);
         o.setSituation(situation);
+        o.setWeight(weight);
         o.prepareNew();
         return o;
     }
