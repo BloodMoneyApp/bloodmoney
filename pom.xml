@@ -677,7 +677,6 @@
     <dependency>
       <groupId>in.hocg.boot</groupId>
       <artifactId>flyway-spring-boot-autoconfigure</artifactId>
-      <version>1.0.51</version>
     </dependency>
 
     <dependency>
@@ -685,7 +684,6 @@
       <artifactId>spring-security-test</artifactId>
       <scope>test</scope>
     </dependency>
-
 
     <dependency>
       <groupId>org.springframework.session</groupId>
