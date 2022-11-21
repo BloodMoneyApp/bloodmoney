@@ -35,8 +35,9 @@ spring:
     show-sql: true
     database-platform: POSTGRESQL
     hibernate:
+      ddl-auto: update
       #ddl-auto: create-drop update
-      ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
+      #ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
