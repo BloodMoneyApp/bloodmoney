@@ -57,8 +57,8 @@ spring:
     jdbc:
       initialize-schema: ALWAYS
       cleanup-cron: 0 * * * * *
-      schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
-      table-name: SPRING_SESSION
+      schema: classpath:/org/springframework/session/jdbc/schema-postgresql.sql
+      #table-name: SPRING_SESSION
   main:
     allow-bean-definition-overriding: true
   sql:
