@@ -23,7 +23,7 @@
 
   <name>BloodMoney</name>
   <description>Webapp for storing Blood Pressure Measurements for one Person</description>
-  <url>https://homepage.ruhr-uni-bochum.de/Thomas.Woehlke/java/bloodmoney</url>
+  <url>https://java.woehlke.org/bloodmoney</url>
   <inceptionYear>2019</inceptionYear>
 
   <organization>
