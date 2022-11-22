@@ -253,6 +253,7 @@ package org.woehlke.bloodmoney {
         class BloodMoneyTestServiceImpl << Service >> {
           {static} void createTestData()
         }
+        BloodMoneyTestService <|-- BloodMoneyTestServiceImpl
         BloodMoneyTestServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
         BloodMoneyTestServiceImpl --> BloodPressureMeasurementEntity
       }
