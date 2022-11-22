@@ -35,6 +35,7 @@ package Functional_Requirements {
               (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F013_EXPORT_LIST_AS_FILE_CSV)
               (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F014_EXPORT_LIST_AS_FILE_JSON)
               (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F015_EXPORT_LIST_AS_FILE_XML)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F017_PRINT_LIST_AND_PLOT_TO_PDF)
           }
     }
     package Measurements_One {
