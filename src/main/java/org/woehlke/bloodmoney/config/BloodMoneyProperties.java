@@ -49,6 +49,8 @@ public class BloodMoneyProperties implements Serializable {
     @Validated
     public static class UserConfig implements Serializable {
 
+      private static final long serialVersionUID = 4480323170764476017L;
+
         @Email
         @NotBlank
         private String userEmail;
@@ -65,6 +67,8 @@ public class BloodMoneyProperties implements Serializable {
     @Setter
     @Validated
     public static class WebConfig implements Serializable {
+
+      private static final long serialVersionUID = 4480323170764476017L;
 
         @NotBlank
         private String exportFilename;
@@ -85,6 +89,8 @@ public class BloodMoneyProperties implements Serializable {
     @Setter
     @Validated
     public static class WebSecurity implements Serializable {
+
+      private static final long serialVersionUID = 4480323170764476017L;
 
         @NotNull
         private Boolean invalidateHttpSession;

@@ -287,6 +287,7 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-test-autoconfigure</artifactId>
+        <version>${project.parent.version}</version>
         <scope>test</scope>
       </dependency>
 
@@ -585,6 +586,24 @@
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
+      <dependency>
+        <groupId>com.github.funthomas424242</groupId>
+        <artifactId>plantuml-maven-plugin</artifactId>
+        <version>${version.plantuml-maven-plugin}</version>
+        <type>maven-plugin</type>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>net.sourceforge.plantuml</groupId>
+        <artifactId>plantuml</artifactId>
+        <version>${version.plantuml-maven-plugin.plantuml}</version>
+        <scope>provided</scope>
+      </dependency>
       <!--
       <dependency>
         <groupId>commons-chain</groupId>
@@ -621,24 +640,6 @@
         <artifactId>elasticsearch</artifactId>
         <version>7.17.7</version>
         <type>zip</type>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.github.funthomas424242</groupId>
-        <artifactId>plantuml-maven-plugin</artifactId>
-        <version>${version.plantuml-maven-plugin}</version>
-        <type>maven-plugin</type>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>net.sourceforge.plantuml</groupId>
-        <artifactId>plantuml</artifactId>
-        <version>${version.plantuml-maven-plugin.plantuml}</version>
         <scope>provided</scope>
       </dependency>
       -->
@@ -1026,17 +1027,6 @@
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-scala_2.13</artifactId>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.elasticsearch.distribution.integ-test-zip</groupId>
-      <artifactId>elasticsearch</artifactId>
-      <scope>provided</scope>
-      <type>zip</type>
     </dependency>
     -->
   </dependencies>
