@@ -11,22 +11,17 @@ scale 1200 width
 
 package Functional_Requirements {
 
-  package 001__Start {
-    SystemUser - (F001_Server_Starts)
-    User - (F002_Home_Page_rendered)
-    (F002_Home_Page_rendered) --> (F003_Registration)
-    (F002_Home_Page_rendered) --> (F004_Password_Recovery)
-    (F002_Home_Page_rendered) --> (F005_Login)
-    (F005_Login) ---> (F006_Page_after_first_successful_Login)
-    (F006_Page_after_first_successful_Login) -> (F007_Navigation)
-    (F007_Navigation) -> (F008_Logout)
+  package Bloodpressure_Measurements {
 
-    User <|- SystemUser
-  }
-
-  package 010__Search {
-     (F007_Navigation) --> (F200_Search_Request)
-  }
-
+      package Measurements_List {
+          User - (F005_Navigation)
+          (F005_Navigation) --> (F007_SHOW_ALL_AS_PAGED_LIST)
+          package Export_List_to_File {
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F013_EXPORT_LIST_AS_FILE_CSV)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F014_EXPORT_LIST_AS_FILE_JSON)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F015_EXPORT_LIST_AS_FILE_XML)
+          }
+      }
+    }
 }
 @enduml
