@@ -68,24 +68,24 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 | F017_PRINT_LIST_AND_PLOT_TO_PDF            | Draft  | -               | -                | -               |
 
 ### Functional Requirements 001 - Start
-![Functional Requirements 001 - Start](../plantuml/Bloodmoney__Use_Cases__001__Start.png)
+![Functional Requirements 001 - Start](plantuml/Bloodmoney__Use_Cases__001__Start.png)
 ### Functional Requirements 002 - Bloodpressure Measurements
-![Functional Requirements 002 - Bloodpressure Measurements](../plantuml/Bloodmoney__Use_Cases__002__Bloodpressure_Measurements.png)
+![Functional Requirements 002 - Bloodpressure Measurements](plantuml/Bloodmoney__Use_Cases__002__Bloodpressure_Measurements.png)
 ### Functional Requirements 003 - Paged List
-![Functional Requirements 003 - Paged List](../plantuml/Bloodmoney__Use_Cases__003__Paged_List.png)
+![Functional Requirements 003 - Paged List](plantuml/Bloodmoney__Use_Cases__003__Paged_List.png)
 ### Functional Requirements 003 - Export to File
-![Functional Requirements 003 - Export to File](../plantuml/Bloodmoney__Use_Cases__004__Export_to_File.png)
+![Functional Requirements 003 - Export to File](plantuml/Bloodmoney__Use_Cases__004__Export_to_File.png)
 
 ## UML Class Diagrams
 ### Domain Class Modell Data
-![Domain Class Modell](../plantuml/Bloodmoney__Classes_001__Domain_Class_Modell__Data__Overview.png)
+![Domain Class Modell](plantuml/Bloodmoney__Classes_001__Domain_Class_Modell__Data__Overview.png)
 ### Domain Class Modell User
-![Domain Class Modell](../plantuml/Bloodmoney__Classes_003__Domain_Class_Modell__User__Overview.png)
+![Domain Class Modell](plantuml/Bloodmoney__Classes_003__Domain_Class_Modell__User__Overview.png)
 ### Controller
-![Controller](../plantuml/Bloodmoney__Classes_005__Service_Classes__Controller__Overview.png)
+![Controller](plantuml/Bloodmoney__Classes_005__Service_Classes__Controller__Overview.png)
 ### Workflows
-![Workflows](../plantuml/Bloodmoney__Classes_007__Service_Classes__Workflows__Overview.png)
+![Workflows](plantuml/Bloodmoney__Classes_007__Service_Classes__Workflows__Overview.png)
 ### Persistence
-![Persistence](../plantuml/Bloodmoney__Classes_009__Service_Classes__Persistence__Overview.png)
+![Persistence](plantuml/Bloodmoney__Classes_009__Service_Classes__Persistence__Overview.png)
 
 
