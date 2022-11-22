@@ -107,16 +107,16 @@ package org.woehlke.bloodmoney {
   package org.woehlke.bloodmoney.domain {
       package org.woehlke.bloodmoney.domain.security.vo {
 
-            class LoginFormBean {
+            class LoginFormBean << transient >> {
                 - String userEmail
                 - String userPassword
             }
-            class UserAccountBean {
+            class UserAccountBean << transient >> {
                 - String userEmail
                 - String userPassword
                 - String userFullname
             }
-            class UserAccountDetailsBean {
+            class UserAccountDetailsBean << transient >> {
                - String username
                - String password
                - boolean accountNonExpired
@@ -126,7 +126,7 @@ package org.woehlke.bloodmoney {
             }
       }
       package org.woehlke.bloodmoney.domain.security.authorization {
-        interface BloodMoneyUserAccountAuthorizationService {
+        interface BloodMoneyUserAccountAuthorizationService << Service >> {
           {static} boolean confirmUserByLoginAndPassword(String userEmail, String userPassword)
           {static} boolean authorize(LoginFormBean loginFormBean)
         }
@@ -163,7 +163,7 @@ package org.woehlke.bloodmoney {
         BloodMoneyUserAccountDetailsService o-- BloodMoneyProperties: bloodMoneyProperties
       }
       package org.woehlke.bloodmoney.domain.session {
-        class UserSessionBean {
+        class UserSessionBean << transient >> {
           - Stack<FlashMessage> stackFlashMessage
           - Boolean devTesting
         }
@@ -259,7 +259,7 @@ package org.woehlke.bloodmoney {
       }
       package org.woehlke.bloodmoney.domain.notification {
 
-          class FlashMessage {
+          class FlashMessage << transient >> {
             - String message
             - String moreInfo
             - FlashMessageSeverity severity
