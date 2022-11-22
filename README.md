@@ -66,3 +66,12 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 | F015_EXPORT_LIST_AS_FILE_XML               | OK     | OK              | OK               | OK              |
 | F016_PLOT_LIST__AS_FUNCTIONGRAPH_OVER_TIME | Draft  | -               | -                | -               |
 | F017_PRINT_LIST_AND_PLOT_TO_PDF            | Draft  | -               | -                | -               |
+
+### Functional Requirements 001 - Start
+![Functional Requirements 001 - Start](etc/plantuml/Bloodmoney__Use_Cases__001__Start.png)
+### Functional Requirements 002 - Bloodpressure Measurements
+![Functional Requirements 002 - Bloodpressure Measurements](etc/plantuml/Bloodmoney__Use_Cases__002__Bloodpressure_Measurements.png)
+### Functional Requirements 003 - Paged List
+![Functional Requirements 003 - Paged List](etc/plantuml/Bloodmoney__Use_Cases__003__Paged_List.png)
+### Functional Requirements 003 - Export to File
+![Functional Requirements 003 - Export to File](etc/plantuml/Bloodmoney__Use_Cases__004__Export_to_File.png)
