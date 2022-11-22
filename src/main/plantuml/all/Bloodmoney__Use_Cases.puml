@@ -29,6 +29,7 @@ package Functional_Requirements {
           package interact_with_paged_list {
               (F007_SHOW_ALL_AS_PAGED_LIST) --> (F008_PAGED_LIST__NAVIGATE_THROUGH_PAGES)
               (F007_SHOW_ALL_AS_PAGED_LIST) --> (F009_PAGED_LIST__SORT)
+              (F007_SHOW_ALL_AS_PAGED_LIST) --> (F016_PLOT_LIST__AS_FUNCTIONGRAPH_OVER_TIME)
           }
           package Export_List_to_File {
               (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F013_EXPORT_LIST_AS_FILE_CSV)

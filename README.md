@@ -45,3 +45,23 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 ## Changelog
 * [Changelog](src/site/markdown/TODO.md)
 * [Changelog](src/site/markdown/CHANGELOG.md)
+
+## Use Cases
+| Use Case                                    | Status | Tested manually | Tested Spring IT | Tested Selenium |
+|---------------------------------------------|--------|-----------------|------------------|-----------------|
+| F001_Server_Starts                          | OK     | OK              | OK               | OK              |
+| F002_Home_Page_rendered                     | OK     | OK              | OK               | OK              |
+| F003_Login                                  | OK     | OK              | OK               | OK              |
+| F004_Page_after_first_successful_Login      | OK     | OK              | OK               | OK              |
+| F005_Navigation                             | OK     | OK              | OK               | OK              |
+| F006_Logout                                 | OK     | OK              | OK               | OK              |
+| F007_SHOW_ALL_AS_PAGED_LIST                 | OK     | OK              | OK               | OK              |
+| F008_PAGED_LIST__NAVIGATE_THROUGH_PAGES     | OK     | OK              | OK               | OK              |
+| F009_PAGED_LIST__SORT                       | OK     | OK              | OK               | OK              |
+| F010_ADD_NEW_MEASUREMENT                    | OK     | OK              | OK               | OK              |
+| F011_EDIT_ONE_MEASUREMENT                   | OK     | OK              | OK               | OK              |
+| F012_DELETE_ONE_MEASUREMENT                 | OK     | OK              | OK               | OK              |
+| F013_EXPORT_LIST_AS_FILE_CSV                | OK     | OK              | OK               | OK              |
+| F014_EXPORT_LIST_AS_FILE_JSON               | OK     | OK              | OK               | OK              |
+| F015_EXPORT_LIST_AS_FILE_XML                | OK     | OK              | OK               | OK              |
+| F016_PLOT_LIST__AS_FUNCTIONGRAPH_OVER_TIME  | Draft  | -               | -                | -               |
