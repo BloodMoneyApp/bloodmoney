@@ -1,7 +1,6 @@
 @startuml
 
-
-title Simpleworklist Domain Class Modell
+title Bloodmoney Class Modell
 'https://plantuml.com/class-diagram
 
 left to right direction
