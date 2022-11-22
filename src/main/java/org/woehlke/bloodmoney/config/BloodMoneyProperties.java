@@ -47,7 +47,7 @@ public class BloodMoneyProperties implements Serializable {
     @Getter
     @Setter
     @Validated
-    public static class UserConfig {
+    public static class UserConfig implements Serializable {
 
         @Email
         @NotBlank
@@ -64,7 +64,7 @@ public class BloodMoneyProperties implements Serializable {
     @Getter
     @Setter
     @Validated
-    public static class WebConfig {
+    public static class WebConfig implements Serializable {
 
         @NotBlank
         private String exportFilename;
@@ -84,7 +84,7 @@ public class BloodMoneyProperties implements Serializable {
     @Getter
     @Setter
     @Validated
-    public static class WebSecurity {
+    public static class WebSecurity implements Serializable {
 
         @NotNull
         private Boolean invalidateHttpSession;
