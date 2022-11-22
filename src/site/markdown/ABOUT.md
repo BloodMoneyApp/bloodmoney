@@ -1,59 +1,91 @@
-# SimpleWorklist
-Your Todo-List for Getting Things Done
+# Bloodmoney
 
-## Getting Things Done
-GTD&reg; and Getting Things Done&reg; are registered trademarks of the David Allen Company. 
-SimpleWorklist is not affiliated with or endorsed by the David Allen Company.
+[![OSSAR](https://github.com/BloodMoneyApp/bloodmoney/workflows/OSSAR/badge.svg)](https://github.com/BloodMoneyApp/bloodmoney/actions)
+[![Java CI with Maven](https://github.com/BloodMoneyApp/bloodmoney/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/BloodMoneyApp/bloodmoney/actions)
+[![Build Status](https://api.travis-ci.com/BloodMoneyApp/bloodmoney.svg?branch=master)](https://app.travis-ci.com/github/BloodMoneyApp/bloodmoney)
+[![Maven Project Reports](src/site/resources/img/maven-feather.png)](https://homepages.ruhr-uni-bochum.de/Thomas.Woehlke/java/bloodmoney/)
 
-## Software-Stack: 
-* [Spring-Boot](https://spring.io/projects/spring-boot/)
-* [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
-* [Spring Session JDBC](https://spring.io/projects/spring-session-jdbc)
-* [Spring MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html)
-* [Spring Security](https://spring.io/projects/spring-security)
-* [Thymeleaf](https://github.com/thymeleaf/thymeleaf)
-* [Bootstrap](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
-* [jQuery](http://jquery.com/) 
-* HTML5 for Drag and Drop
 
-## Development
-* [Code Repository on Github](https://github.com/Spring-Framework-Java-Apps/simpleworklist)
-* [Live Deployment on Heroku](https://simpleworklist.herokuapp.com/)
+Webapp for storing Blood Pressure Measurements for one Person.
 
-## TODO: Requirements
-* See Files [Requirements.md](./REQUIREMENTS_FUNCTIONAL.md) and [Nonfunctional_Requirements.md](./Nonfunctional_Requirements.md)
+## Deployments
+* https://bloodmoney2.herokuapp.com/
+* http://localhost:8080/
 
-## Legacy Documentation: Requirements
+## github
+* [Issues](https://github.com/BloodMoneyApp/bloodmoney/issues)
+* [Projects](https://github.com/BloodMoneyApp/bloodmoney/projects)
+* [Milestones](https://github.com/BloodMoneyApp/bloodmoney/milestones)
+* [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
 
-### Legacy Documentation: Use Cases
+## Development Documents
+* [CHANGELOG](CHANGELOG.md)
+* [DEPLOYMENTS](DEPLOYMENTS.md)
+* [DOCKER](DOCKER.md)
+* [HELP](HELP.md)
+* [HOWTO](HOWTO.md)
+* [TODO](TODO.md)
 
-#### User Selfservice
-![Figure Use Cases User](../resources/img/Use_Cases_User.jpg)
- 
-#### Tasks and Projects
-![Figure Use Cases Tasks and Projects](../resources/img/Use_Cases_Data.jpg)
+## Trivia
+The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
+[The Sisters Of Mercy: No Time To Cry (UK & Europe, Feb 1985)](https://www.discogs.com/The-Sisters-Of-Mercy-No-Time-To-Cry/release/6717124)
 
-### Use Case: User Self Registration
-#### Figure Registration Request Activity
-![Figure Registration Request Activity](../resources/img/Registration_Request.jpg)
-#### Figure Registration Perform Activity
-![Figure Registration Perform Activity](../resources/img/Registration_Perform.jpg)
-#### Figure Registration Request Sequence
-![Figure Registration Request Details Sequence](../resources/img/Registration_Request_Details.jpg)
-#### Figure Registration Perform Sequence
-![Figure Registration Perform Details Sequence](../resources/img/Registration_Perform_Details.jpg)
+## Feature Request Backlog
+* Feature #142 CRUD for Measurements
+* Feature #141 Very Simple Login
+* Feature #140 Frontend: Thmyleaf, Bootstrap
+* Feature #138 Deployment om Heroku
+* Feature #136 Better Login and User Selfservice
+* Feature #135 Soap Webservice with Login and CRUD for Measurements
+* Feature #134 Test Client for Soap Webservice
+* Feature #133 REST Webservice with Login and CRUD for Measurements
+* Feature #132 Test Client for REST Webservice
+* Feature #139 Webapp shall send Emails
 
-### Use Case: User Passwort Recovery
-#### Figure Password Recovery Request
-![Figure Password Recovery Request](../resources/img/Password_Recovery_Request.jpg)
-#### Figure Password Recovery Perform
-![Figure Password Recovery Perform](../resources/img/Password_Recovery_Perform.jpg)
+## Changelog
+* [TODO](TODO.md)
+* [Changelog](CHANGELOG.md)
 
-### Domain Model
-#### Entities
-![Figure Domain Model](../resources/img/Domain_Model.jpg)
-#### Domain Model Details
-![Figure Domain Model Details](../resources/img/Domain_Model_Details.jpg)
-#### Database Schema
-![Database Schema](../resources/img/db-schema.png)
+## Use Cases
+| Use Case                                   | Status | Tested manually | Tested Spring IT | Tested Selenium |
+|--------------------------------------------|--------|-----------------|------------------|-----------------|
+| F001_Server_Starts                         | OK     | OK              | OK               | OK              |
+| F002_Home_Page_rendered                    | OK     | OK              | OK               | OK              |
+| F003_Login                                 | OK     | OK              | OK               | OK              |
+| F004_Page_after_first_successful_Login     | OK     | OK              | OK               | OK              |
+| F005_Navigation                            | OK     | OK              | OK               | OK              |
+| F006_Logout                                | OK     | OK              | OK               | OK              |
+| F007_SHOW_ALL_AS_PAGED_LIST                | OK     | OK              | OK               | OK              |
+| F008_PAGED_LIST__NAVIGATE_THROUGH_PAGES    | OK     | OK              | OK               | OK              |
+| F009_PAGED_LIST__SORT                      | OK     | OK              | OK               | OK              |
+| F010_ADD_NEW_MEASUREMENT                   | OK     | OK              | OK               | OK              |
+| F011_EDIT_ONE_MEASUREMENT                  | OK     | OK              | OK               | OK              |
+| F012_DELETE_ONE_MEASUREMENT                | OK     | OK              | OK               | OK              |
+| F013_EXPORT_LIST_AS_FILE_CSV               | OK     | OK              | OK               | OK              |
+| F014_EXPORT_LIST_AS_FILE_JSON              | OK     | OK              | OK               | OK              |
+| F015_EXPORT_LIST_AS_FILE_XML               | OK     | OK              | OK               | OK              |
+| F016_PLOT_LIST__AS_FUNCTIONGRAPH_OVER_TIME | Draft  | -               | -                | -               |
+| F017_PRINT_LIST_AND_PLOT_TO_PDF            | Draft  | -               | -                | -               |
+
+### Functional Requirements 001 - Start
+![Functional Requirements 001 - Start](../plantuml/Bloodmoney__Use_Cases__001__Start.png)
+### Functional Requirements 002 - Bloodpressure Measurements
+![Functional Requirements 002 - Bloodpressure Measurements](../plantuml/Bloodmoney__Use_Cases__002__Bloodpressure_Measurements.png)
+### Functional Requirements 003 - Paged List
+![Functional Requirements 003 - Paged List](../plantuml/Bloodmoney__Use_Cases__003__Paged_List.png)
+### Functional Requirements 003 - Export to File
+![Functional Requirements 003 - Export to File](../plantuml/Bloodmoney__Use_Cases__004__Export_to_File.png)
+
+## UML Class Diagrams
+### Domain Class Modell Data
+![Domain Class Modell](../plantuml/Bloodmoney__Classes_001__Domain_Class_Modell__Data__Overview.png)
+### Domain Class Modell User
+![Domain Class Modell](../plantuml/Bloodmoney__Classes_003__Domain_Class_Modell__User__Overview.png)
+### Controller
+![Controller](../plantuml/Bloodmoney__Classes_005__Service_Classes__Controller__Overview.png)
+### Workflows
+![Workflows](../plantuml/Bloodmoney__Classes_007__Service_Classes__Workflows__Overview.png)
+### Persistence
+![Persistence](../plantuml/Bloodmoney__Classes_009__Service_Classes__Persistence__Overview.png)
+
 
