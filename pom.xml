@@ -1246,10 +1246,9 @@
                 <requireFilesExist>
                   <files>
                     <file>${project.basedir}/README.md</file>
-                    <file>${project.basedir}/LICENSE</file>
+                    <file>${project.basedir}/LICENSE.txt</file>
                     <file>${project.basedir}/LICENSE.code.txt</file>
                     <file>${project.basedir}/LICENSE.writing.txt</file>
-                    <file>${project.basedir}/LICENSE</file>
                     <file>${project.basedir}/etc/db/setup-postgresql-account-and-db.sql</file>
                     <file>${project.basedir}/etc/db/setup-postgresql-tw.sql</file>
                     <file>${project.basedir}/src/site/markdown/CHANGELOG.md</file>
