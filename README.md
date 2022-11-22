@@ -77,12 +77,13 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 ![Functional Requirements 003 - Export to File](etc/plantuml/Bloodmoney__Use_Cases__004__Export_to_File.png)
 
 ## UML Class Diagrams 
-### Domain Class Modell
-![Domain Class Modell](etc/plantuml/Bloodmoney__Classes_001__Domain_Class_Modell__Overview.png)
+### Domain Class Modell Data
+![Domain Class Modell](etc/plantuml/Bloodmoney__Classes_001__Domain_Class_Modell__Data__Overview.png)
+### Domain Class Modell User
+![Domain Class Modell](etc/plantuml/Bloodmoney__Classes_003__Domain_Class_Modell__User__Overview.png)
 ### Controller
-![Controller](etc/plantuml/Bloodmoney__Classes_003__Service_Classes__Controller__Overview.png)
+![Controller](etc/plantuml/Bloodmoney__Classes_005__Service_Classes__Controller__Overview.png)
 ### Workflows
-![Workflows](etc/plantuml/Bloodmoney__Classes_005__Service_Classes__Workflows__Overview.png)
+![Workflows](etc/plantuml/Bloodmoney__Classes_007__Service_Classes__Workflows__Overview.png)
 ### Persistence
-![Persistence](etc/plantuml/Bloodmoney__Classes_007__Service_Classes__Persistence__Overview.png)
-
+![Persistence](etc/plantuml/Bloodmoney__Classes_009__Service_Classes__Persistence__Overview.png)
