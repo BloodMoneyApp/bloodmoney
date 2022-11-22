@@ -7,12 +7,12 @@
 * [Releases](https://github.com/BloodMoneyApp/bloodmoney/releases)
 
 ## Development Documents
-* [CHANGELOG](src/site/markdown/CHANGELOG.md)
-* [DEPLOYMENTS](src/site/markdown/DEPLOYMENTS.md)
-* [DOCKER](src/site/markdown/DOCKER.md)
-* [HELP](src/site/markdown/HELP.md)
-* [HOWTO](src/site/markdown/HOWTO.md)
-* [TODO](src/site/markdown/TODO.md)
+* [CHANGELOG](CHANGELOG.md)
+* [DEPLOYMENTS](DEPLOYMENTS.md)
+* [DOCKER](DOCKER.md)
+* [HELP](HELP.md)
+* [HOWTO](HOWTO.md)
+* [TODO](TODO.md)
 
 ## Todos Research
 * spring.config.location
