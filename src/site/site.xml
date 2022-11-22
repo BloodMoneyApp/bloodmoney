@@ -8,13 +8,13 @@
     <bannerLeft>
         <name>Bloodmoney</name>
         <src>/img/phasenraum_logo.gif</src>
-        <href>https://java.woehlke.org/simpleworklist</href>
+        <href>https://java.woehlke.org/bloodmoney</href>
     </bannerLeft>
     <body>
         <breadcrumbs>
             <item name="Thomas Wöhlke (Github)" href="https://github.com/thomaswoehlke"/>
             <item name="BloodMoneyApp (Github)" href="https://github.com/BloodMoneyApp"/>
-            <item name="Bloodmoney (Github)" href="https://github.com/Spring-Framework-Java-Apps/simpleworklist"/>
+            <item name="Bloodmoney (Github)" href="https://github.com/BloodMoneyApp/bloodmoney"/>
             <item name="Bloodmoney" href="https://java.woehlke.org/bloodmoney"/>
         </breadcrumbs>
         <menu name="Overview">
