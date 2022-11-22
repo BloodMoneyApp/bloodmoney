@@ -24,7 +24,7 @@
             <item name="Source Xref" href="xref/index.html"/>
         </menu>
         <menu name="Requirements">
-            <item name="Cloud Deployments" href="CLOUD_DEPLOYMENT.html" />
+            <item name="Deployments" href="DEPLOYMENTS.html" />
             <item name="Nonfunctional Requirements" href="REQUIREMENTS_NONFUNCTIONAL.html" />
             <item name="Changelog" href="CHANGELOG.html" />
         </menu>
