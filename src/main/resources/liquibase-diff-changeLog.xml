@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+    <changeSet author="tw (generated)" id="1669055964149-1">
+      <dropUniqueConstraint constraintName="idx_measurement_uuid" tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669055964149-2">
+      <dropUniqueConstraint constraintName="uk_lrt1jxpjni5qy14yj3hkiiu4s" tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669055964149-3">
+      <dropTable tableName="flyway_schema_history"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669055964149-4">
+      <dropTable tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669055964149-5">
+      <dropSequence sequenceName="measurement_sequence"/>
+   </changeSet>
+    <changeSet author="tw (generated)" id="1669056517871-1">
+      <dropUniqueConstraint constraintName="idx_measurement_uuid" tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669056517871-2">
+      <dropUniqueConstraint constraintName="uk_lrt1jxpjni5qy14yj3hkiiu4s" tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669056517871-3">
+      <dropTable tableName="flyway_schema_history"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669056517871-4">
+      <dropTable tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669056517871-5">
+      <dropSequence sequenceName="measurement_sequence"/>
+   </changeSet>
+    <changeSet author="tw (generated)" id="1669057184055-1">
+      <dropForeignKeyConstraint baseTableName="spring_session_attributes"
+                                constraintName="spring_session_attributes_fk"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669057184055-2">
+      <dropUniqueConstraint constraintName="idx_measurement_uuid" tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669057184055-3">
+      <dropUniqueConstraint constraintName="uk_lrt1jxpjni5qy14yj3hkiiu4s" tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669057184055-4">
+      <dropTable tableName="flyway_schema_history"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669057184055-5">
+      <dropTable tableName="measurement"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669057184055-6">
+      <dropTable tableName="spring_session"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669057184055-7">
+      <dropTable tableName="spring_session_attributes"/>
+   </changeSet>
+   <changeSet author="tw (generated)" id="1669057184055-8">
+      <dropSequence sequenceName="measurement_sequence"/>
+   </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,64 @@
+@startuml
+
+title Bloodmoney - Workflows
+'https://plantuml.com/class-diagram
+
+'left to right direction
+top to bottom direction
+
+scale 1200 width
+
+package org.woehlke.bloodmoney {
+  package org.woehlke.bloodmoney.domain {
+      package org.woehlke.bloodmoney.domain.security.vo {
+
+            class LoginFormBean {
+                - String userEmail
+                - String userPassword
+            }
+            class UserAccountBean {
+                - String userEmail
+                - String userPassword
+                - String userFullname
+            }
+            class UserAccountDetailsBean {
+               - String username
+               - String password
+               - boolean accountNonExpired
+               - boolean accountNonLocked
+               - boolean credentialsNonExpired
+               - boolean enabled
+            }
+      }
+      package org.woehlke.bloodmoney.domain.session {
+        class UserSessionBean {
+          - Stack<FlashMessage> stackFlashMessage
+          - Boolean devTesting
+        }
+        interface UserSessionService << Service >> {
+          {static} Model handleUserSession(UserSessionBean userSessionBean, Model model)
+        }
+        class UserSessionServiceImpl  << Service >> {
+            {static} Model handleUserSession(UserSessionBean userSessionBean, Model model)
+        }
+        UserSessionService <|-- UserSessionServiceImpl
+        UserSessionServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        UserSessionService --> UserSessionBean
+        UserSessionServiceImpl --> UserSessionBean
+        UserSessionService --> Model
+        UserSessionServiceImpl --> Model
+      }
+      package org.woehlke.bloodmoney.domain.test {
+
+        interface BloodMoneyTestService << Service >> {
+          {static} void createTestData()
+        }
+        class BloodMoneyTestServiceImpl << Service >> {
+          {static} void createTestData()
+        }
+        BloodMoneyTestServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        BloodMoneyTestServiceImpl --> BloodPressureMeasurementEntity
+      }
+}
+
+@enduml

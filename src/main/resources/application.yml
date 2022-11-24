@@ -30,13 +30,17 @@ spring:
     atomikos:
       connectionfactory:
         xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
   jpa:
     open-in-view: true
     show-sql: true
     database-platform: POSTGRESQL
     hibernate:
+      ddl-auto: update
       #ddl-auto: create-drop update
-      ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
+      #ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
@@ -53,7 +57,7 @@ spring:
     jdbc:
       initialize-schema: ALWAYS
       cleanup-cron: 0 * * * * *
-      #schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
+      schema: classpath:/org/springframework/session/jdbc/schema-postgresql.sql
       #table-name: SPRING_SESSION
   main:
     allow-bean-definition-overriding: true
@@ -136,6 +140,9 @@ debug: false
 spring:
   profiles:
     active: dev
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
   thymeleaf:
     cache: false
   devtools:
@@ -144,6 +151,9 @@ spring:
   application:
     admin:
       enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
 server:
   compression:
     enabled: false
@@ -167,6 +177,8 @@ debug: false
 spring:
   profiles:
     active: default
+  flyway:
+    enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5432/bloodmoney
   jta:

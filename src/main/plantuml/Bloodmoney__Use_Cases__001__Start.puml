@@ -1,0 +1,25 @@
+@startuml
+
+title Functional Requirements 001 - Start
+
+left to right direction
+'top to bottom direction
+
+'https://plantuml.com/use-case-diagram
+
+scale 1200 width
+
+package Functional_Requirements {
+
+  package Start {
+      SystemUser - (F001_Server_Starts)
+      User - (F002_Home_Page_rendered)
+      (F002_Home_Page_rendered) --> (F003_Login)
+      (F003_Login) ---> (F004_Page_after_first_successful_Login)
+      (F004_Page_after_first_successful_Login) -> (F005_Navigation)
+      (F005_Navigation) -> (F006_Logout)
+
+      User <|- SystemUser
+    }
+}
+@enduml

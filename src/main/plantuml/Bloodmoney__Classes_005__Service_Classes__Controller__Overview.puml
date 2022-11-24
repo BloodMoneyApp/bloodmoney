@@ -1,0 +1,74 @@
+@startuml
+
+title Bloodmoney - Controller
+'https://plantuml.com/class-diagram
+
+left to right direction
+'top to bottom direction
+
+scale 1200 width
+
+package org.woehlke.bloodmoney.frontend {
+      class BloodMoneyErrorController << Controller >> {
+        String handleError(HttpServletRequest request, Model model)
+        String getErrorPath()
+      }
+      class BloodMoneyHomeController << Controller >> {
+        String root( UserSessionBean userSessionBean, Model model)
+        String home( UserSessionBean userSessionBean, Model model)
+      }
+      BloodMoneyHomeController --> UserSessionBean
+      class BloodMoneyLoginController << Controller >> {
+        String loginForm(Model model)
+        String loginPerform(LoginFormBean loginFormBean, BindingResult result, Model model)
+        String logoutPage(SessionStatus status, HttpServletRequest request, HttpServletResponse response)
+      }
+      BloodMoneyLoginController --> LoginFormBean
+      class BloodMoneyTestController << Controller >> {
+        String createTestData()
+        String greeting(String name, Model model)
+        String dashboard(Model model)
+        String grid(Model model)
+        String jumbotron(Model model)
+        String navbarFixed(Model model)
+        String stickyFooterNavbar(Model model)
+      }
+      class BloodPressureMeasurementController << Controller >> {
+        String getAll(Pageable pageable, UserSessionBean userSessionBean, Model model)
+        String getOne(BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model )
+        String editGet(BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model)
+        String editPost(Long id, BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, BindingResult result, Model model)
+        String deleteGet(BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model )
+        String addGet( UserSessionBean userSessionBean, Model model )
+        String addPost( BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, BindingResult result, Model model)
+      }
+      BloodPressureMeasurementController --> BloodPressureMeasurementEntity
+      BloodPressureMeasurementController --> UserSessionBean
+      class BloodPressureMeasurementControllerExport << Controller >> {
+        void exportAll(HttpServletResponse response)
+        void exportCSV(HttpServletResponse response)
+        void exportXML(HttpServletResponse response)
+        void exportJSON(HttpServletResponse response)
+      }
+      class BloodPressureMeasurementResource << RestController >> {
+        Page<BloodPressureMeasurementEntity> getAll(Pageable pageable,UserSessionBean userSessionBean,Model model)
+        BloodPressureMeasurementEntity getOne( BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model)
+        BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, long id, UserSessionBean userSessionBean, Model model)
+        Response delete(long id, UserSessionBean userSessionBean, Model model)
+        BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one, UriInfo uriInfo, UserSessionBean userSessionBean, Model model)
+      }
+      BloodPressureMeasurementResource --> BloodPressureMeasurementEntity
+      BloodPressureMeasurementResource --> UserSessionBean
+
+      BloodMoneyHomeController O-- UserSessionService: userSessionService
+      BloodMoneyLoginController o-- UserAccountLoginSuccessService: userAccountLoginSuccessService
+      BloodMoneyLoginController o-- BloodMoneyUserAccountAuthorizationService: bloodMoneyUserAccountAuthorizationService
+      BloodMoneyTestController o-- BloodMoneyTestService: bloodMoneyTestService
+      BloodMoneyTestController o-- BloodMoneyProperties: bloodMoneyProperties
+      BloodPressureMeasurementControllerExport o-- BloodPressureMeasurementService: bloodPressureMeasurementService
+      BloodPressureMeasurementControllerExport o-- BloodMoneyProperties: bloodMoneyProperties
+      BloodPressureMeasurementResource o-- BloodPressureMeasurementService: bloodPressureMeasurementService
+      BloodPressureMeasurementResource o-- BloodMoneyProperties: bloodMoneyProperties
+}
+
+@enduml

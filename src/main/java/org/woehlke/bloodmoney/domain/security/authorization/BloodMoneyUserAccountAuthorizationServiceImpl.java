@@ -20,7 +20,6 @@ public class BloodMoneyUserAccountAuthorizationServiceImpl implements BloodMoney
     @Autowired
     private PasswordEncoder encoder;
 
-
     @Override
     public boolean confirmUserByLoginAndPassword(String userEmail, String userPassword) {
         String email = bloodMoneyProperties.getUserConfig().getUserEmail();

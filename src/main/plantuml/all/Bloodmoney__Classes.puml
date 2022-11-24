@@ -1,0 +1,359 @@
+@startuml
+
+title Bloodmoney Class Modell
+'https://plantuml.com/class-diagram
+
+left to right direction
+'top to bottom direction
+
+scale 1200 width
+
+package javax.servlet.http {
+  interface HttpServletRequest {}
+  interface HttpServletResponse {}
+}
+
+package org.springframework {
+
+  package org.springframework.stereotypes {
+    annotation Controller {}
+    annotation RestController {}
+    annotation Service {}
+    annotation Repository {}
+  }
+  package org.springframework.data {
+    package org.springframework.data.domain {
+       interface Page {}
+       interface Pageable {}
+    }
+    package org.springframework.data.jpa.repository {
+      interface JpaRepository {}
+    }
+  }
+  package org.springframework.security {
+    package org.springframework.security.core {
+        interface Authentication {}
+        package org.springframework.security.core.userdetails {
+          interface UserDetailsService {
+              UserDetails loadUserByUsername(String username)
+          }
+        }
+    }
+    package org.springframework.security.crypto.password {
+      interface PasswordEncoder {
+          String encode(CharSequence rawPassword)
+          boolean matches(CharSequence rawPassword, String encodedPassword)
+          boolean upgradeEncoding(String encodedPassword)
+      }
+    }
+    package org.springframework.security.web.authentication {
+      class SavedRequestAwareAuthenticationSuccessHandler {}
+    }
+  }
+  package org.springframework.validation {
+    interface BindingResult {}
+  }
+  package org.springframework.ui {
+     interface Model {}
+  }
+  package org.springframework.boot.web.servlet.error {
+    interface ErrorController {}
+  }
+  package org.springframework.web.bind.support {
+    interface SessionStatus {
+      void setComplete()
+      boolean isComplete()
+    }
+  }
+}
+package org.woehlke.bloodmoney {
+  package org.woehlke.bloodmoney.config {
+    class UserConfig {
+       - String userEmail
+       - String userPassword
+       - String userFullname
+    }
+    class WebConfig {
+        - String exportFilename
+        - String exportFilenameSeparator
+        - String[] webAddResourceHandlers
+        - String[] webAddResourceHandlersStatic
+    }
+    class WebSecurity {
+        - Boolean invalidateHttpSession
+        - String loginProcessingUrl
+        - String failureForwardUrl
+        - String defaultSuccessUrl
+        - String logoutUrl
+        - String loginPage
+        - String deleteCookies
+        - String antMatchersFullyAuthenticated
+        - String[] antMatchersPermitAll
+        - String usernameParameter
+        - String passwordParameter
+        - String secret
+        - Integer iterations
+        - Integer hashWidth
+    }
+    class BloodMoneyProperties {
+        - Boolean devTesting
+        - Integer testDataHowManyTestData
+    }
+    BloodMoneyProperties *-- UserConfig: userConfig
+    BloodMoneyProperties *-- WebConfig: webConfig
+    BloodMoneyProperties *-- WebSecurity: webSecurity
+  }
+
+  package org.woehlke.bloodmoney.domain {
+      package org.woehlke.bloodmoney.domain.security.vo {
+
+            class LoginFormBean << transient >> {
+                - String userEmail
+                - String userPassword
+            }
+            class UserAccountBean << transient >> {
+                - String userEmail
+                - String userPassword
+                - String userFullname
+            }
+            class UserAccountDetailsBean << transient >> {
+               - String username
+               - String password
+               - boolean accountNonExpired
+               - boolean accountNonLocked
+               - boolean credentialsNonExpired
+               - boolean enabled
+            }
+      }
+      package org.woehlke.bloodmoney.domain.security.authorization {
+        interface BloodMoneyUserAccountAuthorizationService << Service >> {
+          {static} boolean confirmUserByLoginAndPassword(String userEmail, String userPassword)
+          {static} boolean authorize(LoginFormBean loginFormBean)
+        }
+        class BloodMoneyUserAccountAuthorizationServiceImpl << Service >> {}
+        BloodMoneyUserAccountAuthorizationService <|-- BloodMoneyUserAccountAuthorizationServiceImpl
+        BloodMoneyUserAccountAuthorizationServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        BloodMoneyUserAccountAuthorizationServiceImpl *-- PasswordEncoder: encoder
+        BloodMoneyUserAccountAuthorizationService --> LoginFormBean
+        BloodMoneyUserAccountAuthorizationServiceImpl --> LoginFormBean
+      }
+      package org.woehlke.bloodmoney.domain.security.login {
+        class LoginSuccessHandler << Service >> {
+          void onAuthenticationSuccess(HttpServletRequest request,HttpServletResponse response,Authentication authentication)
+        }
+        LoginSuccessHandler --> HttpServletRequest
+        LoginSuccessHandler --> HttpServletResponse
+        LoginSuccessHandler --> Authentication
+        interface UserAccountLoginSuccessService << Service >> {}
+        class UserAccountLoginSuccessServiceImpl  << Service >> {}
+        UserAccountLoginSuccessService <|-- UserAccountLoginSuccessServiceImpl
+        UserAccountLoginSuccessServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        LoginSuccessHandler o-- UserAccountLoginSuccessService : userAccountLoginSuccessService
+        LoginSuccessHandler o-- LocaleResolver : localeResolver
+        UserAccountLoginSuccessService --> UserAccountBean
+        UserAccountLoginSuccessServiceImpl --> UserAccountBean
+      }
+      package org.woehlke.bloodmoney.domain.security.user {
+        interface BloodMoneyUserAccountDetailsService << Service >> {
+        }
+        class BloodMoneyUserAccountDetailsServiceImpl  << Service >> {
+        }
+        UserDetailsService <|-- BloodMoneyUserAccountDetailsService
+        BloodMoneyUserAccountDetailsService <|-- BloodMoneyUserAccountDetailsServiceImpl
+        BloodMoneyUserAccountDetailsService o-- BloodMoneyProperties: bloodMoneyProperties
+      }
+      package org.woehlke.bloodmoney.domain.session {
+        class UserSessionBean << transient >> {
+          - Stack<FlashMessage> stackFlashMessage
+          - Boolean devTesting
+        }
+        interface UserSessionService << Service >> {
+          {static} Model handleUserSession(UserSessionBean userSessionBean, Model model)
+        }
+        class UserSessionServiceImpl  << Service >> {
+            {static} Model handleUserSession(UserSessionBean userSessionBean, Model model)
+        }
+        UserSessionService <|-- UserSessionServiceImpl
+        UserSessionServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        UserSessionService --> UserSessionBean
+        UserSessionServiceImpl --> UserSessionBean
+        UserSessionService --> Model
+        UserSessionServiceImpl --> Model
+      }
+      package org.woehlke.bloodmoney.domain.measurements {
+
+            entity BloodPressureMeasurementEntity {
+                 - String nameDe
+                 - String nameEn
+                 - Integer systolicTopNumber
+                 - Integer diastolicBottomNumber
+                 - Integer pulse
+                 - Integer weight
+                 - String situation
+                 - String ip
+                 - String hostname
+                 - String hostnameCanonical
+                 - LocalDateTime created
+                 - LocalDateTime updated
+                 void prepareUpdated()
+                 void prepareNew()
+                 {static} BloodPressureMeasurementEntity getInstance(String situation)
+                 {static} BloodPressureMeasurementEntity getInstance()
+                 {static} List<BloodPressureMeasurementEntity> getAll();
+                 {static} Page<BloodPressureMeasurementEntity> getAll(Pageable pageableRequest)
+                 {static} long count()
+                 {static} BloodPressureMeasurementEntity getOne( Long id )
+                 {static} Optional<BloodPressureMeasurementEntity> findById( Long id )
+                 {static} BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one )
+                 {static} BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, Long id )
+                 {static} void delete( BloodPressureMeasurementEntity one )
+                 {static} void deleteAll()
+            }
+            interface BloodPressureMeasurementService << Service >> {
+               {static} BloodPressureMeasurementEntity getInstance(String situation)
+               {static} BloodPressureMeasurementEntity getInstance()
+               {static} List<BloodPressureMeasurementEntity> getAll();
+               {static} Page<BloodPressureMeasurementEntity> getAll(Pageable pageableRequest)
+               {static} long count()
+               {static} BloodPressureMeasurementEntity getOne( Long id )
+               {static} Optional<BloodPressureMeasurementEntity> findById( Long id )
+               {static} BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one )
+               {static} BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, Long id )
+               {static} void delete( BloodPressureMeasurementEntity one )
+               {static} void deleteAll()
+            }
+            class BloodPressureMeasurementServiceImpl << Service >> {
+               {static} BloodPressureMeasurementEntity getInstance(String situation)
+               {static} BloodPressureMeasurementEntity getInstance()
+               {static} List<BloodPressureMeasurementEntity> getAll();
+               {static} Page<BloodPressureMeasurementEntity> getAll(Pageable pageableRequest)
+               {static} long count()
+               {static} BloodPressureMeasurementEntity getOne( Long id )
+               {static} Optional<BloodPressureMeasurementEntity> findById( Long id )
+               {static} BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one )
+               {static} BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, Long id )
+               {static} void delete( BloodPressureMeasurementEntity one )
+               {static} void deleteAll()
+            }
+            interface BloodPressureMeasurementRepository << Repository >> {
+            }
+            JpaRepository <|-- BloodPressureMeasurementRepository
+            BloodPressureMeasurementService <|-- BloodPressureMeasurementServiceImpl
+            BloodPressureMeasurementServiceImpl *-- BloodPressureMeasurementRepository
+            BloodPressureMeasurementServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+            BloodPressureMeasurementRepository --> BloodPressureMeasurementEntity
+            BloodPressureMeasurementRepository --> Page
+            BloodPressureMeasurementRepository --> Pageable
+      }
+      package org.woehlke.bloodmoney.domain.test {
+
+        interface BloodMoneyTestService << Service >> {
+          {static} void createTestData()
+        }
+        class BloodMoneyTestServiceImpl << Service >> {
+          {static} void createTestData()
+        }
+        BloodMoneyTestService <|-- BloodMoneyTestServiceImpl
+        BloodMoneyTestServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        BloodMoneyTestServiceImpl --> BloodPressureMeasurementEntity
+      }
+      package org.woehlke.bloodmoney.domain.notification {
+
+          class FlashMessage << transient >> {
+            - String message
+            - String moreInfo
+            - FlashMessageSeverity severity
+            - Date raised
+          }
+          enum FlashMessageSeverity {
+              PRIMARY
+              SECONDARY
+              SUCCESS
+              DANGER
+              WARNING
+              INFO
+              LIGHT
+              DARK
+          }
+      }
+    }
+    package org.woehlke.bloodmoney.frontend {
+      class BloodMoneyErrorController << Controller >> {
+        String handleError(HttpServletRequest request, Model model)
+        String getErrorPath()
+      }
+      BloodMoneyErrorController --> HttpServletRequest
+      BloodMoneyErrorController --> Model
+      class BloodMoneyHomeController << Controller >> {
+        String root( UserSessionBean userSessionBean, Model model)
+        String home( UserSessionBean userSessionBean, Model model)
+      }
+      BloodMoneyHomeController --> UserSessionBean
+      BloodMoneyHomeController --> Model
+      class BloodMoneyLoginController << Controller >> {
+        String loginForm(Model model)
+        String loginPerform(LoginFormBean loginFormBean, BindingResult result, Model model)
+        String logoutPage(SessionStatus status, HttpServletRequest request, HttpServletResponse response)
+      }
+      BloodMoneyLoginController --> Model
+      BloodMoneyLoginController --> LoginFormBean
+      BloodMoneyLoginController --> BindingResult
+      BloodMoneyLoginController --> HttpServletRequest
+      BloodMoneyLoginController --> HttpServletResponse
+      class BloodMoneyTestController << Controller >> {
+        String createTestData()
+        String greeting(String name, Model model)
+        String dashboard(Model model)
+        String grid(Model model)
+        String jumbotron(Model model)
+        String navbarFixed(Model model)
+        String stickyFooterNavbar(Model model)
+      }
+      BloodMoneyTestController --> Model
+      class BloodPressureMeasurementController << Controller >> {
+        String getAll(Pageable pageable, UserSessionBean userSessionBean, Model model)
+        String getOne(BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model )
+        String editGet(BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model)
+        String editPost(Long id, BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, BindingResult result, Model model)
+        String deleteGet(BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model )
+        String addGet( UserSessionBean userSessionBean, Model model )
+        String addPost( BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, BindingResult result, Model model)
+      }
+      BloodPressureMeasurementController --> BloodPressureMeasurementEntity
+      BloodPressureMeasurementController --> UserSessionBean
+      BloodPressureMeasurementController --> Pageable
+      BloodPressureMeasurementController --> Model
+      BloodPressureMeasurementController --> BindingResult
+      class BloodPressureMeasurementControllerExport << Controller >> {
+        void exportAll(HttpServletResponse response)
+        void exportCSV(HttpServletResponse response)
+        void exportXML(HttpServletResponse response)
+        void exportJSON(HttpServletResponse response)
+      }
+      BloodPressureMeasurementControllerExport --> HttpServletResponse
+      class BloodPressureMeasurementResource << RestController >> {
+        Page<BloodPressureMeasurementEntity> getAll(Pageable pageable,UserSessionBean userSessionBean,Model model)
+        BloodPressureMeasurementEntity getOne( BloodPressureMeasurementEntity one, UserSessionBean userSessionBean, Model model)
+        BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, long id, UserSessionBean userSessionBean, Model model)
+        Response delete(long id, UserSessionBean userSessionBean, Model model)
+        BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one, UriInfo uriInfo, UserSessionBean userSessionBean, Model model)
+      }
+      BloodPressureMeasurementResource --> BloodPressureMeasurementEntity
+      BloodPressureMeasurementResource --> UserSessionBean
+      BloodPressureMeasurementResource --> Page
+      BloodPressureMeasurementResource --> Pageable
+      BloodPressureMeasurementResource --> Model
+
+      BloodMoneyHomeController O-- UserSessionService: userSessionService
+      BloodMoneyLoginController o-- UserAccountLoginSuccessService: userAccountLoginSuccessService
+      BloodMoneyLoginController o-- BloodMoneyUserAccountAuthorizationService: bloodMoneyUserAccountAuthorizationService
+      BloodMoneyTestController o-- BloodMoneyTestService: bloodMoneyTestService
+      BloodMoneyTestController o-- BloodMoneyProperties: bloodMoneyProperties
+      BloodPressureMeasurementControllerExport o-- BloodPressureMeasurementService: bloodPressureMeasurementService
+      BloodPressureMeasurementControllerExport o-- BloodMoneyProperties: bloodMoneyProperties
+      BloodPressureMeasurementResource o-- BloodPressureMeasurementService: bloodPressureMeasurementService
+      BloodPressureMeasurementResource o-- BloodMoneyProperties: bloodMoneyProperties
+    }
+}
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+
+title Functional Requirements 003 - Export to File
+
+left to right direction
+'top to bottom direction
+
+'https://plantuml.com/use-case-diagram
+
+scale 1200 width
+
+package Functional_Requirements {
+
+  package Bloodpressure_Measurements {
+
+      package Measurements_List {
+          User - (F005_Navigation)
+          (F005_Navigation) --> (F007_SHOW_ALL_AS_PAGED_LIST)
+          package Export_List_to_File {
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F013_EXPORT_LIST_AS_FILE_CSV)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F014_EXPORT_LIST_AS_FILE_JSON)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F015_EXPORT_LIST_AS_FILE_XML)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F017_PRINT_LIST_AND_PLOT_TO_PDF)
+          }
+      }
+    }
+}
+@enduml

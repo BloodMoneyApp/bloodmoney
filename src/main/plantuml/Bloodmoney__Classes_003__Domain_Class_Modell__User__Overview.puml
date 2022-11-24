@@ -1,0 +1,84 @@
+@startuml
+
+title Bloodmoney - Domain Class Modell
+'https://plantuml.com/class-diagram
+
+left to right direction
+'top to bottom direction
+
+scale 1200 width
+
+package org.woehlke.bloodmoney {
+
+  package org.woehlke.bloodmoney.domain {
+      package org.woehlke.bloodmoney.domain.security.vo {
+
+            class LoginFormBean << transient >> {
+                - String userEmail
+                - String userPassword
+            }
+            class UserAccountBean << transient >>  {
+                - String userEmail
+                - String userPassword
+                - String userFullname
+            }
+            class UserAccountDetailsBean << transient >> {
+               - String username
+               - String password
+               - boolean accountNonExpired
+               - boolean accountNonLocked
+               - boolean credentialsNonExpired
+               - boolean enabled
+            }
+      }
+      package org.woehlke.bloodmoney.domain.security.authorization {
+        interface BloodMoneyUserAccountAuthorizationService << Service >>  {
+          {static} boolean confirmUserByLoginAndPassword(String userEmail, String userPassword)
+          {static} boolean authorize(LoginFormBean loginFormBean)
+        }
+        class BloodMoneyUserAccountAuthorizationServiceImpl << Service >> {}
+        BloodMoneyUserAccountAuthorizationService <|-- BloodMoneyUserAccountAuthorizationServiceImpl
+        BloodMoneyUserAccountAuthorizationServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        BloodMoneyUserAccountAuthorizationService --> LoginFormBean
+        BloodMoneyUserAccountAuthorizationServiceImpl --> LoginFormBean
+      }
+      package org.woehlke.bloodmoney.domain.security.login {
+        class LoginSuccessHandler << Service >> {
+          void onAuthenticationSuccess(HttpServletRequest request,HttpServletResponse response,Authentication authentication)
+        }
+        interface UserAccountLoginSuccessService << Service >> {}
+        class UserAccountLoginSuccessServiceImpl << Service >> {}
+        UserAccountLoginSuccessService <|-- UserAccountLoginSuccessServiceImpl
+        UserAccountLoginSuccessServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        LoginSuccessHandler o-- UserAccountLoginSuccessService : userAccountLoginSuccessService
+        UserAccountLoginSuccessService --> UserAccountBean
+        UserAccountLoginSuccessServiceImpl --> UserAccountBean
+      }
+      package org.woehlke.bloodmoney.domain.security.user {
+        interface BloodMoneyUserAccountDetailsService << Service >> {
+        }
+        class BloodMoneyUserAccountDetailsServiceImpl << Service >> {
+        }
+        UserDetailsService <|-- BloodMoneyUserAccountDetailsService
+        BloodMoneyUserAccountDetailsService <|-- BloodMoneyUserAccountDetailsServiceImpl
+        BloodMoneyUserAccountDetailsService o-- BloodMoneyProperties: bloodMoneyProperties
+      }
+      package org.woehlke.bloodmoney.domain.session {
+        class UserSessionBean << transient >> {
+          - Stack<FlashMessage> stackFlashMessage
+          - Boolean devTesting
+        }
+        interface UserSessionService << Service >> {
+          {static} Model handleUserSession(UserSessionBean userSessionBean, Model model)
+        }
+        class UserSessionServiceImpl << Service >> {
+            {static} Model handleUserSession(UserSessionBean userSessionBean, Model model)
+        }
+        UserSessionService <|-- UserSessionServiceImpl
+        UserSessionServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        UserSessionService --> UserSessionBean
+        UserSessionServiceImpl --> UserSessionBean
+      }
+}
+
+@enduml

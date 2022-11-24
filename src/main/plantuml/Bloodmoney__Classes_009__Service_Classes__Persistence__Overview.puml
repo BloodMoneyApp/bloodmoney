@@ -1,0 +1,129 @@
+@startuml
+
+title Bloodmoney - Persistence
+'https://plantuml.com/class-diagram
+
+'left to right direction
+top to bottom direction
+
+scale 1200 width
+
+package org.woehlke.bloodmoney {
+  package org.woehlke.bloodmoney.config {
+    class UserConfig {
+       - String userEmail
+       - String userPassword
+       - String userFullname
+    }
+    class WebConfig {
+        - String exportFilename
+        - String exportFilenameSeparator
+        - String[] webAddResourceHandlers
+        - String[] webAddResourceHandlersStatic
+    }
+    class WebSecurity {
+        - Boolean invalidateHttpSession
+        - String loginProcessingUrl
+        - String failureForwardUrl
+        - String defaultSuccessUrl
+        - String logoutUrl
+        - String loginPage
+        - String deleteCookies
+        - String antMatchersFullyAuthenticated
+        - String[] antMatchersPermitAll
+        - String usernameParameter
+        - String passwordParameter
+        - String secret
+        - Integer iterations
+        - Integer hashWidth
+    }
+    class BloodMoneyProperties {
+        - Boolean devTesting
+        - Integer testDataHowManyTestData
+    }
+    BloodMoneyProperties *-- UserConfig: userConfig
+    BloodMoneyProperties *-- WebConfig: webConfig
+    BloodMoneyProperties *-- WebSecurity: webSecurity
+  }
+
+  package org.woehlke.bloodmoney.domain {
+      package org.woehlke.bloodmoney.domain.measurements {
+
+            entity BloodPressureMeasurementEntity {
+                 - String nameDe
+                 - String nameEn
+                 - Integer systolicTopNumber
+                 - Integer diastolicBottomNumber
+                 - Integer pulse
+                 - Integer weight
+                 - String situation
+                 - String ip
+                 - String hostname
+                 - String hostnameCanonical
+                 - LocalDateTime created
+                 - LocalDateTime updated
+                 void prepareUpdated()
+                 void prepareNew()
+                 {static} BloodPressureMeasurementEntity getInstance(String situation)
+                 {static} BloodPressureMeasurementEntity getInstance()
+                 {static} List<BloodPressureMeasurementEntity> getAll();
+                 {static} Page<BloodPressureMeasurementEntity> getAll(Pageable pageableRequest)
+                 {static} long count()
+                 {static} BloodPressureMeasurementEntity getOne( Long id )
+                 {static} Optional<BloodPressureMeasurementEntity> findById( Long id )
+                 {static} BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one )
+                 {static} BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, Long id )
+                 {static} void delete( BloodPressureMeasurementEntity one )
+                 {static} void deleteAll()
+            }
+            interface BloodPressureMeasurementService << Service >> {
+               {static} BloodPressureMeasurementEntity getInstance(String situation)
+               {static} BloodPressureMeasurementEntity getInstance()
+               {static} List<BloodPressureMeasurementEntity> getAll();
+               {static} Page<BloodPressureMeasurementEntity> getAll(Pageable pageableRequest)
+               {static} long count()
+               {static} BloodPressureMeasurementEntity getOne( Long id )
+               {static} Optional<BloodPressureMeasurementEntity> findById( Long id )
+               {static} BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one )
+               {static} BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, Long id )
+               {static} void delete( BloodPressureMeasurementEntity one )
+               {static} void deleteAll()
+            }
+            class BloodPressureMeasurementServiceImpl << Service >> {
+               {static} BloodPressureMeasurementEntity getInstance(String situation)
+               {static} BloodPressureMeasurementEntity getInstance()
+               {static} List<BloodPressureMeasurementEntity> getAll();
+               {static} Page<BloodPressureMeasurementEntity> getAll(Pageable pageableRequest)
+               {static} long count()
+               {static} BloodPressureMeasurementEntity getOne( Long id )
+               {static} Optional<BloodPressureMeasurementEntity> findById( Long id )
+               {static} BloodPressureMeasurementEntity add( BloodPressureMeasurementEntity one )
+               {static} BloodPressureMeasurementEntity update( BloodPressureMeasurementEntity one, Long id )
+               {static} void delete( BloodPressureMeasurementEntity one )
+               {static} void deleteAll()
+            }
+            interface BloodPressureMeasurementRepository << Repository >> {
+            }
+            JpaRepository <|-- BloodPressureMeasurementRepository
+            BloodPressureMeasurementService <|-- BloodPressureMeasurementServiceImpl
+            BloodPressureMeasurementServiceImpl *-- BloodPressureMeasurementRepository
+            BloodPressureMeasurementServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+            BloodPressureMeasurementRepository --> BloodPressureMeasurementEntity
+            BloodPressureMeasurementRepository --> Page
+            BloodPressureMeasurementRepository --> Pageable
+      }
+      package org.woehlke.bloodmoney.domain.test {
+
+        interface BloodMoneyTestService << Service >> {
+          {static} void createTestData()
+        }
+        class BloodMoneyTestServiceImpl << Service >> {
+          {static} void createTestData()
+        }
+        BloodMoneyTestService <|-- BloodMoneyTestServiceImpl
+        BloodMoneyTestServiceImpl o-- BloodMoneyProperties: bloodMoneyProperties
+        BloodMoneyTestServiceImpl --> BloodPressureMeasurementEntity
+      }
+}
+
+@enduml

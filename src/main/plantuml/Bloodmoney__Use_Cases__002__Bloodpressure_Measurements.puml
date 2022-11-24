@@ -1,0 +1,27 @@
+@startuml
+
+title Functional Requirements 002 - Bloodpressure Measurements
+
+left to right direction
+'top to bottom direction
+
+'https://plantuml.com/use-case-diagram
+
+scale 1200 width
+
+package Functional_Requirements {
+
+  package Bloodpressure_Measurements {
+
+      package Measurements_List {
+            User - (F005_Navigation)
+            (F005_Navigation) --> (F007_SHOW_ALL_AS_PAGED_LIST)
+      }
+      package Measurements_One {
+          (F007_SHOW_ALL_AS_PAGED_LIST) --> (F010_ADD_NEW_MEASUREMENT)
+          (F007_SHOW_ALL_AS_PAGED_LIST) --> (F011_EDIT_ONE_MEASUREMENT)
+          (F007_SHOW_ALL_AS_PAGED_LIST) --> (F012_DELETE_ONE_MEASUREMENT)
+      }
+    }
+}
+@enduml

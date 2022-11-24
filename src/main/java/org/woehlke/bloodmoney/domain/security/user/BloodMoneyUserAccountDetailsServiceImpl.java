@@ -21,7 +21,10 @@ public class BloodMoneyUserAccountDetailsServiceImpl implements BloodMoneyUserAc
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-            return new UserAccountDetailsBean(bloodMoneyProperties.getUserConfig().getUserEmail(), bloodMoneyProperties.getUserConfig().getUserPassword());
+            return new UserAccountDetailsBean(
+              bloodMoneyProperties.getUserConfig().getUserEmail(),
+              bloodMoneyProperties.getUserConfig().getUserPassword()
+            );
         } else {
             throw new UsernameNotFoundException("Usernam unknown: "+username);
         }

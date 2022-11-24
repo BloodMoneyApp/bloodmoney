@@ -1,0 +1,48 @@
+@startuml
+
+title Functional_Requirements_0 - Bloodmoney Use Case Diagram
+
+left to right direction
+'top to bottom direction
+
+'https://plantuml.com/use-case-diagram
+
+scale 1200 width
+
+package Functional_Requirements {
+
+  package Start {
+    SystemUser - (F001_Server_Starts)
+    User - (F002_Home_Page_rendered)
+    (F002_Home_Page_rendered) --> (F003_Login)
+    (F003_Login) ---> (F004_Page_after_first_successful_Login)
+    (F004_Page_after_first_successful_Login) -> (F005_Navigation)
+    (F005_Navigation) -> (F006_Logout)
+
+    User <|- SystemUser
+  }
+
+  package Bloodpressure_Measurements {
+
+    package Measurements_List {
+          (F005_Navigation) --> (F007_SHOW_ALL_AS_PAGED_LIST)
+          package interact_with_paged_list {
+              (F007_SHOW_ALL_AS_PAGED_LIST) --> (F008_PAGED_LIST__NAVIGATE_THROUGH_PAGES)
+              (F007_SHOW_ALL_AS_PAGED_LIST) --> (F009_PAGED_LIST__SORT)
+              (F007_SHOW_ALL_AS_PAGED_LIST) --> (F016_PLOT_LIST__AS_FUNCTIONGRAPH_OVER_TIME)
+          }
+          package Export_List_to_File {
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F013_EXPORT_LIST_AS_FILE_CSV)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F014_EXPORT_LIST_AS_FILE_JSON)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F015_EXPORT_LIST_AS_FILE_XML)
+              (F007_SHOW_ALL_AS_PAGED_LIST) ---> (F017_PRINT_LIST_AND_PLOT_TO_PDF)
+          }
+    }
+    package Measurements_One {
+        (F007_SHOW_ALL_AS_PAGED_LIST) --> (F010_ADD_NEW_MEASUREMENT)
+        (F007_SHOW_ALL_AS_PAGED_LIST) --> (F011_EDIT_ONE_MEASUREMENT)
+        (F007_SHOW_ALL_AS_PAGED_LIST) --> (F012_DELETE_ONE_MEASUREMENT)
+    }
+  }
+}
+@enduml

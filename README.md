@@ -9,7 +9,7 @@
 Webapp for storing Blood Pressure Measurements for one Person.
 
 ## Deployments
-* https://bloodmoney.herokuapp.com/
+* https://bloodmoney2.herokuapp.com/
 * http://localhost:8080/
 
 ## github
@@ -45,3 +45,45 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 ## Changelog
 * [Changelog](src/site/markdown/TODO.md)
 * [Changelog](src/site/markdown/CHANGELOG.md)
+
+## Use Cases
+| Use Case                                   | Status | Tested manually | Tested Spring IT | Tested Selenium |
+|--------------------------------------------|--------|-----------------|------------------|-----------------|
+| F001_Server_Starts                         | OK     | OK              | OK               | OK              |
+| F002_Home_Page_rendered                    | OK     | OK              | OK               | OK              |
+| F003_Login                                 | OK     | OK              | OK               | OK              |
+| F004_Page_after_first_successful_Login     | OK     | OK              | OK               | OK              |
+| F005_Navigation                            | OK     | OK              | OK               | OK              |
+| F006_Logout                                | OK     | OK              | OK               | OK              |
+| F007_SHOW_ALL_AS_PAGED_LIST                | OK     | OK              | OK               | OK              |
+| F008_PAGED_LIST__NAVIGATE_THROUGH_PAGES    | OK     | OK              | OK               | OK              |
+| F009_PAGED_LIST__SORT                      | OK     | OK              | OK               | OK              |
+| F010_ADD_NEW_MEASUREMENT                   | OK     | OK              | OK               | OK              |
+| F011_EDIT_ONE_MEASUREMENT                  | OK     | OK              | OK               | OK              |
+| F012_DELETE_ONE_MEASUREMENT                | OK     | OK              | OK               | OK              |
+| F013_EXPORT_LIST_AS_FILE_CSV               | OK     | OK              | OK               | OK              |
+| F014_EXPORT_LIST_AS_FILE_JSON              | OK     | OK              | OK               | OK              |
+| F015_EXPORT_LIST_AS_FILE_XML               | OK     | OK              | OK               | OK              |
+| F016_PLOT_LIST__AS_FUNCTIONGRAPH_OVER_TIME | Draft  | -               | -                | -               |
+| F017_PRINT_LIST_AND_PLOT_TO_PDF            | Draft  | -               | -                | -               |
+
+### Functional Requirements 001 - Start
+![Functional Requirements 001 - Start](etc/plantuml/Bloodmoney__Use_Cases__001__Start.png)
+### Functional Requirements 002 - Bloodpressure Measurements
+![Functional Requirements 002 - Bloodpressure Measurements](etc/plantuml/Bloodmoney__Use_Cases__002__Bloodpressure_Measurements.png)
+### Functional Requirements 003 - Paged List
+![Functional Requirements 003 - Paged List](etc/plantuml/Bloodmoney__Use_Cases__003__Paged_List.png)
+### Functional Requirements 003 - Export to File
+![Functional Requirements 003 - Export to File](etc/plantuml/Bloodmoney__Use_Cases__004__Export_to_File.png)
+
+## UML Class Diagrams 
+### Domain Class Modell Data
+![Domain Class Modell](etc/plantuml/Bloodmoney__Classes_001__Domain_Class_Modell__Data__Overview.png)
+### Domain Class Modell User
+![Domain Class Modell](etc/plantuml/Bloodmoney__Classes_003__Domain_Class_Modell__User__Overview.png)
+### Controller
+![Controller](etc/plantuml/Bloodmoney__Classes_005__Service_Classes__Controller__Overview.png)
+### Workflows
+![Workflows](etc/plantuml/Bloodmoney__Classes_007__Service_Classes__Workflows__Overview.png)
+### Persistence
+![Persistence](etc/plantuml/Bloodmoney__Classes_009__Service_Classes__Persistence__Overview.png)
