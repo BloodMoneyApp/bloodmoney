@@ -116,6 +116,11 @@ org:
         secret: ${BLOODMONEY_USER_SECRET}
         iterations: ${BLOODMONEY_USER_ITERATIONS}
         hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+bezkoder:
+  app:
+    jwtSecret: bezKoderSecretKey
+    jwtExpirationMs: 3600000
+    jwtRefreshExpirationMs: 86400000
 logging:
   level:
     root: INFO
@@ -144,6 +149,15 @@ spring:
   application:
     admin:
       enabled: false
+  jta:
+    atomikos:
+      properties:
+        transaction-manager-unique-name: tx-manager-bloodmoney
+    transaction-manager-id: tx-manager-bloodmoney
+    log-dir: transaction-logs/tx-logs-bloodmoney
+  jpa:
+    hibernate:
+      ddl-auto: update
 server:
   compression:
     enabled: false

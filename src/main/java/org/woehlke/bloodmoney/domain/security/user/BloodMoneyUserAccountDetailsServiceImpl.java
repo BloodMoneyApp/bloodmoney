@@ -11,7 +11,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.domain.security.vo.UserAccountDetailsBean;
 
 @Slf4j
-@Service
+@Service("bloodMoneyUserAccountDetailsService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BloodMoneyUserAccountDetailsServiceImpl implements BloodMoneyUserAccountDetailsService {
 

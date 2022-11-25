@@ -62,7 +62,10 @@ public class BloodMoneyTestController {
     }
 
     @Autowired
-    public BloodMoneyTestController(BloodMoneyTestService bloodMoneyTestService, BloodMoneyProperties bloodMoneyProperties) {
+    public BloodMoneyTestController(
+      BloodMoneyTestService bloodMoneyTestService,
+      BloodMoneyProperties bloodMoneyProperties
+    ) {
         this.bloodMoneyTestService = bloodMoneyTestService;
         this.bloodMoneyProperties = bloodMoneyProperties;
     }

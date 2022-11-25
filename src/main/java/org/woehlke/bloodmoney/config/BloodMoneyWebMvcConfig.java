@@ -38,6 +38,7 @@ import java.util.Locale;
 public class BloodMoneyWebMvcConfig implements WebMvcConfigurer {
 
     private final BloodMoneyProperties bloodMoneyProperties;
+
     @Autowired
     public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
         this.bloodMoneyProperties = bloodMoneyProperties;

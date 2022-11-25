@@ -10,7 +10,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 
 @Slf4j
-@ActiveProfiles("dev")
+@ActiveProfiles("default")
 public class BloodPressureMeasurementTest {
 
     private final static boolean featureUuid_isSettedByOurselves = true;

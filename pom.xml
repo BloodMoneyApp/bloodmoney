@@ -70,6 +70,8 @@
     <spring-boot.repackage.layout>JAR</spring-boot.repackage.layout>
     <version.spring-boot-maven-plugin>${project.parent.version}</version.spring-boot-maven-plugin>
 
+    <spring-session-bom.version>2021.2.0</spring-session-bom.version>
+
     <version.thymeleaf-testing>3.1.0.M2</version.thymeleaf-testing>
     <version.thymeleaf-spring-data-dialect>3.6.0</version.thymeleaf-spring-data-dialect>
 
@@ -347,7 +349,7 @@
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
-        <version>42.5.0</version>
+        <version>42.5.1</version>
       </dependency>
 
       <!-- SCM -->
@@ -458,7 +460,7 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${version.spring-boot-maven-plugin}</version>
+        <version>${project.parent.version}</version>
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
@@ -571,6 +573,13 @@
         <type>maven-plugin</type>
         <scope>provided</scope>
       </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-autoconfigure</artifactId>
+        <version>${project.parent.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -603,7 +612,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jersey</artifactId>
-      <version>3.0.0-M5</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -668,26 +676,28 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>6.0.0-M5</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-test</artifactId>
-      <version>6.0.0-M6</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
-      <version>6.0.0-M6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
     </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-test</artifactId>
-      <version>3.0.0-M4</version>
+      <version>${project.parent.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -944,6 +954,15 @@
       <artifactId>maven-source-plugin</artifactId>
       <type>maven-plugin</type>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-properties-migrator</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
     </dependency>
   </dependencies>
 

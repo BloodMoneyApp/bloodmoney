@@ -20,7 +20,7 @@ import java.util.*;
 
 @Slf4j
 @Getter
-@ActiveProfiles("dev")
+@ActiveProfiles("default")
 @SpringBootTest
 public class BloodPressureMeasurementServiceTest {
 
