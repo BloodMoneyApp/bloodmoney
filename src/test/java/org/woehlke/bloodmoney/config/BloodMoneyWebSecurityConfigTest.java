@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
-import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserAccountDetailsService;
+import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserDetailsServiceService;
 
 
 @Slf4j
@@ -28,7 +28,7 @@ public class BloodMoneyWebSecurityConfigTest {
   private AuthenticationManagerBuilder authenticationManagerBuilder;
 
   @Autowired
-  private BloodMoneyUserAccountDetailsService bloodMoneyUserAccountDetailsService;
+  private BloodMoneyUserDetailsServiceService bloodMoneyUserDetailsServiceService;
 
   private MockMvc mockMvc;
 
@@ -36,7 +36,7 @@ public class BloodMoneyWebSecurityConfigTest {
   public void test(){
     BloodMoneyWebSecurityConfig cfg = new BloodMoneyWebSecurityConfig(
       authenticationManagerBuilder,
-      bloodMoneyUserAccountDetailsService,
+      bloodMoneyUserDetailsServiceService,
       bloodMoneyProperties
     );
   }

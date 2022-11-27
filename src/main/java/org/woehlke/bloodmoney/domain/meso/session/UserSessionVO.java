@@ -1,7 +1,7 @@
 package org.woehlke.bloodmoney.domain.meso.session;
 
 import lombok.*;
-import org.woehlke.bloodmoney.domain.meso.notification.FlashMessage;
+import org.woehlke.bloodmoney.domain.security.notification.FlashMessage;
 
 import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -13,7 +13,7 @@ import java.util.Stack;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserSessionBean implements Serializable {
+public class UserSessionVO implements Serializable {
 
     private static final long serialVersionUID = -9184465632849128728L;
 

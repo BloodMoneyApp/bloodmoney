@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.domain.db.BloodPressureMeasurementEntity;
 import org.woehlke.bloodmoney.domain.db.measurements.BloodPressureMeasurementService;
-import org.woehlke.bloodmoney.domain.meso.session.UserSessionBean;
+import org.woehlke.bloodmoney.domain.meso.session.UserSessionVO;
 import org.woehlke.bloodmoney.domain.meso.session.UserSessionService;
 
 import jakarta.validation.Valid;
@@ -45,7 +45,7 @@ public class BloodPressureMeasurementResource {
     public Page<BloodPressureMeasurementEntity> getAll(
         @Nullable
         @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionVO userSessionVO,
         Model model
     ) {
         log.info("getAll");
@@ -55,8 +55,8 @@ public class BloodPressureMeasurementResource {
             pageable = PageRequest.of(page, size, sort);
         }
         log.info("getAll - pageable:"+ pageable.toString());
-      model = userSessionService.handleUserSession(userSessionBean, model);
-        UserSessionBean u = (UserSessionBean) model.getAttribute("userSessionBean");
+      model = userSessionService.handleUserSession(userSessionVO, model);
+        UserSessionVO u = (UserSessionVO) model.getAttribute("userSessionBean");
         log.info("getAll - userSessionBean: "+ u);
       return bloodPressureMeasurementService.getAll(pageable);
     }
@@ -67,10 +67,10 @@ public class BloodPressureMeasurementResource {
     @PreAuthorize("isAuthenticated()")
     public BloodPressureMeasurementEntity getOne(
         @PathVariable("id") BloodPressureMeasurementEntity one,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionVO userSessionVO,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
+        model = userSessionService.handleUserSession(userSessionVO, model);
         return one;
     }
 
@@ -82,10 +82,10 @@ public class BloodPressureMeasurementResource {
     public BloodPressureMeasurementEntity update(
         @Valid BloodPressureMeasurementEntity one,
         @PathVariable("id") long id,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionVO userSessionVO,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
+        model = userSessionService.handleUserSession(userSessionVO, model);
         return bloodPressureMeasurementService.update(one, id);
     }
 
@@ -94,10 +94,10 @@ public class BloodPressureMeasurementResource {
     @PreAuthorize("isAuthenticated()")
     public Response delete(
         @PathVariable("id") long id,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
+        @SessionAttribute(name="userSession", required=false) UserSessionVO userSessionVO,
         Model model
     ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
+        model = userSessionService.handleUserSession(userSessionVO, model);
         BloodPressureMeasurementEntity one = bloodPressureMeasurementService.getOne(id);
         bloodPressureMeasurementService.delete(one);
         return Response.status(Response.Status.OK.getStatusCode()).build();
@@ -111,10 +111,10 @@ public class BloodPressureMeasurementResource {
     public BloodPressureMeasurementEntity add(
        BloodPressureMeasurementEntity one,
        @Context UriInfo uriInfo,
-       @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
+       @SessionAttribute(name="userSession", required=false) UserSessionVO userSessionVO,
        Model model
     ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
+        model = userSessionService.handleUserSession(userSessionVO, model);
         one = bloodPressureMeasurementService.add(one);
         return one;
     }

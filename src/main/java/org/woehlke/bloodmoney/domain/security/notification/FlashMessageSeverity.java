@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.domain.meso.notification;
+package org.woehlke.bloodmoney.domain.security.notification;
 
 import java.io.Serializable;
 

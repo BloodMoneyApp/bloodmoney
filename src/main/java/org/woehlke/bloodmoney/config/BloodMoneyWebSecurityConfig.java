@@ -1,34 +1,28 @@
 package org.woehlke.bloodmoney.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.netbeans.lib.cvsclient.commandLine.command.log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.data.web.config.EnableSpringDataWebSupport;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserAccountDetailsService;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserDetailsServiceService;
 
 @Slf4j
-@Configuration
-@Import({
-    BloodMoneyWebMvcConfig.class
-})
-@EnableWebSecurity
+//@Configuration
+//@Import({
+//    BloodMoneyWebMvcConfig.class
+//})
+//@EnableWebSecurity
+//
 //@SuppressWarnings("deprecation")
 //@EnableSpringDataWebSupport
 //@EnableWebMvc
@@ -107,24 +101,48 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     return authProvider;
   }
 
+  @Bean
+  RememberMeServices rememberMeServices() {
+    String myKey = this.bloodMoneyProperties.getWebSecurity().getSecret();
+    return new TokenBasedRememberMeServices(myKey, userAccountSecurityService);
+  }
+
   //@Override
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+        requestCache.setMatchingRequestParameterName("continue");
         http
+          .headers((headers) ->
+              headers
+                .contentTypeOptions()
+                .and()
+                .xssProtection()
+                .and()
+                .cacheControl()
+                .and()
+                .httpStrictTransportSecurity()
+                .and()
+                .frameOptions()
+            )
+            //.disable()
             .securityContext((securityContext) -> securityContext
               .requireExplicitSave(true)
             )
-            .headers()
-            .disable()
-            .authorizeHttpRequests()
-            .requestMatchers(
-                this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+            .requestCache((cache) -> cache
+              .requestCache(requestCache)
             )
-            .permitAll()
+            //.rememberMe((remember) -> remember
+              //.rememberMeServices(rememberMeServices())
+           // )
+      ;
+      http
+        .authorizeHttpRequests((authorizeHttpRequests) ->
+          authorizeHttpRequests
             .requestMatchers(
-                this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
-            )
-            .fullyAuthenticated().anyRequest().authenticated()
-            .and()
+              this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+            )   .fullyAuthenticated().anyRequest().authenticated()
+        );
+      http
             .formLogin()
             .loginPage(
                 this.bloodMoneyProperties.getWebSecurity().getLoginPage()
@@ -148,11 +166,11 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     @Autowired
     public BloodMoneyWebSecurityConfig(
         AuthenticationManagerBuilder authenticationManagerBuilder,
-        BloodMoneyUserAccountDetailsService bloodMoneyUserAccountDetailsService,
+        BloodMoneyUserDetailsServiceService bloodMoneyUserDetailsServiceService,
         BloodMoneyProperties bloodMoneyProperties
     ) {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
-        this.userAccountSecurityService = bloodMoneyUserAccountDetailsService;
+        this.userAccountSecurityService = bloodMoneyUserDetailsServiceService;
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
 }

@@ -2,20 +2,25 @@ package org.woehlke.bloodmoney.domain.security.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 @Slf4j
-@Service("bloodMoneyUserAccountDetailsService")
+@Service("bloodMoneyUserDetailsServiceService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class BloodMoneyUserAccountDetailsServiceImpl implements BloodMoneyUserAccountDetailsService {
+public class BloodMoneyUserDetailsServiceServiceImpl implements BloodMoneyUserDetailsServiceService {
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;
+
+    //@Autowired
+    //private PasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -23,14 +28,20 @@ public class BloodMoneyUserAccountDetailsServiceImpl implements BloodMoneyUserAc
         log.info(" UserDetailsService: load User By Username: "+username);
         log.info("----------------------------------------------------------------------");
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-            UserAccountDetailsBean o = new UserAccountDetailsBean(
-              bloodMoneyProperties.getUserConfig().getUserEmail(),
-              bloodMoneyProperties.getUserConfig().getUserPassword()
-            );
-            log.info("UserAccountDetailsBean : "+o.toString());
+          UserDetails user = User
+            .withUsername(bloodMoneyProperties.getUserConfig().getUserEmail())
+            .password(bloodMoneyProperties.getUserConfig().getUserPassword())
+            .roles("USER","ROOT")
+            .build();
+            log.info(" UserDetails user : "+user.toString());
+            //log.info(" UserDetails user : "+user.getPassword());
+            //log.info(encoder.encode("Recoil89"));
             log.info("----------------------------------------------------------------------");
-            return o;
+            return user;
         } else {
+          log.info("----------------------------------------------------------------------");
+          log.info(" Usernam unknown: "+username);
+          log.info("----------------------------------------------------------------------");
             throw new UsernameNotFoundException("Usernam unknown: "+username);
         }
     }

@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.domain.meso.session.UserSessionService;
-import org.woehlke.bloodmoney.domain.meso.session.UserSessionBean;
 
 
 @Slf4j
@@ -19,14 +17,15 @@ public class UserSessionServiceImpl implements UserSessionService {
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
 
-    public Model handleUserSession(UserSessionBean userSessionBean, Model model){
+    public Model handleUserSession(UserSessionVO userSessionVO, Model model){
         log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.info("++++ handleUserSession: "+userSessionBean.toString());
-        if(userSessionBean ==null){
-            userSessionBean = new UserSessionBean();
-            userSessionBean.setDevTesting(bloodMoneyProperties.getDevTesting());
-            model.addAttribute("userSessionBean", userSessionBean);
+        log.info("++++ handleUserSession: ");
+        if(userSessionVO ==null){
+            userSessionVO = new UserSessionVO();
+            userSessionVO.setDevTesting(bloodMoneyProperties.getDevTesting());
+            model.addAttribute("userSessionBean", userSessionVO);
         }
+        log.info("++++ handleUserSession: "+ userSessionVO.toString());
         log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         return model;
     }

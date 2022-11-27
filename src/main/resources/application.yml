@@ -192,8 +192,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  #security:
+  #  user:
+  #    name: 'thomas.woehlke@gmail.com'
+  #    #password: 'Recoil89'
+  #    password: 'xbv0racwbsfrJeb1vpBCovsOt+MuCYbIYo7P6uoSfn0='
+  #    roles:
+  #      - 'USER'
+  #      - 'SUPERUSER'
 server:
   port: ${PORT}
+  shutdown: graceful
   compression:
     enabled: true
 org:
@@ -203,7 +212,11 @@ org:
       devTesting: true
       userConfig:
         userEmail: 'thomas.woehlke@gmail.com'
-        userPassword: 'xbv0racwbsfrJeb1vpBCovsOt+MuCYbIYo7P6uoSfn0='
+        #userPassword: '{sha256}xbv0racwbsfrJeb1vpBCovsOt+MuCYbIYo7P6uoSfn0='
+        #userPassword: 'eGJ2MHJhY3dic2ZySmViMXZwQkNvdnNPdCtNdUNZYklZbzdQNnVvU2ZuMD0='
+        #userPassword: 'xbv0racwbsfrJeb1vpBCovsOt+MuCYbIYo7P6uoSfn0='
+        #userPassword: '{sha256}xbv0racwbsfrJeb1vpBCovsOt+MuCYbIYo7P6uoSfn0='
+        userPassword: '0I2yEg3dlAc+uoozQwy+viT8zIALH0fqMlkAO2cb1C5sZ+9ob86FqWQTB/EI0PrIGMgf8QgJdKMurNt8dFPP008TkZCiYkLU'
         userFullname: 'Thomas Wöhlke'
       webSecurity:
         secret: '25D8484AB208F08C59FFAFE57DB9FF87'

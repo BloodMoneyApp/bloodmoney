@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.LocaleResolver;
-import org.woehlke.bloodmoney.domain.security.vo.UserAccountBean;
+import org.woehlke.bloodmoney.domain.security.vo.UserAccountVO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,19 +20,19 @@ import java.util.Locale;
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-    private final UserAccountLoginSuccessService userAccountLoginSuccessService;
+    private final LoginSuccessService loginSuccessService;
 
     private final LocaleResolver localeResolver;
 
     @Autowired
     public LoginSuccessHandler(
-        UserAccountLoginSuccessService userAccountLoginSuccessService,
+        LoginSuccessService loginSuccessService,
         LocaleResolver localeResolver
     ) {
         super();
-        this.userAccountLoginSuccessService = userAccountLoginSuccessService;
+        this.loginSuccessService = loginSuccessService;
         this.localeResolver = localeResolver;
     }
 
@@ -44,8 +44,8 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
     ) throws ServletException, IOException {
         super.onAuthenticationSuccess(request, response, authentication);
         log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
-        userAccountLoginSuccessService.updateLastLoginTimestamp(user);
+        UserAccountVO user = loginSuccessService.retrieveCurrentUser();
+        loginSuccessService.updateLastLoginTimestamp(user);
         Locale locale = user.getDefaultLanguage();
         localeResolver.setLocale(request,response,locale);
         log.info(" Locale:              " + locale.toString());

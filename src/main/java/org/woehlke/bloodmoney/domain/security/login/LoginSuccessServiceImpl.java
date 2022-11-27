@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.domain.security.vo.UserAccountBean;
+import org.woehlke.bloodmoney.domain.security.vo.UserAccountVO;
 
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSuccessService {
+public class LoginSuccessServiceImpl implements LoginSuccessService {
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;
@@ -36,13 +36,13 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     }
 
     @Override
-    public UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException {
+    public UserAccountVO retrieveCurrentUser() throws UsernameNotFoundException {
         log.info("----------------------------------------------------------------------");
         log.info(" retrieve Current User");
         log.info("----------------------------------------------------------------------");
         String username = this.retrieveUsername();
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-            return new UserAccountBean(
+            return new UserAccountVO(
                 bloodMoneyProperties.getUserConfig().getUserEmail(),
                 bloodMoneyProperties.getUserConfig().getUserPassword(),
                 bloodMoneyProperties.getUserConfig().getUserFullname()
@@ -56,7 +56,7 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     }
 
     @Override
-    public void updateLastLoginTimestamp(UserAccountBean user) {
+    public void updateLastLoginTimestamp(UserAccountVO user) {
       log.info("----------------------------------------------------------------------");
       log.info(" update Last Login Timestamp");
       log.info("----------------------------------------------------------------------");

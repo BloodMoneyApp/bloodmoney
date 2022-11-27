@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.woehlke.bloodmoney.domain.security.authorization.BloodMoneyUserAccountAuthorizationService;
 import org.woehlke.bloodmoney.domain.security.authorization.LoginFormBean;
-import org.woehlke.bloodmoney.domain.security.login.UserAccountLoginSuccessService;
+import org.woehlke.bloodmoney.domain.security.login.LoginSuccessService;
 
 import jakarta.validation.Valid;
 
@@ -24,16 +24,16 @@ import jakarta.validation.Valid;
 @Controller
 public class BloodMoneyLoginController {
 
-    private final UserAccountLoginSuccessService userAccountLoginSuccessService;
+    private final LoginSuccessService loginSuccessService;
 
     private final BloodMoneyUserAccountAuthorizationService bloodMoneyUserAccountAuthorizationService;
 
     @Autowired
     public BloodMoneyLoginController(
-        UserAccountLoginSuccessService userAccountLoginSuccessService,
+        LoginSuccessService loginSuccessService,
         BloodMoneyUserAccountAuthorizationService bloodMoneyUserAccountAuthorizationService
     ) {
-        this.userAccountLoginSuccessService = userAccountLoginSuccessService;
+        this.loginSuccessService = loginSuccessService;
         this.bloodMoneyUserAccountAuthorizationService = bloodMoneyUserAccountAuthorizationService;
     }
 
@@ -62,7 +62,7 @@ public class BloodMoneyLoginController {
      * @param model Model
      * @return Shows Root Project after successful login or login form with error messages.
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login/", method = RequestMethod.POST)
     public final String loginPerform(@Valid LoginFormBean loginFormBean,
                                      BindingResult result, Model model) {
         log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
