@@ -20,11 +20,14 @@ public class UserSessionServiceImpl implements UserSessionService {
     }
 
     public Model handleUserSession(UserSessionBean userSessionBean, Model model){
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info("++++ handleUserSession: "+userSessionBean.toString());
         if(userSessionBean ==null){
             userSessionBean = new UserSessionBean();
             userSessionBean.setDevTesting(bloodMoneyProperties.getDevTesting());
             model.addAttribute("userSessionBean", userSessionBean);
         }
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         return model;
     }
 }

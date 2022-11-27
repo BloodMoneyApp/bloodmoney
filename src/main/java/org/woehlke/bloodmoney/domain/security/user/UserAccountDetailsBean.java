@@ -1,22 +1,23 @@
-package org.woehlke.bloodmoney.domain.security.vo;
+package org.woehlke.bloodmoney.domain.security.user;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode
 public class UserAccountDetailsBean implements UserDetails {
 
-    private static final long serialVersionUID = 22L;
+    private static final long serialVersionUID = 222L;
 
     private final String username;
     private final String password;
@@ -24,6 +25,7 @@ public class UserAccountDetailsBean implements UserDetails {
     private final boolean accountNonLocked;
     private final boolean credentialsNonExpired;
     private final boolean enabled;
+    private List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
     public UserAccountDetailsBean(String username, String password) {
         this.username = username;
@@ -32,13 +34,10 @@ public class UserAccountDetailsBean implements UserDetails {
         this.accountNonLocked = true;
         this.credentialsNonExpired = true;
         this.enabled = true;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        return authorities;
+        SimpleGrantedAuthority roleUser = new SimpleGrantedAuthority("ROLE_USER");
+        SimpleGrantedAuthority roleSuperuser = new SimpleGrantedAuthority("ROLE_SUPERUSER");
+        authorities.add(roleUser);
+        authorities.add(roleSuperuser);
     }
 
 }

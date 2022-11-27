@@ -22,6 +22,9 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
 
     @Override
     public String retrieveUsername() {
+        log.info("----------------------------------------------------------------------");
+        log.info(" retrieve Username ");
+        log.info("----------------------------------------------------------------------");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null) return " ";
         Object principal = authentication.getPrincipal();
@@ -34,6 +37,9 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
 
     @Override
     public UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException {
+        log.info("----------------------------------------------------------------------");
+        log.info(" retrieve Current User");
+        log.info("----------------------------------------------------------------------");
         String username = this.retrieveUsername();
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
             return new UserAccountBean(
@@ -42,12 +48,18 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
                 bloodMoneyProperties.getUserConfig().getUserFullname()
             );
         } else {
-            throw new UsernameNotFoundException("Usernam unknown: "+username);
+            log.info("----------------------------------------------------------------------");
+            log.info(" Usernam unknown: "+username);
+            log.info("----------------------------------------------------------------------");
+            throw new UsernameNotFoundException(" Usernam unknown: "+username);
         }
     }
 
     @Override
     public void updateLastLoginTimestamp(UserAccountBean user) {
+      log.info("----------------------------------------------------------------------");
+      log.info(" update Last Login Timestamp");
+      log.info("----------------------------------------------------------------------");
         //TODO:
     }
 }

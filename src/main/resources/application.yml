@@ -196,6 +196,19 @@ server:
   port: ${PORT}
   compression:
     enabled: true
+org:
+  woehlke:
+    bloodmoney:
+      testDataHowManyTestData: 10
+      devTesting: true
+      userConfig:
+        userEmail: 'thomas.woehlke@gmail.com'
+        userPassword: 'xbv0racwbsfrJeb1vpBCovsOt+MuCYbIYo7P6uoSfn0='
+        userFullname: 'Thomas Wöhlke'
+      webSecurity:
+        secret: '25D8484AB208F08C59FFAFE57DB9FF87'
+        iterations: 4096
+        hashWidth: 256
 logging:
   level:
     root: INFO

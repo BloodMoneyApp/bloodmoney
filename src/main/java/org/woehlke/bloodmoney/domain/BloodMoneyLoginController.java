@@ -14,9 +14,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-import org.woehlke.bloodmoney.domain.security.vo.UserAccountBean;
 import org.woehlke.bloodmoney.domain.security.authorization.BloodMoneyUserAccountAuthorizationService;
-import org.woehlke.bloodmoney.domain.security.vo.LoginFormBean;
+import org.woehlke.bloodmoney.domain.security.authorization.LoginFormBean;
 import org.woehlke.bloodmoney.domain.security.login.UserAccountLoginSuccessService;
 
 import jakarta.validation.Valid;
@@ -49,7 +48,9 @@ public class BloodMoneyLoginController {
     public final String loginForm(Model model) {
         LoginFormBean loginFormBean = new LoginFormBean();
         model.addAttribute("loginFormBean", loginFormBean);
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("show loginForm");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         return "user/loginForm";
     }
 
@@ -64,13 +65,22 @@ public class BloodMoneyLoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public final String loginPerform(@Valid LoginFormBean loginFormBean,
                                      BindingResult result, Model model) {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info(" login Perform ");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         boolean authorized = bloodMoneyUserAccountAuthorizationService.authorize(loginFormBean);
         if (!result.hasErrors() && authorized) {
-            UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
-            userAccountLoginSuccessService.updateLastLoginTimestamp(user);
-            log.info("logged in");
+            log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            log.info(" login OK ");
+            log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            //UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
+            //userAccountLoginSuccessService.updateLastLoginTimestamp(user);
+            log.info(" login OK ");
             return "redirect:/";
-        } else {
+          } else {
+            log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            log.info(" login FAILED ");
+            log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             String objectName = "loginForm";
             String field = "userEmail";
             String defaultMessage = "Email or Password wrong.";
@@ -88,7 +98,9 @@ public class BloodMoneyLoginController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         status.setComplete();
-        log.info("logged out");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info(" logged out ");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         return "redirect:/";
     }
 

@@ -11,6 +11,7 @@ import java.util.Locale;
 
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode
 public class UserAccountBean implements Serializable {
 
@@ -57,8 +58,10 @@ public class UserAccountBean implements Serializable {
         this.userFullname = userFullname;
     }
 
+    /*
     @Override
     public String toString() {
         return userEmail;
     }
+    */
 }

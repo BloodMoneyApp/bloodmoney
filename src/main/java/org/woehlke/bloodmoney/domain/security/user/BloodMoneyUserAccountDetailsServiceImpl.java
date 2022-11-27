@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.domain.security.vo.UserAccountDetailsBean;
 
 @Slf4j
 @Service("bloodMoneyUserAccountDetailsService")
@@ -20,8 +19,17 @@ public class BloodMoneyUserAccountDetailsServiceImpl implements BloodMoneyUserAc
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("----------------------------------------------------------------------");
+        log.info(" UserDetailsService: load User By Username: "+username);
+        log.info("----------------------------------------------------------------------");
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-            return new UserAccountDetailsBean(bloodMoneyProperties.getUserConfig().getUserEmail(), bloodMoneyProperties.getUserConfig().getUserPassword());
+            UserAccountDetailsBean o = new UserAccountDetailsBean(
+              bloodMoneyProperties.getUserConfig().getUserEmail(),
+              bloodMoneyProperties.getUserConfig().getUserPassword()
+            );
+            log.info("UserAccountDetailsBean : "+o.toString());
+            log.info("----------------------------------------------------------------------");
+            return o;
         } else {
             throw new UsernameNotFoundException("Usernam unknown: "+username);
         }

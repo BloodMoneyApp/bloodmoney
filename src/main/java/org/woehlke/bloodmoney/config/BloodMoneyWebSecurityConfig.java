@@ -1,11 +1,14 @@
 package org.woehlke.bloodmoney.config;
 
+import lombok.extern.slf4j.Slf4j;
+import org.netbeans.lib.cvsclient.commandLine.command.log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,13 +23,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserAccountDetailsService;
 
-//@SuppressWarnings("deprecation")
+@Slf4j
 @Configuration
 @Import({
     BloodMoneyWebMvcConfig.class
 })
+@EnableWebSecurity
+//@SuppressWarnings("deprecation")
 //@EnableSpringDataWebSupport
-//@EnableWebSecurity
 //@EnableWebMvc
 //@EnableAutoConfiguration
 public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter*/  {
@@ -34,44 +38,6 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final UserDetailsService userAccountSecurityService;
     private final BloodMoneyProperties bloodMoneyProperties;
-
-    //@Override
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .headers()
-            .disable()
-            /*
-            .authorizeRequests()
-            .requestMatchers(
-                this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-            )
-            .permitAll()
-            .antMatchers(
-                this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
-            .fullyAuthenticated().anyRequest().authenticated()
-            .and()
-            */
-            .formLogin()
-            .loginPage(
-                this.bloodMoneyProperties.getWebSecurity().getLoginPage()
-            )
-            //.usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
-            //.passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
-            //.defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
-            .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
-            .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
-            //.successHandler(this.authenticationSuccessHandler)
-            .permitAll();
-             /*
-            .and()
-            .logout()
-            .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
-            .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
-            .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
-            .permitAll();
-           */
-            return http.build();
-    }
 
     /**
      * @see <a href="https://asecuritysite.com/encryption/PBKDF2_2">Encrypt with PBKDF2</a>
@@ -81,35 +47,40 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
      */
     @Bean
     public PasswordEncoder encoder(){
-        CharSequence secret=this.bloodMoneyProperties.getWebSecurity().getSecret();
-        int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
-        int saltLength=this.bloodMoneyProperties.getWebSecurity().getIterations();
-        //int hashWidth=this.bloodMoneyProperties.getWebSecurity().getHashWidth();
-        saltLength=16;
-        Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm secretKeyFactoryAlgorithm =
-          Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512;
-        Pbkdf2PasswordEncoder encoder = new Pbkdf2PasswordEncoder(
-          secret, saltLength, iterations, secretKeyFactoryAlgorithm
-        );
-        encoder.setEncodeHashAsBase64(true);
-        return encoder;
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      log.info(" encoder config ");
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      CharSequence secret=this.bloodMoneyProperties.getWebSecurity().getSecret();
+      int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
+      this.bloodMoneyProperties.getWebSecurity().getIterations();
+      int saltLength=8;
+      Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm secretKeyFactoryAlgorithm =
+        Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512;
+      Pbkdf2PasswordEncoder encoder = new Pbkdf2PasswordEncoder(
+        secret, saltLength, iterations, secretKeyFactoryAlgorithm
+      );
+      encoder.setEncodeHashAsBase64(true);
+      log.info("secret:       "+secret);
+      log.info("secretLength: "+secret.length());
+      log.info("saltLength:   "+saltLength);
+      log.info("iterations:   "+iterations);
+      log.info("Algorithm:    "+Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512.name());
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      return encoder;
     }
-
-    /*
-    @Bean
-    public DaoAuthenticationProvider authProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(  this.userAccountSecurityService);
-        authProvider.setPasswordEncoder(encoder());
-        return authProvider;
-    }
-    */
 
     /*
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
-        return this.authenticationManagerBuilder.userDetailsService(userAccountSecurityService)
-          .passwordEncoder(encoder()).and().build();
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      log.info(" authenticationManager ");
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      AuthenticationManager am = this.authenticationManagerBuilder
+        .userDetailsService(userAccountSecurityService)
+        .passwordEncoder(encoder()).and().build();
+      log.info(" authenticationManager " + am.toString());
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      return am;
     }
     */
 
@@ -122,6 +93,57 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
         return filter;
     }
     */
+
+  @Bean
+  public DaoAuthenticationProvider authProvider() {
+    log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    log.info(" authProvider ");
+    log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    authProvider.setUserDetailsService(  this.userAccountSecurityService);
+    authProvider.setPasswordEncoder(encoder());
+    log.info(" authProvider "+authProvider.toString());
+    log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    return authProvider;
+  }
+
+  //@Override
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .securityContext((securityContext) -> securityContext
+              .requireExplicitSave(true)
+            )
+            .headers()
+            .disable()
+            .authorizeHttpRequests()
+            .requestMatchers(
+                this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+            )
+            .permitAll()
+            .requestMatchers(
+                this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
+            )
+            .fullyAuthenticated().anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .loginPage(
+                this.bloodMoneyProperties.getWebSecurity().getLoginPage()
+            )
+            .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
+            .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
+            .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
+            .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
+            .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
+            //.successHandler(this.authenticationSuccessHandler)
+            .permitAll()
+            .and()
+            .logout()
+            .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
+            .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
+            .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
+            .permitAll();
+            return http.build();
+    }
 
     @Autowired
     public BloodMoneyWebSecurityConfig(

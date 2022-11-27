@@ -43,11 +43,15 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
         Authentication authentication
     ) throws ServletException, IOException {
         super.onAuthenticationSuccess(request, response, authentication);
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
         userAccountLoginSuccessService.updateLastLoginTimestamp(user);
         Locale locale = user.getDefaultLanguage();
         localeResolver.setLocale(request,response,locale);
-        log.info("successful logged in "+user.getUserEmail());
+        log.info(" Locale:              " + locale.toString());
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info(" LoginSuccessHandler: successful logged in "+user.getUserEmail());
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
 }
