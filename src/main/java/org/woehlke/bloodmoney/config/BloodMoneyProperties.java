@@ -126,9 +126,6 @@ public class BloodMoneyProperties implements Serializable {
         private Integer iterations;
 
         @NotNull
-        private Integer saltLength;
-
-        @NotNull
         private Integer hashWidth;
     }
 
