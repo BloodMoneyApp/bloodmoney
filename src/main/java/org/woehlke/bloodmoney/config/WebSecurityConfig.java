@@ -81,7 +81,7 @@ public class WebSecurityConfig {
           "/passwordResetConfirm*/**",
           "/error*",
           "/fehler*"
-        ).permitAll().anyRequest()
+        ).anonymous().anyRequest()
       );
     http
       .formLogin((formLogin) -> formLogin

@@ -4,7 +4,7 @@
 
   <groupId>org.woehlke.bloodmoney</groupId>
   <artifactId>bloodmoney</artifactId>
-  <version>3.0.0-SNAPSHOT</version>
+  <version>3.0.0.RC01-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <parent>
