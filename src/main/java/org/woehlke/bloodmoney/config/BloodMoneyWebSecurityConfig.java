@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.rememberme.TokenBasedReme
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserDetailsServiceService;
 
+
 @Slf4j
 @Configuration
 @Import({
@@ -105,6 +106,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     return authProvider;
   }
 
+  /*
   @Bean
   public RememberMeServices rememberMeServices() {
     String myKey = this.bloodMoneyProperties.getWebSecurity().getSecret();
@@ -124,6 +126,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     AnonymousAuthenticationProvider p = new AnonymousAuthenticationProvider(key);
     return p;
   }
+  */
 
   //@Override
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -148,16 +151,15 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
           .securityContext((securityContext) -> securityContext
             .requireExplicitSave(true)
           )
+          /*
           .requestCache((cache) -> cache
             .requestCache(requestCache)
           )
-          //.rememberMe((remember) -> remember
-            //.rememberMeServices(rememberMeServices())
-          //)
+          */
           .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
             .requestMatchers(
               this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-            ).permitAll()
+            ).permitAll().anyRequest().authenticated().and()
           )
           /*
           .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
@@ -175,13 +177,13 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
             .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
             .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
             .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
-            .permitAll()
+            .permitAll().and()
           )
           .logout((logout) -> logout
             .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
             .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
             .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
-            .permitAll()
+            .permitAll().and()
           );
           return http.build();
     }
