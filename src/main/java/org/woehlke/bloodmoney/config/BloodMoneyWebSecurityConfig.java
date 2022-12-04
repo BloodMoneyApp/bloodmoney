@@ -149,19 +149,18 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
           //.rememberMe((remember) -> remember
             //.rememberMeServices(rememberMeServices())
           //)
+          /*
           .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
             .requestMatchers(
               this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
             ).permitAll()
           )
-          /*
-          http
-            .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
-                .requestMatchers(
-                  this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-                ).fullyAuthenticated().anyRequest().authenticated()
-            );
           */
+          .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+              .requestMatchers(
+                this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+              ).fullyAuthenticated().anyRequest().authenticated()
+          )
           .formLogin((formLogin) -> formLogin
             .loginPage(
               this.bloodMoneyProperties.getWebSecurity().getLoginPage()
