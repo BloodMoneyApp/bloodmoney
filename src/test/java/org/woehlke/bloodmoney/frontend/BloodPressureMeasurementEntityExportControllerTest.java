@@ -21,7 +21,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 //TODO #35 Test a Rest Controller with Spring Security
 @Slf4j
 @Getter
-@ActiveProfiles("dev")
+@ActiveProfiles("default")
 @SpringBootTest
 public class BloodPressureMeasurementEntityExportControllerTest {
 

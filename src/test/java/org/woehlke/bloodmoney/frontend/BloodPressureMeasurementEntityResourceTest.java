@@ -21,7 +21,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 
 @Slf4j
 @Getter
-@ActiveProfiles("dev")
+@ActiveProfiles("default")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BloodPressureMeasurementEntityResourceTest {
 

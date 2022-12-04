@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // https://www.baeldung.com/spring-boot-testing
 @Slf4j
 @Getter
-@ActiveProfiles("dev")
+@ActiveProfiles("default")
 @SpringBootTest
 public class BloodPressureMeasurementEntityControllerTest {
 

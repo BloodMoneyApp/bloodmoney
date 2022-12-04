@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 @Getter
-@ActiveProfiles("dev")
+@ActiveProfiles("default")
 @SpringBootTest
 public class SmokeTest10 {
 
