@@ -130,8 +130,11 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
   }
 
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
-        requestCache.setMatchingRequestParameterName("continue");
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        log.info(" securityFilterChain ");
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+        //requestCache.setMatchingRequestParameterName("continue");
         http
           /*
           .headers((headers) -> headers

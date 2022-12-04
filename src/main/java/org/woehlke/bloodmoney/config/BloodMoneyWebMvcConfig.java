@@ -70,11 +70,12 @@ public class BloodMoneyWebMvcConfig implements WebMvcConfigurer {
         return lci;
     }
 
-
+/*
     @Bean
     public SpringDataDialect springDataDialect() {
         return new SpringDataDialect();
     }
+*/
 
     @Bean
     public MethodValidationPostProcessor methodValidationPostProcessor() {
