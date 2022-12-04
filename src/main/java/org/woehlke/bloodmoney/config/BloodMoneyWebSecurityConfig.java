@@ -1,5 +1,6 @@
 package org.woehlke.bloodmoney.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserAccountDetailsService;
 
-@SuppressWarnings("deprecation")
+@Slf4j
+//@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 @EnableSpringDataWebSupport
@@ -74,12 +76,29 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Bean
     public PasswordEncoder encoder(){
-        CharSequence secret=this.bloodMoneyProperties.getWebSecurity().getSecret();
-        int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
-        int hashWidth=this.bloodMoneyProperties.getWebSecurity().getHashWidth();
-        Pbkdf2PasswordEncoder encoder = (new Pbkdf2PasswordEncoder(secret,iterations,hashWidth));
-        encoder.setEncodeHashAsBase64(true);
-        return encoder;
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      log.info(" encoder config ");
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      CharSequence secret=this.bloodMoneyProperties.getWebSecurity().getSecret();
+      //int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
+      int iterations=185000;
+      int saltLength=8;
+      Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm secretKeyFactoryAlgorithm =
+        Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512;
+      Pbkdf2PasswordEncoder encoder = new Pbkdf2PasswordEncoder(
+        secret, saltLength, iterations
+      );
+      encoder.setAlgorithm(secretKeyFactoryAlgorithm);
+      encoder.setEncodeHashAsBase64(true);
+      log.info("secret:       "+secret);
+      log.info("secretLength: "+secret.length());
+      log.info("saltLength:   "+saltLength);
+      log.info("iterations:   "+iterations);
+      log.info("Algorithm:    "+secretKeyFactoryAlgorithm.name());
+      log.info("configPW:     "+this.bloodMoneyProperties.getUserConfig().getUserPassword());
+      log.info("encodedPW:    "+encoder.encode("Recoil89"));
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      return encoder;
     }
 
     @Bean

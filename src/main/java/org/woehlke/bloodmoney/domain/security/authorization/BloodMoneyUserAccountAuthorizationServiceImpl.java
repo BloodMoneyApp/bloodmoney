@@ -22,26 +22,41 @@ public class BloodMoneyUserAccountAuthorizationServiceImpl implements BloodMoney
 
     @Override
     public boolean confirmUserByLoginAndPassword(String userEmail, String userPassword) {
-        String email = bloodMoneyProperties.getUserConfig().getUserEmail();
-        String pwd = bloodMoneyProperties.getUserConfig().getUserPassword();
-        return (
-            (userEmail.compareTo(email)==0)
-            &&(userPassword.compareTo(pwd)==0)
-        );
+      String confEmail = bloodMoneyProperties.getUserConfig().getUserEmail();
+      String confPwd   = bloodMoneyProperties.getUserConfig().getUserPassword();
+      boolean confirmUserByLoginAndPassword = (
+        (userEmail.compareTo(confEmail)==0)
+          &&(userPassword.compareTo(confPwd)==0)
+      );
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      log.info(" confEmail:    " + confEmail );
+      log.info(" confPwd:      " + confPwd );
+      log.info(" userEmail:    " + userEmail );
+      log.info(" userPassword: " + userPassword );
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      log.info(" confirmUserByLoginAndPassword: " + confirmUserByLoginAndPassword);
+      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      return confirmUserByLoginAndPassword;
     }
 
     @Override
     public boolean authorize(LoginFormBean loginFormBean) {
-        String encodedPassword = bloodMoneyProperties.getUserConfig().getUserPassword();
-        log.info("encodedPassword:  ###"+encodedPassword+"###");
-        CharSequence rawPassword = loginFormBean.getUserPassword();
-        log.info("rawPassword:      ###"+rawPassword+"###  --- ###"+encoder.encode(rawPassword)+"###");
+        String transientPassword = bloodMoneyProperties.getUserConfig().getUserPassword();
+        CharSequence persistentPassword = loginFormBean.getUserPassword();
         boolean emailMatched = (loginFormBean.getUserEmail().compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0);
-        log.info("emailMatched:  "+emailMatched);
-        boolean pwMatched = (encoder.matches(rawPassword,encodedPassword));
-        log.info("pwMatched:  "+pwMatched);
+        boolean pwMatched = (encoder.matches(persistentPassword,transientPassword));
         boolean authorized = (emailMatched&&pwMatched);
-        log.info("authorized:  "+authorized);
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        log.info(" authorize ");
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        log.info("persistentPassword:           ###"+transientPassword+"###");
+        log.info("persistentPassword endcoded:  ###"+encoder.encode(transientPassword)+"###");
+        log.info("transientPassword:            ###"+persistentPassword+"###");
+        log.info("transientPassword endcoded:   ###"+encoder.encode(persistentPassword)+"###");
+        log.info("emailMatched:                 "+emailMatched);
+        log.info("pwMatched:                    "+pwMatched);
+        log.info("authorized:                   "+authorized);
+        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         return authorized;
     }
 }
