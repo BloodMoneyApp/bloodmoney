@@ -4,7 +4,7 @@
 
   <groupId>org.woehlke.bloodmoney</groupId>
   <artifactId>bloodmoney</artifactId>
-  <version>3.0.0.RC03-SNAPSHOT</version>
+  <version>3.0.0.RC03</version>
   <packaging>jar</packaging>
 
   <parent>
@@ -18,7 +18,7 @@
     <connection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</connection>
     <developerConnection>scm:git:git@github.com:BloodMoneyApp/bloodmoney.git</developerConnection>
     <url>https://github.com/BloodMoneyApp/bloodmoney/tree/${project.scm.tag}</url>
-    <tag>HEAD</tag>
+    <tag>v3.0.0.RC03</tag>
   </scm>
 
   <name>BloodMoney</name>
