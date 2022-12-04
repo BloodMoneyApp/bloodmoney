@@ -25,7 +25,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" sec:authorize="isAuthenticated()">
 
           <li class="nav-item text-start" sec:authorize="isAuthenticated()">
-            <a class="nav-link" th:href="@{/measurement/add/}" href="#">
+            <a class="nav-link" th:href="@{/measurement/add}" href="#">
               <i class="fa-solid fa-square-plus"></i>
               <span th:text="#{org.woehlke.mybp.measurement.add.title.short}"></span>
             </a>
@@ -39,7 +39,7 @@
           </li>
 
           <li class="nav-item" sec:authorize="isAuthenticated()" th:if="${userSessionBean.devTesting}">
-            <a class="nav-link" th:href="@{/test/createTestData/}" href="#">
+            <a class="nav-link" th:href="@{/test/createTestData}" href="#">
               <i class="far fa-file"></i>
               <span th:text="#{org.woehlke.mybp.navigation.topbar.createtestdata}"></span>
             </a>
