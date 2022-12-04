@@ -1324,7 +1324,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <linksource>true</linksource>
-          <maxmemory>1024m</maxmemory>
+          <maxmemory>2048m</maxmemory>
           <source>${java.version}</source>
         </configuration>
       </plugin>
