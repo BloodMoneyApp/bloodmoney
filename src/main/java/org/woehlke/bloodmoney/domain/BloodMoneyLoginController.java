@@ -62,7 +62,7 @@ public class BloodMoneyLoginController {
      * @param model Model
      * @return Shows Root Project after successful login or login form with error messages.
      */
-    @RequestMapping(value = "/login/", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public final String loginPerform(@Valid LoginFormBean loginFormBean,
                                      BindingResult result, Model model) {
         log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
