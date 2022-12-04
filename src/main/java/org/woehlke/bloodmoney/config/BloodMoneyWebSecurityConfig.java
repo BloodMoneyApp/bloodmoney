@@ -3,11 +3,14 @@ package org.woehlke.bloodmoney.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.AnonymousAuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
@@ -19,12 +22,11 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.woehlke.bloodmoney.domain.security.user.BloodMoneyUserDetailsServiceService;
 
 @Slf4j
-//@Configuration
-//@Import({
-//    BloodMoneyWebMvcConfig.class
-//})
-//@EnableWebSecurity
-//
+@Configuration
+@Import({
+    BloodMoneyWebMvcConfig.class
+})
+@EnableWebSecurity
 //@SuppressWarnings("deprecation")
 //@EnableSpringDataWebSupport
 //@EnableWebMvc
@@ -126,54 +128,58 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
         HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
         requestCache.setMatchingRequestParameterName("continue");
         http
-          .headers((headers) ->
-              headers
-                .contentTypeOptions()
-                .and()
-                .xssProtection()
-                .and()
-                .cacheControl()
-                .and()
-                .httpStrictTransportSecurity()
-                .and()
-                .frameOptions()
-            )
-            //.disable()
-            .securityContext((securityContext) -> securityContext
-              .requireExplicitSave(true)
-            )
-            .requestCache((cache) -> cache
-              .requestCache(requestCache)
-            );
-            //.rememberMe((remember) -> remember
-              //.rememberMeServices(rememberMeServices())
-           // )
-      http
-        .authorizeHttpRequests((authorizeHttpRequests) ->
-          authorizeHttpRequests
+          .headers((headers) -> headers
+            .contentTypeOptions()
+            .and()
+            .xssProtection()
+            .and()
+            .cacheControl()
+            .and()
+            .httpStrictTransportSecurity()
+            .and()
+            .frameOptions()
+          )
+          //.disable()
+          .securityContext((securityContext) -> securityContext
+            .requireExplicitSave(true)
+          )
+          .requestCache((cache) -> cache
+            .requestCache(requestCache)
+          )
+          //.rememberMe((remember) -> remember
+            //.rememberMeServices(rememberMeServices())
+          //)
+          .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
             .requestMatchers(
               this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-            )   .fullyAuthenticated().anyRequest().authenticated()
-        );
-      http
-            .formLogin()
+            ).permitAll()
+          )
+          /*
+          http
+            .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+                .requestMatchers(
+                  this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+                ).fullyAuthenticated().anyRequest().authenticated()
+            );
+          */
+          .formLogin((formLogin) -> formLogin
             .loginPage(
-                this.bloodMoneyProperties.getWebSecurity().getLoginPage()
+              this.bloodMoneyProperties.getWebSecurity().getLoginPage()
             )
             .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
             .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
             .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
             .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
             .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
-            //.successHandler(this.authenticationSuccessHandler)
             .permitAll()
-            .and()
-            .logout()
+          )
+          .logout((logout) -> logout
             .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
             .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
             .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
-            .permitAll();
-            return http.build();
+            .permitAll()
+          );
+          return http.build();
     }
 
     @Autowired
