@@ -156,18 +156,18 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
             .requestCache(requestCache)
           )
           */
+          /*
+         .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+           .requestMatchers(
+             this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+           ).permitAll().anyRequest().authenticated()
+          )
+          */
           .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
             .requestMatchers(
               this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-            ).permitAll().anyRequest().authenticated().and()
+            ).fullyAuthenticated().anyRequest().authenticated()
           )
-          /*
-          .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
-              .requestMatchers(
-                this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-              ).fullyAuthenticated().anyRequest().authenticated()
-          )
-           */
           .formLogin((formLogin) -> formLogin
             .loginPage(
               this.bloodMoneyProperties.getWebSecurity().getLoginPage()
@@ -177,13 +177,13 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
             .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
             .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
             .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
-            .permitAll().and()
+            .permitAll()
           )
           .logout((logout) -> logout
             .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
             .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
             .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
-            .permitAll().and()
+            .permitAll()
           );
           return http.build();
     }
