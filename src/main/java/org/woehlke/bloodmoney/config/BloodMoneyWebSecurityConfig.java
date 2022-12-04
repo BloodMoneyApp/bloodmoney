@@ -113,13 +113,15 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
 
   @Bean
   public AnonymousAuthenticationFilter anonymousAuthFilter(){
-    AnonymousAuthenticationFilter f = new AnonymousAuthenticationFilter("foobar");
+    String key =this.bloodMoneyProperties.getWebSecurity().getSecret();
+    AnonymousAuthenticationFilter f = new AnonymousAuthenticationFilter(key);
     return f;
   }
 
   @Bean
   public AnonymousAuthenticationProvider anonymousAuthenticationProvider(){
-    AnonymousAuthenticationProvider p = new AnonymousAuthenticationProvider("foobar");
+    String key =this.bloodMoneyProperties.getWebSecurity().getSecret();
+    AnonymousAuthenticationProvider p = new AnonymousAuthenticationProvider(key);
     return p;
   }
 
@@ -128,6 +130,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
         HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
         requestCache.setMatchingRequestParameterName("continue");
         http
+          /*
           .headers((headers) -> headers
             .contentTypeOptions()
             .and()
@@ -138,8 +141,10 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
             .httpStrictTransportSecurity()
             .and()
             .frameOptions()
+          )*/
+          .headers((headers) -> headers
+            .disable()
           )
-          //.disable()
           .securityContext((securityContext) -> securityContext
             .requireExplicitSave(true)
           )
@@ -149,18 +154,18 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
           //.rememberMe((remember) -> remember
             //.rememberMeServices(rememberMeServices())
           //)
-          /*
           .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
             .requestMatchers(
               this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
             ).permitAll()
           )
-          */
+          /*
           .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
               .requestMatchers(
                 this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
               ).fullyAuthenticated().anyRequest().authenticated()
           )
+           */
           .formLogin((formLogin) -> formLogin
             .loginPage(
               this.bloodMoneyProperties.getWebSecurity().getLoginPage()
