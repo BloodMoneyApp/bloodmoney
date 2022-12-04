@@ -9,8 +9,10 @@ import org.woehlke.bloodmoney.domain.db.BloodPressureMeasurementEntity;
 import org.woehlke.bloodmoney.domain.db.measurements.BloodPressureMeasurementRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -29,6 +31,7 @@ public class BloodMoneyTestServiceImpl implements BloodMoneyTestService {
         ZoneId zone = ZoneId.of("Europe/Paris");
         LocalDate today =  LocalDate.now(zone);
         LocalTime now = LocalTime.now(zone);
+        LocalDateTime nowDateTime = LocalDateTime.now(zone);
         for(long i=0;i<1000;i++){
             LocalDate day = today.minusDays(i);
             BloodPressureMeasurementEntity o = new BloodPressureMeasurementEntity();
@@ -38,6 +41,12 @@ public class BloodMoneyTestServiceImpl implements BloodMoneyTestService {
             o.setSituation("situation "+i);
             o.setDate(day);
             o.setTime(now);
+            o.setUuid(UUID.randomUUID());
+            o.setCreated(nowDateTime);
+            o.setUpdated(nowDateTime);
+            o.setHostnameCanonical("localhost");
+            o.setHostname("localhost");
+            o.setIp("127.0.0.1");
             this.bloodPressureMeasurementRepository.save(o);
         }
     }
