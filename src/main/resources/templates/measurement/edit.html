@@ -3,10 +3,10 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:sd="http://www.thymeleaf.org/spring-data">
-<head th:replace="layout/page :: tw-head(twtitle=~{::title},links=~{},refreshMessages=false)">
+<head th:replace="~{layout/page :: tw-head(twtitle=~{::title},links=~{},refreshMessages=false)}">
     <title th:text="#{org.woehlke.mybp.measurement.edit.title.short}">All Jobs</title>
 </head>
-<body th:replace="layout/page :: tw-page-body(twcontent=~{::mytwcontent},twtitle=~{::h1},description=~{::p.tw-content-subtitle})">
+<body th:replace="~{layout/page :: tw-page-body(twcontent=~{::mytwcontent},twtitle=~{::h1},description=~{::p.tw-content-subtitle})}">
 <div id="page">
     <header id="tw-content-title">
         <h1>
@@ -115,6 +115,6 @@
         </div>
     </main>
 </div>
-<div th:replace="layout/page :: tw-footer"></div>
+<div th:replace="~{layout/page :: tw-footer}"></div>
 </body>
 </html>

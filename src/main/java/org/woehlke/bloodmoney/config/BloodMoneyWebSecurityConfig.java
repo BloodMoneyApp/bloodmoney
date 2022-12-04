@@ -3,6 +3,7 @@ package org.woehlke.bloodmoney.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AnonymousAuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AnonymousAuthenticationFilter;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -102,9 +104,21 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
   }
 
   @Bean
-  RememberMeServices rememberMeServices() {
+  public RememberMeServices rememberMeServices() {
     String myKey = this.bloodMoneyProperties.getWebSecurity().getSecret();
     return new TokenBasedRememberMeServices(myKey, userAccountSecurityService);
+  }
+
+  @Bean
+  public AnonymousAuthenticationFilter anonymousAuthFilter(){
+    AnonymousAuthenticationFilter f = new AnonymousAuthenticationFilter("foobar");
+    return f;
+  }
+
+  @Bean
+  public AnonymousAuthenticationProvider anonymousAuthenticationProvider(){
+    AnonymousAuthenticationProvider p = new AnonymousAuthenticationProvider("foobar");
+    return p;
   }
 
   //@Override
@@ -130,11 +144,10 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
             )
             .requestCache((cache) -> cache
               .requestCache(requestCache)
-            )
+            );
             //.rememberMe((remember) -> remember
               //.rememberMeServices(rememberMeServices())
            // )
-      ;
       http
         .authorizeHttpRequests((authorizeHttpRequests) ->
           authorizeHttpRequests
