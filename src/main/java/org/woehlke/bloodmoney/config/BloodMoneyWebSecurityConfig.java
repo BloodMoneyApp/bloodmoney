@@ -83,17 +83,22 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
       //int iterations=this.bloodMoneyProperties.getWebSecurity().getIterations();
       int iterations=185000;
       int saltLength=8;
+      int hashWidth=256;
       Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm secretKeyFactoryAlgorithm =
         Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA512;
+      /*
       Pbkdf2PasswordEncoder encoder = new Pbkdf2PasswordEncoder(
         secret, saltLength, iterations
       );
+      */
+      Pbkdf2PasswordEncoder encoder = new Pbkdf2PasswordEncoder(secret, saltLength, iterations, hashWidth);
       encoder.setAlgorithm(secretKeyFactoryAlgorithm);
       encoder.setEncodeHashAsBase64(true);
       log.info("secret:       "+secret);
       log.info("secretLength: "+secret.length());
       log.info("saltLength:   "+saltLength);
       log.info("iterations:   "+iterations);
+      log.info("hashWidth:    "+hashWidth);
       log.info("Algorithm:    "+secretKeyFactoryAlgorithm.name());
       log.info("configPW:     "+this.bloodMoneyProperties.getUserConfig().getUserPassword());
       log.info("encodedPW:    "+encoder.encode("Recoil89"));
