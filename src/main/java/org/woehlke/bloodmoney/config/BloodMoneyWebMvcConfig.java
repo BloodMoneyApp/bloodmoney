@@ -28,6 +28,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.thymeleaf.dialect.springdata.SpringDataDialect;
 //import org.thymeleaf.dialect.springdata.SpringDataDialect;
 //import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 //import org.woehlke.bloodmoney.config.BloodMoneyProperties;
@@ -69,12 +70,11 @@ public class BloodMoneyWebMvcConfig implements WebMvcConfigurer {
         return lci;
     }
 
-    /*
+
     @Bean
     public SpringDataDialect springDataDialect() {
         return new SpringDataDialect();
     }
-    */
 
     @Bean
     public MethodValidationPostProcessor methodValidationPostProcessor() {

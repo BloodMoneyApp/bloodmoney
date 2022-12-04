@@ -156,7 +156,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
             .requestCache(requestCache)
           )
           */
-         .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
+          .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
            .requestMatchers(
              this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
            )
