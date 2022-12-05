@@ -2,25 +2,19 @@
 <databaseChangeLog
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
   <preConditions>
-    <dbms type="POSTGRESQL" />
+    <dbms type="postgresql" />
     <runningAs username="bloodmoney" />
   </preConditions>
 
-  <changeSet id="1" author="thomaswoehlke">
-    <preConditions onFail="WARN">
-      <sqlCheck expectedResult="0">select count(*) from measurement</sqlCheck>
-    </preConditions>
-    <comment>start..</comment>
-  </changeSet>
-
-  <changeSet id="2" author="thomaswoehlke">
-    <preConditions onFail="WARN">
-      <sqlCheck expectedResult="0">alter table measurement add column weight integer default 0</sqlCheck>
-      <sqlCheck expectedResult="0">update measurement set weight=55 where weight is null</sqlCheck>
-    </preConditions>
+  <changeSet id="1" author="thomaswoehlke" failOnError="false" dbms="postgresql">
+    <addColumn tableName="measurement">
+      <column name="weight" type="integer" defaultOnNull="true" defaultValue="66"/>
+    </addColumn>
     <comment>add field int weight</comment>
   </changeSet>
 
