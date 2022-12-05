@@ -228,6 +228,23 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
         return o;
     }
 
+    public static BloodPressureMeasurementEntity getInstance(
+      Integer systolicTopNumber,
+      Integer diastolicBottomNumber,
+      Integer pulse,
+      Integer weight,
+      String situation
+    ) {
+      BloodPressureMeasurementEntity o = new BloodPressureMeasurementEntity();
+      o.setSystolicTopNumber(systolicTopNumber);
+      o.setDiastolicBottomNumber(diastolicBottomNumber);
+      o.setPulse(pulse);
+      o.setSituation(situation);
+      o.setWeight(weight);
+      o.prepareNew();
+      return o;
+    }
+
     public static BloodPressureMeasurementEntity getInstance() {
         String situation = "New Measurement";
         return BloodPressureMeasurementEntity.getInstance(situation);
