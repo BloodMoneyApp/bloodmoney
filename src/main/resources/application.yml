@@ -14,7 +14,7 @@ spring:
   config:
     name: bloodmoney
   liquibase:
-    enabled: false
+    enabled: true
   devtools:
     livereload:
       enabled: ${BLOODMONEY_DEV_TESTING}
@@ -30,9 +30,6 @@ spring:
     atomikos:
       connectionfactory:
         xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
-  flyway:
-    enabled: true
-    baselineOnMigrate: true
   jpa:
     open-in-view: true
     show-sql: true
@@ -69,7 +66,7 @@ spring:
 org:
   woehlke:
     bloodmoney:
-      testDataHowManyTestData: 10
+      testDataHowManyTestData: 30
       devTesting: ${BLOODMONEY_DEV_TESTING}
       userConfig:
         userEmail: ${BLOODMONEY_USER_EMAIL}

@@ -247,8 +247,8 @@ public class BloodPressureMeasurementServiceTest {
         String[] fields ={"updated","created"};
         Sort sort = Sort.by(Sort.Direction.DESC, fields);
         Pageable pageable = PageRequest.of(page,size,sort);
-        int getTotalPagesExpected = 22;
-        long getTotalElementsExpected = 212L;
+        int getTotalPagesExpected = 64;
+        long getTotalElementsExpected = 632L;
         int getSizeExpected = 10;
         int getNumberOfElementsExpected = 10;
         int getNumberOfElementsExpectedLastPage = 2;
