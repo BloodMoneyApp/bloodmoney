@@ -1018,7 +1018,7 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <defaultGoal>clean package dependency:list spring-boot:run</defaultGoal>
+    <defaultGoal>clean package dependency:list liquibase:update spring-boot:run</defaultGoal>
     <pluginManagement>
       <plugins>
         <plugin>
