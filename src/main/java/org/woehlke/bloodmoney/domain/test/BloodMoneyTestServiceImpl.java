@@ -31,13 +31,20 @@ public class BloodMoneyTestServiceImpl implements BloodMoneyTestService {
         LocalTime now = LocalTime.now(zone);
         for(long i=0;i<1000;i++){
             LocalDate day = today.minusDays(i);
-            BloodPressureMeasurementEntity o = new BloodPressureMeasurementEntity();
-            o.setSystolicTopNumber(120);
-            o.setDiastolicBottomNumber(80);
-            o.setPulse(88);
-            o.setSituation("situation "+i);
-            o.setDate(day);
-            o.setTime(now);
+            Integer systolicTopNumber = 120;
+            Integer diastolicBottomNumber = 80;
+            Integer pulse = 88;
+            Integer weight = 66;
+            String situation = "situation "+i;
+            BloodPressureMeasurementEntity o = BloodPressureMeasurementEntity.getInstance(
+              systolicTopNumber,
+              diastolicBottomNumber,
+              pulse,
+              weight,
+              situation,
+              day,
+              now
+            );
             this.bloodPressureMeasurementRepository.save(o);
         }
     }

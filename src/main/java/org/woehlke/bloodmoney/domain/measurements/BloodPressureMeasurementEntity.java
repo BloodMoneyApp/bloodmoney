@@ -233,7 +233,9 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
       Integer diastolicBottomNumber,
       Integer pulse,
       Integer weight,
-      String situation
+      String situation,
+      LocalDate date,
+      LocalTime time
     ) {
       BloodPressureMeasurementEntity o = new BloodPressureMeasurementEntity();
       o.setSystolicTopNumber(systolicTopNumber);
@@ -241,6 +243,8 @@ public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
       o.setPulse(pulse);
       o.setSituation(situation);
       o.setWeight(weight);
+      o.setDate(date);
+      o.setTime(time);
       o.prepareNew();
       return o;
     }
