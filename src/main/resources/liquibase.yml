@@ -1,4 +1,5 @@
-changeLogFile: db/changelog/dbchangelog.xml
+changeLogFile: db/changelog/liquibase-changelog.xml
+diffChangeLogFile: db/changelog/liquibase-diff-changelog.xml
 driver: org.postgresql.Driver
 url: jdbc:postgresql://${BLOODMONEY_DS_HOST}:/${BLOODMONEY_DS_PORT}/${BLOODMONEY_DS_DB}
 username: ${BLOODMONEY_DS_USR}

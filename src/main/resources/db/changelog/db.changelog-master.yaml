@@ -1,4 +1,4 @@
-changeLogFile: dbchangelog.xml
+changeLogFile: liquibase-changelog.xml
 url: jdbc:postgresql://localhost:5432/bloodmoney
 username: bloodmoney
 password: bloodmoneypwd
