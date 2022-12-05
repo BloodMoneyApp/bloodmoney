@@ -72,6 +72,7 @@
                                 <th><a class="sorted" sd:pagination-sort="systolicTopNumber" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.systolicTopNumber}">systolicTopNumber</a></th>
                                 <th><a class="sorted" sd:pagination-sort="diastolicBottomNumber" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.diastolicBottomNumber}">diastolicBottomNumber</a></th>
                                 <th><a class="sorted" sd:pagination-sort="pulse" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.pulse}">pulse</a></th>
+                                <th><a class="sorted" sd:pagination-sort="weight" th:utext="#{org.woehlke.bloodmoney.oodm.measurement.weight}">weight</a></th>
                                 <!--
                                 <th th:utext="#{org.woehlke.bloodmoney.oodm.measurement.situation}">situation</th>
                                 -->
@@ -102,6 +103,9 @@
                                 </td>
                                 <td class="tw-debug measurement-pulse">
                                     <span th:text="${measurement.pulse}">measurement.pulse</span>
+                                </td>
+                                <td class="tw-debug measurement-weight">
+                                    <span th:text="${measurement.weight}">measurement.weight</span>
                                 </td>
                                 <!--
                                 <td class="tw-debug measurement-situation">

@@ -91,6 +91,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                              <label th:for="oneWeight" class="control-label">
+                                <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.weight}">weight</span>
+                              </label>
+                              <input id="oneWeight" type="number" th:field="*{weight}" class="form-control" />
+                              <div>
+                                <div th:each="err : ${#fields.errors('weight')}" th:text="${err}" class="alert alert-danger">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
                                 <label th:for="oneSituation" class="control-label">
                                     <span th:utext="#{org.woehlke.bloodmoney.oodm.measurement.situation}">situation</span>
                                 </label>
