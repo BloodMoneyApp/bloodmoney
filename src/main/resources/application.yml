@@ -38,7 +38,8 @@ spring:
     show-sql: true
     database-platform: POSTGRESQL
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+      #ddl-auto: update
       #ddl-auto: create-drop update
       #ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
       naming:
@@ -189,7 +190,7 @@ spring:
     log-dir: transaction-logs/tx-logs-bloodmoney
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 server:
   port: ${PORT}
   compression:
