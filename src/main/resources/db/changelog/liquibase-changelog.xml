@@ -19,6 +19,7 @@
   <changeSet id="2" author="thomaswoehlke">
     <preConditions onFail="WARN">
       <sqlCheck expectedResult="0">alter table measurement add column weight integer default 0</sqlCheck>
+      <sqlCheck expectedResult="0">update measurement set weight=55 where weight is null</sqlCheck>
     </preConditions>
     <comment>add field int weight</comment>
   </changeSet>
