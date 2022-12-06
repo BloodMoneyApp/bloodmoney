@@ -96,9 +96,9 @@ org:
           - "/favicon.ico"
           - "/error*"
           - "/fehler*"
-        antMatchersPermitAll:
           - "/login"
           - "/login*"
+        antMatchersPermitAll:
           - "/bpm"
           - "/j_spring_security_check"
         antMatchersFullyAuthenticated: "/**"

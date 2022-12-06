@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.domain.security.vo;
+package org.woehlke.bloodmoney.domain.security.login;
 
 import lombok.*;
 //import org.hibernate.validator.constraints.SafeHtml;

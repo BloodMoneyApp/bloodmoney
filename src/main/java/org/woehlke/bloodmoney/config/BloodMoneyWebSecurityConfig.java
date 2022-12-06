@@ -32,16 +32,16 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     private final UserDetailsService bloodMoneyUserDetailsService;
     private final BloodMoneyProperties bloodMoneyProperties;
 
-  @Autowired
-  public BloodMoneyWebSecurityConfig(
-    AuthenticationManagerBuilder auth,
-    UserDetailsService bloodMoneyUserDetailsService,
-    BloodMoneyProperties bloodMoneyProperties
-  ) {
-    this.auth = auth;
-    this.bloodMoneyUserDetailsService = bloodMoneyUserDetailsService;
-    this.bloodMoneyProperties = bloodMoneyProperties;
-  }
+    @Autowired
+    public BloodMoneyWebSecurityConfig(
+      AuthenticationManagerBuilder auth,
+      UserDetailsService bloodMoneyUserDetailsService,
+      BloodMoneyProperties bloodMoneyProperties
+    ) {
+      this.auth = auth;
+      this.bloodMoneyUserDetailsService = bloodMoneyUserDetailsService;
+      this.bloodMoneyProperties = bloodMoneyProperties;
+    }
 
   /**
      * @see <a href="https://asecuritysite.com/encryption/PBKDF2">Encrypt with PBKDF2</a>
@@ -75,27 +75,17 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     }
 
     @Bean
-    public DaoAuthenticationProvider authProvider() {
+    public DaoAuthenticationProvider userDetailsAuthProvider() {
         log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        log.info(" authProvider ");
+        log.info(" userDetailsAuthProvider ");
         log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(this.bloodMoneyUserDetailsService);
         authProvider.setPasswordEncoder(encoder());
-        log.info(" authProvider "+authProvider.toString());
+        log.info(" userDetailsAuthProvider "+authProvider.toString());
         log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         return authProvider;
     }
-
-    /*
-    @Bean
-    public UsernamePasswordAuthenticationFilter authenticationFilter() throws Exception {
-        UsernamePasswordAuthenticationFilter filter = new UsernamePasswordAuthenticationFilter();
-        filter.setAuthenticationManager(authenticationManager());
-        filter.setFilterProcessesUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl());
-        return filter;
-    }
-    */
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
@@ -110,6 +100,20 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
         this.bloodMoneyProperties.getWebSecurity().getAntMatchersIgnore()
       );
     }
+/*
+    @Bean
+    public AuthenticationManager authenticationManager( AuthenticationManagerBuilder amb) throws Exception {
+      return amb.authenticationProvider(userDetailsAuthProvider()).build();
+    }
+
+    @Bean
+    public UsernamePasswordAuthenticationFilter authenticationFilter() throws Exception {
+      UsernamePasswordAuthenticationFilter filter = new UsernamePasswordAuthenticationFilter();
+      filter.setAuthenticationManager(authenticationManager(this.auth));
+      filter.setFilterProcessesUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl());
+      return filter;
+    }
+*/
 
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -127,16 +131,12 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     log.info("-------------------------------------------------------------------------------------");
     log.info(" configure SecurityFilterChain from HttpSecurity http ");
     http
-      .headers((headers) -> headers.disable())
       .authorizeHttpRequests((authorizeRequests) -> authorizeRequests
-          .antMatchers(
-            this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-          ).permitAll()
-          .antMatchers(
-            this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
-          ).authenticated()
+        .antMatchers(
+          this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+        ).permitAll()
       )
-      .formLogin((login) -> login
+      .formLogin((form) -> form
         .loginPage(this.bloodMoneyProperties.getWebSecurity().getLoginPage())
         .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
         .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
