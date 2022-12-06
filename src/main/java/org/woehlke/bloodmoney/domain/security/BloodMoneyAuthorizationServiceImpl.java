@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.domain.security.authorization;
+package org.woehlke.bloodmoney.domain.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.domain.security.vo.LoginFormBean;
+import org.woehlke.bloodmoney.domain.security.BloodMoneyAuthorizationService;
+import org.woehlke.bloodmoney.frontend.vo.LoginFormBean;
 
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class BloodMoneyUserAccountAuthorizationServiceImpl implements BloodMoneyUserAccountAuthorizationService {
+public class BloodMoneyAuthorizationServiceImpl implements BloodMoneyAuthorizationService {
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;
@@ -43,7 +44,9 @@ public class BloodMoneyUserAccountAuthorizationServiceImpl implements BloodMoney
     public boolean authorize(LoginFormBean loginFormBean) {
         String transientPassword = bloodMoneyProperties.getUserConfig().getUserPassword();
         CharSequence persistentPassword = loginFormBean.getUserPassword();
-        boolean emailMatched = (loginFormBean.getUserEmail().compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0);
+        boolean emailMatched = (loginFormBean.getUserEmail().compareTo(
+          bloodMoneyProperties.getUserConfig().getUserEmail())==0
+        );
         boolean pwMatched = (encoder.matches(persistentPassword,transientPassword));
         boolean authorized = (emailMatched&&pwMatched);
         log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

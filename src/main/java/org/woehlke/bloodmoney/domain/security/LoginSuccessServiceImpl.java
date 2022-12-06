@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.domain.security.login;
+package org.woehlke.bloodmoney.domain.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSuccessService {
+public class LoginSuccessServiceImpl implements LoginSuccessService {
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;
@@ -43,7 +43,7 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     }
 
     @Override
-      public UserAccountVO retrieveCurrentUser() throws UsernameNotFoundException {
+      public LoginSuccessVO retrieveCurrentUser() throws UsernameNotFoundException {
         log.info("-------------------------------------------------------------------------------------");
         log.info(" retrieve Current User ");
         log.info("-------------------------------------------------------------------------------------");
@@ -51,13 +51,12 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
         log.info(" retrieved username: "+username);
         log.info("-------------------------------------------------------------------------------------");
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-          UserAccountVO ub = new UserAccountVO(
-                bloodMoneyProperties.getUserConfig().getUserEmail(),
-                bloodMoneyProperties.getUserConfig().getUserPassword(),
-                bloodMoneyProperties.getUserConfig().getUserFullname()
-            );
-          UserDetails u = User.withUserDetails((UserDetails)ub).build();
-          log.info(" UserAccountBean u = "+u.toString());
+          LoginSuccessVO ub = new LoginSuccessVO(
+              bloodMoneyProperties.getUserConfig().getUserEmail(),
+              bloodMoneyProperties.getUserConfig().getUserPassword(),
+              bloodMoneyProperties.getUserConfig().getUserFullname()
+          );
+          log.info(" UserAccountBean ub = "+ub.toString());
           log.info("-------------------------------------------------------------------------------------");
           return ub;
         } else {

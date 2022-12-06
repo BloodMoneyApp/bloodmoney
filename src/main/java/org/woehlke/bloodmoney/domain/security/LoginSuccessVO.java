@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.domain.security.login;
+package org.woehlke.bloodmoney.domain.security;
 
 import lombok.*;
 //import org.hibernate.validator.constraints.SafeHtml;
@@ -13,7 +13,7 @@ import java.util.Locale;
 @Setter
 @EqualsAndHashCode
 @Deprecated
-public class UserAccountVO implements Serializable {
+public class LoginSuccessVO implements Serializable {
 
     private static final long serialVersionUID = 4168992193351369032L;
 
@@ -46,7 +46,7 @@ public class UserAccountVO implements Serializable {
     @NotNull
     private Boolean enabled=true;
 
-    public UserAccountVO(
+    public LoginSuccessVO(
         @Email String userEmail,
         //@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
         String userPassword,

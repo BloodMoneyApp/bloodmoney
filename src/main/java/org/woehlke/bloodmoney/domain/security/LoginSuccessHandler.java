@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.domain.security.login;
+package org.woehlke.bloodmoney.domain.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +21,17 @@ import java.util.Locale;
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-    private final UserAccountLoginSuccessService userAccountLoginSuccessService;
+    private final LoginSuccessService loginSuccessService;
 
     private final LocaleResolver localeResolver;
 
     @Autowired
     public LoginSuccessHandler(
-        UserAccountLoginSuccessService userAccountLoginSuccessService,
+        LoginSuccessService loginSuccessService,
         LocaleResolver localeResolver
     ) {
         super();
-        this.userAccountLoginSuccessService = userAccountLoginSuccessService;
+        this.loginSuccessService = loginSuccessService;
         this.localeResolver = localeResolver;
     }
 
@@ -43,7 +43,7 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
     ) throws ServletException, IOException {
         log.info("-------------------------------------------------------------------------------------");
         super.onAuthenticationSuccess(request, response, authentication);
-        UserAccountVO user = userAccountLoginSuccessService.retrieveCurrentUser();
+        LoginSuccessVO user = loginSuccessService.retrieveCurrentUser();
         //userAccountLoginSuccessService.updateLastLoginTimestamp(user);
         Locale locale = user.getDefaultLanguage();
         localeResolver.setLocale(request,response,locale);

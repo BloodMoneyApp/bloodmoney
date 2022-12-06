@@ -1,4 +1,4 @@
-package org.woehlke.bloodmoney.domain.security.vo;
+package org.woehlke.bloodmoney.frontend.vo;
 
 import lombok.*;
 

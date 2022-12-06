@@ -16,10 +16,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-import org.woehlke.bloodmoney.domain.security.login.UserAccountVO;
-import org.woehlke.bloodmoney.domain.security.authorization.BloodMoneyUserAccountAuthorizationService;
-import org.woehlke.bloodmoney.domain.security.vo.LoginFormBean;
-import org.woehlke.bloodmoney.domain.security.login.UserAccountLoginSuccessService;
+import org.woehlke.bloodmoney.domain.security.LoginSuccessVO;
+import org.woehlke.bloodmoney.domain.security.BloodMoneyAuthorizationService;
+import org.woehlke.bloodmoney.frontend.vo.LoginFormBean;
+import org.woehlke.bloodmoney.domain.security.LoginSuccessService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,18 +30,18 @@ import java.util.Collection;
 @Controller
 public class BloodMoneyLoginController {
 
-    private final UserAccountLoginSuccessService userAccountLoginSuccessService;
-    private final BloodMoneyUserAccountAuthorizationService bloodMoneyUserAccountAuthorizationService;
+    private final LoginSuccessService loginSuccessService;
+    private final BloodMoneyAuthorizationService bloodMoneyAuthorizationService;
     private final UserDetailsService bloodMoneyUserDetailsService;
 
     @Autowired
     public BloodMoneyLoginController(
-        UserAccountLoginSuccessService userAccountLoginSuccessService,
-        BloodMoneyUserAccountAuthorizationService bloodMoneyUserAccountAuthorizationService,
+        LoginSuccessService loginSuccessService,
+        BloodMoneyAuthorizationService bloodMoneyAuthorizationService,
         UserDetailsService bloodMoneyUserDetailsService
     ) {
-        this.userAccountLoginSuccessService = userAccountLoginSuccessService;
-        this.bloodMoneyUserAccountAuthorizationService = bloodMoneyUserAccountAuthorizationService;
+        this.loginSuccessService = loginSuccessService;
+        this.bloodMoneyAuthorizationService = bloodMoneyAuthorizationService;
         this.bloodMoneyUserDetailsService = bloodMoneyUserDetailsService;
     }
 
@@ -76,7 +76,7 @@ public class BloodMoneyLoginController {
       @Valid LoginFormBean loginFormBean,
        BindingResult result, Model model
     ) {
-        boolean authorized = bloodMoneyUserAccountAuthorizationService.authorize(loginFormBean);
+        boolean authorized = bloodMoneyAuthorizationService.authorize(loginFormBean);
         if (!result.hasErrors() && authorized) {
             UserDetails ub = this.bloodMoneyUserDetailsService.loadUserByUsername(loginFormBean.getUserEmail());
             Object principal = ub.getUsername();
@@ -86,7 +86,7 @@ public class BloodMoneyLoginController {
               principal,credentials, authorities
             );
             SecurityContextHolder.getContext().setAuthentication(token);
-            UserAccountVO user = userAccountLoginSuccessService.retrieveCurrentUser();
+            LoginSuccessVO user = loginSuccessService.retrieveCurrentUser();
             log.info("OK logged in : "+user.getUserEmail());
             log.info( "redirect:/home");
             return "redirect:/home";
