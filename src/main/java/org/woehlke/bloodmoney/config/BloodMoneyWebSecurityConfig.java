@@ -39,35 +39,40 @@ public class BloodMoneyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .headers()
-            .disable()
-            .authorizeRequests()
-            .antMatchers(
+            .headers((headers) -> headers.disable()
+            )
+            .authorizeRequests((authorizeRequests) -> authorizeRequests
+              .antMatchers(
                 this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
+              )
+              .permitAll()//.and()
             )
-            .permitAll()
-            .antMatchers(
-                this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
+            .authorizeRequests((authorizeRequests) -> authorizeRequests
+              .antMatchers(
+                  this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated()
+              )
+              .fullyAuthenticated().anyRequest()
+              .authenticated()//.and()
             )
-            .fullyAuthenticated().anyRequest().authenticated()
-            .and()
-            .formLogin()
-            .loginPage(
-                this.bloodMoneyProperties.getWebSecurity().getLoginPage()
+            .formLogin((formLogin) -> formLogin
+                .loginPage(
+                    this.bloodMoneyProperties.getWebSecurity().getLoginPage()
+                )
+                .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
+                .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
+                .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
+                .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
+                .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
+                //.successHandler(this.authenticationSuccessHandler)
+                .permitAll()
+                //.and()
             )
-            .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
-            .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
-            .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
-            .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
-            .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
-            //.successHandler(this.authenticationSuccessHandler)
-            .permitAll()
-            .and()
-            .logout()
+            .logout((logout) -> logout
             .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
             .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
             .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
-            .permitAll();
+            .permitAll()
+        );
     }
 
     /**
