@@ -42,12 +42,14 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
         HttpServletResponse response,
         Authentication authentication
     ) throws ServletException, IOException {
+        log.info("-------------------------------------------------------------------------------------");
         super.onAuthenticationSuccess(request, response, authentication);
         UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
-        userAccountLoginSuccessService.updateLastLoginTimestamp(user);
+        //userAccountLoginSuccessService.updateLastLoginTimestamp(user);
         Locale locale = user.getDefaultLanguage();
         localeResolver.setLocale(request,response,locale);
-        log.info("successful logged in "+user.getUserEmail());
+        log.info(" onAuthenticationSuccess: successful logged in "+user.getUserEmail());
+        log.info("-------------------------------------------------------------------------------------");
     }
 
 }

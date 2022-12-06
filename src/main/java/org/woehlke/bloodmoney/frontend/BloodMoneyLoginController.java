@@ -67,8 +67,8 @@ public class BloodMoneyLoginController {
         boolean authorized = bloodMoneyUserAccountAuthorizationService.authorize(loginFormBean);
         if (!result.hasErrors() && authorized) {
             UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
-            userAccountLoginSuccessService.updateLastLoginTimestamp(user);
-            log.info("logged in");
+            //userAccountLoginSuccessService.updateLastLoginTimestamp(user);
+            log.info("OK logged in : "+user.getUserEmail());
             return "redirect:/";
         } else {
             String objectName = "loginForm";
@@ -76,7 +76,7 @@ public class BloodMoneyLoginController {
             String defaultMessage = "Email or Password wrong.";
             FieldError e = new FieldError(objectName, field, defaultMessage);
             result.addError(e);
-            log.info("not logged in : "+e.toString());
+            log.info("NOT logged in : "+e.toString());
             return "user/loginForm";
         }
     }

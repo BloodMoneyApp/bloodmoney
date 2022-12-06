@@ -83,14 +83,37 @@ public class BloodMoneyProperties implements Serializable {
         private String[] webAddResourceHandlersStatic;
     }
 
-
     @ToString
     @Getter
     @Setter
     @Validated
     public static class WebSecurity implements Serializable {
 
-      private static final long serialVersionUID = 4480323170764476017L;
+        private static final long serialVersionUID = 4480323170764476017L;
+
+        @NotBlank
+        private String antMatchersFullyAuthenticated;
+
+        @NotNull
+        private String[] antMatchersIgnore;
+
+        @NotNull
+        private String[] antMatchersPermitAll;
+
+        @NotBlank
+        private String usernameParameter;
+
+        @NotBlank
+        private String passwordParameter;
+
+        @NotBlank
+        private String secret;
+
+        @NotNull
+        private Integer iterations;
+
+        @NotNull
+        private Integer hashWidth;
 
         @NotNull
         private Boolean invalidateHttpSession;
@@ -112,27 +135,6 @@ public class BloodMoneyProperties implements Serializable {
 
         @NotBlank
         private String deleteCookies;
-
-        @NotBlank
-        private String antMatchersFullyAuthenticated;
-
-        @NotNull
-        private String[] antMatchersPermitAll;
-
-        @NotBlank
-        private String usernameParameter;
-
-        @NotBlank
-        private String passwordParameter;
-
-        @NotBlank
-        private String secret;
-
-        @NotNull
-        private Integer iterations;
-
-        @NotNull
-        private Integer hashWidth;
     }
 
 }

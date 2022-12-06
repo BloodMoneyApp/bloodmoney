@@ -9,5 +9,5 @@ public interface UserAccountLoginSuccessService {
 
     UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException;
 
-    void updateLastLoginTimestamp(UserAccountBean user);
+    //void updateLastLoginTimestamp(UserAccountBean user);
 }

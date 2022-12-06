@@ -21,7 +21,10 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     private BloodMoneyProperties bloodMoneyProperties;
 
     @Override
-    public String retrieveUsername() {
+      public String retrieveUsername() {
+        log.info("-------------------------------------------------------------------------------------");
+        log.info(" retrieveUsername ");
+        log.info("-------------------------------------------------------------------------------------");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null) return " ";
         Object principal = authentication.getPrincipal();
@@ -33,21 +36,29 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     }
 
     @Override
-    public UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException {
+      public UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException {
+        log.info("-------------------------------------------------------------------------------------");
+        log.info(" retrieveCurrentUser ");
+        log.info("-------------------------------------------------------------------------------------");
         String username = this.retrieveUsername();
+        log.info(" retrieved username: "+username);
+        log.info("-------------------------------------------------------------------------------------");
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-            return new UserAccountBean(
+          UserAccountBean u = new UserAccountBean(
                 bloodMoneyProperties.getUserConfig().getUserEmail(),
                 bloodMoneyProperties.getUserConfig().getUserPassword(),
                 bloodMoneyProperties.getUserConfig().getUserFullname()
             );
+          log.info("-------------------------------------------------------------------------------------");
+          return u;
         } else {
             throw new UsernameNotFoundException("Usernam unknown: "+username);
         }
     }
 
+    /*
     @Override
     public void updateLastLoginTimestamp(UserAccountBean user) {
-        //TODO:
     }
+    */
 }
