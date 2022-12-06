@@ -24,7 +24,7 @@ public class BloodMoneyUserDetailsServiceImpl implements BloodMoneyUserDetailsSe
         log.info(" retrieveCurrentUser ");
         log.info("-------------------------------------------------------------------------------------");
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-          UserAccountDetailsBean ub = new UserAccountDetailsBean(
+          UserDetailsVO ub = new UserDetailsVO(
               bloodMoneyProperties.getUserConfig().getUserEmail(),
               bloodMoneyProperties.getUserConfig().getUserPassword()
             );

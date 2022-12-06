@@ -43,7 +43,7 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
     }
 
     @Override
-      public UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException {
+      public UserAccountVO retrieveCurrentUser() throws UsernameNotFoundException {
         log.info("-------------------------------------------------------------------------------------");
         log.info(" retrieve Current User ");
         log.info("-------------------------------------------------------------------------------------");
@@ -51,7 +51,7 @@ public class UserAccountLoginSuccessServiceImpl implements UserAccountLoginSucce
         log.info(" retrieved username: "+username);
         log.info("-------------------------------------------------------------------------------------");
         if(username.compareTo(bloodMoneyProperties.getUserConfig().getUserEmail())==0){
-          UserAccountBean ub = new UserAccountBean(
+          UserAccountVO ub = new UserAccountVO(
                 bloodMoneyProperties.getUserConfig().getUserEmail(),
                 bloodMoneyProperties.getUserConfig().getUserPassword(),
                 bloodMoneyProperties.getUserConfig().getUserFullname()

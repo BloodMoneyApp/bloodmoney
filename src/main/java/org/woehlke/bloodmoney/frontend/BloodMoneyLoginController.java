@@ -16,7 +16,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-import org.woehlke.bloodmoney.domain.security.login.UserAccountBean;
+import org.woehlke.bloodmoney.domain.security.login.UserAccountVO;
 import org.woehlke.bloodmoney.domain.security.authorization.BloodMoneyUserAccountAuthorizationService;
 import org.woehlke.bloodmoney.domain.security.vo.LoginFormBean;
 import org.woehlke.bloodmoney.domain.security.login.UserAccountLoginSuccessService;
@@ -86,7 +86,7 @@ public class BloodMoneyLoginController {
               principal,credentials, authorities
             );
             SecurityContextHolder.getContext().setAuthentication(token);
-            UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
+            UserAccountVO user = userAccountLoginSuccessService.retrieveCurrentUser();
             log.info("OK logged in : "+user.getUserEmail());
             log.info( "redirect:/home");
             return "redirect:/home";

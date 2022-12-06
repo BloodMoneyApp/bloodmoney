@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class UserAccountDetailsBean implements UserDetails {
+public class UserDetailsVO implements UserDetails {
 
     private static final long serialVersionUID = 22L;
 
@@ -25,7 +25,7 @@ public class UserAccountDetailsBean implements UserDetails {
     private final boolean credentialsNonExpired;
     private final boolean enabled;
 
-    public UserAccountDetailsBean(String username, String password) {
+    public UserDetailsVO(String username, String password) {
         this.username = username;
         this.password = password;
         this.accountNonExpired = true;

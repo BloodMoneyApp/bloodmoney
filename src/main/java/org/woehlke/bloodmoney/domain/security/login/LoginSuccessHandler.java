@@ -43,7 +43,7 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
     ) throws ServletException, IOException {
         log.info("-------------------------------------------------------------------------------------");
         super.onAuthenticationSuccess(request, response, authentication);
-        UserAccountBean user = userAccountLoginSuccessService.retrieveCurrentUser();
+        UserAccountVO user = userAccountLoginSuccessService.retrieveCurrentUser();
         //userAccountLoginSuccessService.updateLastLoginTimestamp(user);
         Locale locale = user.getDefaultLanguage();
         localeResolver.setLocale(request,response,locale);

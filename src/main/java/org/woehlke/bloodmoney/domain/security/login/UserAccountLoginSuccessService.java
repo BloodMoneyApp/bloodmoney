@@ -6,7 +6,6 @@ public interface UserAccountLoginSuccessService {
 
     String retrieveUsername();
 
-    UserAccountBean retrieveCurrentUser() throws UsernameNotFoundException;
+    UserAccountVO retrieveCurrentUser() throws UsernameNotFoundException;
 
-    //void updateLastLoginTimestamp(UserAccountBean user);
 }

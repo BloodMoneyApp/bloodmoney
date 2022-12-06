@@ -12,7 +12,8 @@ import java.util.Locale;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class UserAccountBean implements Serializable {
+@Deprecated
+public class UserAccountVO implements Serializable {
 
     private static final long serialVersionUID = 4168992193351369032L;
 
@@ -45,7 +46,7 @@ public class UserAccountBean implements Serializable {
     @NotNull
     private Boolean enabled=true;
 
-    public UserAccountBean(
+    public UserAccountVO(
         @Email String userEmail,
         //@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
         String userPassword,
