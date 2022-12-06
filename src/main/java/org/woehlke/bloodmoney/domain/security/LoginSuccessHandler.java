@@ -3,6 +3,7 @@ package org.woehlke.bloodmoney.domain.security;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
@@ -42,12 +43,12 @@ public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccess
         Authentication authentication
     ) throws ServletException, IOException {
         log.info("-------------------------------------------------------------------------------------");
+        log.info(" onAuthenticationSuccess:");
         super.onAuthenticationSuccess(request, response, authentication);
-        LoginSuccessVO user = loginSuccessService.retrieveCurrentUser();
-        //userAccountLoginSuccessService.updateLastLoginTimestamp(user);
-        Locale locale = user.getDefaultLanguage();
+        UserDetails user = loginSuccessService.retrieveCurrentUser();
+        Locale locale = Locale.GERMAN;
         localeResolver.setLocale(request,response,locale);
-        log.info(" onAuthenticationSuccess: successful logged in "+user.getUserEmail());
+        log.info(" onAuthenticationSuccess: authenticated user "+user.getUsername());
         log.info("-------------------------------------------------------------------------------------");
     }
 
