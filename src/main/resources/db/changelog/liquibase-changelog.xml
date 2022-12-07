@@ -150,14 +150,6 @@
                              validate="true"/>
   </changeSet>
 
-  <!--
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql" id="1">
-    <addColumn tableName="measurement">
-      <column name="weight" type="integer" defaultOnNull="true" defaultValue="66"/>
-    </addColumn>
-  </changeSet>
--->
-
   <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="2-1">
     <addColumn tableName="measurement">
       <column name="weight" type="int4" defaultOnNull="true" defaultValue="66">
