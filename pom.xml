@@ -98,7 +98,7 @@
 
     <!-- Docker -->
     <version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
-    <docker-compose-maven-plugin.composeFile>${project.basedir}/src/main/resources/docker-compose.yml</docker-compose-maven-plugin.composeFile>
+    <docker-compose-maven-plugin.composeFile>${project.basedir}/docker-compose.yml</docker-compose-maven-plugin.composeFile>
     <docker-compose-maven-plugin.verbose>true</docker-compose-maven-plugin.verbose>
     <docker-compose-maven-plugin.removeImages>true</docker-compose-maven-plugin.removeImages>
     <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
