@@ -11,7 +11,7 @@
     <runningAs username="bloodmoney" />
   </preConditions>
 
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-1">
+  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1">
     <createTable tableName="spring_session">
       <column name="primary_id" type="CHAR(36)">
         <constraints nullable="false" primaryKey="true" primaryKeyName="spring_session_pk"/>
@@ -33,8 +33,6 @@
       </column>
       <column name="principal_name" type="VARCHAR(100)"/>
     </createTable>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-2">
     <createTable tableName="measurement">
       <column name="id" type="BIGINT">
         <constraints nullable="false" primaryKey="true" primaryKeyName="measurement_pkey"/>
@@ -77,53 +75,33 @@
       </column>
       <column name="version" type="BIGINT"/>
     </createTable>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-3">
     <createIndex indexName="spring_session_ix1" tableName="spring_session" unique="true">
       <column name="session_id"/>
     </createIndex>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-4">
     <createIndex indexName="spring_session_ix2" tableName="spring_session">
       <column name="expiry_time"/>
     </createIndex>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-5">
     <createIndex indexName="spring_session_ix3" tableName="spring_session">
       <column name="principal_name"/>
     </createIndex>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-6">
     <createIndex indexName="idx_measurement_date" tableName="measurement">
       <column name="measurement_date"/>
     </createIndex>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-7">
     <createIndex indexName="idx_created_timestamp" tableName="measurement">
       <column name="created_timestamp"/>
     </createIndex>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-8">
     <createIndex indexName="idx_created_timestamp_updated" tableName="measurement">
       <column name="created_timestamp_updated"/>
     </createIndex>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-9">
     <addUniqueConstraint columnNames="uuid" constraintName="idx_measurement_uuid"
                          tableName="measurement"/>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-10">
     <addUniqueConstraint columnNames="uuid" constraintName="uk_lrt1jxpjni5qy14yj3hkiiu4s"
                          tableName="measurement"/>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-11">
     <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50"
                     maxValue="9223372036854775807"
                     minValue="1"
                     sequenceName="measurement_sequence"
                     startValue="1000"/>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-12">
     <createTable tableName="spring_session_attributes">
       <column name="session_primary_id" type="CHAR(36)">
         <constraints nullable="false" primaryKey="true"
@@ -137,8 +115,6 @@
         <constraints nullable="false"/>
       </column>
     </createTable>
-  </changeSet>
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="1-13">
     <addForeignKeyConstraint baseColumnNames="session_primary_id" baseTableName="spring_session_attributes"
                              constraintName="spring_session_attributes_fk"
                              deferrable="false"
@@ -150,7 +126,7 @@
                              validate="true"/>
   </changeSet>
 
-  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="2-1">
+  <changeSet author="thomaswoehlke" failOnError="false" dbms="postgresql"  id="2">
     <addColumn tableName="measurement">
       <column name="weight" type="int4" defaultOnNull="true" defaultValue="66">
         <constraints nullable="false"/>
