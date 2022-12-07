@@ -1,6 +1,7 @@
 CREATE ROLE bloodmoney LOGIN
     PASSWORD 'bloodmoneypwd'
     SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION;
+
 GRANT pg_monitor TO bloodmoney;
 GRANT pg_read_all_settings TO bloodmoney;
 GRANT pg_read_all_stats TO bloodmoney;
