@@ -11,11 +11,13 @@
     <runningAs username="bloodmoney" />
   </preConditions>
 
+  <!--
   <changeSet id="1" author="thomaswoehlke" failOnError="false" dbms="postgresql">
     <addColumn tableName="measurement">
       <column name="weight" type="integer" defaultOnNull="true" defaultValue="66"/>
     </addColumn>
     <comment>add field int weight</comment>
   </changeSet>
+-->
 
 </databaseChangeLog>
