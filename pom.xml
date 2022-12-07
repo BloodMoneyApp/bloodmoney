@@ -108,7 +108,6 @@
 
     <!-- Database Evolution -->
     <version.org.postgresql>42.5.1</version.org.postgresql>
-    <version.liquibase-maven-plugin>4.16.1</version.liquibase-maven-plugin>
     <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
 
     <!-- UML -->
@@ -1199,11 +1198,6 @@
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>${version.maven-failsafe-plugin}</version>
         </plugin>
-        <plugin>
-          <groupId>org.liquibase</groupId>
-          <artifactId>liquibase-maven-plugin</artifactId>
-          <version>${version.liquibase-maven-plugin}</version>
-        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -1242,6 +1236,7 @@
                     <file>${project.basedir}/LICENSE.writing.txt</file>
                     <file>${project.basedir}/etc/db/setup-postgresql-account-and-db.sql</file>
                     <file>${project.basedir}/etc/db/setup-postgresql-tw.sql</file>
+                    <file>${project.basedir}/liquibase.properties</file>
                     <file>${project.basedir}/src/site/markdown/CHANGELOG.md</file>
                     <file>${project.basedir}/src/site/markdown/DEPLOYMENTS.md</file>
                     <file>${project.basedir}/src/site/markdown/DOCKER.md</file>
@@ -1249,9 +1244,9 @@
                     <file>${project.basedir}/src/site/markdown/HELP.md</file>
                     <file>${project.basedir}/src/site/markdown/HOWTO.md</file>
                     <file>${project.basedir}/src/site/markdown/TODO.md</file>
-                    <file>${project.basedir}/src/main/resources/docker-compose.yml</file>
-                    <file>${project.basedir}/src/main/bash/docker-start.sh</file>
-                    <file>${project.basedir}/src/main/bash/docker-stop.sh</file>
+                    <file>${project.basedir}/docker-compose.yml</file>
+                    <file>${project.basedir}/etc/bash/docker-start.sh</file>
+                    <file>${project.basedir}/etc/bash/docker-stop.sh</file>
                     <file>${project.basedir}/app.json</file>
                     <file>${project.basedir}/_config.yml</file>
                     <file>${project.basedir}/Procfile</file>
