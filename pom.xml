@@ -64,7 +64,7 @@
   </distributionManagement>
 
   <properties>
-    <version.java>11</version.java>
+    <version.java>17</version.java>
     <version.maven>3.6.3</version.maven>
     <spring-boot.repackage.layout>JAR</spring-boot.repackage.layout>
     <version.spring-boot-maven-plugin>${project.parent.version}</version.spring-boot-maven-plugin>
@@ -1292,8 +1292,6 @@
               <groupId>org.projectlombok</groupId>
               <artifactId>lombok</artifactId>
               <version>${lombok.version}</version>
-              <scope>provided</scope>
-              <optional>false</optional>
             </path>
           </annotationProcessorPaths>
         </configuration>
