@@ -95,10 +95,12 @@ public class BloodMoneyProperties implements Serializable {
         private String antMatchersFullyAuthenticated;
 
         @NotNull
-        private String[] antMatchersIgnore;
+        private String[] antPatternsPublic;
 
         @NotNull
         private String[] antMatchersPermitAll;
+
+        private String[] cookieNamesToClear;
 
         @NotBlank
         private String usernameParameter;
@@ -133,8 +135,6 @@ public class BloodMoneyProperties implements Serializable {
         @NotBlank
         private String loginPage;
 
-        @NotBlank
-        private String deleteCookies;
     }
 
 }

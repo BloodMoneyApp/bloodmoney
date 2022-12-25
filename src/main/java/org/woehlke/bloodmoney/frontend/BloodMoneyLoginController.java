@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
@@ -24,7 +26,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @Controller
-@RequestMapping(path = "/user")
+@RequestMapping("/user")
 public class BloodMoneyLoginController {
 
     private final LoginSuccessService loginSuccessService;
@@ -49,7 +51,7 @@ public class BloodMoneyLoginController {
      * @param model Model
      * @return Login Screen.
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping("/login")
     public final String loginForm(Model model) {
         log.info("-------------------------------------------------------------------------------------");
         log.info("show loginForm");
@@ -68,7 +70,7 @@ public class BloodMoneyLoginController {
      * @param model Model
      * @return Shows Root Project after successful login or login form with error messages.
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @PostMapping("/login")
     public final String loginPerform(
       @Valid LoginFormBean loginFormBean,
        BindingResult result, Model model

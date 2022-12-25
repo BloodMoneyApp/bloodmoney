@@ -84,7 +84,29 @@ org:
           - "test/"
           - "favicon.ico"
       webSecurity:
-        antMatchersIgnore:
+        antMatchersPermitAll:
+          - "/bpm"
+          - "/j_spring_security_check"
+        antMatchersFullyAuthenticated: "/**"
+        secret: ${BLOODMONEY_USER_SECRET}
+        iterations: ${BLOODMONEY_USER_ITERATIONS}
+        hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+        loginPage: "/user/login"
+        logoutUrl: "/user/logout"
+        defaultSuccessUrl: "/"
+        failureForwardUrl: "/user/logout"
+        cookieNamesToClear:
+          - "JSESSIONID"
+        invalidateHttpSession: true
+
+        loginProcessingUrl: "/j_spring_security_check"
+        usernameParameter: "j_username"
+        passwordParameter: "j_password"
+        antPatternsPublic:
+          - "/favicon.ico"
+          - "/favicon.ico*"
+          - "/favicon.ico"
+          - "/webjars/**"
           - "/webjars/**"
           - "/webjars"
           - "/bloodmoney"
@@ -93,29 +115,10 @@ org:
           - "/icon"
           - "/languages"
           - "/languages/**"
-          - "/favicon.ico"
           - "/error*"
           - "/fehler*"
-          - "/login"
-          - "/login*"
-        antMatchersPermitAll:
-          - "/bpm"
-          - "/j_spring_security_check"
-        antMatchersFullyAuthenticated: "/**"
-        secret: ${BLOODMONEY_USER_SECRET}
-        iterations: ${BLOODMONEY_USER_ITERATIONS}
-        hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
-        loginProcessingUrl: "/j_spring_security_check"
-        logoutUrl: "/user/logout"
-        cookieNamesToClear:
-          - "JSESSIONID"
-        invalidateHttpSession: true
-        defaultSuccessUrl: "/"
-        failureForwardUrl: "/user/logout"
-        usernameParameter: "j_username"
-        passwordParameter: "j_password"
-        loginPage: "/user/login"
-        deleteCookies: "JSESSIONID"
+          - "/user/login"
+          - "/user/login*"
 
 logging:
   level:

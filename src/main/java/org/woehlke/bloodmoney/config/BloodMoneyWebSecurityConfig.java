@@ -139,7 +139,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
       .headers((headers) -> headers.disable() )
       .authorizeRequests((authorizeRequests) -> authorizeRequests
         .antMatchers(
-          this.bloodMoneyProperties.getWebSecurity().getAntMatchersIgnore()
+          this.bloodMoneyProperties.getWebSecurity().getAntPatternsPublic()
         )
         .permitAll()
         .anyRequest()
@@ -160,7 +160,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
       .and()
       .logout((logout) -> logout
         .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
-        .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())
+        .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getCookieNamesToClear())
         .invalidateHttpSession(this.bloodMoneyProperties.getWebSecurity().getInvalidateHttpSession())
         .permitAll()
       );
