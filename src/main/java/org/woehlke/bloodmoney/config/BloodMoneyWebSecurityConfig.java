@@ -124,7 +124,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     log.info(" securityFilterChain ");
     log.info("-------------------------------------------------------------------------------------");
     log.info(" getAntMatchersPermitAll:  ");
-    for(String urlPath: this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()){
+    for(String urlPath: this.bloodMoneyProperties.getWebSecurity().getAntPatternsPublic()){
       log.info(urlPath);
     }
     log.info("-------------------------------------------------------------------------------------");
