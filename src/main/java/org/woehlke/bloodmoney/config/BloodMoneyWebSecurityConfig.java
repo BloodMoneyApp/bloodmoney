@@ -2,13 +2,18 @@ package org.woehlke.bloodmoney.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -16,26 +21,33 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.woehlke.bloodmoney.domain.security.BloodMoneyUserDetailsService;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Slf4j
 @Configuration
-@Import({
-    BloodMoneyWebMvcConfig.class
+@EnableAsync
+@EnableJpaAuditing
+@EnableWebMvc
+@EnableSpringDataWebSupport@Import({
+  BloodMoneyWebMvcConfig.class
+})
+@EnableConfigurationProperties({
+  BloodMoneyProperties.class
 })
 @EnableWebSecurity
+@EnableMethodSecurity(securedEnabled = true)
 public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter implements WebSecurityConfigurer<WebSecurity>  */ {
 
     private final AuthenticationManagerBuilder auth;
-    private final UserDetailsService bloodMoneyUserDetailsService;
+    private final BloodMoneyUserDetailsService bloodMoneyUserDetailsService;
     private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
     public BloodMoneyWebSecurityConfig(
       AuthenticationManagerBuilder auth,
-      UserDetailsService bloodMoneyUserDetailsService,
+      BloodMoneyUserDetailsService bloodMoneyUserDetailsService,
       BloodMoneyProperties bloodMoneyProperties
     ) {
       this.auth = auth;
@@ -43,7 +55,13 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
       this.bloodMoneyProperties = bloodMoneyProperties;
     }
 
-  /**
+  @Primary
+  @Bean
+  public UserDetailsService userDetailsService(){
+    return this.bloodMoneyUserDetailsService;
+  }
+
+    /**
      * @see <a href="https://asecuritysite.com/encryption/PBKDF2">Encrypt with PBKDF2</a>
      * @return PasswordEncoder encoder
      */
@@ -75,16 +93,15 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     }
 
     @Bean
-    public DaoAuthenticationProvider userDetailsAuthProvider() {
+    public AuthenticationProvider authenticationProvider() {
         log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        log.info(" userDetailsAuthProvider ");
+        log.info(" authenticationProvider ");
         log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(this.bloodMoneyUserDetailsService);
-        authProvider.setPasswordEncoder(encoder());
-        log.info(" userDetailsAuthProvider "+authProvider.toString());
+        DaoAuthenticationProvider p = new DaoAuthenticationProvider();
+        p.setUserDetailsService(this.bloodMoneyUserDetailsService);
+        p.setPasswordEncoder(encoder());
         log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        return authProvider;
+        return p;
     }
 
     @Bean
@@ -100,20 +117,6 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
         this.bloodMoneyProperties.getWebSecurity().getAntMatchersIgnore()
       );
     }
-/*
-    @Bean
-    public AuthenticationManager authenticationManager( AuthenticationManagerBuilder amb) throws Exception {
-      return amb.authenticationProvider(userDetailsAuthProvider()).build();
-    }
-
-    @Bean
-    public UsernamePasswordAuthenticationFilter authenticationFilter() throws Exception {
-      UsernamePasswordAuthenticationFilter filter = new UsernamePasswordAuthenticationFilter();
-      filter.setAuthenticationManager(authenticationManager(this.auth));
-      filter.setFilterProcessesUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl());
-      return filter;
-    }
-*/
 
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");

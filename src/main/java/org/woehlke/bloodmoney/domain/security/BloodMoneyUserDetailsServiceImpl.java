@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
 @Slf4j
-@Service("bloodMoneyUserDetailsService")
+@Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BloodMoneyUserDetailsServiceImpl implements BloodMoneyUserDetailsService {
 
