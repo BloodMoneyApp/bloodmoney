@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -51,14 +49,13 @@ public class BloodMoneyProperties implements Serializable {
 
     private static final long serialVersionUID = 4480323170764476017L;
 
-    @Email
-    @NotBlank
+    @NotNull
     private String userEmail;
 
-    @NotBlank
+    @NotNull
     private String userPassword;
 
-    @NotBlank
+    @NotNull
     private String userFullname;
   }
 
@@ -70,10 +67,10 @@ public class BloodMoneyProperties implements Serializable {
 
     private static final long serialVersionUID = 4480323170764476017L;
 
-    @NotBlank
+    @NotNull
     private String exportFilename;
 
-    @NotBlank
+    @NotNull
     private String exportFilenameSeparator;
 
     @NotNull
@@ -91,7 +88,7 @@ public class BloodMoneyProperties implements Serializable {
 
     private static final long serialVersionUID = 4480323170764476017L;
 
-    @NotBlank
+    @NotNull
     private String antMatchersFullyAuthenticated;
 
     @NotNull
@@ -102,13 +99,13 @@ public class BloodMoneyProperties implements Serializable {
 
     private String[] cookieNamesToClear;
 
-    @NotBlank
+    @NotNull
     private String usernameParameter;
 
-    @NotBlank
+    @NotNull
     private String passwordParameter;
 
-    @NotBlank
+    @NotNull
     private String secret;
 
     @NotNull
@@ -120,19 +117,19 @@ public class BloodMoneyProperties implements Serializable {
     @NotNull
     private Boolean invalidateHttpSession;
 
-    @NotBlank
+    @NotNull
     private String loginProcessingUrl;
 
-    @NotBlank
+    @NotNull
     private String failureForwardUrl;
 
-    @NotBlank
+    @NotNull
     private String defaultSuccessUrl;
 
-    @NotBlank
+    @NotNull
     private String logoutUrl;
 
-    @NotBlank
+    @NotNull
     private String loginPage;
   }
 }
