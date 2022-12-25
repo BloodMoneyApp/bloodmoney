@@ -82,7 +82,7 @@ public class BloodMoneyLoginController {
             Object credentials = ub.getPassword();
             Collection<? extends GrantedAuthority> authorities = ub.getAuthorities();
             UsernamePasswordAuthenticationToken token = UsernamePasswordAuthenticationToken.authenticated(
-              principal,credentials, authorities
+              principal, credentials, authorities
             );
             SecurityContextHolder.getContext().setAuthentication(token);
             UserDetails user = loginSuccessService.retrieveCurrentUser();
