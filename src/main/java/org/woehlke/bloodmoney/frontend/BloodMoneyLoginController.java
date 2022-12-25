@@ -2,9 +2,7 @@ package org.woehlke.bloodmoney.frontend;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,25 +21,25 @@ import org.woehlke.bloodmoney.domain.security.LoginSuccessService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Collection;
 
 @Slf4j
 @Controller
+@RequestMapping(path = "/user")
 public class BloodMoneyLoginController {
 
     private final LoginSuccessService loginSuccessService;
     private final BloodMoneyAuthorizationService bloodMoneyAuthorizationService;
-    private final UserDetailsService bloodMoneyUserDetailsService;
+    private final UserDetailsService userDetailsService;
 
     @Autowired
     public BloodMoneyLoginController(
         LoginSuccessService loginSuccessService,
         BloodMoneyAuthorizationService bloodMoneyAuthorizationService,
-        UserDetailsService bloodMoneyUserDetailsService
+        UserDetailsService userDetailsService
     ) {
         this.loginSuccessService = loginSuccessService;
         this.bloodMoneyAuthorizationService = bloodMoneyAuthorizationService;
-        this.bloodMoneyUserDetailsService = bloodMoneyUserDetailsService;
+        this.userDetailsService = userDetailsService;
     }
 
     /**
@@ -75,28 +73,25 @@ public class BloodMoneyLoginController {
       @Valid LoginFormBean loginFormBean,
        BindingResult result, Model model
     ) {
+        log.info("loginPerform");
         boolean authorized = bloodMoneyAuthorizationService.authorize(loginFormBean);
         if (!result.hasErrors() && authorized) {
-            UserDetails ub = this.bloodMoneyUserDetailsService.loadUserByUsername(loginFormBean.getUserEmail());
-            Object principal = ub.getUsername();
-            Object credentials = ub.getPassword();
-            Collection<? extends GrantedAuthority> authorities = ub.getAuthorities();
-            UsernamePasswordAuthenticationToken token = UsernamePasswordAuthenticationToken.authenticated(
-              principal, credentials, authorities
-            );
-            SecurityContextHolder.getContext().setAuthentication(token);
-            UserDetails user = loginSuccessService.retrieveCurrentUser();
-            log.info("OK logged in : "+user.getUsername());
-            log.info( "redirect:/home");
-            return "redirect:/home";
+          UserDetails user = loginSuccessService.retrieveCurrentUser();
+          log.info("logged in");
+          log.info("OK logged in : "+user.getUsername());
+          log.info( "redirect:/home");
+          return "redirect:/home";
         } else {
-            String objectName = "loginForm";
-            String field = "userEmail";
-            String defaultMessage = "Email or Password wrong.";
-            FieldError e = new FieldError(objectName, field, defaultMessage);
-            result.addError(e);
-            log.info("NOT logged in : "+e.toString());
-            return "user/loginForm";
+          String objectName = "loginForm";
+          String field = "userEmail";
+          String defaultMessage = "Email or Password wrong.";
+          FieldError fieldError = new FieldError(objectName, field, defaultMessage);
+          result.addError(fieldError);
+          field = "userPassword";
+          fieldError = new FieldError(objectName, field, defaultMessage);
+          result.addError(fieldError);
+          log.info("not logged in");
+          return "user/loginForm";
         }
     }
 

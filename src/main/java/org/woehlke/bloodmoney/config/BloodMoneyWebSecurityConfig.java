@@ -104,6 +104,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
         return p;
     }
 
+    /*
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
       log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -117,6 +118,7 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
         this.bloodMoneyProperties.getWebSecurity().getAntMatchersIgnore()
       );
     }
+    */
 
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -134,20 +136,28 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     log.info("-------------------------------------------------------------------------------------");
     log.info(" configure SecurityFilterChain from HttpSecurity http ");
     http
-      .authorizeHttpRequests((authorizeRequests) -> authorizeRequests
+      .headers((headers) -> headers.disable() )
+      .authorizeRequests((authorizeRequests) -> authorizeRequests
         .antMatchers(
-          this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()
-        ).permitAll()
+          this.bloodMoneyProperties.getWebSecurity().getAntMatchersIgnore()
+        )
+        .permitAll()
+        .anyRequest()
+        .fullyAuthenticated()
       )
+      .csrf()
+      .and()
       .formLogin((form) -> form
         .loginPage(this.bloodMoneyProperties.getWebSecurity().getLoginPage())
         .usernameParameter(this.bloodMoneyProperties.getWebSecurity().getUsernameParameter())
         .passwordParameter(this.bloodMoneyProperties.getWebSecurity().getPasswordParameter())
-        .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
-        .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
         .loginProcessingUrl(this.bloodMoneyProperties.getWebSecurity().getLoginProcessingUrl())
+        .failureForwardUrl(this.bloodMoneyProperties.getWebSecurity().getFailureForwardUrl())
+        .defaultSuccessUrl(this.bloodMoneyProperties.getWebSecurity().getDefaultSuccessUrl())
         .permitAll()
       )
+      .csrf()
+      .and()
       .logout((logout) -> logout
         .logoutUrl(this.bloodMoneyProperties.getWebSecurity().getLogoutUrl())
         .deleteCookies(this.bloodMoneyProperties.getWebSecurity().getDeleteCookies())

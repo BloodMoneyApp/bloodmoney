@@ -102,18 +102,21 @@ org:
           - "/bpm"
           - "/j_spring_security_check"
         antMatchersFullyAuthenticated: "/**"
-        usernameParameter: "userEmail"
-        passwordParameter: "userPassword"
         secret: ${BLOODMONEY_USER_SECRET}
         iterations: ${BLOODMONEY_USER_ITERATIONS}
         hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
         loginProcessingUrl: "/j_spring_security_check"
-        failureForwardUrl: "/login?login_error=1"
+        logoutUrl: "/user/logout"
+        cookieNamesToClear:
+          - "JSESSIONID"
+        invalidateHttpSession: true
         defaultSuccessUrl: "/"
-        login-page: "/login"
-        logout-url: "/logout"
-        delete-cookies: "JSESSIONID"
-        invalidate-http-session: true
+        failureForwardUrl: "/user/logout"
+        usernameParameter: "j_username"
+        passwordParameter: "j_password"
+        loginPage: "/user/login"
+        deleteCookies: "JSESSIONID"
+
 logging:
   level:
     root: INFO
