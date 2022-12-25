@@ -98,11 +98,12 @@ org:
         cookieNamesToClear:
           - "JSESSIONID"
         invalidateHttpSession: true
-
         loginProcessingUrl: "/j_spring_security_check"
         usernameParameter: "j_username"
         passwordParameter: "j_password"
         antPatternsPublic:
+          - "/bpm"
+          - "/j_spring_security_check"
           - "/favicon.ico"
           - "/favicon.ico*"
           - "/favicon.ico"
@@ -117,6 +118,8 @@ org:
           - "/languages/**"
           - "/error*"
           - "/fehler*"
+          - "/fehler"
+          - "/error"
           - "/user/login"
           - "/user/login*"
 
