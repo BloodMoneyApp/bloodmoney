@@ -12,7 +12,7 @@ import org.woehlke.bloodmoney.frontend.vo.LoginFormBean;
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class BloodMoneyAuthorizationServiceImpl implements BloodMoneyAuthorizationService {
+public class AuthorizationServiceImpl implements AuthorizationService {
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;

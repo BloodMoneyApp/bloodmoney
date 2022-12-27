@@ -13,7 +13,7 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class BloodMoneyUserDetailsServiceImpl implements BloodMoneyUserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;

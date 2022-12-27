@@ -16,12 +16,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.woehlke.bloodmoney.domain.security.BloodMoneyUserDetailsService;
+import org.woehlke.bloodmoney.domain.security.UserDetailsService;
 
 
 @Slf4j
@@ -41,24 +40,24 @@ import org.woehlke.bloodmoney.domain.security.BloodMoneyUserDetailsService;
 public class WebSecurityConfig {
 
   private final AuthenticationManagerBuilder auth;
-  private final BloodMoneyUserDetailsService bloodMoneyUserDetailsService;
+  private final UserDetailsService userDetailsService;
   private final BloodMoneyProperties bloodMoneyProperties;
 
   @Autowired
   public WebSecurityConfig(
     AuthenticationManagerBuilder auth,
-    BloodMoneyUserDetailsService bloodMoneyUserDetailsService,
+    UserDetailsService userDetailsService,
     BloodMoneyProperties bloodMoneyProperties
   ) {
     this.auth = auth;
-    this.bloodMoneyUserDetailsService = bloodMoneyUserDetailsService;
+    this.userDetailsService = userDetailsService;
     this.bloodMoneyProperties = bloodMoneyProperties;
   }
 
   @Primary
   @Bean
-  public UserDetailsService userDetailsService() {
-    return this.bloodMoneyUserDetailsService;
+  public org.springframework.security.core.userdetails.UserDetailsService userDetailsService() {
+    return this.userDetailsService;
   }
 
   /**
@@ -98,7 +97,7 @@ public class WebSecurityConfig {
     log.info(" authenticationProvider ");
     log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     DaoAuthenticationProvider p = new DaoAuthenticationProvider();
-    p.setUserDetailsService(this.bloodMoneyUserDetailsService);
+    p.setUserDetailsService(this.userDetailsService);
     p.setPasswordEncoder(encoder());
     log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     return p;

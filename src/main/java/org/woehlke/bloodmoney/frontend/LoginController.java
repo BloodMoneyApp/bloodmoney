@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-import org.woehlke.bloodmoney.domain.security.BloodMoneyAuthorizationService;
+import org.woehlke.bloodmoney.domain.security.AuthorizationService;
 import org.woehlke.bloodmoney.frontend.vo.LoginFormBean;
 import org.woehlke.bloodmoney.domain.security.LoginSuccessService;
 
@@ -30,13 +30,13 @@ import javax.validation.Valid;
 public class LoginController {
 
     private final LoginSuccessService loginSuccessService;
-    private final BloodMoneyAuthorizationService bloodMoneyAuthorizationService;
+    private final AuthorizationService bloodMoneyAuthorizationService;
     private final UserDetailsService userDetailsService;
 
     @Autowired
     public LoginController(
         LoginSuccessService loginSuccessService,
-        BloodMoneyAuthorizationService bloodMoneyAuthorizationService,
+        AuthorizationService bloodMoneyAuthorizationService,
         UserDetailsService userDetailsService
     ) {
         this.loginSuccessService = loginSuccessService;
