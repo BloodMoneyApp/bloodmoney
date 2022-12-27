@@ -38,7 +38,7 @@ import org.woehlke.bloodmoney.domain.security.BloodMoneyUserDetailsService;
 })
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
-public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter implements WebSecurityConfigurer<WebSecurity>  */ {
+public class BloodMoneyWebSecurityConfig {
 
   private final AuthenticationManagerBuilder auth;
   private final BloodMoneyUserDetailsService bloodMoneyUserDetailsService;
@@ -109,6 +109,11 @@ public class BloodMoneyWebSecurityConfig /* extends WebSecurityConfigurerAdapter
     log.info(" securityFilterChain ");
     log.info("-------------------------------------------------------------------------------------");
     log.info(" getAntMatchersPermitAll:  ");
+    for (String urlPath : this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()) {
+      log.info(urlPath);
+    }
+    log.info("-------------------------------------------------------------------------------------");
+    log.info(" getAntPatternsPublic:  ");
     for (String urlPath : this.bloodMoneyProperties.getWebSecurity().getAntPatternsPublic()) {
       log.info(urlPath);
     }
