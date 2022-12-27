@@ -1,7 +1,6 @@
 package org.woehlke.bloodmoney.frontend;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @Controller
-public class BloodMoneyErrorController implements ErrorController {
+public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
 
     @RequestMapping("/fehler")
     public String handleError(HttpServletRequest request, Model model) {

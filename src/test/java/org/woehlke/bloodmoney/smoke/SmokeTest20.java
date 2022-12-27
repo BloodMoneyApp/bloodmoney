@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.woehlke.bloodmoney.frontend.BloodMoneyHomeController;
-import org.woehlke.bloodmoney.frontend.BloodMoneyErrorController;
+import org.woehlke.bloodmoney.frontend.ErrorController;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementController;
 import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementControllerExport;
@@ -50,7 +50,7 @@ public class SmokeTest20 {
     private BloodMoneyLoginController bloodMoneyLoginController;
 
     @Autowired
-    private BloodMoneyErrorController bloodMoneyErrorController;
+    private ErrorController errorController;
 
     @Autowired
     private WebApplicationContext context;
@@ -117,6 +117,6 @@ public class SmokeTest20 {
     @Test
     public void myErrorControllerTest() throws Exception {
         log.info("TEST: myErrorController");
-        assertThat(bloodMoneyErrorController).isNotNull();
+        assertThat(errorController).isNotNull();
     }
 }
