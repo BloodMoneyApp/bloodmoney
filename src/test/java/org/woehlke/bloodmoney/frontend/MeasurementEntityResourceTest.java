@@ -22,7 +22,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @Getter
 @ActiveProfiles("default")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BloodPressureMeasurementEntityResourceTest {
+public class MeasurementEntityResourceTest {
 
     @SuppressWarnings("deprecation")
     @LocalServerPort

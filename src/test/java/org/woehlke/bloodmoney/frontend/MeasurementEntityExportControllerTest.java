@@ -22,7 +22,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @Getter
 @ActiveProfiles("default")
 @SpringBootTest
-public class BloodPressureMeasurementEntityExportControllerTest {
+public class MeasurementEntityExportControllerTest {
 
     @Autowired
     private MeasurementControllerExport measurementControllerExport;
