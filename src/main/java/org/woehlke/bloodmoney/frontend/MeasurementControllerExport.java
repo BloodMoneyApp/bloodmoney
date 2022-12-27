@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/measurement/export")
 @SessionAttributes("userSession")
-public class BloodPressureMeasurementControllerExport {
+public class MeasurementControllerExport {
 
     @GetMapping("/all")
     @ResponseBody
@@ -80,7 +80,7 @@ public class BloodPressureMeasurementControllerExport {
     private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
-    public BloodPressureMeasurementControllerExport(
+    public MeasurementControllerExport(
         BloodPressureMeasurementService bloodPressureMeasurementService,
         BloodMoneyProperties bloodMoneyProperties
     ) {
