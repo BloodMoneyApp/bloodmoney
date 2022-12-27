@@ -14,12 +14,12 @@ import org.woehlke.bloodmoney.domain.session.UserSessionService;
 @Slf4j
 @Controller
 @SessionAttributes("userSession")
-public class BloodMoneyHomeController {
+public class HomeController {
 
   private final UserSessionService userSessionService;
 
   @Autowired
-  public BloodMoneyHomeController(UserSessionService userSessionService) {
+  public HomeController(UserSessionService userSessionService) {
     this.userSessionService = userSessionService;
   }
 
