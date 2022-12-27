@@ -38,14 +38,14 @@ import org.woehlke.bloodmoney.domain.security.BloodMoneyUserDetailsService;
 })
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
-public class BloodMoneyWebSecurityConfig {
+public class WebSecurityConfig {
 
   private final AuthenticationManagerBuilder auth;
   private final BloodMoneyUserDetailsService bloodMoneyUserDetailsService;
   private final BloodMoneyProperties bloodMoneyProperties;
 
   @Autowired
-  public BloodMoneyWebSecurityConfig(
+  public WebSecurityConfig(
     AuthenticationManagerBuilder auth,
     BloodMoneyUserDetailsService bloodMoneyUserDetailsService,
     BloodMoneyProperties bloodMoneyProperties
