@@ -31,7 +31,7 @@ import org.woehlke.bloodmoney.domain.security.BloodMoneyUserDetailsService;
 @EnableWebMvc
 @EnableSpringDataWebSupport
 @Import({
-  BloodMoneyWebMvcConfig.class
+  WebMvcConfig.class
 })
 @EnableConfigurationProperties({
   BloodMoneyProperties.class
