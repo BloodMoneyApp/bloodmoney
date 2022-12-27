@@ -17,56 +17,62 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 @SessionAttributes("userSession")
 public class BloodMoneyTestController {
 
-    @GetMapping("/createTestData")
-    public String createTestData() {
-        if(bloodMoneyProperties.getDevTesting()) {
-            bloodMoneyTestService.createTestData();
-        }
-        return "redirect:/measurement/all";
-    }
+  private final BloodMoneyTestService bloodMoneyTestService;
+  private final BloodMoneyProperties bloodMoneyProperties;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "test/greeting";
-    }
+  @Autowired
+  public BloodMoneyTestController(
+    BloodMoneyTestService bloodMoneyTestService,
+    BloodMoneyProperties bloodMoneyProperties
+  ) {
+    this.bloodMoneyTestService = bloodMoneyTestService;
+    this.bloodMoneyProperties = bloodMoneyProperties;
+  }
 
-    @GetMapping("/dashboard")
-    public String dashboard(Model model) {
-        model.addAttribute("name", "Thomas");
-        return "test/dashboard";
+  @GetMapping("/createTestData")
+  public String createTestData() {
+    if (bloodMoneyProperties.getDevTesting()) {
+      bloodMoneyTestService.createTestData();
     }
+    return "redirect:/measurement/all";
+  }
 
-    @GetMapping("/grid")
-    public String grid(Model model) {
-        model.addAttribute("name", "Thomas");
-        return "test/grid";
-    }
+  @GetMapping("/greeting")
+  public String greeting(
+    @RequestParam(name = "name", required = false, defaultValue = "World") String name,
+    Model model
+  ) {
+    model.addAttribute("name", name);
+    return "test/greeting";
+  }
 
-    @GetMapping("/jumbotron")
-    public String jumbotron(Model model) {
-        model.addAttribute("name", "Thomas");
-        return "test/jumbotron";
-    }
+  @GetMapping("/dashboard")
+  public String dashboard(Model model) {
+    model.addAttribute("name", "Thomas");
+    return "test/dashboard";
+  }
 
-    @GetMapping("/navbar-fixed")
-    public String navbarFixed(Model model) {
-        model.addAttribute("name", "Thomas");
-        return "test/navbar-fixed";
-    }
+  @GetMapping("/grid")
+  public String grid(Model model) {
+    model.addAttribute("name", "Thomas");
+    return "test/grid";
+  }
 
-    @GetMapping("/sticky-footer-navbar")
-    public String stickyFooterNavbar(Model model) {
-        model.addAttribute("name", "Thomas");
-        return "test/sticky-footer-navbar";
-    }
+  @GetMapping("/jumbotron")
+  public String jumbotron(Model model) {
+    model.addAttribute("name", "Thomas");
+    return "test/jumbotron";
+  }
 
-    @Autowired
-    public BloodMoneyTestController(BloodMoneyTestService bloodMoneyTestService, BloodMoneyProperties bloodMoneyProperties) {
-        this.bloodMoneyTestService = bloodMoneyTestService;
-        this.bloodMoneyProperties = bloodMoneyProperties;
-    }
+  @GetMapping("/navbar-fixed")
+  public String navbarFixed(Model model) {
+    model.addAttribute("name", "Thomas");
+    return "test/navbar-fixed";
+  }
 
-    private final BloodMoneyTestService bloodMoneyTestService;
-    private final BloodMoneyProperties bloodMoneyProperties;
+  @GetMapping("/sticky-footer-navbar")
+  public String stickyFooterNavbar(Model model) {
+    model.addAttribute("name", "Thomas");
+    return "test/sticky-footer-navbar";
+  }
 }

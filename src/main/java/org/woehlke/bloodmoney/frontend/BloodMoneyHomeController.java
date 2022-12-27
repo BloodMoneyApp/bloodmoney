@@ -16,28 +16,28 @@ import org.woehlke.bloodmoney.domain.session.UserSessionService;
 @SessionAttributes("userSession")
 public class BloodMoneyHomeController {
 
-    @GetMapping("/")
-    public String root(
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-        Model model
-    ){
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        return "redirect:/measurement/all";
-    }
+  private final UserSessionService userSessionService;
 
-    @GetMapping("/home")
-    public String home(
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-        Model model
-    ){
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        return "redirect:/measurement/all";
-    }
+  @Autowired
+  public BloodMoneyHomeController(UserSessionService userSessionService) {
+    this.userSessionService = userSessionService;
+  }
 
-    private final UserSessionService userSessionService;
+  @GetMapping("/")
+  public String root(
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    return "redirect:/measurement/all";
+  }
 
-    @Autowired
-    public BloodMoneyHomeController(UserSessionService userSessionService) {
-        this.userSessionService = userSessionService;
-    }
+  @GetMapping("/home")
+  public String home(
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    return "redirect:/measurement/all";
+  }
 }
