@@ -34,13 +34,13 @@ import javax.ws.rs.core.UriInfo;
 @RequestMapping("/rest/measurement")
 @SessionAttributes("userSession")
 @PreAuthorize("isAuthenticated()")
-public class BloodPressureMeasurementResource {
+public class MeasurementResource {
 
   private final BloodPressureMeasurementService bloodPressureMeasurementService;
   private final UserSessionService userSessionService;
 
   @Autowired
-  public BloodPressureMeasurementResource(
+  public MeasurementResource(
     BloodPressureMeasurementService bloodPressureMeasurementService,
     UserSessionService userSessionService
   ) {

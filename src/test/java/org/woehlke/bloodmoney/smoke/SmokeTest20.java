@@ -15,7 +15,7 @@ import org.woehlke.bloodmoney.frontend.ErrorController;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementController;
 import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementControllerExport;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementResource;
+import org.woehlke.bloodmoney.frontend.MeasurementResource;
 import org.woehlke.bloodmoney.frontend.LoginController;
 
 import javax.annotation.PostConstruct;
@@ -44,7 +44,7 @@ public class SmokeTest20 {
     private BloodPressureMeasurementControllerExport bloodPressureMeasurementControllerExport;
 
     @Autowired
-    private BloodPressureMeasurementResource bloodPressureMeasurementResource;
+    private MeasurementResource measurementResource;
 
     @Autowired
     private LoginController loginController;
@@ -105,7 +105,7 @@ public class SmokeTest20 {
     @Test
     public void bloodPressureMeasurementResourceTest() throws Exception {
         log.info("TEST: bloodPressureMeasurementResource");
-        assertThat(bloodPressureMeasurementResource).isNotNull();
+        assertThat(measurementResource).isNotNull();
     }
 
     @Test

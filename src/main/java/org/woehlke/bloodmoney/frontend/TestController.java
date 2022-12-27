@@ -15,13 +15,13 @@ import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 @Controller
 @RequestMapping("/test")
 @SessionAttributes("userSession")
-public class BloodMoneyTestController {
+public class TestController {
 
   private final BloodMoneyTestService bloodMoneyTestService;
   private final BloodMoneyProperties bloodMoneyProperties;
 
   @Autowired
-  public BloodMoneyTestController(
+  public TestController(
     BloodMoneyTestService bloodMoneyTestService,
     BloodMoneyProperties bloodMoneyProperties
   ) {
