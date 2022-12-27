@@ -27,14 +27,14 @@ import javax.validation.Valid;
 @Slf4j
 @Controller
 @RequestMapping("/user")
-public class BloodMoneyLoginController {
+public class LoginController {
 
     private final LoginSuccessService loginSuccessService;
     private final BloodMoneyAuthorizationService bloodMoneyAuthorizationService;
     private final UserDetailsService userDetailsService;
 
     @Autowired
-    public BloodMoneyLoginController(
+    public LoginController(
         LoginSuccessService loginSuccessService,
         BloodMoneyAuthorizationService bloodMoneyAuthorizationService,
         UserDetailsService userDetailsService
