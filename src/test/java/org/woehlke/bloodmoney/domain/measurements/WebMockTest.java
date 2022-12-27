@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 */
 
 
-//@WebMvcTest(BloodPressureMeasurementController.class)
+//@WebMvcTest(MeasurementController.class)
 public class WebMockTest {
 
    // @Autowired

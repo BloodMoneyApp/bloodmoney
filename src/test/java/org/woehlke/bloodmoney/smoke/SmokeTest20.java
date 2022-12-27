@@ -10,13 +10,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.woehlke.bloodmoney.frontend.HomeController;
-import org.woehlke.bloodmoney.frontend.ErrorController;
+import org.woehlke.bloodmoney.frontend.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementController;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementControllerExport;
-import org.woehlke.bloodmoney.frontend.MeasurementResource;
-import org.woehlke.bloodmoney.frontend.LoginController;
+import org.woehlke.bloodmoney.frontend.MeasurementController;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -38,7 +34,7 @@ public class SmokeTest20 {
     private HomeController homeController;
 
     @Autowired
-    private BloodPressureMeasurementController bloodPressureMeasurementController;
+    private MeasurementController measurementController;
 
     @Autowired
     private BloodPressureMeasurementControllerExport bloodPressureMeasurementControllerExport;
@@ -93,7 +89,7 @@ public class SmokeTest20 {
     @Test
     public void bloodPressureMeasurementControllerTest() throws Exception {
         log.info("TEST: bloodPressureMeasurementController");
-        assertThat(bloodPressureMeasurementController).isNotNull();
+        assertThat(measurementController).isNotNull();
     }
 
     @Test

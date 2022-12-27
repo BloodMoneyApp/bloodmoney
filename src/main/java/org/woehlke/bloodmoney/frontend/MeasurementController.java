@@ -22,7 +22,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/measurement")
 @SessionAttributes("userSession")
-public class BloodPressureMeasurementController {
+public class MeasurementController {
 
     @GetMapping("/all")
     public String getAll(
@@ -112,7 +112,7 @@ public class BloodPressureMeasurementController {
     private final UserSessionService userSessionService;
 
     @Autowired
-    public BloodPressureMeasurementController(
+    public MeasurementController(
         BloodPressureMeasurementService bloodPressureMeasurementService,
         UserSessionService userSessionService
     ) {
