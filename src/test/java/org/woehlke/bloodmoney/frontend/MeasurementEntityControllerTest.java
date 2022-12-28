@@ -54,14 +54,14 @@ public class MeasurementEntityControllerTest {
         log.info("TEST: shouldReturnDefaultMessage: /");
         this.mockMvc.perform(get("/"))
             .andDo(print())
-            .andExpect(status().is4xxClientError());
-            //.andExpect(status().is3xxRedirection());
+            //.andExpect(status().is4xxClientError());
+            .andExpect(status().is3xxRedirection());
         log.info("TEST: shouldReturnDefaultMessage: /user/login");
           this.mockMvc.perform(get("/login"))
             .andDo(print())
-            .andExpect(status().isOk());
-            //.andExpect(content().string(containsString("Willkommen zu BloodMoney")))
-            //.andExpect(content().string(containsString("Ihre App um Messwerte zu erfassen")));
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Willkommen zu BloodMoney")))
+            .andExpect(content().string(containsString("Ihre App um Messwerte zu erfassen")));
     }
 
     @WithMockUser(username="thomas.woehlke@gmail.com")
