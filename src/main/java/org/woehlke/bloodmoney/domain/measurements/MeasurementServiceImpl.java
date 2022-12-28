@@ -14,13 +14,13 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class BloodPressureMeasurementServiceImpl implements BloodPressureMeasurementService {
+public class MeasurementServiceImpl implements MeasurementService {
 
     private final BloodPressureMeasurementRepository bloodPressureMeasurementRepository;
     private final ZoneId zone;
 
     @Autowired
-    public BloodPressureMeasurementServiceImpl(BloodPressureMeasurementRepository bloodPressureMeasurementRepository) {
+    public MeasurementServiceImpl(BloodPressureMeasurementRepository bloodPressureMeasurementRepository) {
         this.bloodPressureMeasurementRepository = bloodPressureMeasurementRepository;
         this.zone = ZoneId.of(BloodPressureMeasurementEntity.ZONE_ID__ECT__EUROPE_PARIS);
     }

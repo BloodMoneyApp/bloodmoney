@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementEntity;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 import org.woehlke.bloodmoney.domain.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.session.UserSessionService;
 
@@ -31,7 +31,7 @@ public class MeasurementController {
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
-        Page<BloodPressureMeasurementEntity> all = bloodPressureMeasurementService.getAll(pageable);
+        Page<BloodPressureMeasurementEntity> all = measurementService.getAll(pageable);
         model.addAttribute("all", all);
         return "measurement/all";
     }
@@ -68,7 +68,7 @@ public class MeasurementController {
         if(result.hasErrors()){
             return "measurement/edit";
         } else {
-            one = bloodPressureMeasurementService.update(one,id);
+            one = measurementService.update(one,id);
             return "redirect:/measurement/all";
         }
     }
@@ -79,7 +79,7 @@ public class MeasurementController {
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
-        bloodPressureMeasurementService.delete(one);
+        measurementService.delete(one);
         return "redirect:/measurement/all";
     }
 
@@ -103,20 +103,20 @@ public class MeasurementController {
         if(result.hasErrors()){
             return "measurement/edit";
         } else {
-            one = bloodPressureMeasurementService.add(one);
+            one = measurementService.add(one);
             return "redirect:/measurement/all";
         }
     }
 
-    private final BloodPressureMeasurementService bloodPressureMeasurementService;
+    private final MeasurementService measurementService;
     private final UserSessionService userSessionService;
 
     @Autowired
     public MeasurementController(
-        BloodPressureMeasurementService bloodPressureMeasurementService,
+        MeasurementService measurementService,
         UserSessionService userSessionService
     ) {
-        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+        this.measurementService = measurementService;
         this.userSessionService = userSessionService;
     }
 }

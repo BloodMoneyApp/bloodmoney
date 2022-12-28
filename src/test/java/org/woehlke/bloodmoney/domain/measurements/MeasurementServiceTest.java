@@ -20,9 +20,9 @@ import java.util.*;
 @Getter
 @ActiveProfiles("default")
 @SpringBootTest
-public class BloodPressureMeasurementServiceTest {
+public class MeasurementServiceTest {
 
-    private final BloodPressureMeasurementService bloodPressureMeasurementService;
+    private final MeasurementService measurementService;
     private final BloodMoneyProperties bloodMoneyProperties;
 
     private final List<BloodPressureMeasurementEntity> testData;
@@ -31,10 +31,10 @@ public class BloodPressureMeasurementServiceTest {
     private final int testDataHowManyTestData;
 
     @Autowired
-    public BloodPressureMeasurementServiceTest(
-        BloodPressureMeasurementService bloodPressureMeasurementService,
+    public MeasurementServiceTest(
+        MeasurementService measurementService,
         BloodMoneyProperties bloodMoneyProperties) {
-        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+        this.measurementService = measurementService;
         this.bloodMoneyProperties = bloodMoneyProperties;
         this.testDataHowManyTestData = this.bloodMoneyProperties.getTestDataHowManyTestData();
         this.testData = new ArrayList<>();
@@ -55,14 +55,14 @@ public class BloodPressureMeasurementServiceTest {
     }
 
     private void deletePersistentTestData(){
-        bloodPressureMeasurementService.deleteAll();
+        measurementService.deleteAll();
     }
 
     private void persistTestData(){
         List<BloodPressureMeasurementEntity> srcListe = this.getTestData();
         Assertions.assertNotNull(srcListe);
         for(BloodPressureMeasurementEntity m:srcListe){
-            bloodPressureMeasurementService.add(m);
+            measurementService.add(m);
         }
     }
 
@@ -82,7 +82,7 @@ public class BloodPressureMeasurementServiceTest {
         moreTestData.add(m1);
         moreTestData.add(m2);
         for(BloodPressureMeasurementEntity m : moreTestData){
-            bloodPressureMeasurementService.add(m);
+            measurementService.add(m);
         }
     }
 
@@ -95,7 +95,7 @@ public class BloodPressureMeasurementServiceTest {
     public void deletePersitentTestDataTest(){
         log.info("TEST: deletePersitentTestDataTest");
         deletePersistentTestData();
-        List<BloodPressureMeasurementEntity> resultList = bloodPressureMeasurementService.getAll();
+        List<BloodPressureMeasurementEntity> resultList = measurementService.getAll();
         int assertCountExpected = 0;
         int resultSize = resultList.size();
         Assertions.assertTrue(resultList.isEmpty(),"getAll: resultList is Empty");
@@ -108,7 +108,7 @@ public class BloodPressureMeasurementServiceTest {
         log.info("TEST: persistTestDataTest");
         deletePersistentTestData();
         persistTestData();
-        List<BloodPressureMeasurementEntity> resultList = bloodPressureMeasurementService.getAll();
+        List<BloodPressureMeasurementEntity> resultList = measurementService.getAll();
         int assertCountExpected = testDataHowManyTestData;
         int resultSize = resultList.size();
         Assertions.assertFalse(resultList.isEmpty(),"getAll: resultList is Empty");
@@ -121,7 +121,7 @@ public class BloodPressureMeasurementServiceTest {
         log.info("TEST: getAllPageTest");
         resetTestData();
         List<BloodPressureMeasurementEntity> srcListe = this.getTestData();
-        List<BloodPressureMeasurementEntity> resultList = bloodPressureMeasurementService.getAll();
+        List<BloodPressureMeasurementEntity> resultList = measurementService.getAll();
         Assertions.assertNotNull(resultList);
         Assertions.assertEquals(srcListe.size(),resultList.size(),"srcListe.size()==resultList.size()");
         Assertions.assertEquals(testDataHowManyTestData,srcListe.size(),"srcListe.size()=="+testDataHowManyTestData);
@@ -139,7 +139,7 @@ public class BloodPressureMeasurementServiceTest {
         log.info("TEST: getAllListAndAllFieldsNonNullTest");
         resetTestData();
         List<BloodPressureMeasurementEntity> srcListe = this.getTestData();
-        List<BloodPressureMeasurementEntity> resultList = bloodPressureMeasurementService.getAll();
+        List<BloodPressureMeasurementEntity> resultList = measurementService.getAll();
         Assertions.assertNotNull(resultList);
         Assertions.assertEquals(srcListe.size(),resultList.size(),"srcListe.size()==resultList.size()");
         Assertions.assertEquals(testDataHowManyTestData,srcListe.size(),"srcListe.size()=="+testDataHowManyTestData);
@@ -154,11 +154,11 @@ public class BloodPressureMeasurementServiceTest {
     }
 
     private BloodPressureMeasurementEntity getRandomElement(){
-        long size = bloodPressureMeasurementService.count();
+        long size = measurementService.count();
         int mySize = Long.valueOf(size % Long.valueOf(Integer.MAX_VALUE)).intValue();
         Random random = new Random();
         int randomIndex = random.nextInt(mySize);
-        List<BloodPressureMeasurementEntity> resultList = bloodPressureMeasurementService.getAll();
+        List<BloodPressureMeasurementEntity> resultList = measurementService.getAll();
         BloodPressureMeasurementEntity randomEntity = resultList.get(randomIndex);
         Assertions.assertNotNull(randomEntity);
         Long idSrc = randomEntity.getId();
@@ -173,7 +173,7 @@ public class BloodPressureMeasurementServiceTest {
         BloodPressureMeasurementEntity src = getRandomElement();
         Assertions.assertNotNull(src);
         Long idSrc = src.getId();
-        BloodPressureMeasurementEntity target = bloodPressureMeasurementService.getOne(idSrc);
+        BloodPressureMeasurementEntity target = measurementService.getOne(idSrc);
         Long idTarget = target.getId();
         Assertions.assertNotNull(idTarget);
         Assertions.assertEquals(idSrc.longValue(), idTarget.longValue());
@@ -187,12 +187,12 @@ public class BloodPressureMeasurementServiceTest {
         List<BloodPressureMeasurementEntity> srcListe = this.getTestData();
         List<BloodPressureMeasurementEntity> moreTestDataToAdd = this.getTestDataToAdd();
         for(BloodPressureMeasurementEntity m : moreTestDataToAdd){
-            bloodPressureMeasurementService.add(m);
+            measurementService.add(m);
         }
         Assertions.assertEquals(testDataHowManyTestData,srcListe.size(),"srcListe.size()=="+testDataHowManyTestData);
         moreTestDataToAdd = this.getTestDataToAdd();
         srcListe.addAll(moreTestDataToAdd);
-        List<BloodPressureMeasurementEntity> resultList = bloodPressureMeasurementService.getAll();
+        List<BloodPressureMeasurementEntity> resultList = measurementService.getAll();
         Assertions.assertNotNull(resultList,"resultList != null");
         Assertions.assertEquals(srcListe.size(),resultList.size(),"srcListe.size()==resultList.size()");
         Assertions.assertEquals(testDataHowManyPlustestDataToAdd,srcListe.size(),"srcListe.size()=="+testDataHowManyPlustestDataToAdd);
@@ -213,7 +213,7 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertNotNull(src);
         String situation = "Xfcfdcdcrd";
         src.setSituation(situation);
-        BloodPressureMeasurementEntity target = bloodPressureMeasurementService.update(src,src.getId());
+        BloodPressureMeasurementEntity target = measurementService.update(src,src.getId());
         BloodPressureMeasurementTest.assertEquals(src,target);
         BloodPressureMeasurementTest.assertEqualsUuid(src,target);
         BloodPressureMeasurementTest.assertEqualsCreated(src,target);
@@ -228,11 +228,11 @@ public class BloodPressureMeasurementServiceTest {
         Assertions.assertNotNull(src);
         Long id = src.getId();
         Assertions.assertNotNull(id);
-        long countBefore = bloodPressureMeasurementService.count();
-        bloodPressureMeasurementService.delete(src);
-        long countAfter = bloodPressureMeasurementService.count();
+        long countBefore = measurementService.count();
+        measurementService.delete(src);
+        long countAfter = measurementService.count();
         Assertions.assertEquals(countBefore-1,countAfter,"count after deöete");
-        Optional<BloodPressureMeasurementEntity> target = bloodPressureMeasurementService.findById(id);
+        Optional<BloodPressureMeasurementEntity> target = measurementService.findById(id);
         Assertions.assertFalse(target.isPresent());
         Assertions.assertTrue(true);
     }
@@ -255,7 +255,7 @@ public class BloodPressureMeasurementServiceTest {
         int getNumberExpected = 1;
         Page<BloodPressureMeasurementEntity> resultPage;
         do {
-            resultPage = bloodPressureMeasurementService.getAll(pageable);
+            resultPage = measurementService.getAll(pageable);
             Assertions.assertEquals(getTotalPagesExpected, resultPage.getTotalPages(), " resultPage.getTotalPages()");
             Assertions.assertEquals(getTotalElementsExpected, resultPage.getTotalElements(), "resultPage.getTotalElements()");
             Assertions.assertEquals(getNumberExpected, resultPage.getNumber(), "resultPage.getNumber()");

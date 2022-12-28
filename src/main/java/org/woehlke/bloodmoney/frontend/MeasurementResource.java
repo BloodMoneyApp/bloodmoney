@@ -13,7 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementEntity;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 import org.woehlke.bloodmoney.domain.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.session.UserSessionService;
 
@@ -36,15 +36,15 @@ import javax.ws.rs.core.UriInfo;
 @PreAuthorize("isAuthenticated()")
 public class MeasurementResource {
 
-  private final BloodPressureMeasurementService bloodPressureMeasurementService;
+  private final MeasurementService measurementService;
   private final UserSessionService userSessionService;
 
   @Autowired
   public MeasurementResource(
-    BloodPressureMeasurementService bloodPressureMeasurementService,
+    MeasurementService measurementService,
     UserSessionService userSessionService
   ) {
-    this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+    this.measurementService = measurementService;
     this.userSessionService = userSessionService;
   }
 
@@ -70,7 +70,7 @@ public class MeasurementResource {
       model = userSessionService.handleUserSession(userSessionBean, model);
         UserSessionBean u = (UserSessionBean) model.getAttribute("userSessionBean");
         log.info("getAll - userSessionBean: "+ u);
-      return bloodPressureMeasurementService.getAll(pageable);
+      return measurementService.getAll(pageable);
     }
 
     @GetMapping("/{id}")
@@ -98,7 +98,7 @@ public class MeasurementResource {
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
-        return bloodPressureMeasurementService.update(one, id);
+        return measurementService.update(one, id);
     }
 
     @DeleteMapping(path = "/{id}")
@@ -110,8 +110,8 @@ public class MeasurementResource {
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
-        BloodPressureMeasurementEntity one = bloodPressureMeasurementService.getOne(id);
-        bloodPressureMeasurementService.delete(one);
+        BloodPressureMeasurementEntity one = measurementService.getOne(id);
+        measurementService.delete(one);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
@@ -127,7 +127,7 @@ public class MeasurementResource {
        Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
-        one = bloodPressureMeasurementService.add(one);
+        one = measurementService.add(one);
         return one;
     }
 }

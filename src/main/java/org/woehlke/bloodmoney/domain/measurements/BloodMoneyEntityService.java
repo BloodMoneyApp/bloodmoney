@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
-public interface BloodMoneyEntityService<E extends BloodMoneyEntity, ID extends Long> {
+public interface BloodMoneyEntityService<E extends BloodPressureMeasurementEntity, ID extends Long> {
 
     List<E> getAll();
     Page<E> getAll(Pageable pageable);

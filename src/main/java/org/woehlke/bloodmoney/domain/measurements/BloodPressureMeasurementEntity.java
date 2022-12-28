@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDate;
@@ -19,9 +20,9 @@ import java.time.ZoneId;
 import java.util.UUID;
 
 /**
- * H2 Datatypes: http://www.h2database.com/html/datatypes.html
- * PostgreSQL Datatypes: https://www.postgresql.org/docs/11/datatype.html
- * Using JAX-RS with JAXB: https://docs.oracle.com/javaee/7/tutorial/jaxrs-advanced007.htm
+ * @see <a href="http://www.h2database.com/html/datatypes.html">H2 Datatypes</a>
+ * @see <a href="https://www.postgresql.org/docs/11/datatype.html">PostgreSQL Datatypes</a>
+ * @see <a href="https://docs.oracle.com/javaee/7/tutorial/jaxrs-advanced007.htm">Using JAX-RS with JAXB</a>
  */
 @Getter
 @Setter
@@ -53,7 +54,7 @@ import java.util.UUID;
     }
 )
 @XmlRootElement
-public class BloodPressureMeasurementEntity implements BloodMoneyEntity {
+public class BloodPressureMeasurementEntity implements Serializable {
 
     private static final long serialVersionUID = 2676529613061169122L;
 

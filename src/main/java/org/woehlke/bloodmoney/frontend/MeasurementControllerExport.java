@@ -9,7 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementEntity;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementService;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,7 +39,7 @@ public class MeasurementControllerExport {
             .withOrderedResults(false)
             .build();
         //write all Measurements to csv file
-        writer.write(bloodPressureMeasurementService.getAll());
+        writer.write(measurementService.getAll());
     }
 
     @RequestMapping(path = "/all/xml", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class MeasurementControllerExport {
             .withOrderedResults(false)
             .build();
         //write all Measurements to csv file
-        writer.write(bloodPressureMeasurementService.getAll());
+        writer.write(measurementService.getAll());
     }
 
     @RequestMapping(path = "/all/json", method = RequestMethod.GET)
@@ -73,18 +73,18 @@ public class MeasurementControllerExport {
             .withOrderedResults(false)
             .build();
         //write all Measurements to csv file
-        writer.write(bloodPressureMeasurementService.getAll());
+        writer.write(measurementService.getAll());
     }
 
-    private final BloodPressureMeasurementService bloodPressureMeasurementService;
+    private final MeasurementService measurementService;
     private final BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
     public MeasurementControllerExport(
-        BloodPressureMeasurementService bloodPressureMeasurementService,
+        MeasurementService measurementService,
         BloodMoneyProperties bloodMoneyProperties
     ) {
-        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+        this.measurementService = measurementService;
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
 }

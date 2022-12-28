@@ -22,7 +22,7 @@ public class WebMockTest {
     //private MockMvc mockMvc;
 
     //@MockBean
-    //private BloodPressureMeasurementService bloodPressureMeasurementService;
+    //private MeasurementService bloodPressureMeasurementService;
 
     //@MockBean
     //private UserSessionService userSessionService;
