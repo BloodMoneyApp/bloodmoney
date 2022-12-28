@@ -1679,7 +1679,7 @@
               <sourceFiles>
                 <directory>${basedir}</directory>
                 <includes>
-                  <include>src/main/plantuml/**/*.puml</include>
+                  <include>src/plantuml/**/*.puml</include>
                 </includes>
               </sourceFiles>
             </configuration>
