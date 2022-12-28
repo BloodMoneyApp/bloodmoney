@@ -37,7 +37,7 @@ public class SmokeTest20 {
     private MeasurementController measurementController;
 
     @Autowired
-    private MeasurementControllerExport measurementControllerExport;
+    private MeasurementExportController measurementExportController;
 
     @Autowired
     private MeasurementResource measurementResource;
@@ -95,7 +95,7 @@ public class SmokeTest20 {
     @Test
     public void bloodPressureMeasurementControllerExportTest() throws Exception {
         log.info("TEST: bloodPressureMeasurementControllerExport");
-        assertThat(measurementControllerExport).isNotNull();
+        assertThat(measurementExportController).isNotNull();
     }
 
     @Test

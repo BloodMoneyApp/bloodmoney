@@ -25,7 +25,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 public class MeasurementEntityExportControllerTest {
 
     @Autowired
-    private MeasurementControllerExport measurementControllerExport;
+    private MeasurementExportController measurementExportController;
 
     @Autowired
     private WebApplicationContext context;
