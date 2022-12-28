@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementEntity;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementEntity;
 import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 import org.woehlke.bloodmoney.domain.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.session.UserSessionService;
@@ -31,14 +31,14 @@ public class MeasurementController {
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
-        Page<BloodPressureMeasurementEntity> all = measurementService.getAll(pageable);
+        Page<MeasurementEntity> all = measurementService.getAll(pageable);
         model.addAttribute("all", all);
         return "measurement/all";
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public String getOne(
-        @PathVariable("id") BloodPressureMeasurementEntity one,
+        @PathVariable("id") MeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
@@ -49,7 +49,7 @@ public class MeasurementController {
 
     @RequestMapping(path = "/{id}/edit", method = RequestMethod.GET)
     public String editGet(
-        @PathVariable("id") BloodPressureMeasurementEntity one,
+        @PathVariable("id") MeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
@@ -61,7 +61,7 @@ public class MeasurementController {
     @RequestMapping(path = "/{id}/edit", method = RequestMethod.POST)
     public final String editPost(
             @PathVariable("id") Long id,
-            @Valid BloodPressureMeasurementEntity one,
+            @Valid MeasurementEntity one,
             @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
             BindingResult result, Model model
     ) {
@@ -75,7 +75,7 @@ public class MeasurementController {
 
     @RequestMapping(path = "/{id}/delete", method = RequestMethod.GET)
     public String deleteGet(
-        @PathVariable("id") BloodPressureMeasurementEntity one,
+        @PathVariable("id") MeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
     ) {
@@ -89,14 +89,14 @@ public class MeasurementController {
         Model model
     ){
         model = userSessionService.handleUserSession(userSessionBean, model);
-        BloodPressureMeasurementEntity one = BloodPressureMeasurementEntity.getInstance();
+        MeasurementEntity one = MeasurementEntity.getInstance();
         model.addAttribute("one", one);
         return "measurement/add";
     }
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public final String addPost(
-            @Valid BloodPressureMeasurementEntity one,
+            @Valid MeasurementEntity one,
             @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
             BindingResult result, Model model
     ) {

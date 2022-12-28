@@ -16,55 +16,55 @@ import java.util.Optional;
 @Service
 public class MeasurementServiceImpl implements MeasurementService {
 
-    private final BloodPressureMeasurementRepository bloodPressureMeasurementRepository;
+    private final MeasurementRepository measurementRepository;
     private final ZoneId zone;
 
     @Autowired
-    public MeasurementServiceImpl(BloodPressureMeasurementRepository bloodPressureMeasurementRepository) {
-        this.bloodPressureMeasurementRepository = bloodPressureMeasurementRepository;
-        this.zone = ZoneId.of(BloodPressureMeasurementEntity.ZONE_ID__ECT__EUROPE_PARIS);
+    public MeasurementServiceImpl(MeasurementRepository measurementRepository) {
+        this.measurementRepository = measurementRepository;
+        this.zone = ZoneId.of(MeasurementEntity.ZONE_ID__ECT__EUROPE_PARIS);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public Page<BloodPressureMeasurementEntity> getAll(Pageable pageable) {
-        return this.bloodPressureMeasurementRepository.findAll(pageable);
+    public Page<MeasurementEntity> getAll(Pageable pageable) {
+        return this.measurementRepository.findAll(pageable);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public List<BloodPressureMeasurementEntity> getAll() {
-        return this.bloodPressureMeasurementRepository.findAll();
+    public List<MeasurementEntity> getAll() {
+        return this.measurementRepository.findAll();
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public BloodPressureMeasurementEntity getOne(Long id) {
-        return this.bloodPressureMeasurementRepository.getReferenceById(id);
+    public MeasurementEntity getOne(Long id) {
+        return this.measurementRepository.getReferenceById(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public long count() {
-        return this.bloodPressureMeasurementRepository.count();
+        return this.measurementRepository.count();
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public BloodPressureMeasurementEntity add(BloodPressureMeasurementEntity o) {
+    public MeasurementEntity add(MeasurementEntity o) {
         o.prepareNew();
-        return this.bloodPressureMeasurementRepository.save(o);
+        return this.measurementRepository.save(o);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public BloodPressureMeasurementEntity update(BloodPressureMeasurementEntity one, Long id) {
-        Optional<BloodPressureMeasurementEntity> persistentEntity = this.bloodPressureMeasurementRepository.findById(id);
+    public MeasurementEntity update(MeasurementEntity one, Long id) {
+        Optional<MeasurementEntity> persistentEntity = this.measurementRepository.findById(id);
         if(persistentEntity.isPresent()) {
-            BloodPressureMeasurementEntity p = persistentEntity.get();
+            MeasurementEntity p = persistentEntity.get();
             p.merge(one);
             p.prepareUpdated();
-            one = this.bloodPressureMeasurementRepository.save(p);
+            one = this.measurementRepository.save(p);
         }
         return one;
     }
@@ -72,18 +72,18 @@ public class MeasurementServiceImpl implements MeasurementService {
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void deleteAll() {
-        this.bloodPressureMeasurementRepository.deleteAll();
+        this.measurementRepository.deleteAll();
     }
 
     @Override
-    public Optional<BloodPressureMeasurementEntity> findById(Long id) {
-        return this.bloodPressureMeasurementRepository.findById(id);
+    public Optional<MeasurementEntity> findById(Long id) {
+        return this.measurementRepository.findById(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void delete(BloodPressureMeasurementEntity one) {
-        this.bloodPressureMeasurementRepository.delete(one);
+    public void delete(MeasurementEntity one) {
+        this.measurementRepository.delete(one);
     }
 
 }

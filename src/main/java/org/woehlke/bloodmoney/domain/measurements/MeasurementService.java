@@ -1,5 +1,7 @@
 package org.woehlke.bloodmoney.domain.measurements;
 
-public interface MeasurementService extends BloodMoneyEntityService<BloodPressureMeasurementEntity,Long> {
+import org.woehlke.bloodmoney.application.EntityService;
+
+public interface MeasurementService extends EntityService<MeasurementEntity,Long> {
 
 }

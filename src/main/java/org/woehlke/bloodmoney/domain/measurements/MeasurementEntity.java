@@ -54,7 +54,7 @@ import java.util.UUID;
     }
 )
 @XmlRootElement
-public class BloodPressureMeasurementEntity implements Serializable {
+public class MeasurementEntity implements Serializable {
 
     private static final long serialVersionUID = 2676529613061169122L;
 
@@ -158,7 +158,7 @@ public class BloodPressureMeasurementEntity implements Serializable {
     @Transient
     public static String ZONE_ID__ECT__EUROPE_PARIS = "Europe/Paris";
 
-    public void merge(BloodPressureMeasurementEntity otherEntity){
+    public void merge(MeasurementEntity otherEntity){
         this.systolicTopNumber = otherEntity.systolicTopNumber;
         this.diastolicBottomNumber = otherEntity.diastolicBottomNumber;
         this.pulse = otherEntity.pulse;
@@ -214,12 +214,12 @@ public class BloodPressureMeasurementEntity implements Serializable {
         this.setHostnameCanonical(hostnameCanonical);
     }
 
-    public static BloodPressureMeasurementEntity getInstance(String situation) {
+    public static MeasurementEntity getInstance(String situation) {
         Integer systolicTopNumber = 120;
         Integer diastolicBottomNumber = 80;
         Integer pulse = 68;
         Integer weight = 86;
-        BloodPressureMeasurementEntity o = new BloodPressureMeasurementEntity();
+        MeasurementEntity o = new MeasurementEntity();
         o.setSystolicTopNumber(systolicTopNumber);
         o.setDiastolicBottomNumber(diastolicBottomNumber);
         o.setPulse(pulse);
@@ -229,7 +229,7 @@ public class BloodPressureMeasurementEntity implements Serializable {
         return o;
     }
 
-    public static BloodPressureMeasurementEntity getInstance(
+    public static MeasurementEntity getInstance(
       Integer systolicTopNumber,
       Integer diastolicBottomNumber,
       Integer pulse,
@@ -238,7 +238,7 @@ public class BloodPressureMeasurementEntity implements Serializable {
       LocalDate date,
       LocalTime time
     ) {
-      BloodPressureMeasurementEntity o = new BloodPressureMeasurementEntity();
+      MeasurementEntity o = new MeasurementEntity();
       o.setSystolicTopNumber(systolicTopNumber);
       o.setDiastolicBottomNumber(diastolicBottomNumber);
       o.setPulse(pulse);
@@ -250,9 +250,9 @@ public class BloodPressureMeasurementEntity implements Serializable {
       return o;
     }
 
-    public static BloodPressureMeasurementEntity getInstance() {
+    public static MeasurementEntity getInstance() {
         String situation = "New Measurement";
-        return BloodPressureMeasurementEntity.getInstance(situation);
+        return MeasurementEntity.getInstance(situation);
     }
 
 }

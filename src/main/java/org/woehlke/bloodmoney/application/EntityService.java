@@ -1,12 +1,13 @@
-package org.woehlke.bloodmoney.domain.measurements;
+package org.woehlke.bloodmoney.application;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementEntity;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface BloodMoneyEntityService<E extends BloodPressureMeasurementEntity, ID extends Long> {
+public interface EntityService<E extends MeasurementEntity, ID extends Long> {
 
     List<E> getAll();
     Page<E> getAll(Pageable pageable);

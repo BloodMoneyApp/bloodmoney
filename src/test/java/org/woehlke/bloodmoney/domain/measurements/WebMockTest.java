@@ -30,7 +30,7 @@ public class WebMockTest {
     //@Test
     /*
     public void greetingShouldReturnMessageFromService() throws Exception {
-        when(bloodPressureMeasurementService.getAll()).thenReturn(new ArrayList<BloodPressureMeasurementEntity>());
+        when(bloodPressureMeasurementService.getAll()).thenReturn(new ArrayList<MeasurementEntity>());
         this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
             .andExpect(content().string(containsString("Hello, Mock")));
     }

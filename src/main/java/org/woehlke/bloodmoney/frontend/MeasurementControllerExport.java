@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementEntity;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementEntity;
 import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +33,7 @@ public class MeasurementControllerExport {
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
             "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
         //create a csv writer
-        StatefulBeanToCsv<BloodPressureMeasurementEntity> writer = new StatefulBeanToCsvBuilder<BloodPressureMeasurementEntity>(response.getWriter())
+        StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
             .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
             .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
             .withOrderedResults(false)
@@ -50,7 +50,7 @@ public class MeasurementControllerExport {
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
             "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
         //create a csv writer
-        StatefulBeanToCsv<BloodPressureMeasurementEntity> writer = new StatefulBeanToCsvBuilder<BloodPressureMeasurementEntity>(response.getWriter())
+        StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
             .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
             .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
             .withOrderedResults(false)
@@ -67,7 +67,7 @@ public class MeasurementControllerExport {
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
             "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
         //create a csv writer
-        StatefulBeanToCsv<BloodPressureMeasurementEntity> writer = new StatefulBeanToCsvBuilder<BloodPressureMeasurementEntity>(response.getWriter())
+        StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
             .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
             .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
             .withOrderedResults(false)

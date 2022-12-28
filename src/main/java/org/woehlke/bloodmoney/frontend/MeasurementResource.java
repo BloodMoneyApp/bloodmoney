@@ -12,7 +12,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementEntity;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementEntity;
 import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 import org.woehlke.bloodmoney.domain.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.session.UserSessionService;
@@ -54,7 +54,7 @@ public class MeasurementResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_XML /* MediaType.APPLICATION_XML, */ })
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
-    public Page<BloodPressureMeasurementEntity> getAll(
+    public Page<MeasurementEntity> getAll(
         @Nullable
         @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
         @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
@@ -77,8 +77,8 @@ public class MeasurementResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
-    public BloodPressureMeasurementEntity getOne(
-        @PathVariable("id") BloodPressureMeasurementEntity one,
+    public MeasurementEntity getOne(
+        @PathVariable("id") MeasurementEntity one,
         @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
     ) {
@@ -91,8 +91,8 @@ public class MeasurementResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
-    public BloodPressureMeasurementEntity update(
-        @Valid BloodPressureMeasurementEntity one,
+    public MeasurementEntity update(
+        @Valid MeasurementEntity one,
         @PathVariable("id") long id,
         @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
         Model model
@@ -110,7 +110,7 @@ public class MeasurementResource {
         Model model
     ) {
         model = userSessionService.handleUserSession(userSessionBean, model);
-        BloodPressureMeasurementEntity one = measurementService.getOne(id);
+        MeasurementEntity one = measurementService.getOne(id);
         measurementService.delete(one);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
@@ -120,8 +120,8 @@ public class MeasurementResource {
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     @ResponseBody
     @PreAuthorize("isAuthenticated()")
-    public BloodPressureMeasurementEntity add(
-       BloodPressureMeasurementEntity one,
+    public MeasurementEntity add(
+       MeasurementEntity one,
        @Context UriInfo uriInfo,
        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
        Model model

@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementEntity;
-import org.woehlke.bloodmoney.domain.measurements.BloodPressureMeasurementRepository;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementEntity;
+import org.woehlke.bloodmoney.domain.measurements.MeasurementRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,11 +17,11 @@ import java.time.ZoneId;
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 public class BloodMoneyTestServiceImpl implements BloodMoneyTestService {
 
-    private final BloodPressureMeasurementRepository bloodPressureMeasurementRepository;
+    private final MeasurementRepository measurementRepository;
 
     @Autowired
-    public BloodMoneyTestServiceImpl(BloodPressureMeasurementRepository bloodPressureMeasurementRepository) {
-        this.bloodPressureMeasurementRepository = bloodPressureMeasurementRepository;
+    public BloodMoneyTestServiceImpl(MeasurementRepository measurementRepository) {
+        this.measurementRepository = measurementRepository;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class BloodMoneyTestServiceImpl implements BloodMoneyTestService {
             Integer pulse = 88;
             Integer weight = 66;
             String situation = "situation "+i;
-            BloodPressureMeasurementEntity o = BloodPressureMeasurementEntity.getInstance(
+            MeasurementEntity o = MeasurementEntity.getInstance(
               systolicTopNumber,
               diastolicBottomNumber,
               pulse,
@@ -45,7 +45,7 @@ public class BloodMoneyTestServiceImpl implements BloodMoneyTestService {
               day,
               now
             );
-            this.bloodPressureMeasurementRepository.save(o);
+            this.measurementRepository.save(o);
         }
     }
 }
