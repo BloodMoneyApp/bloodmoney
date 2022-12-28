@@ -18,29 +18,6 @@ public class AppInitializer implements WebApplicationInitializer {
       log.info(sc.getServerInfo());
       log.info(" getVirtualServerName: ");
       log.info(sc.getVirtualServerName());
-
-      /*
-    log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    log.info(" securityFilterChain ");
-    log.info("-------------------------------------------------------------------------------------");
-    log.info(" getAntMatchersPermitAll:  ");
-    for (String urlPath : this.bloodMoneyProperties.getWebSecurity().getAntMatchersPermitAll()) {
-      log.info(urlPath);
-    }
-    log.info("-------------------------------------------------------------------------------------");
-    log.info(" getAntPatternsPublic:  ");
-    for (String urlPath : this.bloodMoneyProperties.getWebSecurity().getAntPatternsPublic()) {
-      log.info(urlPath);
-    }
-    log.info("-------------------------------------------------------------------------------------");
-    log.info(" getAntMatchersFullyAuthenticated:  ");
-    log.info(this.bloodMoneyProperties.getWebSecurity().getAntMatchersFullyAuthenticated());
-    log.info("-------------------------------------------------------------------------------------");
-    log.info(" application Properties:  " + this.bloodMoneyProperties.toString());
-    log.info("-------------------------------------------------------------------------------------");
-    log.info(" configure SecurityFilterChain from HttpSecurity http ");
-    */
-
       log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 }

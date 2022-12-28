@@ -57,7 +57,7 @@ public class MeasurementEntityControllerTest {
             //.andExpect(status().is4xxClientError());
             .andExpect(status().is3xxRedirection());
         log.info("TEST: shouldReturnDefaultMessage: /user/login");
-          this.mockMvc.perform(get("/login"))
+          this.mockMvc.perform(get("/user/login"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Willkommen zu BloodMoney")))
