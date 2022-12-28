@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -20,121 +18,118 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Validated
 @Component
-@ConfigurationProperties(prefix="org.woehlke.bloodmoney")
+@ConfigurationProperties(prefix = "org.woehlke.bloodmoney")
 public class BloodMoneyProperties implements Serializable {
+
+  private static final long serialVersionUID = 4480323170764476017L;
+
+  @NotNull
+  private Boolean devTesting;
+
+  @NotNull
+  private Integer testDataHowManyTestData;
+
+  @Valid
+  @NotNull
+  public UserConfig userConfig;
+
+  @Valid
+  @NotNull
+  public WebConfig webConfig;
+
+  @Valid
+  @NotNull
+  public WebSecurity webSecurity;
+
+  @ToString
+  @Getter
+  @Setter
+  @Validated
+  public static class UserConfig implements Serializable {
 
     private static final long serialVersionUID = 4480323170764476017L;
 
     @NotNull
-    private Boolean devTesting;
+    private String userEmail;
 
     @NotNull
-    private Integer testDataHowManyTestData;
+    private String userPassword;
 
-    @Valid
     @NotNull
-    public UserConfig userConfig;
+    private String userFullname;
+  }
 
-    @Valid
+  @ToString
+  @Getter
+  @Setter
+  @Validated
+  public static class WebConfig implements Serializable {
+
+    private static final long serialVersionUID = 4480323170764476017L;
+
     @NotNull
-    public WebConfig webConfig;
+    private String exportFilename;
 
-    @Valid
     @NotNull
-    public WebSecurity webSecurity;
+    private String exportFilenameSeparator;
 
-    @ToString
-    @Getter
-    @Setter
-    @Validated
-    public static class UserConfig implements Serializable {
+    @NotNull
+    private String[] webAddResourceHandlers;
 
-      private static final long serialVersionUID = 4480323170764476017L;
+    @NotNull
+    private String[] webAddResourceHandlersStatic;
+  }
 
-        @Email
-        @NotBlank
-        private String userEmail;
+  @ToString
+  @Getter
+  @Setter
+  @Validated
+  public static class WebSecurity implements Serializable {
 
-        @NotBlank
-        private String userPassword;
+    private static final long serialVersionUID = 4480323170764476017L;
 
-        @NotBlank
-        private String userFullname;
-    }
+    @NotNull
+    private String antMatchersFullyAuthenticated;
 
-    @ToString
-    @Getter
-    @Setter
-    @Validated
-    public static class WebConfig implements Serializable {
+    @NotNull
+    private String[] antPatternsPublic;
 
-      private static final long serialVersionUID = 4480323170764476017L;
+    @NotNull
+    private String[] antMatchersPermitAll;
 
-        @NotBlank
-        private String exportFilename;
+    private String[] cookieNamesToClear;
 
-        @NotBlank
-        private String exportFilenameSeparator;
+    @NotNull
+    private String usernameParameter;
 
-        @NotNull
-        private String[] webAddResourceHandlers;
+    @NotNull
+    private String passwordParameter;
 
-        @NotNull
-        private String[] webAddResourceHandlersStatic;
-    }
+    @NotNull
+    private String secret;
 
-    @ToString
-    @Getter
-    @Setter
-    @Validated
-    public static class WebSecurity implements Serializable {
+    @NotNull
+    private Integer iterations;
 
-        private static final long serialVersionUID = 4480323170764476017L;
+    @NotNull
+    private Integer hashWidth;
 
-        @NotBlank
-        private String antMatchersFullyAuthenticated;
+    @NotNull
+    private Boolean invalidateHttpSession;
 
-        @NotNull
-        private String[] antMatchersIgnore;
+    @NotNull
+    private String loginProcessingUrl;
 
-        @NotNull
-        private String[] antMatchersPermitAll;
+    @NotNull
+    private String failureForwardUrl;
 
-        @NotBlank
-        private String usernameParameter;
+    @NotNull
+    private String defaultSuccessUrl;
 
-        @NotBlank
-        private String passwordParameter;
+    @NotNull
+    private String logoutUrl;
 
-        @NotBlank
-        private String secret;
-
-        @NotNull
-        private Integer iterations;
-
-        @NotNull
-        private Integer hashWidth;
-
-        @NotNull
-        private Boolean invalidateHttpSession;
-
-        @NotBlank
-        private String loginProcessingUrl;
-
-        @NotBlank
-        private String failureForwardUrl;
-
-        @NotBlank
-        private String defaultSuccessUrl;
-
-        @NotBlank
-        private String logoutUrl;
-
-        @NotBlank
-        private String loginPage;
-
-        @NotBlank
-        private String deleteCookies;
-    }
-
+    @NotNull
+    private String loginPage;
+  }
 }

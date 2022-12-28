@@ -84,7 +84,30 @@ org:
           - "test/"
           - "favicon.ico"
       webSecurity:
-        antMatchersIgnore:
+        antMatchersPermitAll:
+          - "/bpm"
+          - "/j_spring_security_check"
+        antMatchersFullyAuthenticated: "/**"
+        secret: ${BLOODMONEY_USER_SECRET}
+        iterations: ${BLOODMONEY_USER_ITERATIONS}
+        hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+        loginPage: "/user/login"
+        logoutUrl: "/user/logout"
+        defaultSuccessUrl: "/"
+        failureForwardUrl: "/user/logout"
+        cookieNamesToClear:
+          - "JSESSIONID"
+        invalidateHttpSession: true
+        loginProcessingUrl: "/j_spring_security_check"
+        usernameParameter: "j_username"
+        passwordParameter: "j_password"
+        antPatternsPublic:
+          - "/bpm"
+          - "/j_spring_security_check"
+          - "/favicon.ico"
+          - "/favicon.ico*"
+          - "/favicon.ico"
+          - "/webjars/**"
           - "/webjars/**"
           - "/webjars"
           - "/bloodmoney"
@@ -93,27 +116,13 @@ org:
           - "/icon"
           - "/languages"
           - "/languages/**"
-          - "/favicon.ico"
           - "/error*"
           - "/fehler*"
-          - "/login"
-          - "/login*"
-        antMatchersPermitAll:
-          - "/bpm"
-          - "/j_spring_security_check"
-        antMatchersFullyAuthenticated: "/**"
-        usernameParameter: "userEmail"
-        passwordParameter: "userPassword"
-        secret: ${BLOODMONEY_USER_SECRET}
-        iterations: ${BLOODMONEY_USER_ITERATIONS}
-        hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
-        loginProcessingUrl: "/j_spring_security_check"
-        failureForwardUrl: "/login?login_error=1"
-        defaultSuccessUrl: "/"
-        login-page: "/login"
-        logout-url: "/logout"
-        delete-cookies: "JSESSIONID"
-        invalidate-http-session: true
+          - "/fehler"
+          - "/error"
+          - "/user/login"
+          - "/user/login*"
+
 logging:
   level:
     root: INFO
@@ -127,8 +136,7 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false
 ---
 spring:
@@ -144,7 +152,7 @@ spring:
       enabled: false
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 server:
   compression:
     enabled: false
@@ -161,8 +169,7 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false
 ---
 spring:
@@ -184,6 +191,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+      #ddl-auto: update
 server:
   port: ${PORT}
   compression:
@@ -201,6 +209,5 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false

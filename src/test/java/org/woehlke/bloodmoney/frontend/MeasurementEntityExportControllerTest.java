@@ -11,7 +11,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementControllerExport;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -23,10 +22,10 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @Getter
 @ActiveProfiles("default")
 @SpringBootTest
-public class BloodPressureMeasurementEntityExportControllerTest {
+public class MeasurementEntityExportControllerTest {
 
     @Autowired
-    private BloodPressureMeasurementControllerExport bloodPressureMeasurementControllerExport;
+    private MeasurementControllerExport measurementControllerExport;
 
     @Autowired
     private WebApplicationContext context;

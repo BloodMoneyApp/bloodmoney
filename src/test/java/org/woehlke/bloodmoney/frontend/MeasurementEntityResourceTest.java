@@ -12,7 +12,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementResource;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -23,7 +22,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @Getter
 @ActiveProfiles("default")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BloodPressureMeasurementEntityResourceTest {
+public class MeasurementEntityResourceTest {
 
     @SuppressWarnings("deprecation")
     @LocalServerPort
@@ -33,7 +32,7 @@ public class BloodPressureMeasurementEntityResourceTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private BloodPressureMeasurementResource bloodPressureMeasurementResource;
+    private MeasurementResource measurementResource;
 
     @Autowired
     private WebApplicationContext context;

@@ -34,11 +34,11 @@ import java.util.Locale;
 @EnableWebMvc
 @EnableSpringDataWebSupport
 @EnableAutoConfiguration
-public class BloodMoneyWebMvcConfig implements WebMvcConfigurer {
+public class WebMvcConfig implements WebMvcConfigurer {
 
     private final BloodMoneyProperties bloodMoneyProperties;
     @Autowired
-    public BloodMoneyWebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
+    public WebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
         this.bloodMoneyProperties = bloodMoneyProperties;
     }
 

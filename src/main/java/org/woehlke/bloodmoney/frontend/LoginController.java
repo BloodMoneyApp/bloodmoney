@@ -2,9 +2,7 @@ package org.woehlke.bloodmoney.frontend;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,36 +11,37 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
-import org.woehlke.bloodmoney.domain.security.LoginSuccessVO;
-import org.woehlke.bloodmoney.domain.security.BloodMoneyAuthorizationService;
+import org.woehlke.bloodmoney.domain.security.AuthorizationService;
 import org.woehlke.bloodmoney.frontend.vo.LoginFormBean;
 import org.woehlke.bloodmoney.domain.security.LoginSuccessService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Collection;
 
 @Slf4j
 @Controller
-public class BloodMoneyLoginController {
+@RequestMapping("/user")
+public class LoginController {
 
     private final LoginSuccessService loginSuccessService;
-    private final BloodMoneyAuthorizationService bloodMoneyAuthorizationService;
-    private final UserDetailsService bloodMoneyUserDetailsService;
+    private final AuthorizationService bloodMoneyAuthorizationService;
+    private final UserDetailsService userDetailsService;
 
     @Autowired
-    public BloodMoneyLoginController(
+    public LoginController(
         LoginSuccessService loginSuccessService,
-        BloodMoneyAuthorizationService bloodMoneyAuthorizationService,
-        UserDetailsService bloodMoneyUserDetailsService
+        AuthorizationService bloodMoneyAuthorizationService,
+        UserDetailsService userDetailsService
     ) {
         this.loginSuccessService = loginSuccessService;
         this.bloodMoneyAuthorizationService = bloodMoneyAuthorizationService;
-        this.bloodMoneyUserDetailsService = bloodMoneyUserDetailsService;
+        this.userDetailsService = userDetailsService;
     }
 
     /**
@@ -52,7 +51,7 @@ public class BloodMoneyLoginController {
      * @param model Model
      * @return Login Screen.
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
     public final String loginForm(Model model) {
         log.info("-------------------------------------------------------------------------------------");
         log.info("show loginForm");
@@ -71,37 +70,34 @@ public class BloodMoneyLoginController {
      * @param model Model
      * @return Shows Root Project after successful login or login form with error messages.
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
     public final String loginPerform(
       @Valid LoginFormBean loginFormBean,
        BindingResult result, Model model
     ) {
+        log.info("loginPerform");
         boolean authorized = bloodMoneyAuthorizationService.authorize(loginFormBean);
         if (!result.hasErrors() && authorized) {
-            UserDetails ub = this.bloodMoneyUserDetailsService.loadUserByUsername(loginFormBean.getUserEmail());
-            Object principal = ub.getUsername();
-            Object credentials = ub.getPassword();
-            Collection<? extends GrantedAuthority> authorities = ub.getAuthorities();
-            UsernamePasswordAuthenticationToken token = UsernamePasswordAuthenticationToken.authenticated(
-              principal,credentials, authorities
-            );
-            SecurityContextHolder.getContext().setAuthentication(token);
-            LoginSuccessVO user = loginSuccessService.retrieveCurrentUser();
-            log.info("OK logged in : "+user.getUserEmail());
-            log.info( "redirect:/home");
-            return "redirect:/home";
+          UserDetails user = loginSuccessService.retrieveCurrentUser();
+          log.info("logged in");
+          log.info("OK logged in : "+user.getUsername());
+          log.info( "redirect:/home");
+          return "redirect:/home";
         } else {
-            String objectName = "loginForm";
-            String field = "userEmail";
-            String defaultMessage = "Email or Password wrong.";
-            FieldError e = new FieldError(objectName, field, defaultMessage);
-            result.addError(e);
-            log.info("NOT logged in : "+e.toString());
-            return "user/loginForm";
+          String objectName = "loginForm";
+          String field = "userEmail";
+          String defaultMessage = "Email or Password wrong.";
+          FieldError fieldError = new FieldError(objectName, field, defaultMessage);
+          result.addError(fieldError);
+          field = "userPassword";
+          fieldError = new FieldError(objectName, field, defaultMessage);
+          result.addError(fieldError);
+          log.info("not logged in");
+          return "user/loginForm";
         }
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    @RequestMapping(path="/logout", method = RequestMethod.GET)
     public String logoutPage(SessionStatus status, HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){

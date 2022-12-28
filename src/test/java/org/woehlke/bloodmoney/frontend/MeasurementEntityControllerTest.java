@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Getter
 @ActiveProfiles("default")
 @SpringBootTest
-public class BloodPressureMeasurementEntityControllerTest {
+public class MeasurementEntityControllerTest {
 
     @Autowired
     private WebApplicationContext context;
@@ -55,8 +55,8 @@ public class BloodPressureMeasurementEntityControllerTest {
         this.mockMvc.perform(get("/"))
             .andDo(print())
             .andExpect(status().is3xxRedirection());
-        log.info("TEST: shouldReturnDefaultMessage: /login");
-        this.mockMvc.perform(get("/login"))
+        log.info("TEST: shouldReturnDefaultMessage: /user/login");
+          this.mockMvc.perform(get("/user/login"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Willkommen zu BloodMoney")))

@@ -10,13 +10,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.woehlke.bloodmoney.frontend.BloodMoneyHomeController;
-import org.woehlke.bloodmoney.frontend.BloodMoneyErrorController;
+import org.woehlke.bloodmoney.frontend.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementController;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementControllerExport;
-import org.woehlke.bloodmoney.frontend.BloodPressureMeasurementResource;
-import org.woehlke.bloodmoney.frontend.BloodMoneyLoginController;
+import org.woehlke.bloodmoney.frontend.MeasurementController;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -35,22 +31,22 @@ public class SmokeTest20 {
     private BloodMoneyProperties bloodMoneyProperties;
 
     @Autowired
-    private BloodMoneyHomeController bloodMoneyHomeController;
+    private HomeController homeController;
 
     @Autowired
-    private BloodPressureMeasurementController bloodPressureMeasurementController;
+    private MeasurementController measurementController;
 
     @Autowired
-    private BloodPressureMeasurementControllerExport bloodPressureMeasurementControllerExport;
+    private MeasurementControllerExport measurementControllerExport;
 
     @Autowired
-    private BloodPressureMeasurementResource bloodPressureMeasurementResource;
+    private MeasurementResource measurementResource;
 
     @Autowired
-    private BloodMoneyLoginController bloodMoneyLoginController;
+    private LoginController loginController;
 
     @Autowired
-    private BloodMoneyErrorController bloodMoneyErrorController;
+    private ErrorController errorController;
 
     @Autowired
     private WebApplicationContext context;
@@ -87,36 +83,36 @@ public class SmokeTest20 {
     @Test
     public void homeControllerTest() throws Exception {
         log.info("TEST: homeController");
-        assertThat(bloodMoneyHomeController).isNotNull();
+        assertThat(homeController).isNotNull();
     }
 
     @Test
     public void bloodPressureMeasurementControllerTest() throws Exception {
         log.info("TEST: bloodPressureMeasurementController");
-        assertThat(bloodPressureMeasurementController).isNotNull();
+        assertThat(measurementController).isNotNull();
     }
 
     @Test
     public void bloodPressureMeasurementControllerExportTest() throws Exception {
         log.info("TEST: bloodPressureMeasurementControllerExport");
-        assertThat(bloodPressureMeasurementControllerExport).isNotNull();
+        assertThat(measurementControllerExport).isNotNull();
     }
 
     @Test
     public void bloodPressureMeasurementResourceTest() throws Exception {
         log.info("TEST: bloodPressureMeasurementResource");
-        assertThat(bloodPressureMeasurementResource).isNotNull();
+        assertThat(measurementResource).isNotNull();
     }
 
     @Test
     public void userLoginControllerTest() throws Exception {
         log.info("TEST: userLoginController");
-        assertThat(bloodMoneyLoginController).isNotNull();
+        assertThat(loginController).isNotNull();
     }
 
     @Test
     public void myErrorControllerTest() throws Exception {
         log.info("TEST: myErrorController");
-        assertThat(bloodMoneyErrorController).isNotNull();
+        assertThat(errorController).isNotNull();
     }
 }

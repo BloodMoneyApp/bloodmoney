@@ -22,9 +22,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/measurement")
 @SessionAttributes("userSession")
-public class BloodPressureMeasurementController {
+public class MeasurementController {
 
-    @GetMapping("/all")
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
     public String getAll(
         @PageableDefault(sort={"created"}, direction=Sort.Direction.DESC) Pageable pageable,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -36,7 +36,7 @@ public class BloodPressureMeasurementController {
         return "measurement/all";
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public String getOne(
         @PathVariable("id") BloodPressureMeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -47,7 +47,7 @@ public class BloodPressureMeasurementController {
         return "measurement/one";
     }
 
-    @GetMapping("/{id}/edit")
+    @RequestMapping(path = "/{id}/edit", method = RequestMethod.GET)
     public String editGet(
         @PathVariable("id") BloodPressureMeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -58,7 +58,7 @@ public class BloodPressureMeasurementController {
         return "measurement/edit";
     }
 
-    @PostMapping("/{id}/edit")
+    @RequestMapping(path = "/{id}/edit", method = RequestMethod.POST)
     public final String editPost(
             @PathVariable("id") Long id,
             @Valid BloodPressureMeasurementEntity one,
@@ -73,7 +73,7 @@ public class BloodPressureMeasurementController {
         }
     }
 
-    @GetMapping("/{id}/delete")
+    @RequestMapping(path = "/{id}/delete", method = RequestMethod.GET)
     public String deleteGet(
         @PathVariable("id") BloodPressureMeasurementEntity one,
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
@@ -83,7 +83,7 @@ public class BloodPressureMeasurementController {
         return "redirect:/measurement/all";
     }
 
-    @GetMapping("/add")
+    @RequestMapping(path = "/add", method = RequestMethod.GET)
     public String addGet(
         @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
         Model model
@@ -94,7 +94,7 @@ public class BloodPressureMeasurementController {
         return "measurement/add";
     }
 
-    @PostMapping("/add")
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
     public final String addPost(
             @Valid BloodPressureMeasurementEntity one,
             @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
@@ -112,7 +112,7 @@ public class BloodPressureMeasurementController {
     private final UserSessionService userSessionService;
 
     @Autowired
-    public BloodPressureMeasurementController(
+    public MeasurementController(
         BloodPressureMeasurementService bloodPressureMeasurementService,
         UserSessionService userSessionService
     ) {

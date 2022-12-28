@@ -7,13 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
-import org.woehlke.bloodmoney.domain.security.BloodMoneyAuthorizationService;
 import org.woehlke.bloodmoney.frontend.vo.LoginFormBean;
 
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class BloodMoneyAuthorizationServiceImpl implements BloodMoneyAuthorizationService {
+public class AuthorizationServiceImpl implements AuthorizationService {
 
     @Autowired
     private BloodMoneyProperties bloodMoneyProperties;

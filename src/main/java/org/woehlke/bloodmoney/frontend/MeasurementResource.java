@@ -34,7 +34,19 @@ import javax.ws.rs.core.UriInfo;
 @RequestMapping("/rest/measurement")
 @SessionAttributes("userSession")
 @PreAuthorize("isAuthenticated()")
-public class BloodPressureMeasurementResource {
+public class MeasurementResource {
+
+  private final BloodPressureMeasurementService bloodPressureMeasurementService;
+  private final UserSessionService userSessionService;
+
+  @Autowired
+  public MeasurementResource(
+    BloodPressureMeasurementService bloodPressureMeasurementService,
+    UserSessionService userSessionService
+  ) {
+    this.bloodPressureMeasurementService = bloodPressureMeasurementService;
+    this.userSessionService = userSessionService;
+  }
 
     //TODO: #151 HTTP 406 - XML not accepted
     @GetMapping("all")
@@ -117,14 +129,5 @@ public class BloodPressureMeasurementResource {
         model = userSessionService.handleUserSession(userSessionBean, model);
         one = bloodPressureMeasurementService.add(one);
         return one;
-    }
-
-    private final BloodPressureMeasurementService bloodPressureMeasurementService;
-    private final UserSessionService userSessionService;
-
-    @Autowired
-    public BloodPressureMeasurementResource(BloodPressureMeasurementService bloodPressureMeasurementService, UserSessionService userSessionService) {
-        this.bloodPressureMeasurementService = bloodPressureMeasurementService;
-        this.userSessionService = userSessionService;
     }
 }
