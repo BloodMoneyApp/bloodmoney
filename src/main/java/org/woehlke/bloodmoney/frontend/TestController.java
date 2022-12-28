@@ -4,10 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.domain.test.BloodMoneyTestService;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 
@@ -29,7 +26,7 @@ public class TestController {
     this.bloodMoneyProperties = bloodMoneyProperties;
   }
 
-  @GetMapping("/createTestData")
+  @RequestMapping(path = "/createTestData", method = RequestMethod.GET)
   public String createTestData() {
     if (bloodMoneyProperties.getDevTesting()) {
       bloodMoneyTestService.createTestData();
@@ -37,7 +34,7 @@ public class TestController {
     return "redirect:/measurement/all";
   }
 
-  @GetMapping("/greeting")
+  @RequestMapping(path = "/greeting", method = RequestMethod.GET)
   public String greeting(
     @RequestParam(name = "name", required = false, defaultValue = "World") String name,
     Model model
@@ -46,31 +43,31 @@ public class TestController {
     return "test/greeting";
   }
 
-  @GetMapping("/dashboard")
+  @RequestMapping(path = "/dashboard", method = RequestMethod.GET)
   public String dashboard(Model model) {
     model.addAttribute("name", "Thomas");
     return "test/dashboard";
   }
 
-  @GetMapping("/grid")
+  @RequestMapping(path = "/grid", method = RequestMethod.GET)
   public String grid(Model model) {
     model.addAttribute("name", "Thomas");
     return "test/grid";
   }
 
-  @GetMapping("/jumbotron")
+  @RequestMapping(path = "/jumbotron", method = RequestMethod.GET)
   public String jumbotron(Model model) {
     model.addAttribute("name", "Thomas");
     return "test/jumbotron";
   }
 
-  @GetMapping("/navbar-fixed")
+  @RequestMapping(path = "/navbar-fixed", method = RequestMethod.GET)
   public String navbarFixed(Model model) {
     model.addAttribute("name", "Thomas");
     return "test/navbar-fixed";
   }
 
-  @GetMapping("/sticky-footer-navbar")
+  @RequestMapping(path = "/sticky-footer-navbar", method = RequestMethod.GET)
   public String stickyFooterNavbar(Model model) {
     model.addAttribute("name", "Thomas");
     return "test/sticky-footer-navbar";

@@ -19,13 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 @SessionAttributes("userSession")
 public class MeasurementControllerExport {
 
-    @GetMapping("/all")
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
     @ResponseBody
     public void exportAll(HttpServletResponse response) throws Exception  {
         this.exportCSV(response);
     }
 
-    @GetMapping("/all/csv")
+    @RequestMapping(path = "/all/csv", method = RequestMethod.GET)
     @ResponseBody
     public void exportCSV(HttpServletResponse response) throws Exception  {
         //set file name and content type
@@ -42,7 +42,7 @@ public class MeasurementControllerExport {
         writer.write(bloodPressureMeasurementService.getAll());
     }
 
-    @GetMapping("/all/xml")
+    @RequestMapping(path = "/all/xml", method = RequestMethod.GET)
     @ResponseBody
     public void exportXML(HttpServletResponse response) throws Exception  {
         //set file name and content type
@@ -59,7 +59,7 @@ public class MeasurementControllerExport {
         writer.write(bloodPressureMeasurementService.getAll());
     }
 
-    @GetMapping("/all/json")
+    @RequestMapping(path = "/all/json", method = RequestMethod.GET)
     @ResponseBody
     public void exportJSON(HttpServletResponse response) throws Exception  {
         //set file name and content type

@@ -51,7 +51,7 @@ public class LoginController {
      * @param model Model
      * @return Login Screen.
      */
-    @GetMapping("/login")
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
     public final String loginForm(Model model) {
         log.info("-------------------------------------------------------------------------------------");
         log.info("show loginForm");
@@ -70,7 +70,7 @@ public class LoginController {
      * @param model Model
      * @return Shows Root Project after successful login or login form with error messages.
      */
-    @PostMapping("/login")
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
     public final String loginPerform(
       @Valid LoginFormBean loginFormBean,
        BindingResult result, Model model
@@ -97,7 +97,7 @@ public class LoginController {
         }
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    @RequestMapping(path="/logout", method = RequestMethod.GET)
     public String logoutPage(SessionStatus status, HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
