@@ -9,8 +9,8 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 
 @Slf4j
-@ActiveProfiles("dev")
-public class BloodPressureMeasurementTest {
+@ActiveProfiles("default")
+public class MeasurementTest {
 
     private final static boolean featureUuid_isSettedByOurselves = true;
 
@@ -34,7 +34,7 @@ public class BloodPressureMeasurementTest {
         } else {
             Assertions.assertNotEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
         }
-        BloodPressureMeasurementTest.assertEquals(src, target);
+        MeasurementTest.assertEquals(src, target);
     }
 
     public static void assertEqualsUuid(
@@ -49,7 +49,7 @@ public class BloodPressureMeasurementTest {
         Assertions.assertNotNull(target.getUuid(),"target.getUuid()");
         assertEqualsTrueActual = src.getUuid().toString().compareTo(target.getUuid().toString());
         Assertions.assertEquals(assertEqualsTrueExpected,assertEqualsTrueActual,"getUuid");
-        BloodPressureMeasurementTest.assertEquals(src,target);
+        MeasurementTest.assertEquals(src,target);
     }
 
     public static void assertEquals(

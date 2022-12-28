@@ -129,7 +129,7 @@ public class MeasurementServiceTest {
         for(int i = 0; i < testDataHowManyTestData; i++){
             MeasurementEntity src = srcListe.get(i);
             MeasurementEntity target = resultList.get(i);
-            BloodPressureMeasurementTest.assertTransientEqualsPersistent(src,target);
+            MeasurementTest.assertTransientEqualsPersistent(src,target);
         }
         Assertions.assertTrue(true);
     }
@@ -147,8 +147,8 @@ public class MeasurementServiceTest {
         for(int i = 0; i < testDataHowManyTestData; i++){
             MeasurementEntity src = srcListe.get(i);
             MeasurementEntity target = resultList.get(i);
-            BloodPressureMeasurementTest.assertTransientEqualsPersistent(src,target);
-            BloodPressureMeasurementTest.assertAllFieldNonNullForPersistent(target);
+            MeasurementTest.assertTransientEqualsPersistent(src,target);
+            MeasurementTest.assertAllFieldNonNullForPersistent(target);
         }
         Assertions.assertTrue(true);
     }
@@ -200,7 +200,7 @@ public class MeasurementServiceTest {
         for(int i = 0; i < testDataHowManyPlustestDataToAdd; i++){
             MeasurementEntity src = srcListe.get(i);
             MeasurementEntity target = resultList.get(i);
-            BloodPressureMeasurementTest.assertTransientEqualsPersistent(src,target);
+            MeasurementTest.assertTransientEqualsPersistent(src,target);
         }
         Assertions.assertTrue(true);
     }
@@ -214,9 +214,9 @@ public class MeasurementServiceTest {
         String situation = "Xfcfdcdcrd";
         src.setSituation(situation);
         MeasurementEntity target = measurementService.update(src,src.getId());
-        BloodPressureMeasurementTest.assertEquals(src,target);
-        BloodPressureMeasurementTest.assertEqualsUuid(src,target);
-        BloodPressureMeasurementTest.assertEqualsCreated(src,target);
+        MeasurementTest.assertEquals(src,target);
+        MeasurementTest.assertEqualsUuid(src,target);
+        MeasurementTest.assertEqualsCreated(src,target);
         Assertions.assertTrue(true);
     }
 
