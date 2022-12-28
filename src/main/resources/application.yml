@@ -136,8 +136,7 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false
 ---
 spring:
@@ -153,7 +152,7 @@ spring:
       enabled: false
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 server:
   compression:
     enabled: false
@@ -170,8 +169,7 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false
 ---
 spring:
@@ -192,8 +190,8 @@ spring:
     log-dir: transaction-logs/tx-logs-bloodmoney
   jpa:
     hibernate:
-      #ddl-auto: validate
-      ddl-auto: update
+      ddl-auto: validate
+      #ddl-auto: update
 server:
   port: ${PORT}
   compression:
@@ -211,6 +209,5 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false

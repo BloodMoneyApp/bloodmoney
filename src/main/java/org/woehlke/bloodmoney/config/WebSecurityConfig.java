@@ -39,17 +39,14 @@ import org.woehlke.bloodmoney.domain.security.UserDetailsService;
 @EnableMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig {
 
-  private final AuthenticationManagerBuilder auth;
   private final UserDetailsService userDetailsService;
   private final BloodMoneyProperties bloodMoneyProperties;
 
   @Autowired
   public WebSecurityConfig(
-    AuthenticationManagerBuilder auth,
     UserDetailsService userDetailsService,
     BloodMoneyProperties bloodMoneyProperties
   ) {
-    this.auth = auth;
     this.userDetailsService = userDetailsService;
     this.bloodMoneyProperties = bloodMoneyProperties;
   }
@@ -103,6 +100,7 @@ public class WebSecurityConfig {
     return p;
   }
 
+  @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     log.info(" securityFilterChain ");
