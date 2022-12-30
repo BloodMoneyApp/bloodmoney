@@ -73,9 +73,9 @@
     <maven.compiler.target>${version.java}</maven.compiler.target>
 
     <!-- Webjars and Frontend -->
-    <version.webjars.jquery>3.6.1</version.webjars.jquery>
+    <version.webjars.jquery>3.6.3</version.webjars.jquery>
     <version.webjars.popper.js>2.9.3</version.webjars.popper.js>
-    <version.webjars.bootstrap>5.2.2</version.webjars.bootstrap>
+    <version.webjars.bootstrap>5.2.3</version.webjars.bootstrap>
     <version.webjars.font-awesome>6.2.0</version.webjars.font-awesome>
     <version.webjars.ckeditor>31.0.0</version.webjars.ckeditor>
     <version.opencsv>5.7.1</version.opencsv>
@@ -311,7 +311,7 @@
       </dependency>
 
       <dependency>
-        <groupId>org.webjars</groupId>
+        <groupId>org.webjars.npm</groupId>
         <artifactId>jquery</artifactId>
         <version>${version.webjars.jquery}</version>
       </dependency>
@@ -321,7 +321,7 @@
         <version>${version.webjars.popper.js}</version>
       </dependency>
       <dependency>
-        <groupId>org.webjars</groupId>
+        <groupId>org.webjars.npm</groupId>
         <artifactId>bootstrap</artifactId>
         <version>${version.webjars.bootstrap}</version>
       </dependency>
@@ -695,7 +695,7 @@
     </dependency>
 
     <dependency>
-      <groupId>org.webjars</groupId>
+      <groupId>org.webjars.npm</groupId>
       <artifactId>jquery</artifactId>
     </dependency>
     <dependency>
@@ -703,7 +703,7 @@
       <artifactId>popper.js</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.webjars</groupId>
+      <groupId>org.webjars.npm</groupId>
       <artifactId>bootstrap</artifactId>
     </dependency>
     <dependency>
