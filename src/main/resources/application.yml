@@ -78,9 +78,9 @@ org:
         webAddResourceHandlers:
           - "webjars/"
         webAddResourceHandlersStatic:
-          - "bloodmoney/"
-          - "icon/"
-          - "languages/"
+          - "img/"
+          - "css/"
+          - "js/"
           - "test/"
           - "favicon.ico"
       webSecurity:
