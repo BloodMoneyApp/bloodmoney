@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.woehlke.bloodmoney</groupId>
@@ -11,7 +12,7 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.7.7</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <scm>
@@ -98,7 +99,8 @@
 
     <!-- Docker -->
     <version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
-    <docker-compose-maven-plugin.composeFile>${project.basedir}/docker-compose.yml</docker-compose-maven-plugin.composeFile>
+    <docker-compose-maven-plugin.composeFile>${project.basedir}/docker-compose.yml
+    </docker-compose-maven-plugin.composeFile>
     <docker-compose-maven-plugin.verbose>true</docker-compose-maven-plugin.verbose>
     <docker-compose-maven-plugin.removeImages>true</docker-compose-maven-plugin.removeImages>
     <docker-compose-maven-plugin.removeVolumes>true</docker-compose-maven-plugin.removeVolumes>
@@ -1216,7 +1218,9 @@
           <layout>JAR</layout>
           <executable>true</executable>
           <addResources>true</addResources>
-          <excludeGroupIds>org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module</excludeGroupIds>
+          <excludeGroupIds>
+            org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module
+          </excludeGroupIds>
           <excludes>
             <exclude>
               <groupId>org.springframework.boot</groupId>
@@ -1260,8 +1264,12 @@
           <includeScope>compile</includeScope>
           <excludeTypes>maven-plugin</excludeTypes>
           <excludeScope>test,provided</excludeScope>
-          <excludeGroupIds>org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module,  </excludeGroupIds>
-          <excludeArtifactIds>jboss-transaction-api_1.2_spec,byte-buddy-agent,byte-buddy,backport9,backport-util-concurrent,spring-boot-configuration-processor,spring-boot-devtools,ganymed-ssh2,maven-toolchain,weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api,lombok,jcommander,checkstyle,plexus-build-api</excludeArtifactIds>
+          <excludeGroupIds>
+            org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module,
+          </excludeGroupIds>
+          <excludeArtifactIds>
+            jboss-transaction-api_1.2_spec,byte-buddy-agent,byte-buddy,backport9,backport-util-concurrent,spring-boot-configuration-processor,spring-boot-devtools,ganymed-ssh2,maven-toolchain,weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api,lombok,jcommander,checkstyle,plexus-build-api
+          </excludeArtifactIds>
         </configuration>
         <executions>
           <execution>
@@ -1584,7 +1592,8 @@
       <build>
         <finalName>${project.artifactId}</finalName>
         <defaultGoal>
-          clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins dependency:sources install spring-boot:repackage site site:deploy
+          clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins dependency:sources
+          install spring-boot:repackage site site:deploy
         </defaultGoal>
       </build>
     </profile>
