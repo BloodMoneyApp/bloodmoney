@@ -97,13 +97,13 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownLanguages">
               <li>
                 <a class="dropdown-item" href="#" th:href="@{{url}(lang='de',url=${#request.getRequestURL()})}">
-                  <img class="lang-switcher-img" th:src="@{/languages/de.png}"/>
+                  <img class="lang-switcher-img" th:src="@{/img/languages/de.png}"/>
                   <span th:text="#{org.woehlke.mybp.navigation.topbar.lang.de}"></span>
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="#" th:href="@{{url}(lang='en',url=${#request.getRequestURL()})}">
-                  <img class="lang-switcher-img" th:src="@{/languages/gb.png}"/>
+                  <img class="lang-switcher-img" th:src="@{/img/languages/gb.png}"/>
                   <span th:text="#{org.woehlke.mybp.navigation.topbar.lang.en}"></span>
                 </a>
               </li>
