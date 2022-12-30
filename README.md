@@ -5,7 +5,6 @@
 [![Build Status](https://api.travis-ci.com/BloodMoneyApp/bloodmoney.svg?branch=master)](https://app.travis-ci.com/github/BloodMoneyApp/bloodmoney)
 [![Maven Project Reports](src/site/resources/img/maven-feather.png)](https://homepages.ruhr-uni-bochum.de/Thomas.Woehlke/java/bloodmoney/)
 
-
 Webapp for storing Blood Pressure Measurements for one Person.
 
 ## Deployments
@@ -41,10 +40,6 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 * Feature #133 REST Webservice with Login and CRUD for Measurements
 * Feature #132 Test Client for REST Webservice
 * Feature #139 Webapp shall send Emails
-
-## Changelog
-* [Changelog](src/site/markdown/TODO.md)
-* [Changelog](src/site/markdown/CHANGELOG.md)
 
 ## Use Cases
 | Use Case                                   | Status | Tested manually | Tested Spring IT | Tested Selenium |
@@ -87,3 +82,7 @@ The Name Bloodmoney was inspired by the Song "bloodmoney" on the 12" Vinyl EP
 ![Workflows](etc/plantuml/Bloodmoney__Classes_007__Service_Classes__Workflows__Overview.png)
 ### Persistence
 ![Persistence](etc/plantuml/Bloodmoney__Classes_009__Service_Classes__Persistence__Overview.png)
+
+## Changelog
+* [Changelog: TODO](src/site/markdown/TODO.md)
+* [Changelog](src/site/markdown/CHANGELOG.md)
