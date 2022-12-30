@@ -23,7 +23,7 @@
 
   <name>BloodMoney</name>
   <description>Webapp for storing Blood Pressure Measurements for one Person</description>
-  <url>https://java.woehlke.org/bloodmoney</url>
+  <url>https://java.woehlke.org/spring/bloodmoney</url>
   <inceptionYear>2019</inceptionYear>
 
   <organization>
@@ -49,7 +49,7 @@
   <distributionManagement>
     <site>
       <id>bloodmoney.public_html</id>
-      <url>file://${user.home}/public_html/java/bloodmoney</url>
+      <url>file://${user.home}/public_html/java/spring/bloodmoney</url>
     </site>
     <snapshotRepository>
       <id>snapshots</id>
