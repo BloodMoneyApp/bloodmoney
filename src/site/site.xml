@@ -7,7 +7,7 @@
     <!-- https://maven.apache.org/plugins/maven-site-plugin/examples/sitedescriptor.html -->
     <bannerLeft>
       <name>Cyclic Cellular Automaton (Demon)</name>
-      <src>/img/phasenraum_logo.gif</src>
+      <src>/img/thomas_woehlke__geburt_einer_vision__logo.png</src>
       <href>https://java.woehlke.org/</href>
     </bannerLeft>
     <publishDate position="navigation-bottom"/>
