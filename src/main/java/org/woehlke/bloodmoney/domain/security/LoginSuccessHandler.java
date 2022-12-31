@@ -20,36 +20,36 @@ import java.util.Locale;
 @Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class LoginSuccessHandler  extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-    private final LoginSuccessService loginSuccessService;
+  private final LoginSuccessService loginSuccessService;
 
-    private final LocaleResolver localeResolver;
+  private final LocaleResolver localeResolver;
 
-    @Autowired
-    public LoginSuccessHandler(
-        LoginSuccessService loginSuccessService,
-        LocaleResolver localeResolver
-    ) {
-        super();
-        this.loginSuccessService = loginSuccessService;
-        this.localeResolver = localeResolver;
-    }
+  @Autowired
+  public LoginSuccessHandler(
+    LoginSuccessService loginSuccessService,
+    LocaleResolver localeResolver
+  ) {
+    super();
+    this.loginSuccessService = loginSuccessService;
+    this.localeResolver = localeResolver;
+  }
 
-    @Override
-    public void onAuthenticationSuccess(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        Authentication authentication
-    ) throws ServletException, IOException {
-        log.info("-------------------------------------------------------------------------------------");
-        log.info(" onAuthenticationSuccess:");
-        super.onAuthenticationSuccess(request, response, authentication);
-        UserDetails user = loginSuccessService.retrieveCurrentUser();
-        Locale locale = Locale.GERMAN;
-        localeResolver.setLocale(request,response,locale);
-        log.info(" onAuthenticationSuccess: authenticated user "+user.getUsername());
-        log.info("-------------------------------------------------------------------------------------");
-    }
+  @Override
+  public void onAuthenticationSuccess(
+    HttpServletRequest request,
+    HttpServletResponse response,
+    Authentication authentication
+  ) throws ServletException, IOException {
+    log.info("-------------------------------------------------------------------------------------");
+    log.info(" onAuthenticationSuccess:");
+    super.onAuthenticationSuccess(request, response, authentication);
+    UserDetails user = loginSuccessService.retrieveCurrentUser();
+    Locale locale = Locale.GERMAN;
+    localeResolver.setLocale(request, response, locale);
+    log.info(" onAuthenticationSuccess: authenticated user " + user.getUsername());
+    log.info("-------------------------------------------------------------------------------------");
+  }
 
 }

@@ -5,8 +5,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public interface LoginSuccessService {
 
-    String retrieveUsername();
+  String retrieveUsername();
 
-    UserDetails retrieveCurrentUser() throws UsernameNotFoundException;
+  UserDetails retrieveCurrentUser() throws UsernameNotFoundException;
 
 }

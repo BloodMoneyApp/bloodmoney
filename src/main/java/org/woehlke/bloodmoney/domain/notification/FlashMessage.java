@@ -13,14 +13,14 @@ import java.util.Date;
 @AllArgsConstructor
 public class FlashMessage implements Serializable {
 
-    private static final long serialVersionUID = 5616312717653223576L;
+  private static final long serialVersionUID = 5616312717653223576L;
 
-    private String message;
+  private String message;
 
-    private String moreInfo;
+  private String moreInfo;
 
-    private FlashMessageSeverity severity;
+  private FlashMessageSeverity severity;
 
-    private Date raised;
+  private Date raised;
 
 }

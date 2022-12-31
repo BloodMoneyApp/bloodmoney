@@ -13,29 +13,28 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
 
-    @RequestMapping("/fehler")
-    public String handleError(HttpServletRequest request, Model model) {
-        Exception exception = (Exception) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
-        log.info("exceptionMessage: "+exception);
-        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-        if (status != null) {
-            log.info("statusCode: "+status.toString());
-            Integer statusCode = Integer.valueOf(status.toString());
-            if(statusCode == HttpStatus.FORBIDDEN.value()) {
-                return "error/error-403";
-            }
-            if(statusCode == HttpStatus.NOT_FOUND.value()) {
-                return "error/error-404";
-            }
-            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "error/error-500";
-            }
-        }
-        model.addAttribute("exceptionMessage",exception);
-        return "error/error";
+  @RequestMapping("/fehler")
+  public String handleError(HttpServletRequest request, Model model) {
+    Exception exception = (Exception) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
+    log.info("exceptionMessage: " + exception);
+    Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+    if (status != null) {
+      log.info("statusCode: " + status.toString());
+      Integer statusCode = Integer.valueOf(status.toString());
+      if (statusCode == HttpStatus.FORBIDDEN.value()) {
+        return "error/error-403";
+      }
+      if (statusCode == HttpStatus.NOT_FOUND.value()) {
+        return "error/error-404";
+      } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+        return "error/error-500";
+      }
     }
+    model.addAttribute("exceptionMessage", exception);
+    return "error/error";
+  }
 
-    public String getErrorPath() {
-        return "/fehler";
-    }
+  public String getErrorPath() {
+    return "/fehler";
+  }
 }

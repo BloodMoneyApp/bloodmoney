@@ -15,12 +15,12 @@ import java.util.Stack;
 @AllArgsConstructor
 public class UserSessionBean implements Serializable {
 
-    private static final long serialVersionUID = -9184465632849128728L;
+  private static final long serialVersionUID = -9184465632849128728L;
 
-    @NotNull
-    private Stack<FlashMessage> stack = new Stack<>();
+  @NotNull
+  private Stack<FlashMessage> stack = new Stack<>();
 
-    @NotNull
-    private Boolean devTesting;
+  @NotNull
+  private Boolean devTesting;
 
 }

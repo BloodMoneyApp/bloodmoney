@@ -14,36 +14,36 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class LoginFormBean implements Serializable {
 
-    private static final long serialVersionUID = 8947782653424181984L;
+  private static final long serialVersionUID = 8947782653424181984L;
 
-    //TODO: Messages i18n
+  //TODO: Messages i18n
+  @NotNull(message = "Email Address is compulsory")
+  @NotBlank(message = "Email Address is compulsory")
+  @Email(message = "Email Address is not a valid format")
+  private String userEmail;
+
+  //TODO: Messages i18n
+  //@SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
+  @NotNull(message = "Password is compulsory")
+  @NotBlank(message = "Password is compulsory")
+  private String userPassword;
+
+  public LoginFormBean(
     @NotNull(message = "Email Address is compulsory")
     @NotBlank(message = "Email Address is compulsory")
-    @Email(message = "Email Address is not a valid format")
-    private String userEmail;
-
-    //TODO: Messages i18n
-    //@SafeHtml(whitelistType= SafeHtml.WhiteListType.NONE)
+    @Email(message = "Email Address is not a valid format") String userEmail,
+    //@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotNull(message = "Password is compulsory")
-    @NotBlank(message = "Password is compulsory")
-    private String userPassword;
+    @NotBlank(message = "Password is compulsory") String userPassword) {
+    this.userEmail = userEmail;
+    this.userPassword = userPassword;
+  }
 
-    public LoginFormBean(
-        @NotNull(message = "Email Address is compulsory")
-        @NotBlank(message = "Email Address is compulsory")
-        @Email(message = "Email Address is not a valid format") String userEmail,
-        //@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
-        @NotNull(message = "Password is compulsory")
-        @NotBlank(message = "Password is compulsory") String userPassword) {
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-    }
-
-    @Override
-    public String toString() {
-        return "LoginForm{" +
-            "userEmail='" + userEmail + '\'' +
-            ", userPassword='***************" + '\'' +
-            '}';
-    }
+  @Override
+  public String toString() {
+    return "LoginForm{" +
+      "userEmail='" + userEmail + '\'' +
+      ", userPassword='***************" + '\'' +
+      '}';
+  }
 }

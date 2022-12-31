@@ -10,14 +10,14 @@ public class AppInitializer implements WebApplicationInitializer {
 
   @Override
   public void onStartup(ServletContext sc) {
-      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-      log.info(" Application on Startup: ");
-      log.info(" getServletContextName: ");
-      log.info(sc.getServletContextName());
-      log.info(" getServerInfo: ");
-      log.info(sc.getServerInfo());
-      log.info(" getVirtualServerName: ");
-      log.info(sc.getVirtualServerName());
-      log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    log.info(" Application on Startup: ");
+    log.info(" getServletContextName: ");
+    log.info(sc.getServletContextName());
+    log.info(" getServerInfo: ");
+    log.info(sc.getServerInfo());
+    log.info(" getVirtualServerName: ");
+    log.info(sc.getVirtualServerName());
+    log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   }
 }

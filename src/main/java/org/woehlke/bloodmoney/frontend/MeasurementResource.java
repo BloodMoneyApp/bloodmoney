@@ -48,86 +48,87 @@ public class MeasurementResource {
     this.userSessionService = userSessionService;
   }
 
-    //TODO: #151 HTTP 406 - XML not accepted
-    @GetMapping("all")
-   // @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_XML /* MediaType.APPLICATION_XML, */ })
-    @ResponseBody
-    @PreAuthorize("isAuthenticated()")
-    public Page<MeasurementEntity> getAll(
-        @Nullable
-        @PageableDefault(sort={"created"}, direction= Sort.Direction.DESC) Pageable pageable,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        log.info("getAll");
-        if(null == pageable){
-            int page=0; int size=10;
-            Sort sort = Sort.by(Sort.Direction.DESC, "created");
-            pageable = PageRequest.of(page, size, sort);
-        }
-        log.info("getAll - pageable:"+ pageable.toString());
-      model = userSessionService.handleUserSession(userSessionBean, model);
-        UserSessionBean u = (UserSessionBean) model.getAttribute("userSessionBean");
-        log.info("getAll - userSessionBean: "+ u);
-      return measurementService.getAll(pageable);
+  //TODO: #151 HTTP 406 - XML not accepted
+  @GetMapping("all")
+  // @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML/*, MediaType.TEXT_XML */})
+  @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_XML /* MediaType.APPLICATION_XML, */})
+  @ResponseBody
+  @PreAuthorize("isAuthenticated()")
+  public Page<MeasurementEntity> getAll(
+    @Nullable
+    @PageableDefault(sort = {"created"}, direction = Sort.Direction.DESC) Pageable pageable,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    log.info("getAll");
+    if (null == pageable) {
+      int page = 0;
+      int size = 10;
+      Sort sort = Sort.by(Sort.Direction.DESC, "created");
+      pageable = PageRequest.of(page, size, sort);
     }
+    log.info("getAll - pageable:" + pageable.toString());
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    UserSessionBean u = (UserSessionBean) model.getAttribute("userSessionBean");
+    log.info("getAll - userSessionBean: " + u);
+    return measurementService.getAll(pageable);
+  }
 
-    @GetMapping("/{id}")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @ResponseBody
-    @PreAuthorize("isAuthenticated()")
-    public MeasurementEntity getOne(
-        @PathVariable("id") MeasurementEntity one,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        return one;
-    }
+  @GetMapping("/{id}")
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @ResponseBody
+  @PreAuthorize("isAuthenticated()")
+  public MeasurementEntity getOne(
+    @PathVariable("id") MeasurementEntity one,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    return one;
+  }
 
-    @PutMapping("/{id}")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @ResponseBody
-    @PreAuthorize("isAuthenticated()")
-    public MeasurementEntity update(
-        @Valid MeasurementEntity one,
-        @PathVariable("id") long id,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        return measurementService.update(one, id);
-    }
+  @PutMapping("/{id}")
+  @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @ResponseBody
+  @PreAuthorize("isAuthenticated()")
+  public MeasurementEntity update(
+    @Valid MeasurementEntity one,
+    @PathVariable("id") long id,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    return measurementService.update(one, id);
+  }
 
-    @DeleteMapping(path = "/{id}")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @PreAuthorize("isAuthenticated()")
-    public Response delete(
-        @PathVariable("id") long id,
-        @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        MeasurementEntity one = measurementService.getOne(id);
-        measurementService.delete(one);
-        return Response.status(Response.Status.OK.getStatusCode()).build();
-    }
+  @DeleteMapping(path = "/{id}")
+  @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @PreAuthorize("isAuthenticated()")
+  public Response delete(
+    @PathVariable("id") long id,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    MeasurementEntity one = measurementService.getOne(id);
+    measurementService.delete(one);
+    return Response.status(Response.Status.OK.getStatusCode()).build();
+  }
 
-    @PostMapping("/add")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @ResponseBody
-    @PreAuthorize("isAuthenticated()")
-    public MeasurementEntity add(
-       MeasurementEntity one,
-       @Context UriInfo uriInfo,
-       @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-       Model model
-    ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        one = measurementService.add(one);
-        return one;
-    }
+  @PostMapping("/add")
+  @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @ResponseBody
+  @PreAuthorize("isAuthenticated()")
+  public MeasurementEntity add(
+    MeasurementEntity one,
+    @Context UriInfo uriInfo,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    one = measurementService.add(one);
+    return one;
+  }
 }

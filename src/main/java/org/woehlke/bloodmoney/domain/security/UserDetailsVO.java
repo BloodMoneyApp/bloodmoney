@@ -46,7 +46,7 @@ public class UserDetailsVO implements UserDetails {
   @Override
   public String toString() {
     StringBuffer b = new StringBuffer();
-    for(GrantedAuthority a:this.authorities){
+    for (GrantedAuthority a : this.authorities) {
       b.append(a.getAuthority());
       b.append(", ");
     }

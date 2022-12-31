@@ -26,66 +26,67 @@ import java.util.Locale;
 @Configuration
 @EnableAsync
 @EnableJpaRepositories({
-    "org.woehlke.bloodmoney"
+  "org.woehlke.bloodmoney"
 })
 @EnableConfigurationProperties({
-    BloodMoneyProperties.class
+  BloodMoneyProperties.class
 })
 @EnableWebMvc
 @EnableSpringDataWebSupport
 @EnableAutoConfiguration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    private final BloodMoneyProperties bloodMoneyProperties;
-    @Autowired
-    public WebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
-        this.bloodMoneyProperties = bloodMoneyProperties;
-    }
+  private final BloodMoneyProperties bloodMoneyProperties;
 
-    @Bean
-    public Java8TimeDialect java8TimeDialect() {
-        return new Java8TimeDialect();
-    }
+  @Autowired
+  public WebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
+    this.bloodMoneyProperties = bloodMoneyProperties;
+  }
 
-    @Bean
-    public LocaleResolver localeResolver() {
-        SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(Locale.GERMAN);
-        return slr;
-    }
+  @Bean
+  public Java8TimeDialect java8TimeDialect() {
+    return new Java8TimeDialect();
+  }
 
-    @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
-        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-        lci.setParamName("lang");
-        return lci;
-    }
+  @Bean
+  public LocaleResolver localeResolver() {
+    SessionLocaleResolver slr = new SessionLocaleResolver();
+    slr.setDefaultLocale(Locale.GERMAN);
+    return slr;
+  }
 
-    @Bean
-    public SpringDataDialect springDataDialect() {
-        return new SpringDataDialect();
-    }
+  @Bean
+  public LocaleChangeInterceptor localeChangeInterceptor() {
+    LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+    lci.setParamName("lang");
+    return lci;
+  }
 
-    @Bean
-    public MethodValidationPostProcessor methodValidationPostProcessor() {
-        return new MethodValidationPostProcessor();
-    }
+  @Bean
+  public SpringDataDialect springDataDialect() {
+    return new SpringDataDialect();
+  }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
-    }
+  @Bean
+  public MethodValidationPostProcessor methodValidationPostProcessor() {
+    return new MethodValidationPostProcessor();
+  }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        for(String key: bloodMoneyProperties.getWebConfig().getWebAddResourceHandlers()){
-            registry.addResourceHandler("/"+key+"*").addResourceLocations("/"+key);
-            registry.addResourceHandler("/"+key+"**").addResourceLocations("/"+key);
-        }
-        for(String key: bloodMoneyProperties.getWebConfig().getWebAddResourceHandlersStatic()){
-            registry.addResourceHandler("/"+key+"*").addResourceLocations("classpath:/static/"+key);
-            registry.addResourceHandler("/"+key+"**").addResourceLocations("classpath:/static/"+key);
-        }
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(localeChangeInterceptor());
+  }
+
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    for (String key : bloodMoneyProperties.getWebConfig().getWebAddResourceHandlers()) {
+      registry.addResourceHandler("/" + key + "*").addResourceLocations("/" + key);
+      registry.addResourceHandler("/" + key + "**").addResourceLocations("/" + key);
     }
+    for (String key : bloodMoneyProperties.getWebConfig().getWebAddResourceHandlersStatic()) {
+      registry.addResourceHandler("/" + key + "*").addResourceLocations("classpath:/static/" + key);
+      registry.addResourceHandler("/" + key + "**").addResourceLocations("classpath:/static/" + key);
+    }
+  }
 
 }
