@@ -11,9 +11,9 @@ import java.util.Date;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class FlashMessage implements Serializable {
+public class FlashMessageVO implements Serializable {
 
-  private static final long serialVersionUID = 5616312717653223576L;
+  static final long serialVersionUID = 5616312717653223576L;
 
   private String message;
 

@@ -24,60 +24,61 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MeasurementEntityResourceTest {
 
-    @SuppressWarnings("deprecation")
-    @LocalServerPort
-    private int port;
+  @SuppressWarnings("deprecation")
+  @LocalServerPort
+  private int port;
 
-    @Autowired
-    private TestRestTemplate restTemplate;
+  @Autowired
+  private TestRestTemplate restTemplate;
 
-    @Autowired
-    private MeasurementResource measurementResource;
+  @Autowired
+  private MeasurementResource measurementResource;
 
-    @Autowired
-    private WebApplicationContext context;
+  @Autowired
+  private WebApplicationContext context;
 
-    private MockMvc mockMvc;
+  private MockMvc mockMvc;
 
-    @PostConstruct
-    public void runBeforeAll() {
-        log.info("TEST: runBeforeAll");
-        mockMvc = MockMvcBuilders
-            .webAppContextSetup(context)
-            .apply(springSecurity())
-            .build();
-        Assertions.assertNotNull(mockMvc,"runBeforeAll() context -> mockMvc");
-    }
+  @PostConstruct
+  public void runBeforeAll() {
+    log.info("TEST: runBeforeAll");
+    mockMvc = MockMvcBuilders
+      .webAppContextSetup(context)
+      .apply(springSecurity())
+      .build();
+    Assertions.assertNotNull(mockMvc, "runBeforeAll() context -> mockMvc");
+  }
 
-    private final String host = "http://localhost:";
-    private final String path = "/rest/measurement";;
+  private final String host = "http://localhost:";
+  private final String path = "/rest/measurement";
+  ;
 
-    @PreDestroy
-    public void runAfterAll() throws Exception {
-        log.info("TEST: runAfterAll");
-    }
+  @PreDestroy
+  public void runAfterAll() throws Exception {
+    log.info("TEST: runAfterAll");
+  }
 
-    @Test
-    public void getAllTest() throws Exception {
-        String url = host + port + path + "/all";
-        log.info("TEST: getAllTest url="+url);
-    }
+  @Test
+  public void getAllTest() throws Exception {
+    String url = host + port + path + "/all";
+    log.info("TEST: getAllTest url=" + url);
+  }
 
-    @Test
-    public void updateTest() throws Exception {
-        String url = host + port + path + "/{id}";
-        log.info("TEST: updateTest url="+url);
-    }
+  @Test
+  public void updateTest() throws Exception {
+    String url = host + port + path + "/{id}";
+    log.info("TEST: updateTest url=" + url);
+  }
 
-    @Test
-    public void deleteTest() throws Exception {
-        String url = host + port + path + "/";
-        log.info("TEST: deleteTest url="+url);
-    }
+  @Test
+  public void deleteTest() throws Exception {
+    String url = host + port + path + "/";
+    log.info("TEST: deleteTest url=" + url);
+  }
 
-    @Test
-    public void addTest() throws Exception {
-        String url = host + port + path + "/";
-        log.info("TEST: addTest url="+url);
-    }
+  @Test
+  public void addTest() throws Exception {
+    String url = host + port + path + "/";
+    log.info("TEST: addTest url=" + url);
+  }
 }

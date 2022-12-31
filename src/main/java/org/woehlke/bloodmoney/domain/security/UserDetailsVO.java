@@ -16,7 +16,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class UserDetailsVO implements UserDetails {
 
-  private static final long serialVersionUID = 22L;
+  static final long serialVersionUID = 22L;
 
   private final String username;
   private final String password;

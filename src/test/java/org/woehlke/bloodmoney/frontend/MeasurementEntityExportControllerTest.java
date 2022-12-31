@@ -24,31 +24,31 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @SpringBootTest
 public class MeasurementEntityExportControllerTest {
 
-    @Autowired
-    private MeasurementExportController measurementExportController;
+  @Autowired
+  private MeasurementExportController measurementExportController;
 
-    @Autowired
-    private WebApplicationContext context;
+  @Autowired
+  private WebApplicationContext context;
 
-    private MockMvc mockMvc;
+  private MockMvc mockMvc;
 
-    @PostConstruct
-    public void runBeforeAll() {
-        log.info("TEST: runBeforeAll");
-        mockMvc = MockMvcBuilders
-            .webAppContextSetup(context)
-            .apply(springSecurity())
-            .build();
-        Assertions.assertNotNull(mockMvc,"runBeforeAll() context -> mockMvc");
-    }
+  @PostConstruct
+  public void runBeforeAll() {
+    log.info("TEST: runBeforeAll");
+    mockMvc = MockMvcBuilders
+      .webAppContextSetup(context)
+      .apply(springSecurity())
+      .build();
+    Assertions.assertNotNull(mockMvc, "runBeforeAll() context -> mockMvc");
+  }
 
-    @PreDestroy
-    public void runAfterAll() {
-        log.info("TEST: runAfterAll");
-    }
+  @PreDestroy
+  public void runAfterAll() {
+    log.info("TEST: runAfterAll");
+  }
 
-    @Test
-    public void exportCSVTest(){
-            log.info("TEST: exportCSVTest");
-    }
+  @Test
+  public void exportCSVTest() {
+    log.info("TEST: exportCSVTest");
+  }
 }

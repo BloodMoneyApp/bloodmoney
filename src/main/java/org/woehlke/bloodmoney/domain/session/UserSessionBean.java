@@ -1,7 +1,7 @@
 package org.woehlke.bloodmoney.domain.session;
 
 import lombok.*;
-import org.woehlke.bloodmoney.domain.notification.FlashMessage;
+import org.woehlke.bloodmoney.domain.notification.FlashMessageVO;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ public class UserSessionBean implements Serializable {
   private static final long serialVersionUID = -9184465632849128728L;
 
   @NotNull
-  private Stack<FlashMessage> stack = new Stack<>();
+  private Stack<FlashMessageVO> stack = new Stack<>();
 
   @NotNull
   private Boolean devTesting;

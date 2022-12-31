@@ -21,7 +21,7 @@ import java.io.Serializable;
 @ConfigurationProperties(prefix = "org.woehlke.bloodmoney")
 public class BloodMoneyProperties implements Serializable {
 
-  private static final long serialVersionUID = 4480323170764476017L;
+  static final long serialVersionUID = 4480323170764476017L;
 
   @NotNull
   private Boolean devTesting;
@@ -47,7 +47,7 @@ public class BloodMoneyProperties implements Serializable {
   @Validated
   public static class UserConfig implements Serializable {
 
-    private static final long serialVersionUID = 4480323170764476017L;
+    static final long serialVersionUID = 4480323170764476017L;
 
     @NotNull
     private String userEmail;
@@ -65,7 +65,7 @@ public class BloodMoneyProperties implements Serializable {
   @Validated
   public static class WebConfig implements Serializable {
 
-    private static final long serialVersionUID = 4480323170764476017L;
+    static final long serialVersionUID = 4480323170764476017L;
 
     @NotNull
     private String exportFilename;
@@ -86,7 +86,7 @@ public class BloodMoneyProperties implements Serializable {
   @Validated
   public static class WebSecurity implements Serializable {
 
-    private static final long serialVersionUID = 4480323170764476017L;
+    static final long serialVersionUID = 4480323170764476017L;
 
     @NotNull
     private String antMatchersFullyAuthenticated;
