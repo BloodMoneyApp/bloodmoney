@@ -56,7 +56,7 @@ import java.util.UUID;
 @XmlRootElement
 public class MeasurementEntity implements Serializable {
 
-  private static final long serialVersionUID = 2676529613061169122L;
+  static final long serialVersionUID = 2676529613061169122L;
 
   @Id
   @GeneratedValue(generator = "measurement_generator")
