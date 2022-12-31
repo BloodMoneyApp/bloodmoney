@@ -19,72 +19,72 @@ import javax.servlet.http.HttpServletResponse;
 @SessionAttributes("userSession")
 public class MeasurementExportController {
 
-    @RequestMapping(path = "/all", method = RequestMethod.GET)
-    @ResponseBody
-    public void exportAll(HttpServletResponse response) throws Exception  {
-        this.exportCSV(response);
-    }
+  private final MeasurementService measurementService;
+  private final BloodMoneyProperties bloodMoneyProperties;
 
-    @RequestMapping(path = "/all/csv", method = RequestMethod.GET)
-    @ResponseBody
-    public void exportCSV(HttpServletResponse response) throws Exception  {
-        //set file name and content type
-        response.setContentType("text/csv");
-        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-            "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
-        //create a csv writer
-        StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
-            .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-            .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
-            .withOrderedResults(false)
-            .build();
-        //write all Measurements to csv file
-        writer.write(measurementService.getAll());
-    }
+  @Autowired
+  public MeasurementExportController(
+    MeasurementService measurementService,
+    BloodMoneyProperties bloodMoneyProperties
+  ) {
+    this.measurementService = measurementService;
+    this.bloodMoneyProperties = bloodMoneyProperties;
+  }
 
-    @RequestMapping(path = "/all/xml", method = RequestMethod.GET)
-    @ResponseBody
-    public void exportXML(HttpServletResponse response) throws Exception  {
-        //set file name and content type
-        response.setContentType("text/csv");
-        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-            "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
-        //create a csv writer
-        StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
-            .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-            .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
-            .withOrderedResults(false)
-            .build();
-        //write all Measurements to csv file
-        writer.write(measurementService.getAll());
-    }
+  @RequestMapping(path = "/all", method = RequestMethod.GET)
+  @ResponseBody
+  public void exportAll(HttpServletResponse response) throws Exception {
+    this.exportCSV(response);
+  }
 
-    @RequestMapping(path = "/all/json", method = RequestMethod.GET)
-    @ResponseBody
-    public void exportJSON(HttpServletResponse response) throws Exception  {
-        //set file name and content type
-        response.setContentType("text/csv");
-        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-            "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
-        //create a csv writer
-        StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
-            .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-            .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
-            .withOrderedResults(false)
-            .build();
-        //write all Measurements to csv file
-        writer.write(measurementService.getAll());
-    }
+  @RequestMapping(path = "/all/csv", method = RequestMethod.GET)
+  @ResponseBody
+  public void exportCSV(HttpServletResponse response) throws Exception {
+    //set file name and content type
+    response.setContentType("text/csv");
+    response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+      "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
+    //create a csv writer
+    StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
+      .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+      .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
+      .withOrderedResults(false)
+      .build();
+    //write all Measurements to csv file
+    writer.write(measurementService.getAll());
+  }
 
-    private final MeasurementService measurementService;
-    private final BloodMoneyProperties bloodMoneyProperties;
+  @RequestMapping(path = "/all/xml", method = RequestMethod.GET)
+  @ResponseBody
+  public void exportXML(HttpServletResponse response) throws Exception {
+    //set file name and content type
+    response.setContentType("text/csv");
+    response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+      "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
+    //create a csv writer
+    StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
+      .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+      .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
+      .withOrderedResults(false)
+      .build();
+    //write all Measurements to csv file
+    writer.write(measurementService.getAll());
+  }
 
-    @Autowired
-    public MeasurementExportController(
-        MeasurementService measurementService,
-        BloodMoneyProperties bloodMoneyProperties
-    ) {
-        this.measurementService = measurementService;
-        this.bloodMoneyProperties = bloodMoneyProperties;
-    }
+  @RequestMapping(path = "/all/json", method = RequestMethod.GET)
+  @ResponseBody
+  public void exportJSON(HttpServletResponse response) throws Exception {
+    //set file name and content type
+    response.setContentType("text/csv");
+    response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+      "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
+    //create a csv writer
+    StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
+      .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+      .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
+      .withOrderedResults(false)
+      .build();
+    //write all Measurements to csv file
+    writer.write(measurementService.getAll());
+  }
 }

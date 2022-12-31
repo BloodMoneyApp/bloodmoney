@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.woehlke.bloodmoney.domain.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.session.UserSessionService;
 
-
 @Slf4j
 @Controller
 @SessionAttributes("userSession")

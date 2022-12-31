@@ -24,99 +24,99 @@ import javax.validation.Valid;
 @SessionAttributes("userSession")
 public class MeasurementController {
 
-    @RequestMapping(path = "/all", method = RequestMethod.GET)
-    public String getAll(
-        @PageableDefault(sort={"created"}, direction=Sort.Direction.DESC) Pageable pageable,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        Page<MeasurementEntity> all = measurementService.getAll(pageable);
-        model.addAttribute("all", all);
-        return "measurement/all";
-    }
+  private final MeasurementService measurementService;
+  private final UserSessionService userSessionService;
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public String getOne(
-        @PathVariable("id") MeasurementEntity one,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        model.addAttribute("one", one);
-        return "measurement/one";
-    }
+  @Autowired
+  public MeasurementController(
+    MeasurementService measurementService,
+    UserSessionService userSessionService
+  ) {
+    this.measurementService = measurementService;
+    this.userSessionService = userSessionService;
+  }
 
-    @RequestMapping(path = "/{id}/edit", method = RequestMethod.GET)
-    public String editGet(
-        @PathVariable("id") MeasurementEntity one,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        model.addAttribute("one", one);
-        return "measurement/edit";
-    }
+  @RequestMapping(path = "/all", method = RequestMethod.GET)
+  public String getAll(
+    @PageableDefault(sort = {"created"}, direction = Sort.Direction.DESC) Pageable pageable,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    Page<MeasurementEntity> all = measurementService.getAll(pageable);
+    model.addAttribute("all", all);
+    return "measurement/all";
+  }
 
-    @RequestMapping(path = "/{id}/edit", method = RequestMethod.POST)
-    public final String editPost(
-            @PathVariable("id") Long id,
-            @Valid MeasurementEntity one,
-            @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
-            BindingResult result, Model model
-    ) {
-        if(result.hasErrors()){
-            return "measurement/edit";
-        } else {
-            one = measurementService.update(one,id);
-            return "redirect:/measurement/all";
-        }
-    }
+  @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+  public String getOne(
+    @PathVariable("id") MeasurementEntity one,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    model.addAttribute("one", one);
+    return "measurement/one";
+  }
 
-    @RequestMapping(path = "/{id}/delete", method = RequestMethod.GET)
-    public String deleteGet(
-        @PathVariable("id") MeasurementEntity one,
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
-        Model model
-    ) {
-        measurementService.delete(one);
-        return "redirect:/measurement/all";
-    }
+  @RequestMapping(path = "/{id}/edit", method = RequestMethod.GET)
+  public String editGet(
+    @PathVariable("id") MeasurementEntity one,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    model.addAttribute("one", one);
+    return "measurement/edit";
+  }
 
-    @RequestMapping(path = "/add", method = RequestMethod.GET)
-    public String addGet(
-        @SessionAttribute(name="userSession",required=false) UserSessionBean userSessionBean,
-        Model model
-    ){
-        model = userSessionService.handleUserSession(userSessionBean, model);
-        MeasurementEntity one = MeasurementEntity.getInstance();
-        model.addAttribute("one", one);
-        return "measurement/add";
+  @RequestMapping(path = "/{id}/edit", method = RequestMethod.POST)
+  public final String editPost(
+    @PathVariable("id") Long id,
+    @Valid MeasurementEntity one,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    BindingResult result, Model model
+  ) {
+    if (result.hasErrors()) {
+      return "measurement/edit";
+    } else {
+      one = measurementService.update(one, id);
+      return "redirect:/measurement/all";
     }
+  }
 
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public final String addPost(
-            @Valid MeasurementEntity one,
-            @SessionAttribute(name="userSession", required=false) UserSessionBean userSessionBean,
-            BindingResult result, Model model
-    ) {
-        if(result.hasErrors()){
-            return "measurement/edit";
-        } else {
-            one = measurementService.add(one);
-            return "redirect:/measurement/all";
-        }
+  @RequestMapping(path = "/{id}/delete", method = RequestMethod.GET)
+  public String deleteGet(
+    @PathVariable("id") MeasurementEntity one,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    measurementService.delete(one);
+    return "redirect:/measurement/all";
+  }
+
+  @RequestMapping(path = "/add", method = RequestMethod.GET)
+  public String addGet(
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    Model model
+  ) {
+    model = userSessionService.handleUserSession(userSessionBean, model);
+    MeasurementEntity one = MeasurementEntity.getInstance();
+    model.addAttribute("one", one);
+    return "measurement/add";
+  }
+
+  @RequestMapping(path = "/add", method = RequestMethod.POST)
+  public final String addPost(
+    @Valid MeasurementEntity one,
+    @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
+    BindingResult result, Model model
+  ) {
+    if (result.hasErrors()) {
+      return "measurement/edit";
+    } else {
+      one = measurementService.add(one);
+      return "redirect:/measurement/all";
     }
-
-    private final MeasurementService measurementService;
-    private final UserSessionService userSessionService;
-
-    @Autowired
-    public MeasurementController(
-        MeasurementService measurementService,
-        UserSessionService userSessionService
-    ) {
-        this.measurementService = measurementService;
-        this.userSessionService = userSessionService;
-    }
+  }
 }
