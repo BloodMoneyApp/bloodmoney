@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.woehlke.bloodmoney</groupId>
@@ -11,7 +12,7 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.7.7</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <scm>
@@ -95,6 +96,9 @@
     <!-- SCM and Releasing -->
     <version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
     <version.maven-release-plugin>3.0.0-M7</version.maven-release-plugin>
+
+
+    <version.jcommander>1.82</version.jcommander>
 
     <!-- Docker -->
     <version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
@@ -518,7 +522,59 @@
             <groupId>com.beust</groupId>
             <artifactId>jcommander</artifactId>
           </exclusion>
+          <exclusion>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd-java</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd-javascript</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd-jsp</artifactId>
+          </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>com.beust</groupId>
+        <artifactId>jcommander</artifactId>
+        <version>${version.jcommander}</version>
+      </dependency>
+      <dependency>
+        <groupId>net.sourceforge.pmd</groupId>
+        <artifactId>pmd</artifactId>
+        <version>${version.maven-pmd-plugin.pmd}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.sourceforge.pmd</groupId>
+        <artifactId>pmd-core</artifactId>
+        <version>${version.maven-pmd-plugin.pmd}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.sourceforge.pmd</groupId>
+        <artifactId>pmd-java</artifactId>
+        <version>${version.maven-pmd-plugin.pmd}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.sourceforge.pmd</groupId>
+        <artifactId>pmd-javascript</artifactId>
+        <version>${version.maven-pmd-plugin.pmd}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>net.sourceforge.pmd</groupId>
+        <artifactId>pmd-jsp</artifactId>
+        <version>${version.maven-pmd-plugin.pmd}</version>
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
@@ -901,6 +957,30 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>com.beust</groupId>
+      <artifactId>jcommander</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.pmd</groupId>
+      <artifactId>pmd-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.pmd</groupId>
+      <artifactId>pmd-java</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.pmd</groupId>
+      <artifactId>pmd-javascript</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.pmd</groupId>
+      <artifactId>pmd-jsp</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-surefire-plugin</artifactId>
       <type>maven-plugin</type>
@@ -1096,32 +1176,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
           <version>${version.maven-pmd-plugin}</version>
-          <dependencies>
-            <dependency>
-              <groupId>net.sourceforge.pmd</groupId>
-              <artifactId>pmd-core</artifactId>
-              <version>${version.maven-pmd-plugin.pmd}</version>
-              <scope>compile</scope>
-            </dependency>
-            <dependency>
-              <groupId>net.sourceforge.pmd</groupId>
-              <artifactId>pmd-java</artifactId>
-              <version>${version.maven-pmd-plugin.pmd}</version>
-              <scope>compile</scope>
-            </dependency>
-            <dependency>
-              <groupId>net.sourceforge.pmd</groupId>
-              <artifactId>pmd-javascript</artifactId>
-              <version>${version.maven-pmd-plugin.pmd}</version>
-              <scope>compile</scope>
-            </dependency>
-            <dependency>
-              <groupId>net.sourceforge.pmd</groupId>
-              <artifactId>pmd-jsp</artifactId>
-              <version>${version.maven-pmd-plugin.pmd}</version>
-              <scope>compile</scope>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1603,7 +1657,8 @@
         <finalName>${project.artifactId}</finalName>
         <defaultGoal>
           clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins dependency:sources
-          install spring-boot:repackage site site:deploy
+          install source:jar source:test-jar javadoc:jar javadoc:test-jar spring-boot:repackage
+          site site:jar site:deploy
         </defaultGoal>
       </build>
     </profile>
