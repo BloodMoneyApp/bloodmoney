@@ -76,3 +76,6 @@ build
 /xy.txt
 /xx2.txt
 /xy2.txt
+/spring-boot-migrator.jar
+/spring-boot-upgrade.jar
+/.rewrite-cache/
