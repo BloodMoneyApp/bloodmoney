@@ -54,37 +54,4 @@ public class MeasurementExportController {
     writer.write(measurementService.getAll());
   }
 
-  @RequestMapping(path = "/all/xml", method = RequestMethod.GET)
-  @ResponseBody
-  public void exportXML(HttpServletResponse response) throws Exception {
-    //set file name and content type
-    response.setContentType("text/csv");
-    response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-      "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
-    //create a csv writer
-    StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
-      .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-      .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
-      .withOrderedResults(false)
-      .build();
-    //write all Measurements to csv file
-    writer.write(measurementService.getAll());
-  }
-
-  @RequestMapping(path = "/all/json", method = RequestMethod.GET)
-  @ResponseBody
-  public void exportJSON(HttpServletResponse response) throws Exception {
-    //set file name and content type
-    response.setContentType("text/csv");
-    response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-      "attachment; filename=\"" + this.bloodMoneyProperties.getWebConfig().getExportFilename() + "\"");
-    //create a csv writer
-    StatefulBeanToCsv<MeasurementEntity> writer = new StatefulBeanToCsvBuilder<MeasurementEntity>(response.getWriter())
-      .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-      .withSeparator(this.bloodMoneyProperties.getWebConfig().getExportFilenameSeparator().charAt(0))
-      .withOrderedResults(false)
-      .build();
-    //write all Measurements to csv file
-    writer.write(measurementService.getAll());
-  }
 }
