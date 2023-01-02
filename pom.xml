@@ -4,13 +4,13 @@
 
   <groupId>org.woehlke.bloodmoney</groupId>
   <artifactId>bloodmoney</artifactId>
-  <version>2.0.7-SNAPSHOT</version>
+  <version>3.0.0.RC2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.7</version>
+    <version>3.0.1</version>
     <relativePath />
   </parent>
 
@@ -141,6 +141,8 @@
     <version.asciidoctor-maven-plugin>2.2.2</version.asciidoctor-maven-plugin>
     <version.doxia-module-markdown>1.11.1</version.doxia-module-markdown>
     <version.maven-enforcer-plugin>3.1.0</version.maven-enforcer-plugin>
+
+    <spring-session-bom.version>3.0.0</spring-session-bom.version>
   </properties>
 
   <repositories>
@@ -189,6 +191,10 @@
       <name>Atlassian 3rd-P Old Repository</name>
       <url>https://packages.atlassian.com/3rdparty/</url>
     </repository>
+    <repository>
+      <id>spring-milestone</id>
+      <url>https://repo.spring.io/milestone</url>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
@@ -236,10 +242,20 @@
       <name>Atlassian 3rd-P Old Repository</name>
       <url>https://packages.atlassian.com/3rdparty/</url>
     </pluginRepository>
+    <pluginRepository>
+      <id>spring-milestone</id>
+      <url>https://repo.spring.io/milestone</url>
+    </pluginRepository>
   </pluginRepositories>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <version>10.0.0</version>
+        <scope>provided</scope>
+      </dependency>
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
@@ -342,29 +358,37 @@
         <version>${version.thymeleaf-testing}</version>
         <scope>test</scope>
       </dependency>
+      <!--
       <dependency>
         <groupId>io.github.jpenren</groupId>
         <artifactId>thymeleaf-spring-data-dialect</artifactId>
         <version>${version.thymeleaf-spring-data-dialect}</version>
       </dependency>
-
+      -->
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <version>${version.org.postgresql}</version>
       </dependency>
+      <!--
       <dependency>
         <groupId>net.sf.saxon</groupId>
         <artifactId>saxon-dom</artifactId>
         <version>8.7</version>
       </dependency>
-
+      -->
+      <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>4.0.1</version>
+      </dependency>
       <!-- SCM -->
       <dependency>
         <groupId>org.apache.maven.scm</groupId>
         <artifactId>maven-scm-providers-standard</artifactId>
         <version>${version.org.apache.maven.scm}</version>
         <type>pom</type>
+        <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.scm</groupId>
@@ -655,6 +679,18 @@
         <artifactId>snakeyaml</artifactId>
         <version>1.33</version>
       </dependency>
+      <!--
+      <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.1.6.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate.validator</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>7.0.5.Final</version>
+      </dependency>
+      -->
     </dependencies>
   </dependencyManagement>
 
@@ -787,20 +823,22 @@
     </dependency>
     <dependency>
       <groupId>org.thymeleaf</groupId>
-      <artifactId>thymeleaf-spring5</artifactId>
+      <artifactId>thymeleaf-spring6</artifactId>
     </dependency>
     <dependency>
       <groupId>org.thymeleaf.extras</groupId>
-      <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+      <artifactId>thymeleaf-extras-springsecurity6</artifactId>
     </dependency>
     <dependency>
       <groupId>com.github.mxab.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-data-attribute</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>io.github.jpenren</groupId>
       <artifactId>thymeleaf-spring-data-dialect</artifactId>
     </dependency>
+    -->
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-testing</artifactId>
@@ -817,24 +855,62 @@
     </dependency>
     <!-- TODO #127 check dependency: hibernate-core -->
     <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator-annotation-processor</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-testing</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-envers</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-community-dialects</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-jpamodelgen</artifactId>
+    </dependency>
+
+    <!--
+    <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
     </dependency>
+    -->
     <!-- TODO #128  check dependency: jaxb-api -->
+    <!--
     <dependency>
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
     </dependency>
-
+    -->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
     </dependency>
-
+<!--
     <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>saxon-dom</artifactId>
     </dependency>
+-->
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>com.zaxxer</groupId>
       <artifactId>HikariCP</artifactId>

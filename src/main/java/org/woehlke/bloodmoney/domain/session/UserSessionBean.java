@@ -3,7 +3,7 @@ package org.woehlke.bloodmoney.domain.session;
 import lombok.*;
 import org.woehlke.bloodmoney.domain.notification.FlashMessageVO;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Stack;
 

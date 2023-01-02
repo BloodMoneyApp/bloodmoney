@@ -17,8 +17,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.thymeleaf.dialect.springdata.SpringDataDialect;
-import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
+//import org.thymeleaf.dialect.springdata.SpringDataDialect;
 
 import java.util.Locale;
 
@@ -44,11 +43,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
   }
 
   @Bean
-  public Java8TimeDialect java8TimeDialect() {
-    return new Java8TimeDialect();
-  }
-
-  @Bean
   public LocaleResolver localeResolver() {
     SessionLocaleResolver slr = new SessionLocaleResolver();
     slr.setDefaultLocale(Locale.GERMAN);
@@ -62,10 +56,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
     return lci;
   }
 
+  /*
   @Bean
   public SpringDataDialect springDataDialect() {
     return new SpringDataDialect();
   }
+  */
 
   @Bean
   public MethodValidationPostProcessor methodValidationPostProcessor() {

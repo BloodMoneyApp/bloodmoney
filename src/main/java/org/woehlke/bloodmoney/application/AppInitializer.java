@@ -3,7 +3,7 @@ package org.woehlke.bloodmoney.application;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.WebApplicationInitializer;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 @Slf4j
 public class AppInitializer implements WebApplicationInitializer {

@@ -1,5 +1,8 @@
 package org.woehlke.bloodmoney.frontend;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,9 +21,6 @@ import org.woehlke.bloodmoney.domain.security.AuthorizationService;
 import org.woehlke.bloodmoney.frontend.vo.LoginFormBean;
 import org.woehlke.bloodmoney.domain.security.LoginSuccessService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 @Slf4j
 @Controller

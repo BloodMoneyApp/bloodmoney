@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Slf4j
 @Service
@@ -74,6 +75,7 @@ public class MeasurementServiceImpl implements MeasurementService {
   public void deleteAll() {
     this.measurementRepository.deleteAll();
   }
+
 
   @Override
   public Optional<MeasurementEntity> findById(Long id) {

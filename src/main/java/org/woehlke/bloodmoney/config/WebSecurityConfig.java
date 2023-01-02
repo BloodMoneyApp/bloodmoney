@@ -124,7 +124,7 @@ public class WebSecurityConfig {
     http
       .headers((headers) -> headers.disable())
       .authorizeRequests((authorizeRequests) -> authorizeRequests
-        .antMatchers(
+        .requestMatchers(
           this.bloodMoneyProperties.getWebSecurity().getAntPatternsPublic()
         )
         .permitAll()

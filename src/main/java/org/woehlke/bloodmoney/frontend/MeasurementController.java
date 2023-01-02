@@ -15,7 +15,7 @@ import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 import org.woehlke.bloodmoney.domain.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.session.UserSessionService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 
 @Slf4j
@@ -48,7 +48,7 @@ public class MeasurementController {
     return "measurement/all";
   }
 
-  @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+  @GetMapping("/{id}")
   public String getOne(
     @PathVariable("id") MeasurementEntity one,
     @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
@@ -59,7 +59,7 @@ public class MeasurementController {
     return "measurement/one";
   }
 
-  @RequestMapping(path = "/{id}/edit", method = RequestMethod.GET)
+  @GetMapping("/{id}/edit")
   public String editGet(
     @PathVariable("id") MeasurementEntity one,
     @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
@@ -70,7 +70,7 @@ public class MeasurementController {
     return "measurement/edit";
   }
 
-  @RequestMapping(path = "/{id}/edit", method = RequestMethod.POST)
+  @PostMapping( "/{id}/edit")
   public final String editPost(
     @PathVariable("id") Long id,
     @Valid MeasurementEntity one,
@@ -85,7 +85,7 @@ public class MeasurementController {
     }
   }
 
-  @RequestMapping(path = "/{id}/delete", method = RequestMethod.GET)
+  @GetMapping("/{id}/delete")
   public String deleteGet(
     @PathVariable("id") MeasurementEntity one,
     @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
@@ -95,7 +95,7 @@ public class MeasurementController {
     return "redirect:/measurement/all";
   }
 
-  @RequestMapping(path = "/add", method = RequestMethod.GET)
+  @GetMapping(path = "/add")
   public String addGet(
     @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
     Model model
@@ -106,7 +106,7 @@ public class MeasurementController {
     return "measurement/add";
   }
 
-  @RequestMapping(path = "/add", method = RequestMethod.POST)
+  @PostMapping(path = "/add")
   public final String addPost(
     @Valid MeasurementEntity one,
     @SessionAttribute(name = "userSession", required = false) UserSessionBean userSessionBean,
