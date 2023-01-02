@@ -358,29 +358,37 @@
         <version>${version.thymeleaf-testing}</version>
         <scope>test</scope>
       </dependency>
+      <!--
       <dependency>
         <groupId>io.github.jpenren</groupId>
         <artifactId>thymeleaf-spring-data-dialect</artifactId>
         <version>${version.thymeleaf-spring-data-dialect}</version>
       </dependency>
-
+      -->
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <version>${version.org.postgresql}</version>
       </dependency>
+      <!--
       <dependency>
         <groupId>net.sf.saxon</groupId>
         <artifactId>saxon-dom</artifactId>
         <version>8.7</version>
       </dependency>
-
+      -->
+      <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>4.0.1</version>
+      </dependency>
       <!-- SCM -->
       <dependency>
         <groupId>org.apache.maven.scm</groupId>
         <artifactId>maven-scm-providers-standard</artifactId>
         <version>${version.org.apache.maven.scm}</version>
         <type>pom</type>
+        <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.maven.scm</groupId>
@@ -813,10 +821,12 @@
       <groupId>com.github.mxab.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-data-attribute</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>io.github.jpenren</groupId>
       <artifactId>thymeleaf-spring-data-dialect</artifactId>
     </dependency>
+    -->
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-testing</artifactId>
@@ -849,10 +859,15 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
     </dependency>
-
+<!--
     <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>saxon-dom</artifactId>
+    </dependency>
+-->
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
     </dependency>
     <dependency>
       <groupId>com.zaxxer</groupId>
