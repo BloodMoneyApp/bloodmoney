@@ -167,8 +167,7 @@ public class MeasurementServiceTest {
     Assertions.assertTrue(true);
   }
 
-  @Ignore
-  @Test
+  //@Test
   public void getOneTest() {
     log.info("TEST: getOneTest");
     resetTestData();
@@ -207,8 +206,7 @@ public class MeasurementServiceTest {
     Assertions.assertTrue(true);
   }
 
-  @Ignore
-  @Test
+  //@Test
   public void updateTest() {
     log.info("TEST: getAllPageTest");
     resetTestData();
@@ -223,8 +221,7 @@ public class MeasurementServiceTest {
     Assertions.assertTrue(true);
   }
 
-  @Ignore
-  @Test
+  //@Test
   public void deleteTest() {
     log.info("TEST: deleteTest");
     resetTestData();
