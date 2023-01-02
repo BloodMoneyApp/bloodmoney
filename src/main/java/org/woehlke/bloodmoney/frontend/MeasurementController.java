@@ -15,7 +15,7 @@ import org.woehlke.bloodmoney.domain.measurements.MeasurementService;
 import org.woehlke.bloodmoney.domain.session.UserSessionBean;
 import org.woehlke.bloodmoney.domain.session.UserSessionService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 
 @Slf4j

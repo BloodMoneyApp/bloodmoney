@@ -18,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.dialect.springdata.SpringDataDialect;
-import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 
 import java.util.Locale;
 
@@ -41,11 +40,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
   @Autowired
   public WebMvcConfig(BloodMoneyProperties bloodMoneyProperties) {
     this.bloodMoneyProperties = bloodMoneyProperties;
-  }
-
-  @Bean
-  public Java8TimeDialect java8TimeDialect() {
-    return new Java8TimeDialect();
   }
 
   @Bean
