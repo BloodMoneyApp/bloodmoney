@@ -1,5 +1,7 @@
 package org.woehlke.bloodmoney.smoke;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -14,8 +16,6 @@ import org.woehlke.bloodmoney.frontend.*;
 import org.woehlke.bloodmoney.config.BloodMoneyProperties;
 import org.woehlke.bloodmoney.frontend.MeasurementController;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
