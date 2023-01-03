@@ -680,11 +680,6 @@
         <scope>provided</scope>
       </dependency>
       <dependency>
-        <groupId>org.yaml</groupId>
-        <artifactId>snakeyaml</artifactId>
-        <version>1.33</version>
-      </dependency>
-      <dependency>
         <groupId>org.hibernate.orm</groupId>
         <artifactId>hibernate-core</artifactId>
         <version>${hibernate.version}</version>
@@ -858,13 +853,10 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <!-- TODO #126 check dependency: jsoup -->
     <dependency>
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
     </dependency>
-    <!-- TODO #127 check dependency: hibernate-core -->
-
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-agroal</artifactId>
