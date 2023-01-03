@@ -93,15 +93,21 @@ public class MeasurementServiceTest {
   }
 
   private MeasurementEntity getRandomElement() {
-    long size = measurementService.count();
-    int mySize = Long.valueOf(size % Long.valueOf(Integer.MAX_VALUE)).intValue();
+    log.info("TEST helper: getRandomElement");
+    int size = measurementService.getAll().size();
+    log.info("TEST helper: measurementService.count(): int size ="+size);
+    //int mySize = Long.valueOf(size % Long.valueOf(Integer.MAX_VALUE)).intValue();
+    //log.info("TEST helper: measurementService.count():  int mySize = "+mySize);
     Random random = new Random();
-    int randomIndex = random.nextInt(mySize);
+    int randomIndex = random.nextInt(size);
+    log.info("TEST helper: measurementService.count():  int randomIndex = "+randomIndex);
     List<MeasurementEntity> resultList = measurementService.getAll();
     MeasurementEntity randomEntity = resultList.get(randomIndex);
     Assertions.assertNotNull(randomEntity);
+    log.info("TEST helper: measurementService.count():  MeasurementEntity randomEntity = "+randomEntity.toString());
     Long idSrc = randomEntity.getId();
     Assertions.assertEquals(idSrc,randomEntity.getId());
+    log.info("TEST helper: getRandomElement");
     return randomEntity;
   }
 
@@ -167,7 +173,7 @@ public class MeasurementServiceTest {
     Assertions.assertTrue(true);
   }
 
-  //@Test
+  @Test
   public void getOneTest() {
     log.info("TEST: getOneTest");
     resetTestData();
@@ -206,7 +212,7 @@ public class MeasurementServiceTest {
     Assertions.assertTrue(true);
   }
 
-  //@Test
+  @Test
   public void updateTest() {
     log.info("TEST: getAllPageTest");
     resetTestData();
@@ -221,7 +227,7 @@ public class MeasurementServiceTest {
     Assertions.assertTrue(true);
   }
 
-  //@Test
+  @Test
   public void deleteTest() {
     log.info("TEST: deleteTest");
     resetTestData();
@@ -229,10 +235,10 @@ public class MeasurementServiceTest {
     Assertions.assertNotNull(src);
     Long id = src.getId();
     Assertions.assertNotNull(id);
-    long countBefore = measurementService.count();
+    long countBefore = measurementService.getAll().size();
     measurementService.delete(src);
-    long countAfter = measurementService.count();
-    Assertions.assertEquals(countBefore - 1, countAfter, "count after deöete");
+    long countAfter = measurementService.getAll().size();
+    Assertions.assertEquals(countBefore - 1, countAfter, "count after delete");
     Optional<MeasurementEntity> target = measurementService.findById(id);
     Assertions.assertFalse(target.isPresent());
     Assertions.assertTrue(true);
