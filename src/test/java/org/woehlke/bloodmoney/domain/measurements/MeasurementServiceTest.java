@@ -2,7 +2,6 @@ package org.woehlke.bloodmoney.domain.measurements;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,14 +93,12 @@ public class MeasurementServiceTest {
 
   private MeasurementEntity getRandomElement() {
     log.info("TEST helper: getRandomElement");
-    int size = measurementService.getAll().size();
-    log.info("TEST helper: measurementService.count(): int size ="+size);
-    //int mySize = Long.valueOf(size % Long.valueOf(Integer.MAX_VALUE)).intValue();
-    //log.info("TEST helper: measurementService.count():  int mySize = "+mySize);
     Random random = new Random();
+    List<MeasurementEntity> resultList = measurementService.getAll();
+    int size = resultList.size();
+    log.info("TEST helper: measurementService.count(): int size ="+size);
     int randomIndex = random.nextInt(size);
     log.info("TEST helper: measurementService.count():  int randomIndex = "+randomIndex);
-    List<MeasurementEntity> resultList = measurementService.getAll();
     MeasurementEntity randomEntity = resultList.get(randomIndex);
     Assertions.assertNotNull(randomEntity);
     log.info("TEST helper: measurementService.count():  MeasurementEntity randomEntity = "+randomEntity.toString());
