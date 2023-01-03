@@ -10,31 +10,31 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 @Getter
-@ActiveProfiles("dev")
+@ActiveProfiles("default")
 @SpringBootTest
 public class SmokeTest10 {
 
-    private String test = "Test Lombok @Getters";
+  private String test = "Test Lombok @Getters";
 
-    @Test
-    public void contextLoads() throws Exception {
-        System.out.println("TEST: contextLoads");
-        assertTrue(true);
-    }
+  @Test
+  public void contextLoads() throws Exception {
+    System.out.println("TEST: contextLoads");
+    assertTrue(true);
+  }
 
-    @Test
-    public void testLombokGetter() throws Exception {
-        System.out.println("TEST: testLombokGetter");
-        System.out.println("TEST: testLombokGetter " + this.getTest());
-        assertTrue(true);
-    }
+  @Test
+  public void testLombokGetter() throws Exception {
+    System.out.println("TEST: testLombokGetter");
+    System.out.println("TEST: testLombokGetter " + this.getTest());
+    assertTrue(true);
+  }
 
-    @Test
-    public void testLombokLogging() throws Exception {
-        System.out.println("TEST: testLombokLogging");
-        System.out.println("TEST: testLombokLogging " + this.getTest());
-        log.info("TEST: testLombokLogging");
-        log.info("TEST: testLombokLogging " + this.getTest());
-        assertTrue(true);
-    }
+  @Test
+  public void testLombokLogging() throws Exception {
+    System.out.println("TEST: testLombokLogging");
+    System.out.println("TEST: testLombokLogging " + this.getTest());
+    log.info("TEST: testLombokLogging");
+    log.info("TEST: testLombokLogging " + this.getTest());
+    assertTrue(true);
+  }
 }

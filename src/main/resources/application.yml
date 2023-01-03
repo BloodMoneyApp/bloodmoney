@@ -14,7 +14,7 @@ spring:
   config:
     name: bloodmoney
   liquibase:
-    enabled: false
+    enabled: true
   devtools:
     livereload:
       enabled: ${BLOODMONEY_DEV_TESTING}
@@ -30,15 +30,13 @@ spring:
     atomikos:
       connectionfactory:
         xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
-  flyway:
-    enabled: true
-    baselineOnMigrate: true
   jpa:
     open-in-view: true
     show-sql: true
     database-platform: POSTGRESQL
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+      #ddl-auto: update
       #ddl-auto: create-drop update
       #ddl-auto: ${BLOODMONEY_HIBERNATE_DDL_AUTO}
       naming:
@@ -68,7 +66,7 @@ spring:
 org:
   woehlke:
     bloodmoney:
-      testDataHowManyTestData: 10
+      testDataHowManyTestData: 30
       devTesting: ${BLOODMONEY_DEV_TESTING}
       userConfig:
         userEmail: ${BLOODMONEY_USER_EMAIL}
@@ -80,46 +78,51 @@ org:
         webAddResourceHandlers:
           - "webjars/"
         webAddResourceHandlersStatic:
-          - "bloodmoney/"
-          - "icon/"
-          - "languages/"
+          - "img/"
+          - "css/"
+          - "js/"
           - "test/"
           - "favicon.ico"
       webSecurity:
-        loginProcessingUrl: "/j_spring_security_check"
-        failureForwardUrl: "/login?login_error=1"
-        defaultSuccessUrl: "/"
-        login-page: "/login"
-        logout-url: "/logout"
-        delete-cookies: "JSESSIONID"
-        invalidate-http-session: true
-        antMatchersFullyAuthenticated: "/**"
         antMatchersPermitAll:
-          - "/bloodmoney"
-          - "/bloodmoney/**"
-          - "/icon/**"
-          - "/icon"
-          - "/languages"
-          - "/languages/**"
-          - "/favicon.ico"
-          - "/webjars/**"
-          - "/webjars"
-          - "/test*/**"
-          - "/rest"
-          - "/rest/**"
           - "/bpm"
-          - "/login*"
-          - "/register*"
-          - "/confirm*/**"
-          - "/resetPassword*"
-          - "/passwordResetConfirm*/**"
-          - "/error*"
-          - "/fehler*"
-        usernameParameter: "userEmail"
-        passwordParameter: "userPassword"
+          - "/j_spring_security_check"
+        antMatchersFullyAuthenticated: "/**"
         secret: ${BLOODMONEY_USER_SECRET}
         iterations: ${BLOODMONEY_USER_ITERATIONS}
         hashWidth: ${BLOODMONEY_USER_HASH_WIDTH}
+        loginPage: "/user/login"
+        logoutUrl: "/user/logout"
+        defaultSuccessUrl: "/"
+        failureForwardUrl: "/user/logout"
+        cookieNamesToClear:
+          - "JSESSIONID"
+        invalidateHttpSession: true
+        loginProcessingUrl: "/j_spring_security_check"
+        usernameParameter: "j_username"
+        passwordParameter: "j_password"
+        antPatternsPublic:
+          - "/bpm"
+          - "/j_spring_security_check"
+          - "/favicon.ico"
+          - "/favicon.ico*"
+          - "/favicon.ico"
+          - "/img*"
+          - "/img/**"
+          - "/webjars/**"
+          - "/webjars/**"
+          - "/webjars"
+          - "/css"
+          - "/css/**"
+          - "/js"
+          - "/js/**"
+          - "/error*"
+          - "/fehler*"
+          - "/fehler"
+          - "/error"
+          - "/user/login"
+          - "/user/login*"
+
 logging:
   level:
     root: INFO
@@ -133,16 +136,12 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false
 ---
 spring:
   profiles:
     active: dev
-  flyway:
-    enabled: true
-    baselineOnMigrate: true
   thymeleaf:
     cache: false
   devtools:
@@ -153,7 +152,7 @@ spring:
       enabled: false
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
 server:
   compression:
     enabled: false
@@ -170,15 +169,17 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false
 ---
 spring:
   profiles:
     active: default
-  flyway:
-    enabled: true
+  thymeleaf:
+    cache: false
+  devtools:
+    livereload:
+      enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5432/bloodmoney
   jta:
@@ -189,7 +190,8 @@ spring:
     log-dir: transaction-logs/tx-logs-bloodmoney
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+      #ddl-auto: update
 server:
   port: ${PORT}
   compression:
@@ -207,6 +209,5 @@ logging:
         qos: WARN
       postgresql: WARN
       woehlke:
-        java:
-          bloodmoney: INFO
+        bloodmoney: INFO
 debug: false

@@ -4,11 +4,11 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:sd="http://www.thymeleaf.org/spring-data">
-<head th:replace="layout/page :: tw-head(twtitle=~{::title},links=~{},refreshMessages=false)">
+<head th:replace="~{layout/page :: tw-head(twtitle=~{::title},links=~{},refreshMessages=false)}">
   <title th:text="#{user.loginFormBean.h1}">Welcome to BloodMoney</title>
 </head>
 <body
-  th:replace="layout/page :: tw-page-body(twcontent=~{::mytwcontent},twtitle=~{::h1},description=~{::p.tw-content-subtitle})">
+  th:replace="~{layout/page :: tw-page-body(twcontent=~{::mytwcontent},twtitle=~{::h1},description=~{::p.tw-content-subtitle})}">
 <div id="page">
   <header id="tw-content-title">
     <h1>
@@ -20,7 +20,7 @@
   <main role="main">
     <div class="container">
       <div th:fragment="mytwcontent">
-        <form id="user-login-form" th:action="@{/j_spring_security_check}" th:object="${loginFormBean}" method="post">
+        <form id="user-login-form" th:action="@{/j_spring_security_check}" method="post">
           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
           <div class="card">
             <div class="card-header">
@@ -36,7 +36,7 @@
                   <span class="input-group-text" id="j_username_icon">
                     <i class="fa-regular fa-envelope"></i>
                   </span>
-                  <input id="j_username" type="email" th:field="*{{userEmail}}" class="form-control form-control-lg" placeholder="Enter email"/>
+                  <input id="j_username" type="email" class="form-control" name="j_username" placeholder="Enter email"/>
                 </div>
               </div>
               <div class="form-group card-text my-2">
@@ -45,7 +45,7 @@
                   <span class="input-group-text" id="j_password_icon">
                     <i class="fa-solid fa-lock"></i>
                   </span>
-                  <input id="j_password" type="password" th:field="*{{userPassword}}" class="form-control form-control-lg" placeholder="Password"/>
+                  <input id="j_password" type="password" class="form-control" name="j_password" placeholder="Password"/>
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@
       </div>
     </div>
   </main>
-  <div th:replace="layout/page :: tw-footer"></div>
+  <div th:replace="~{layout/page :: tw-footer}"></div>
 </div>
 </body>
 </html>

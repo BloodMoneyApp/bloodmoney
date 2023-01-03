@@ -1,3 +1,32 @@
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# usage-without-binary-jar: https://maven.apache.org/wrapper/
+.mvn/wrapper/maven-wrapper.jar
+
+.env
+.idea/
+*iml
+*.xcf
+*.gif
+
+/.classpath
+/.project
+/.idea
+/.settings
+/.factorypath
+.classpath
+.project
+.settings
+
+/transaction-logs/
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -6,10 +35,7 @@ build/
 
 ### STS ###
 .apt_generated
-.classpath
 .factorypath
-.project
-.settings
 .springBeans
 .sts4-cache
 
@@ -32,8 +58,6 @@ out/
 
 bloodmoney.iml
 *.log
-/transaction-logs/
-.env
 /bloodmoney.log
 /bloodmoney.log*
 build
@@ -45,10 +69,6 @@ build
 /target
 /wrapper
 
-#/.idea/workspace.xml
-#/.idea
-#/.idea/
-#/.idea/
 /release.properties
 /pom.xml.releaseBackup
 /x.txt
@@ -56,3 +76,6 @@ build
 /xy.txt
 /xx2.txt
 /xy2.txt
+/spring-boot-migrator.jar
+/spring-boot-upgrade.jar
+/.rewrite-cache/
