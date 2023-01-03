@@ -292,6 +292,11 @@
         <optional>false</optional>
       </dependency>
       <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>1.33</version>
+      </dependency>
+      <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
         <version>${junit-jupiter.version}</version>
@@ -846,6 +851,12 @@
     <dependency>
       <groupId>com.opencsv</groupId>
       <artifactId>opencsv</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-collections</groupId>
+          <artifactId>commons-collections</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- TODO #126 check dependency: jsoup -->
     <dependency>
@@ -884,12 +895,6 @@
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-envers</artifactId>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-graalvm</artifactId>
-    </dependency>
-    -->
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-hikaricp</artifactId>
@@ -902,22 +907,10 @@
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-jpamodelgen</artifactId>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-micrometer</artifactId>
-    </dependency>
-    -->
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-proxool</artifactId>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>org.hibernate.orm</groupId>
-      <artifactId>hibernate-spatial</artifactId>
-    </dependency>
-    -->
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-testing</artifactId>
@@ -952,29 +945,10 @@
       <groupId>org.antlr</groupId>
       <artifactId>antlr-runtime</artifactId>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-    </dependency>
-    -->
-    <!-- TODO #128  check dependency: jaxb-api -->
-    <!--
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-    </dependency>
-    -->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
     </dependency>
-<!--
-    <dependency>
-      <groupId>net.sf.saxon</groupId>
-      <artifactId>saxon-dom</artifactId>
-    </dependency>
--->
     <dependency>
       <groupId>org.glassfish.jaxb</groupId>
       <artifactId>jaxb-runtime</artifactId>
