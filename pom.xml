@@ -857,6 +857,7 @@
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
     </dependency>
+    <!--
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-agroal</artifactId>
@@ -873,6 +874,7 @@
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-community-dialects</artifactId>
     </dependency>
+    -->
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
@@ -883,6 +885,7 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <!--
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-envers</artifactId>
@@ -903,6 +906,7 @@
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-proxool</artifactId>
     </dependency>
+    -->
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-testing</artifactId>
@@ -921,10 +925,12 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <!--
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-vibur</artifactId>
     </dependency>
+    -->
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
@@ -1145,7 +1151,7 @@
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <defaultGoal>clean package dependency:list liquibase:update spring-boot:run</defaultGoal>
+    <defaultGoal>clean dependency:list liquibase:update install spring-boot:run</defaultGoal>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -1201,6 +1207,24 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>${version.maven-clean-plugin}</version>
+          <executions>
+            <execution>
+              <id>clean-jar-artifacts</id>
+              <phase>install</phase>
+              <goals><goal>clean</goal></goals>
+              <configuration>
+                <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                <filesets>
+                  <fileset>
+                    <directory>target</directory>
+                    <excludes>
+                      <exclude>*.jar</exclude>
+                    </excludes>
+                  </fileset>
+                </filesets>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1428,7 +1452,16 @@
           <executable>true</executable>
           <addResources>true</addResources>
           <excludeGroupIds>
-            org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module
+            org.eclipse.aether,org.sonatype.aether,org.beanshell,org.apache.maven.plugins,
+            org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,
+            org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,
+            org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,
+            net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,
+            org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,
+            org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module,
+            org.apache.maven.shared,org.apache.maven.reporting,org.apache.maven.release,
+            org.apache.maven.plugin-tools,org.sonatype.plexus,org.apache.maven.enforcer,
+            com.dkanejs.maven.plugins
           </excludeGroupIds>
           <excludes>
             <exclude>
@@ -1438,6 +1471,298 @@
             <exclude>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-devtools</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.jruby.jcodings</groupId>
+              <artifactId>jcodings</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>backport-util-concurrent</groupId>
+              <artifactId>backport-util-concurrent</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.headius</groupId>
+              <artifactId>backport9</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>javax.enterprise</groupId>
+              <artifactId>cdi-api</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>javax.xml.bind</groupId>
+              <artifactId>jaxb-api</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>javax.inject</groupId>
+              <artifactId>javax.inject</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.beust</groupId>
+              <artifactId>jcommander</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>joda-time</groupId>
+              <artifactId>joda-time</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>javax.annotation</groupId>
+              <artifactId>javax.annotation-api</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>javax.activation</groupId>
+              <artifactId>javax.activation-api</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache.httpcomponents</groupId>
+              <artifactId>httpclient</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache.httpcomponents</groupId>
+              <artifactId>httpcore</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>classworlds</groupId>
+              <artifactId>classworlds</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.beanshell</groupId>
+              <artifactId>bsh</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache.bcel</groupId>
+              <artifactId>bcel</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.ow2.asm</groupId>
+              <artifactId>asm</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>ch.ethz.ganymed</groupId>
+              <artifactId>ganymed-ssh2</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.hamcrest</groupId>
+              <artifactId>hamcrest-core</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.hamcrest</groupId>
+              <artifactId>hamcrest</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.sun.istack</groupId>
+              <artifactId>istack-commons</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.netbeans.lib</groupId>
+              <artifactId>cvsclient</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.jboss</groupId>
+              <artifactId>jandex</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.googlecode.javaewah</groupId>
+              <artifactId>JavaEWAH</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.jcraft</groupId>
+              <artifactId>jsch</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.jsoup</groupId>
+              <artifactId>jsoup</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>javax.annotation</groupId>
+              <artifactId>jsr250-api</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.google.code.findbugs</groupId>
+              <artifactId>jsr305</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.jcraft</groupId>
+              <artifactId>jzlib</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.martiansoftware</groupId>
+              <artifactId>nailgun-server</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>info.picocli</groupId>
+              <artifactId>picocli</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.thoughtworks.qdox</groupId>
+              <artifactId>qdox</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.tomlj</groupId>
+              <artifactId>tomlj</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.mozilla</groupId>
+              <artifactId>rhino</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.sonatype.sisu</groupId>
+              <artifactId>sisu-inject-plexus</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.sonatype.sisu</groupId>
+              <artifactId>sisu-inject-bean</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.sonatype.sisu</groupId>
+              <artifactId>sisu-guice</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.google.code.gson</groupId>
+              <artifactId>gson</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.sun.istack</groupId>
+              <artifactId>istack-commons-runtime</artifactId>
+            </exclude>
+            <!--
+            <exclude>
+                <groupId>org.apiguardian</groupId>
+                <artifactId>apiguardian-api</artifactId>
+            </exclude>
+            -->
+            <exclude>
+              <groupId>com.fasterxml.jackson.datatype</groupId>
+              <artifactId>jackson-datatype-jsr310</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-collections4</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>aopalliance</groupId>
+              <artifactId>aopalliance</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-lang3</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-lang</groupId>
+              <artifactId>commons-lang</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-validator</groupId>
+              <artifactId>commons-validator</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-beanutils</groupId>
+              <artifactId>commons-beanutils</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-chain</groupId>
+              <artifactId>commons-chain</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-digester</groupId>
+              <artifactId>commons-digester</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-codec</groupId>
+              <artifactId>commons-codec</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-collections</groupId>
+              <artifactId>commons-collections</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-compress</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>commons-logging</groupId>
+              <artifactId>commons-logging</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-text</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.jruby.joni</groupId>
+              <artifactId>joni</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.headius</groupId>
+              <artifactId>options</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>oro</groupId>
+              <artifactId>oro</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apache-extras.beanshell</groupId>
+              <artifactId>bsh</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.iq80.snappy</groupId>
+              <artifactId>snappy</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.fasterxml.jackson.module</groupId>
+              <artifactId>jackson-module-parameter-names</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.fasterxml.jackson.datatype</groupId>
+              <artifactId>jackson-datatype-jdk8</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-databind</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-core</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-annotations</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>dom4j</groupId>
+              <artifactId>dom4j</artifactId>
+            </exclude>
+            <!--
+            <exclude>
+                <groupId>com.fasterxml</groupId>
+                <artifactId>classmate</artifactId>
+            </exclude>
+            -->
+            <exclude>
+              <groupId>org.checkerframework</groupId>
+              <artifactId>checker-qual</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.reflections</groupId>
+              <artifactId>reflections</artifactId>
+            </exclude>
+            <exclude>
+              <groupId>org.apiguardian</groupId>
+              <artifactId>apiguardian-api</artifactId>
             </exclude>
           </excludes>
         </configuration>
@@ -1474,10 +1799,10 @@
           <excludeTypes>maven-plugin</excludeTypes>
           <excludeScope>test,provided</excludeScope>
           <excludeGroupIds>
-            org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module,
+            org.eclipse.aether,org.beanshell,org.apache.maven.plugins,org.apache.maven.scm,org.jruby,com.vladsch.flexmark,org.apache.maven.doxia,org.codehaus.plexus,org.apache.maven.scm,io.netty,org.apache.groovy,org.eclipse.jetty,org.mockito,org.asciidoctor,com.github.jnr,org.apache.maven.surefire,org.apache.maven,net.sourceforge.saxon,net.sf.saxon,com.github.spotbugs,org.eclipse.jgit,org.apache.ant,org.apache.velocity,org.junit.jupiter,org.junit.platform,junit,org.mockito,net.sourceforge.pmd,org.eclipse.sisu,org.ow2.asmcom.fasterxml.jackson.module,org.apache.maven.shared,org.apache.maven.reporting,org.apache.maven.release,org.apache.maven.plugin-tools,org.sonatype.plexus,org.apache.maven.enforcer,com.dkanejs.maven.plugins
           </excludeGroupIds>
           <excludeArtifactIds>
-            jboss-transaction-api_1.2_spec,byte-buddy-agent,byte-buddy,backport9,backport-util-concurrent,spring-boot-configuration-processor,spring-boot-devtools,ganymed-ssh2,maven-toolchain,weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api,lombok,jcommander,checkstyle,plexus-build-api
+            jboss-transaction-api_1.2_spec,byte-buddy-agent,byte-buddy,backport9,backport-util-concurrent,spring-boot-configuration-processor,spring-boot-devtools,ganymed-ssh2,maven-toolchain,weld-probe-core,antlr,bsh,velocity-tools,liquibase-core,jruby-complete,cdi-api,lombok,jcommander,checkstyle,plexus-build-api,maven-artifact-transfer,maven-common-artifact-filters,maven-dependency-analyzer,maven-dependency-tree,maven-filtering,maven-invoker,maven-plugin-annotations,maven-release-api,maven-release-manager,maven-reporting-api,maven-reporting-exec,maven-reporting-impl,maven-script-interpreter,maven-shared-incremental,maven-shared-jar,maven-shared-utils,spring-boot-maven-plugin,jcodings,checkstyle
           </excludeArtifactIds>
         </configuration>
         <executions>
@@ -1540,6 +1865,24 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>clean-jar-artifacts</id>
+            <phase>install</phase>
+            <goals><goal>clean</goal></goals>
+            <configuration>
+              <excludeDefaultDirectories>true</excludeDefaultDirectories>
+              <filesets>
+                <fileset>
+                  <directory>target</directory>
+                  <excludes>
+                    <exclude>*.jar</exclude>
+                  </excludes>
+                </fileset>
+              </filesets>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1782,9 +2125,7 @@
       </properties>
       <build>
         <finalName>${project.artifactId}</finalName>
-        <defaultGoal>
-          clean dependency:resolve dependency:resolve-plugins dependency:sources install spring-boot:run
-        </defaultGoal>
+        <defaultGoal>clean install spring-boot:run</defaultGoal>
       </build>
     </profile>
 
@@ -1801,27 +2142,41 @@
       <build>
         <finalName>${project.artifactId}</finalName>
         <defaultGoal>
-          clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins dependency:sources
-          install source:jar source:test-jar javadoc:jar javadoc:test-jar spring-boot:repackage
+          clean
+          dependency:purge-local-repository dependency:resolve dependency:resolve-plugins dependency:sources
+          install
+          source:jar source:test-jar javadoc:jar javadoc:test-jar
+          spring-boot:repackage
           site site:jar site:deploy
         </defaultGoal>
       </build>
     </profile>
 
     <profile>
-      <id>test</id>
+      <id>jar</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
       <properties>
-        <skipTests>false</skipTests>
-        <skipIntegrationTests>false</skipIntegrationTests>
+        <skipTests>true</skipTests>
+        <skip.unit.tests>true</skip.unit.tests>
+        <skip.integration.tests>true</skip.integration.tests>
       </properties>
       <build>
         <finalName>${project.artifactId}</finalName>
-        <defaultGoal>clean dependency:list install spring-boot:repackage</defaultGoal>
+        <defaultGoal>
+          clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins
+          dependency:sources install spring-boot:repackage site site:deploy site:jar source:test-jar
+          source:jar javadoc:jar javadoc:test-jar
+        </defaultGoal>
       </build>
     </profile>
 
     <profile>
       <id>docker</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
       <properties>
         <skipTests>false</skipTests>
         <skip.unit.tests>false</skip.unit.tests>
@@ -1840,10 +2195,13 @@
     </profile>
 
     <profile>
-      <id>jar</id>
+      <id>cloud</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
       <properties>
-        <skipTests>true</skipTests>
-        <skipIntegrationTests>true</skipIntegrationTests>
+        <skip.unit.tests>true</skip.unit.tests>
+        <skip.integration.tests>true</skip.integration.tests>
       </properties>
       <build>
         <finalName>${project.artifactId}</finalName>
@@ -1852,23 +2210,54 @@
     </profile>
 
     <profile>
-      <id>cloud</id>
+      <id>test</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
       <properties>
-        <skipTests>true</skipTests>
-        <skipIntegrationTests>true</skipIntegrationTests>
+        <skipTests>false</skipTests>
+        <skip.unit.tests>false</skip.unit.tests>
+        <skip.integration.tests>false</skip.integration.tests>
       </properties>
       <build>
         <finalName>${project.artifactId}</finalName>
-        <defaultGoal>clean dependency:list install spring-boot:repackage</defaultGoal>
+        <defaultGoal>clean dependency:purge-local-repository dependency:list install spring-boot:repackage
+        </defaultGoal>
       </build>
     </profile>
 
     <profile>
       <id>uml</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
       <properties>
         <skipTests>true</skipTests>
-        <skipIntegrationTests>true</skipIntegrationTests>
+        <skip.unit.tests>true</skip.unit.tests>
+        <skip.integration.tests>true</skip.integration.tests>
       </properties>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>com.github.funthomas424242</groupId>
+            <artifactId>plantuml-maven-plugin</artifactId>
+            <version>${version.plantuml-maven-plugin}</version>
+            <type>maven-plugin</type>
+            <exclusions>
+              <exclusion>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+          <dependency>
+            <groupId>net.sourceforge.plantuml</groupId>
+            <artifactId>plantuml</artifactId>
+            <version>${version.plantuml-maven-plugin.plantuml}</version>
+            <scope>runtime</scope>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
       <dependencies>
         <dependency>
           <groupId>com.github.funthomas424242</groupId>
@@ -1889,7 +2278,7 @@
             <artifactId>plantuml-maven-plugin</artifactId>
             <version>${version.plantuml-maven-plugin}</version>
             <configuration>
-              <truncatePattern>src/main/*</truncatePattern>
+              <truncatePattern>src/*</truncatePattern>
               <sourceFiles>
                 <directory>${basedir}</directory>
                 <includes>
