@@ -1653,10 +1653,12 @@
               <groupId>aopalliance</groupId>
               <artifactId>aopalliance</artifactId>
             </exclude>
+              <!--
             <exclude>
               <groupId>org.apache.commons</groupId>
               <artifactId>commons-lang3</artifactId>
             </exclude>
+              -->
             <exclude>
               <groupId>commons-lang</groupId>
               <artifactId>commons-lang</artifactId>
@@ -1665,10 +1667,12 @@
               <groupId>commons-validator</groupId>
               <artifactId>commons-validator</artifactId>
             </exclude>
+              <!--
             <exclude>
               <groupId>commons-beanutils</groupId>
               <artifactId>commons-beanutils</artifactId>
             </exclude>
+              -->
             <exclude>
               <groupId>commons-chain</groupId>
               <artifactId>commons-chain</artifactId>
