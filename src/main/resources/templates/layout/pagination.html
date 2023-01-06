@@ -7,17 +7,39 @@
 <div th:fragment="tw-pagination(page)">
     <div class="row" sec:authorize="isAuthenticated()">
         <div class="col">
-            <nav aria-label="pagination">
-                <ul class="pagination" sd:pagination="full">
-                    <!-- Pagination created by SpringDataDialect, this content is just for mockup -->
-                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            <nav aria-label="Task Pagination">
+                <ul class="pagination">
+                    <li class="page-item disabled" th:if="${page.isFirst}">
+                        <a href="#" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item" th:unless="${page.isFirst}">
+                        <a th:href="@{{myUrlPath}?page={page}(myUrlPath=@{/measurement/all},page=${page.previousPageable.pageNumber})}" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li th:each="i : ${#numbers.sequence( 0, page.totalPages-1)}" class="page-item">
+                        <a th:if="${page.number == i}" th:href="@{{myUrlPath}?page={page}(myUrlPath=@{/measurement/all},page=${i})}" class="page-link active" aria-current="page">
+                            <span th:text="${i+1}">1</span>
+                        </a>
+                        <a th:unless="${page.number == i}" th:href="@{{myUrlPath}?page={page}(myUrlPath=@{/measurement/all},page=${i})}" class="page-link">
+                            <span th:text="${i+1}">1</span>
+                        </a>
+                    </li>
+                    <li class="page-item" th:if="${page.hasNext}">
+                        <a th:href="@{{myUrlPath}?page={page}(myUrlPath=@{/measurement/all},page=${page.nextPageable.pageNumber})}"  class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item disabled" th:unless="${page.hasNext}">
+                        <a href="#" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-        </div>
-        <div class="col">
-            <span sd:pagination-summary="">info</span>
-            <span sd:page-size-selector="javascript"></span>
+
         </div>
     </div>
 </div>
