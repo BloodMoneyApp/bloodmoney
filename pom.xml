@@ -1406,16 +1406,7 @@
                     <file>${project.basedir}/LICENSE.txt</file>
                     <file>${project.basedir}/LICENSE.code.txt</file>
                     <file>${project.basedir}/LICENSE.writing.txt</file>
-                    <file>${project.basedir}/etc/db/setup-postgresql-account-and-db.sql</file>
-                    <file>${project.basedir}/etc/db/setup-postgresql-tw.sql</file>
                     <file>${project.basedir}/liquibase.properties</file>
-                    <file>${project.basedir}/src/site/markdown/CHANGELOG.md</file>
-                    <file>${project.basedir}/src/site/markdown/DEPLOYMENTS.md</file>
-                    <file>${project.basedir}/src/site/markdown/DOCKER.md</file>
-                    <file>${project.basedir}/src/site/markdown/HOWTO.md</file>
-                    <file>${project.basedir}/src/site/markdown/HELP.md</file>
-                    <file>${project.basedir}/src/site/markdown/HOWTO.md</file>
-                    <file>${project.basedir}/src/site/markdown/TODO.md</file>
                     <file>${project.basedir}/docker-compose.yml</file>
                     <file>${project.basedir}/docker-start.sh</file>
                     <file>${project.basedir}/docker-stop.sh</file>
