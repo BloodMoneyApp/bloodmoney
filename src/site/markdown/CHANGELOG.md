@@ -219,4 +219,4 @@
 
 
 ### 3.0.3-SNAPSHOT
-* issue #175 spring-boot-starter-parent update to 3.0.3
+* fixed #175 spring-boot-starter-parent update to 3.0.3
