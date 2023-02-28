@@ -18,23 +18,29 @@ public class SmokeTest10 {
 
     @Test
     public void contextLoads() throws Exception {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("TEST: contextLoads");
         assertTrue(true);
+        log.info("------------------------------------------------------------------------------------------------------");
     }
 
     @Test
     public void testLombokGetter() throws Exception {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("TEST: testLombokGetter");
         System.out.println("TEST: testLombokGetter " + this.getTest());
         assertTrue(true);
+        log.info("------------------------------------------------------------------------------------------------------");
     }
 
     @Test
     public void testLombokLogging() throws Exception {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("TEST: testLombokLogging");
         System.out.println("TEST: testLombokLogging " + this.getTest());
         log.info("TEST: testLombokLogging");
         log.info("TEST: testLombokLogging " + this.getTest());
         assertTrue(true);
+        log.info("------------------------------------------------------------------------------------------------------");
     }
 }

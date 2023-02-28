@@ -33,25 +33,32 @@ public class BloodMoneyApplicationTest {
 
     private MockMvc mockMvc;
 
+
     @PostConstruct
     public void runBeforeAll() {
+        log.info("======================================================================================================");
         log.info("TEST: runBeforeAll");
         mockMvc = MockMvcBuilders
             .webAppContextSetup(context)
             .apply(springSecurity())
             .build();
         Assertions.assertNotNull(mockMvc, "runBeforeAll() context -> mockMvc");
+        log.info("======================================================================================================");
     }
 
     @PreDestroy
     public void runAfterAll() {
+        log.info("======================================================================================================");
         log.info("TEST: runAfterAll");
+        log.info("======================================================================================================");
     }
 
     @Test
-    public void bloodMoneyPropertiesTest() throws Exception {
+    public void bloodMoneyPropertiesTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: bloodMoneyPropertiesTest");
         assertThat(bloodMoneyProperties).isNotNull();
+        log.info("------------------------------------------------------------------------------------------------------");
     }
 
 }

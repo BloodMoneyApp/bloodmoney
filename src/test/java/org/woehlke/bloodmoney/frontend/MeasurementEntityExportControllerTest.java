@@ -33,21 +33,27 @@ public class MeasurementEntityExportControllerTest {
 
     @PostConstruct
     public void runBeforeAll() {
+        log.info("======================================================================================================");
         log.info("TEST: runBeforeAll");
         mockMvc = MockMvcBuilders
             .webAppContextSetup(context)
             .apply(springSecurity())
             .build();
         Assertions.assertNotNull(mockMvc, "runBeforeAll() context -> mockMvc");
+        log.info("======================================================================================================");
     }
 
     @PreDestroy
     public void runAfterAll() {
+        log.info("======================================================================================================");
         log.info("TEST: runAfterAll");
+        log.info("======================================================================================================");
     }
 
     @Test
     public void exportCSVTest() {
+
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: exportCSVTest");
     }
 }

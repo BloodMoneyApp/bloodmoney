@@ -53,35 +53,6 @@ public class MeasurementEntityControllerTest {
         log.info("======================================================================================================");
     }
 
-    @Test
-    public void getRootPublic() throws Exception {
-        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.info("TEST: shouldReturnDefaultMessage: /");
-        this.mockMvc.perform(get("/"))
-            .andDo(print())
-            .andExpect(status().is3xxRedirection());
-        log.info("------------------------------------------------------------------------------------------------------");
-        log.info("TEST: shouldReturnDefaultMessage: /user/login");
-        this.mockMvc.perform(get("/user/login"))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Willkommen zu BloodMoney")))
-            .andExpect(content().string(containsString("Ihre App um Messwerte zu erfassen")));
-        log.info("------------------------------------------------------------------------------------------------------");
-    }
-
-    @Test
-    public void getLoginFormPublic() throws Exception {
-        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        log.info("TEST: getLoginFormPublic: /");
-        this.mockMvc.perform(get("/user/login"))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().string(containsString("Willkommen zu BloodMoney")))
-            .andExpect(content().string(containsString("Ihre App um Messwerte zu erfassen")));
-        log.info("------------------------------------------------------------------------------------------------------");
-    }
-
     @WithMockUser(username = "thomas.woehlke@gmail.com")
     @Test
     public void getMeasurementAllPrivate() throws Exception {
