@@ -27,83 +27,83 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @SpringBootTest
 public class SmokeTest20 {
 
-  @Autowired
-  private BloodMoneyProperties bloodMoneyProperties;
+    @Autowired
+    private BloodMoneyProperties bloodMoneyProperties;
 
-  @Autowired
-  private HomeController homeController;
+    @Autowired
+    private HomeController homeController;
 
-  @Autowired
-  private MeasurementController measurementController;
+    @Autowired
+    private MeasurementController measurementController;
 
-  @Autowired
-  private MeasurementExportController measurementExportController;
+    @Autowired
+    private MeasurementExportController measurementExportController;
 
-  @Autowired
-  private LoginController loginController;
+    @Autowired
+    private LoginController loginController;
 
-  @Autowired
-  private ErrorController errorController;
+    @Autowired
+    private ErrorController errorController;
 
-  @Autowired
-  private WebApplicationContext context;
+    @Autowired
+    private WebApplicationContext context;
 
-  private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-  @PostConstruct
-  public void runBeforeAll() {
-    log.info("TEST: runBeforeAll");
-    mockMvc = MockMvcBuilders
-      .webAppContextSetup(context)
-      .apply(springSecurity())
-      .build();
-    Assertions.assertNotNull(mockMvc, "runBeforeAll() context -> mockMvc");
-  }
+    @PostConstruct
+    public void runBeforeAll() {
+        log.info("TEST: runBeforeAll");
+        mockMvc = MockMvcBuilders
+            .webAppContextSetup(context)
+            .apply(springSecurity())
+            .build();
+        Assertions.assertNotNull(mockMvc, "runBeforeAll() context -> mockMvc");
+    }
 
-  @PreDestroy
-  public void runAfterAll() {
-    log.info("TEST: runAfterAll");
-  }
+    @PreDestroy
+    public void runAfterAll() {
+        log.info("TEST: runAfterAll");
+    }
 
-  @Test
-  public void contexLoads() throws Exception {
-    log.info("TEST: contexLoads");
-    assertTrue(true);
-  }
+    @Test
+    public void contexLoads() throws Exception {
+        log.info("TEST: contexLoads");
+        assertTrue(true);
+    }
 
-  @Test
-  public void bloodMoneyPropertiesTest() throws Exception {
-    log.info("TEST: bloodMoneyPropertiesTest");
-    assertThat(bloodMoneyProperties).isNotNull();
-  }
+    @Test
+    public void bloodMoneyPropertiesTest() throws Exception {
+        log.info("TEST: bloodMoneyPropertiesTest");
+        assertThat(bloodMoneyProperties).isNotNull();
+    }
 
-  @Test
-  public void homeControllerTest() throws Exception {
-    log.info("TEST: homeController");
-    assertThat(homeController).isNotNull();
-  }
+    @Test
+    public void homeControllerTest() throws Exception {
+        log.info("TEST: homeController");
+        assertThat(homeController).isNotNull();
+    }
 
-  @Test
-  public void bloodPressureMeasurementControllerTest() throws Exception {
-    log.info("TEST: bloodPressureMeasurementController");
-    assertThat(measurementController).isNotNull();
-  }
+    @Test
+    public void bloodPressureMeasurementControllerTest() throws Exception {
+        log.info("TEST: bloodPressureMeasurementController");
+        assertThat(measurementController).isNotNull();
+    }
 
-  @Test
-  public void bloodPressureMeasurementControllerExportTest() throws Exception {
-    log.info("TEST: bloodPressureMeasurementControllerExport");
-    assertThat(measurementExportController).isNotNull();
-  }
+    @Test
+    public void bloodPressureMeasurementControllerExportTest() throws Exception {
+        log.info("TEST: bloodPressureMeasurementControllerExport");
+        assertThat(measurementExportController).isNotNull();
+    }
 
-  @Test
-  public void userLoginControllerTest() throws Exception {
-    log.info("TEST: userLoginController");
-    assertThat(loginController).isNotNull();
-  }
+    @Test
+    public void userLoginControllerTest() throws Exception {
+        log.info("TEST: userLoginController");
+        assertThat(loginController).isNotNull();
+    }
 
-  @Test
-  public void myErrorControllerTest() throws Exception {
-    log.info("TEST: myErrorController");
-    assertThat(errorController).isNotNull();
-  }
+    @Test
+    public void myErrorControllerTest() throws Exception {
+        log.info("TEST: myErrorController");
+        assertThat(errorController).isNotNull();
+    }
 }
