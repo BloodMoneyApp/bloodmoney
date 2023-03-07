@@ -34,6 +34,7 @@ public class MeasurementServiceTest {
     public MeasurementServiceTest(
         MeasurementService measurementService,
         BloodMoneyProperties bloodMoneyProperties) {
+        log.info("=================================================================================================");
         this.measurementService = measurementService;
         this.bloodMoneyProperties = bloodMoneyProperties;
         this.testDataHowManyTestData = this.bloodMoneyProperties.getTestDataHowManyTestData();
@@ -52,6 +53,7 @@ public class MeasurementServiceTest {
         testDataHowManyPlustestDataToAdd = testDataHowManyTestData + testDataToAdd.size();
         ZoneId zoneId = ZoneId.of(MeasurementEntity.ZONE_ID__ECT__EUROPE_PARIS);
         TimeZone.setDefault(TimeZone.getTimeZone(zoneId.getId()));
+        log.info("=================================================================================================");
     }
 
     private void deletePersistentTestData() {
@@ -59,14 +61,17 @@ public class MeasurementServiceTest {
     }
 
     private void persistTestData() {
+        log.info("=================================================================================================");
         List<MeasurementEntity> srcListe = this.getTestData();
         Assertions.assertNotNull(srcListe);
         for (MeasurementEntity m : srcListe) {
             measurementService.add(m);
         }
+        log.info("=================================================================================================");
     }
 
     private void persistMuchTestData() {
+        log.info("=================================================================================================");
         List<MeasurementEntity> moreTestData = this.getTestData();
         String situation;
         int i;
@@ -84,14 +89,18 @@ public class MeasurementServiceTest {
         for (MeasurementEntity m : moreTestData) {
             measurementService.add(m);
         }
+        log.info("=================================================================================================");
     }
 
     private void resetTestData() {
+        log.info("=================================================================================================");
         deletePersistentTestData();
         persistTestData();
+        log.info("=================================================================================================");
     }
 
     private MeasurementEntity getRandomElement() {
+        log.info("=================================================================================================");
         log.info("TEST helper: getRandomElement");
         Random random = new Random();
         List<MeasurementEntity> resultList = measurementService.getAll();
@@ -105,12 +114,15 @@ public class MeasurementServiceTest {
         Long idSrc = randomEntity.getId();
         Assertions.assertEquals(idSrc, randomEntity.getId());
         log.info("TEST helper: getRandomElement");
+        log.info("=================================================================================================");
         return randomEntity;
     }
 
     @Test
     public void deletePersitentTestDataTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: deletePersitentTestDataTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         deletePersistentTestData();
         List<MeasurementEntity> resultList = measurementService.getAll();
         int assertCountExpected = 0;
@@ -122,7 +134,9 @@ public class MeasurementServiceTest {
 
     @Test
     public void persistTestDataTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: persistTestDataTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         deletePersistentTestData();
         persistTestData();
         List<MeasurementEntity> resultList = measurementService.getAll();
@@ -135,7 +149,9 @@ public class MeasurementServiceTest {
 
     @Test
     public void getAllListTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: getAllPageTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         resetTestData();
         List<MeasurementEntity> srcListe = this.getTestData();
         List<MeasurementEntity> resultList = measurementService.getAll();
@@ -153,7 +169,9 @@ public class MeasurementServiceTest {
 
     @Test
     public void getAllListAndAllFieldsNonNullTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: getAllListAndAllFieldsNonNullTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         resetTestData();
         List<MeasurementEntity> srcListe = this.getTestData();
         List<MeasurementEntity> resultList = measurementService.getAll();
@@ -172,7 +190,9 @@ public class MeasurementServiceTest {
 
     @Test
     public void getOneTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: getOneTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         resetTestData();
         MeasurementEntity src = getRandomElement();
         Assertions.assertNotNull(src);
@@ -186,7 +206,9 @@ public class MeasurementServiceTest {
 
     @Test
     public void addTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: addTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         resetTestData();
         List<MeasurementEntity> srcListe = this.getTestData();
         List<MeasurementEntity> moreTestDataToAdd = this.getTestDataToAdd();
@@ -196,37 +218,47 @@ public class MeasurementServiceTest {
         Assertions.assertEquals(testDataHowManyTestData, srcListe.size(), "srcListe.size()==" + testDataHowManyTestData);
         moreTestDataToAdd = this.getTestDataToAdd();
         srcListe.addAll(moreTestDataToAdd);
+        log.info("--------------------------------------------------------------------------------------------------");
         List<MeasurementEntity> resultList = measurementService.getAll();
+        log.info("--------------------------------------------------------------------------------------------------");
         Assertions.assertNotNull(resultList, "resultList != null");
         Assertions.assertEquals(srcListe.size(), resultList.size(), "srcListe.size()==resultList.size()");
         Assertions.assertEquals(testDataHowManyPlustestDataToAdd, srcListe.size(), "srcListe.size()==" + testDataHowManyPlustestDataToAdd);
         Assertions.assertEquals(testDataHowManyPlustestDataToAdd, resultList.size(), "resultList.size()==," + testDataHowManyPlustestDataToAdd);
         for (int i = 0; i < testDataHowManyPlustestDataToAdd; i++) {
+            log.info("--------------------------------------------------------------------------------------------------");
             MeasurementEntity src = srcListe.get(i);
             MeasurementEntity target = resultList.get(i);
             MeasurementTest.assertTransientEqualsPersistent(src, target);
         }
         Assertions.assertTrue(true);
+        log.info("--------------------------------------------------------------------------------------------------");
     }
 
     @Test
     public void updateTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: getAllPageTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         resetTestData();
         MeasurementEntity src = getRandomElement();
         Assertions.assertNotNull(src);
         String situation = "Xfcfdcdcrd";
         src.setSituation(situation);
         MeasurementEntity target = measurementService.update(src, src.getId());
+        log.info("--------------------------------------------------------------------------------------------------");
         MeasurementTest.assertEquals(src, target);
         MeasurementTest.assertEqualsUuid(src, target);
         MeasurementTest.assertEqualsCreated(src, target);
         Assertions.assertTrue(true);
+        log.info("--------------------------------------------------------------------------------------------------");
     }
 
     @Test
     public void deleteTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: deleteTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         resetTestData();
         MeasurementEntity src = getRandomElement();
         Assertions.assertNotNull(src);
@@ -237,15 +269,20 @@ public class MeasurementServiceTest {
         long countAfter = measurementService.getAll().size();
         Assertions.assertEquals(countBefore - 1, countAfter, "count after delete");
         Optional<MeasurementEntity> target = measurementService.findById(id);
+        log.info("--------------------------------------------------------------------------------------------------");
         Assertions.assertFalse(target.isPresent());
         Assertions.assertTrue(true);
+        log.info("--------------------------------------------------------------------------------------------------");
     }
 
     @Test
     public void getAllPagedTest() {
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: getAllPagedTest");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         deletePersistentTestData();
         persistMuchTestData();
+        log.info("--------------------------------------------------------------------------------------------------");
         int page = 1;
         int size = 10;
         String[] fields = {"updated", "created"};
@@ -258,6 +295,7 @@ public class MeasurementServiceTest {
         int getNumberOfElementsExpectedLastPage = 2;
         int getNumberExpected = 1;
         Page<MeasurementEntity> resultPage;
+        log.info("--------------------------------------------------------------------------------------------------");
         do {
             resultPage = measurementService.getAll(pageable);
             Assertions.assertEquals(getTotalPagesExpected, resultPage.getTotalPages(), " resultPage.getTotalPages()");
@@ -272,7 +310,9 @@ public class MeasurementServiceTest {
             pageable = resultPage.nextPageable();
             getNumberExpected++;
         } while (resultPage.hasNext());
+        log.info("--------------------------------------------------------------------------------------------------");
         Assertions.assertTrue(true);
+        log.info("--------------------------------------------------------------------------------------------------");
     }
 
 }
