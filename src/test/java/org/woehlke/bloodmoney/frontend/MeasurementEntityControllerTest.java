@@ -36,32 +36,32 @@ public class MeasurementEntityControllerTest {
 
     @PostConstruct
     public void runBeforeAll() {
-        log.info("======================================================================================================");
+        log.info("==================================================================================================");
         log.info("TEST: runBeforeAll");
         mockMvc = MockMvcBuilders
             .webAppContextSetup(context)
             .apply(springSecurity())
             .build();
         Assertions.assertNotNull(mockMvc, "runBeforeAll() context -> mockMvc");
-        log.info("======================================================================================================");
+        log.info("==================================================================================================");
     }
 
     @PreDestroy
     public void runAfterAll() {
-        log.info("======================================================================================================");
+        log.info("==================================================================================================");
         log.info("TEST: runAfterAll");
-        log.info("======================================================================================================");
+        log.info("==================================================================================================");
     }
 
     @WithMockUser(username = "thomas.woehlke@gmail.com")
     @Test
     public void getMeasurementAllPrivate() throws Exception {
-        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: getMeasurementAllPrivate: /measurement/all");
         this.mockMvc.perform(get("/measurement/all"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("<title>Alle Messungen</title>")));
-        log.info("------------------------------------------------------------------------------------------------------");
+        log.info("--------------------------------------------------------------------------------------------------");
     }
 }
