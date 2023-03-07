@@ -2152,12 +2152,11 @@
             <build>
                 <finalName>${project.artifactId}</finalName>
                 <defaultGoal>
-                    clean
-                    dependency:purge-local-repository dependency:resolve dependency:resolve-plugins dependency:sources
-                    install
+                    clean dependency:purge-local-repository dependency:resolve dependency:resolve-plugins
+                    dependency:analyze-dep-mgt dependency:analyze-report dependency:sources
+                    dependency:tree dependency:sources package install
                     source:jar source:test-jar javadoc:jar javadoc:test-jar
-                    spring-boot:repackage
-                    site site:jar site:deploy
+                    spring-boot:repackage site site:jar site:deploy
                 </defaultGoal>
             </build>
         </profile>
