@@ -162,7 +162,7 @@ public class MeasurementServiceTest {
         for (int i = 0; i < testDataHowManyTestData; i++) {
             MeasurementEntity src = srcListe.get(i);
             MeasurementEntity target = resultList.get(i);
-            MeasurementTest.assertTransientEqualsPersistent(src, target);
+            MeasurementTestAssertions.assertTransientEqualsPersistent(src, target);
         }
         Assertions.assertTrue(true);
     }
@@ -182,8 +182,8 @@ public class MeasurementServiceTest {
         for (int i = 0; i < testDataHowManyTestData; i++) {
             MeasurementEntity src = srcListe.get(i);
             MeasurementEntity target = resultList.get(i);
-            MeasurementTest.assertTransientEqualsPersistent(src, target);
-            MeasurementTest.assertAllFieldNonNullForPersistent(target);
+            MeasurementTestAssertions.assertTransientEqualsPersistent(src, target);
+            MeasurementTestAssertions.assertAllFieldNonNullForPersistent(target);
         }
         Assertions.assertTrue(true);
     }
@@ -229,7 +229,7 @@ public class MeasurementServiceTest {
             log.info("--------------------------------------------------------------------------------------------------");
             MeasurementEntity src = srcListe.get(i);
             MeasurementEntity target = resultList.get(i);
-            MeasurementTest.assertTransientEqualsPersistent(src, target);
+            MeasurementTestAssertions.assertTransientEqualsPersistent(src, target);
         }
         Assertions.assertTrue(true);
         log.info("--------------------------------------------------------------------------------------------------");
@@ -247,9 +247,9 @@ public class MeasurementServiceTest {
         src.setSituation(situation);
         MeasurementEntity target = measurementService.update(src, src.getId());
         log.info("--------------------------------------------------------------------------------------------------");
-        MeasurementTest.assertEquals(src, target);
-        MeasurementTest.assertEqualsUuid(src, target);
-        MeasurementTest.assertEqualsCreated(src, target);
+        MeasurementTestAssertions.assertEquals(src, target);
+        MeasurementTestAssertions.assertEqualsUuid(src, target);
+        MeasurementTestAssertions.assertEqualsCreated(src, target);
         Assertions.assertTrue(true);
         log.info("--------------------------------------------------------------------------------------------------");
     }

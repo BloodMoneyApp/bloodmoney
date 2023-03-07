@@ -10,7 +10,7 @@ import java.time.ZoneOffset;
 
 @Slf4j
 @ActiveProfiles("default")
-public class MeasurementTest {
+public class MeasurementTestAssertions {
 
     private final static boolean featureUuid_isSettedByOurselves = true;
 
@@ -34,7 +34,7 @@ public class MeasurementTest {
         } else {
             Assertions.assertNotEquals(assertEqualsTrueExpected, assertEqualsTrueActual, "getUuid");
         }
-        MeasurementTest.assertEquals(src, target);
+        MeasurementTestAssertions.assertEquals(src, target);
     }
 
     public static void assertEqualsUuid(
@@ -49,7 +49,7 @@ public class MeasurementTest {
         Assertions.assertNotNull(target.getUuid(), "target.getUuid()");
         assertEqualsTrueActual = src.getUuid().toString().compareTo(target.getUuid().toString());
         Assertions.assertEquals(assertEqualsTrueExpected, assertEqualsTrueActual, "getUuid");
-        MeasurementTest.assertEquals(src, target);
+        MeasurementTestAssertions.assertEquals(src, target);
     }
 
     public static void assertEquals(
