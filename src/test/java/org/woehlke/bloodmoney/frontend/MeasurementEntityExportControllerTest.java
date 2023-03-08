@@ -63,11 +63,15 @@ public class MeasurementEntityExportControllerTest {
     public void exportCSVTest() throws Exception  {
         log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("TEST: exportCSVTest");
+        log.info("--------------------------------------------------------------------------------------------------");
         this.mockMvc.perform(get("/measurement/export/all"))
             .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(content().contentType("text/csv"))
-            .andExpect(content().string(containsString("CREATED;DATE;DIASTOLICBOTTOMNUMBER;HOSTNAME;HOSTNAMECANONICAL;IP;PULSE;SITUATION;SYSTOLICTOPNUMBER;TIME;UPDATED;WEIGHT")));
+            .andExpectAll(
+                status().isOk(),
+                content().contentType("text/csv"),
+                content().string(containsString(
+                    "CREATED;DATE;DIASTOLICBOTTOMNUMBER;HOSTNAME;HOSTNAMECANONICAL;IP;PULSE;SITUATION;SYSTOLICTOPNUMBER;TIME;UPDATED;WEIGHT"
+                )));
         log.info("--------------------------------------------------------------------------------------------------");
     }
 }
