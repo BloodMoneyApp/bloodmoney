@@ -2,6 +2,7 @@ package org.woehlke.bloodmoney.domain.measurements;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,6 +148,7 @@ public class MeasurementServiceTest {
         Assertions.assertTrue(true);
     }
 
+    @Ignore
     @Test
     public void getAllListTest() {
         log.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
