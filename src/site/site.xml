@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0
     http://maven.apache.org/xsd/decoration-1.0.0.xsd">
 
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.11.1</version>
+    </skin>
+
     <!-- https://maven.apache.org/plugins/maven-site-plugin/examples/sitedescriptor.html -->
     <bannerLeft>
       <name>Cyclic Cellular Automaton (Demon)</name>
@@ -60,4 +66,15 @@
         <menu ref="reports"/>
     </body>
     <version position="left"/>
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <topBarContailerStyle>width:90%</topBarContailerStyle>
+            <navBarStyle>navbar-inverse</navBarStyle>
+            <sideBarEnabled>false</sideBarEnabled>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+            <breadcrumbDivider>»</breadcrumbDivider>
+            <skipGenerationDate>true</skipGenerationDate>
+        </fluidoSkin>
+    </custom>
 </project>
