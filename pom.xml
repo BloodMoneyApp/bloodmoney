@@ -113,7 +113,7 @@
         <docker-compose-maven-plugin.projectName>bloomoon</docker-compose-maven-plugin.projectName>
 
         <!-- Database Evolution -->
-        <version.org.postgresql>42.5.1</version.org.postgresql>
+        <version.org.postgresql>42.7.2</version.org.postgresql>
         <liquibase.propertyFile>${project.basedir}/liquibase.properties</liquibase.propertyFile>
 
         <!-- UML -->
